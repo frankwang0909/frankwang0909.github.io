@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wangxingfeng.com/%E9%80%9A%E8%BF%87useragent%E8%AF%86%E5%88%AB%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%AC%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%AB%99%E7%82%B9</loc>
+    <lastmod>2017-04-04T21:02:50+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.wangxingfeng.com/anywhere-npm</loc>
     <lastmod>2017-04-04T17:41:35+08:00</lastmod>
   </url>
@@ -96,13 +101,13 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/</loc>
-    <lastmod>2017-04-04T17:41:35+08:00</lastmod>
+    <lastmod>2017-04-04T21:02:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.wangxingfeng.com/categories/frontend/</loc>
-    <lastmod>2017-01-11T21:48:19+08:00</lastmod>
+    <lastmod>2017-04-04T21:02:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -144,7 +149,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/post/</loc>
-    <lastmod>2017-04-04T17:41:35+08:00</lastmod>
+    <lastmod>2017-04-04T21:02:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -180,6 +185,12 @@
   <url>
     <loc>http://www.wangxingfeng.com/categories/tools/</loc>
     <lastmod>2017-04-03T20:49:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/useragent/</loc>
+    <lastmod>2017-04-04T21:02:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   
