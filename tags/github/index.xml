@@ -133,7 +133,7 @@ url = &amp;quot;new_start&amp;quot;             #该文章访问时的相对的u
 &lt;pre&gt;&lt;code&gt;cd themes
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;由于需要使用到Git下载主题，以及版本管理和代码推送。需要事先下载安装好&lt;a href=&#34;https://git-for-windows.github.io/&#34;&gt;Git&lt;/a&gt;，关于如何安装和使用Git，可以参考我之前的一篇文章：&lt;a href=&#34;http://www.wangxingfeng.com/post/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&#34;&gt;Git学习笔记&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;由于需要使用到Git下载主题，以及版本管理和代码推送。需要事先下载安装好&lt;a href=&#34;https://git-for-windows.github.io/&#34;&gt;Git&lt;/a&gt;，关于如何安装和使用Git，可以参考我之前的一篇文章：&lt;a href=&#34;http://www.wangxingfeng.com/git-intro/&#34;&gt;Git学习笔记&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;把选定的主题下载到&lt;code&gt;themes&lt;/code&gt;目录下。&lt;/p&gt;
 
