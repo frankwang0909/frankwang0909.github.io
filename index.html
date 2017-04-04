@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-04-04T15:31:56&#43;08:00"/>
+<meta property="og:updated_time" content="2017-04-04T17:41:35&#43;08:00"/>
 
 
 
@@ -198,12 +198,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        13
+        14
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          14
+          15
         
         <span>
             Tags
@@ -278,6 +278,155 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/anywhere-npm">
+    <h1 class="article-title" itemprop="name">
+        快速启动Node服务器，调试本地静态文件代码
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-04 17:41:35 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
+            &middot;
+            25
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">node</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    如何在移动设备上测试静态文件？ 现在移动端优先的情况下，前端工程师写好静态页面后，通常是需要测试不同的设备上效果，看看有没有兼容性的问题。谷歌浏览器有一个模拟手机的调试功能，一般，我们先用谷歌调试好。但毕竟是模拟的，为了保险起见，还是需要用真机测试的。
+可是静态的html文件怎么放到手机上调试呢？难不成把文件拷一份，放到不同的手机上？显然不是。
+NodeJS的一个npm模块anywhere 就可以快速地把你的当前目录变成一个静态文件服务器的根目录。
+anywhere的安装及使用 首先，安装Node。具体操作请看Node的官网。傻瓜式地安装。
+其次，安装anywhere。在命令行输入
+npm install anywhere -g  npm install + 模块名 从NPM服务器下载别人编写的第三方包的固定写法。
+-g 表示全局安装，在电脑的任何部门都可以使用anywhere模块。
+启动服务：
+在命令行切换到项目的根目录，然后输入anywhere即可。服务启动后，会自动打开你的默认浏览器，<a href="http://localhost:8000。">http://localhost:8000。</a>
+此时，如果你想在手机上测试index.html页面，你只需要在手机上访问 <a href="http://localhost:8000/index.html">http://localhost:8000/index.html</a> 即可看到效果。
+当然，这里有一个前提，就是你的手机和电脑是在同一个局域网内的。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/anywhere-npm">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/anywhere-npm" data-id="644c9e5feaac5c5854c84f03f0e0056f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1038,164 +1187,6 @@ CDN公共库 CDN公共库指将常用的js库存放在CDN节点，以方便广�
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/seo">
-    <h1 class="article-title" itemprop="name">
-        前端工程师应该具备的SEO基础知识
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-08-01 21:49:40 &#43;0800 CST" itemprop="datePublished">2016-08-01</time>
-            &middot;
-            53
-            words
-            &middot;
-            1
-            minute read
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/seo">seo</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    SEO 是什么？ SEO 是“Search Engine Optimization”（搜索引擎优化）或“Search Engine Optimizer”（搜索引擎优化服务商）的首字母缩略词。通俗地说，SEO就是通过对网站内部调整优化及站外优化，使网站满足搜索引擎收录排名需求，在搜索引擎中提高关键词排名，从而把精准用户带到网站，获得免费流量，产生直接销售或品牌推广。
-新手入门可以阅读Google 搜索引擎优化 (SEO) 单页指南.pdf.
-如果想要进一步学习，可以参考Google搜索引擎优化入门指南 （需翻墙），如果翻不了，可以点击这里。
-前端工程师应该掌握的SEO知识 目前不少公司设有SEO的专职岗位，而前端工程师不是专业做SEO优化推广的，并不需要变成SEO专家，但应掌握以下SEO基础知识。
-一、结构布局的优化 1.结构扁平化。
-网站的层次结构尽量不超过三层。这样搜索引擎或者用户点击跳转3次可以到达网站内任何一个内页。
-2.优化导航。
-设置页面的主导航、副导航、分类导航、面包屑导航、分页页码等，方便用户跳转到想访问的页面。
-二、标签的语义化 搜索引擎的爬虫会依赖于标记来确定上下文和各个关键字的权重.因此，正确使用语义化的标签有利于搜索引擎抓取和收录网页内容。
-1.锚链接 &lt;a&gt; 标签：
-1）添加属性 title=&ldquo;链接的文字说明&rdquo;，增加对该链接的说明，尤其是指向本站的链接。
-2）添加属性 rel=&ldquo;no follow&rdquo;。 对于指向非本站的链接，增加这个属性是告诉爬虫该页面无需追踪。
-2.正文标题用&lt;h1&gt;,副标题用&lt;h2&gt;, 不要滥用标题。
-3.正文内容用&lt;p&gt;，正文内的换行用&lt;br&gt;， 其他地方不要滥用&lt;br&gt;来换行，而是通过CSS样式来设置。
-4.图片&lt;img&gt;添加属性 alt=&ldquo;图片的文字注释&rdquo;.
-5.表格用&lt;table&gt; ，表格的标题使用 &lt;caption&gt;
-6.有序列表用&lt;ol&gt;， 无序列表用&lt;ul&gt;， 定义列表用&lt; dl&gt;、
-7.强调标签： &lt;strong&gt; 表示强调， 可以用于突出关键词，有较大的权重。&lt;em&gt;也表示强调，权重比strong稍低。&lt;b&gt;标签虽然也有加粗效果，但没有强调的作用，因此不会增加标签内的文本权重。
-8.减少&lt;iframe&gt;的使用。iframes 阻塞页面加载, 延迟触发window.onload事件，给用户的感觉就是这个网页非常慢。
-9.重要内容HTML代码放在最前面，然后通过CSS属性控制位置。
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/seo">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/seo" data-id="2381cc41a4a92b881d235ffb414093dc" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1219,6 +1210,32 @@ CDN公共库 CDN公共库指将常用的js库存放在CDN节点，以方便广�
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/anywhere-npm" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">
+                        node
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/anywhere-npm" class="title">快速启动Node服务器，调试本地静态文件代码</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-04 17:41:35 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1324,32 +1341,6 @@ CDN公共库 CDN公共库指将常用的js库存放在CDN节点，以方便广�
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/cdn" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/cdn" class="title">推荐几个常用的CDN公共库</a></p>
-                    <p class="item-date">
-                        <time datetime="2016-08-20 21:07:46 &#43;0800 CST" itemprop="datePublished">2016-08-20</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1369,6 +1360,14 @@ CDN公共库 CDN公共库指将常用的js库存放在CDN节点，以方便广�
                     frontend
                 </a>
                 <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://www.wangxingfeng.com/categories/node">
+                    node
+                </a>
+                <span class="category-list-count">1</span>
             </li>
             
             <li class="category-list-item">
@@ -1440,6 +1439,9 @@ CDN公共库 CDN公共库指将常用的js库存放在CDN节点，以方便广�
         
         
         <a href="http://www.wangxingfeng.com/tags/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95" style="font-size: 12px;">下拉菜单</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8" style="font-size: 12px;">服务器</a>
         
         
         <a href="http://www.wangxingfeng.com/tags/%E8%8B%B1%E8%AF%AD" style="font-size: 12px;">英语</a>
