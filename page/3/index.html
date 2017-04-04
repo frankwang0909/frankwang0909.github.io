@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>404 Page not found &middot; Frank Wang&#39;s Coding World</title>
+    <title>Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,10 +10,10 @@
       <meta name="description" content="Frank Wang&#39;s Personal Blog">
     
     
-      <link href="http://www.wangxingfeng.com/404.html/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-      <link href="http://www.wangxingfeng.com/404.html/index.xml" rel="feed" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
+      <link href="http://www.wangxingfeng.com/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
+      <link href="http://www.wangxingfeng.com/index.xml" rel="feed" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
     
-    <link rel="canonical" href="http://www.wangxingfeng.com/404/"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.css">
@@ -23,14 +23,14 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="404 Page not found" />
+    <meta property="og:title" content="Frank Wang&#39;s Coding World" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://www.wangxingfeng.com/404/" />
+<meta property="og:url" content="http://www.wangxingfeng.com/" />
 
 
 
-
+<meta property="og:updated_time" content="2016-03-03T23:55:37&#43;08:00"/>
 
 
 
@@ -43,7 +43,7 @@
 
     
     
-<meta itemprop="name" content="404 Page not found">
+<meta itemprop="name" content="Frank Wang&#39;s Coding World">
 <meta itemprop="description" content="">
 
 
@@ -172,7 +172,8 @@
   </div>
 </header>
 
-   <div class="outer">
+
+    <div class="outer">
     <aside id="profile">
   <div class="inner profile-inner">
     <div class="base-info profile-block">
@@ -267,23 +268,164 @@
 </aside>
 
     <section id="main">
-        <article class="article article-type-post" itemscope="" itemprop="blogPost">
-            <div class="article-inner">
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        <center>
-                        <h1>
-                            404 - page not found
-                        </h1>
-                        <h3>
-                            The content you&#39;re looking for doesn&#39;t seem to exist.
-                        </h3>
-                        </center>
-                    </p>
-                </div>
+    
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/dropdown-menu">
+    <h1 class="article-title" itemprop="name">
+        常见的下拉菜单
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-03-03 23:55:37 &#43;0800 CST" itemprop="datePublished">2016-03-03</time>
+            &middot;
+            366
+            words
+            &middot;
+            2
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
             </div>
-        </article>
-    </section>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95">下拉菜单</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    HTML结构 网页中导航栏是一个很常见的组件。通常，我们使用无序列表来制作导航栏。比如
+&lt;div id=&quot;nav&quot;&gt; &lt;ul class=&quot;navMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;跟团游&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自助游&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;游轮&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自驾&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;  有些导航栏有下拉的二级菜单，那么我们在相应的位置上再加上列表构成二级菜单，比如
+&lt;div id=&quot;nav&quot;&gt; &lt;ul class=&quot;navMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;跟团游&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;周边跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;当地参团&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自助游&lt;/a&gt; &lt;ul class=&quot;subMenu&quot; &gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境自助&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内自助&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;机票+酒店&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;火车+酒店&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;游轮&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;包船专享&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;日韩航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;欧洲航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;三峡航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;美洲航线&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自驾&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;周边自驾&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内自驾&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境自驾&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;  基本的CSS样式 列表默认是垂直方向排列的，而常见的导航栏主菜单是水平方向排列，二级下拉菜单是垂直方向排列的，所以我们需要对主菜单的li元素设置浮动，让其水平排列。设置浮动后，应记得清除浮动。可以使用class来作为公共的浮动和清除浮动的样式，然后在需要浮动的元素上添加相应的class，在浮动元素的父元素上添加清除浮动的class。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/dropdown-menu">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/dropdown-menu" data-id="e242ef885581033878050e63830e826f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+
+    <nav id="page-nav">
+
+    
+        <a class="extend prev" rel="prev" href="http://www.wangxingfeng.com/page/2/">
+            « Prev
+        </a>
+    
+    
+
+</nav>
+
+</section>
+
+
     <aside id="sidebar">
     
 <div class="widget-wrap">
@@ -297,7 +439,7 @@
                 <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%83%BD%E8%AF%B4%E8%8B%B1%E8%AF%AD" class="thumbnail">
                     
-                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170404banner.jpg)" alt="404 Page not found" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170404banner.jpg)" alt="Frank Wang&#39;s Coding World" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -323,7 +465,7 @@
                 <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/build-blog-with-hugo" class="thumbnail">
                     
-                        <span style="background-image:url(http://www.wangxingfeng.com/images/2017-04-03banner.jpg)" alt="404 Page not found" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/2017-04-03banner.jpg)" alt="Frank Wang&#39;s Coding World" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -375,7 +517,7 @@
                 <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/js-reg" class="thumbnail">
                     
-                        <span style="background-image:url(http://www.wangxingfeng.com/images/2016-12-18banner.jpg)" alt="404 Page not found" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/2016-12-18banner.jpg)" alt="Frank Wang&#39;s Coding World" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -530,7 +672,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
 
-</div>
+    </div>
 </div>
 
 <footer id="footer">

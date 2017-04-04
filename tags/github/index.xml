@@ -169,7 +169,7 @@ baseurl = &amp;quot;http://www.wangxingfeng.com/&amp;quot;
 
 &lt;h3 id=&#34;2-启动-hugo-生成发布文件到-public-目录下&#34;&gt;2. 启动&lt;code&gt;hugo&lt;/code&gt;, 生成发布文件到&lt;code&gt;public&lt;/code&gt;目录下。&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo --theme=hugo_theme_robust
+&lt;pre&gt;&lt;code&gt;hugo --theme=hugo-icarus-theme
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;step-8-托管到-github-pages&#34;&gt;Step 8. 托管到&lt;code&gt;GitHub Pages&lt;/code&gt;&lt;/h2&gt;
