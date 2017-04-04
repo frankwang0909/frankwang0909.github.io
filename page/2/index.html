@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Frank Wang&#39;s Coding World</title>
+    <meta name="generator" content="Hugo 0.19" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Frank Wang">
+    
+      <meta name="description" content="Frank Wang&#39;s Personal Blog">
+    
+    
+      <link href="http://www.wangxingfeng.com/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
+      <link href="http://www.wangxingfeng.com/index.xml" rel="feed" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
+    
+    <link rel="canonical" href="http://www.wangxingfeng.com/"/>
+    <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
+    <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/monokai.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Frank Wang&#39;s Coding World" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.wangxingfeng.com/" />
+
+
+
+<meta property="og:updated_time" content="2016-06-05T22:05:46&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Frank Wang&#39;s Coding World">
+<meta itemprop="description" content="">
+
+
+    
+    
+
+    
+
+    
+    <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://www.wangxingfeng.com/" id="logo">
+          
+          <i class="logo" style="background-image: url('http://www.wangxingfeng.com/css/images/logo.png')"></i>
+          
+          <span class="site-title">Frank Wang&#39;s Coding World</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend/">前端</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node/">Node</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python/">Python</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/php/">PHP</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools/">工具</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/others/">其他</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/about/">About</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://www.wangxingfeng.com/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="搜索">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend/">前端</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node/">Node</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python/">Python</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/php/">PHP</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools/">工具</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/others/">其他</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/about/">About</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+
+    <div class="outer">
+    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.png">
+      <h2 id="name">Frank Wang</h2>
+      <h3 id="title">Blogger - Programmer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>China, Shenzhen</span>
+      
+          <a id="follow" href="https://github.com/frankwang0909" target="_blank">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        12
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          13
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/frankwang0909" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/frankwang0909" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="http://www.wangxingfeng.com/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    <section id="main">
+    
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/markdonw-notes">
+    <h1 class="article-title" itemprop="name">
+        Markdown 学习笔记
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-06-05 22:05:46 &#43;0800 CST" itemprop="datePublished">2016-06-05</time>
+            &middot;
+            64
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/others">others</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/markdown">Markdown</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    定义： 维基百科上的介绍：
+Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。
+Markdown同时还是一个由Gruber编写的Perl脚本：Markdown.pl。它把用markdown语法编写的内容转换成有效的、结构良好的XHTML或HTML内容，并将左尖括号(&rsquo;&lt;&lsquo;)和&amp;号替换成它们各自的字符实体引用。它可以用作单独的脚本，Blosxom和Movable Type的插件又或者BBEdit的文本过滤器.
+用处： 从维基百科的介绍来看，markdown就是一种标记语言。它简洁的语法代替排版，可以使我们专心于码字，用「标记」语法来代替常见的排版格式。比如我现在这个博客的内容，就是直接用Markdown写的。 不用考虑复杂的排版，只需要记住几个简单常用的语法就行，然后可以轻松地转换成HTML文件，变成可以被浏览器解析的网页。 如果你有一个自己独立的博客，只是想码码字，不想编写复杂HTML和CSS代码，Markdown无疑是一个很好地选择。
+最基本的语法： 1.标题：
+如果一段文字被定义为标题，只要在这段文字前加 #号即可。1个#表示 一级标题；##表示 二级标题；以此类推，总共6级标题， #号后加一个空格。
+2.引用代码：
+1）引用整段代码，只需要空是个空格或者一个Tab键，完整地保留代码缩进格式。 2）在一行内引入代码片段。用Tab键上方的反引号() 包围代码。  3.链接：
+用方括号[]括起来要添加超链接的文字，用圆括号()把url括起来。写法如下：
+<code>[Markdown维基百科英文版](https://en.wikipedia.org/wiki/Markdown)</code>  效果如右边所示：Markdown维基百科英文版
+4.图片:
+插入链接与插入图片的语法很像，区别在一个 !号。图片为：<img src="url" alt="文字描述" />。
+5.分割线:
+用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。可以在星号或是减号中间插入空格
+6.列表：
+1)无序列表无序列表使用<code>星号</code>、<code>加号</code>或是<code>减号</code>作为列表标记； 2)有序列表则直接在文字前加<code>1.</code> <code>2.</code> <code>3.</code> 符号要和文字之间加上一个字符的空格。  7.粗体与斜体:
+用两个 * 包含一段文本就是粗体的语法，用一个 *包含一段文本就是斜体的语法。
+这是粗体文字
+这是斜体文体
+8.空格与换行：
+单个回车 视为空格；连续回车才能分段。
+9.区块引用 Blockquotes
+Markdown 标记区块引用是使用类似 email 中用 &gt;的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; ：
+相关链接：  快速入门指南
+ Markdown官网
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/markdonw-notes">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/markdonw-notes" data-id="a01e097e3f7ce233ece67ab08ceca76c" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/sublimetext-notes">
+    <h1 class="article-title" itemprop="name">
+        Sublime Text 学习笔记
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-05-13 00:14:00 &#43;0800 CST" itemprop="datePublished">2016-05-13</time>
+            &middot;
+            170
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/sublime-text">Sublime Text</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    自从把主力代码编辑器改为Sublime Text之后，写代码的效率明显高了许多。最近，我开始尝试着给身边的朋友推荐这款编辑器。
+一、Sublime Text 的优点 1.跨平台；
+2.轻量级，可拓展：有大量插件可由用户自行选择安装(首推Emmet插件)。
+3.支持几乎所有的主流编程语言的语法高亮显示；
+4.代码自动补全，支持代码段（Code Snippet）；
+5.右上角的minimap: 用来查看标注、快速拖动、迅速定位；
+6.快速跳转到不同的文件/方法/函数：支持模糊匹配；
+7.快速切换Tab与Space；
+8.格式化代码；
+二、安装Sublime Text 1.下载安装包：
+Sublime Text官网地址：<a href="https://www.sublimetext.com/">https://www.sublimetext.com/</a> 根据自己的系统选择对应的安装包下载并安装。目前稳定版本为Sublime Text 3;
+2.安装Package Control:
+下载插件之前需要先安装Package Control，它是用来管理和下载插件的控制组件。 Package Control官网安装地址：<a href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a>
+1）使用快键键 ctrl+ 或者View&gt;Show Console` 菜单打开控制台，然后，然后回车让它安装。
+2）根据Sublime Text的版本选择复制对应的版本代码；
+3）黏贴到控制台输入框里，按Enter键，插件管理包就进入正在下载安装的状态（可能需要一点时间）；
+3.自定义安装各种插件：
+在 Package Control官网地址：<a href="https://packagecontrol.io/可以看到各种插件以及它的下载量排名，找到自己感兴趣的，下载下来试用。">https://packagecontrol.io/可以看到各种插件以及它的下载量排名，找到自己感兴趣的，下载下来试用。</a>
+下载安装方法如下： (windows平台)
+1）按下 Ctrl+Shift+P 调出命令面板，输入install， 调出 Install Package 选项并回车，出来这样的画面，
+2）然后输入自己想要下载的插件名称，比如: HTML Extended
+3）下载安装完成后会弹出类似这样的文件，说明已经成功安装该插件。
+或者在左下角提示成功安装：
+三、推荐几个好用的插件： 1.Emmet：通过简单的命令直接生成一大段代码。
+2.ConvertToUTF8(转换成utf-8格式): 默认情况下，gbk编码格式的中文会变成乱码，这个插件可以实现自动转换。
+3.JsFormat：格式化js代码。可以还原别人网站被压缩过难以阅读的js代码。
+4.HTMLBeautify：格式化HTML。
+5.Hasher:符号转义。
+6.TrailingSpaces：多余空格标记。
+7.SideBarEnhancementS: 侧边栏增强功能。
+ ChineseLocalization：汉化插件。  四、常用的快捷键（windows平台下）： 1.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/sublimetext-notes">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/sublimetext-notes" data-id="35d8c4e8537ef1ad63ad98699e489072" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/tab">
+    <h1 class="article-title" itemprop="name">
+        实现Tab切换的几种方式
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-05-08 23:36:44 &#43;0800 CST" itemprop="datePublished">2016-05-08</time>
+            &middot;
+            72
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/tab%E5%88%87%E6%8D%A2">tab切换</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    Tab 切换是网页中常见的组件。适当地使用，可以节省页面空间，在同一个大小的页面中展现更多的内容。Tab 切换的效果千差万别，只需要学会基本的思路，便可变换出各种各样的效果。下面我分别使用了原生js和jQuery来实现四种不同的Tab切换效果。
+方式一：用原生js实现各种Tab切换效果。 1.鼠标滑动切换 : 这是最简单的Tab切换。鼠标滑过时，切换Tab.
+首先，通过getElementById、 getElementsByTagNameL等方法来获取相应的元素。
+然后，对相应的元素绑定mouseover事件即可。
+具体代码见 js-mouseover-tab.html
+DEMO
+2.鼠标点击切换 与第一种的区别在于绑定的事件不同。获取元素的方法是一样的，只需把绑定mouseovers事件改为click事件即可。
+具体代码见 js-click-tab.html
+DEMO
+3.鼠标滑动延迟切换 延迟切换涉及到了一个时间问题，可以通过设置定时器来实现延迟的效果。定时器有setTimeout()和setInterval()两种方式来设置。
+setTimeout() 方法用于在指定的毫秒数后调用函数或计算表达式。setTimeout() 只执行 code 一次。如果要多次调用，需要使用 setInterval()。
+setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。
+因为这里的延迟切换是在指定的延迟时间之后才实现切换效果，所以使用setTimeout() 。
+具体代码见 js-delay-tab.html
+DEMO
+4.自动切换 自动切换，即按指定的周期自动切换到下一个Tab。这里也需要一个定时器，而且是按周期调用函数，因此使用setInterval() 方法来实现。 当鼠标滑动到某个Tab时，高亮显示当前页，同时停止自动切换，此时需要用到 clearInterval()方法来清除定时器。
+具体代码见 js-auto-tab-01.html
+优化后的代码见 js-auto-tab-02.html
+DEMO
+方式二：用jQuery实现各种Tab切换效果: 实现思路与原生的JavaScript是一样的,只是jQuery封装了一些方法可以更方便操作DOM元素。 1.鼠标滑动切换 具体代码见 jQ-mouseover-tab.html
+DEMO
+2.鼠标点击切换 具体代码见 jQ-click-tab.html
+DEMO
+3.鼠标滑动延迟切换 具体代码见 jQ-delay-tab.html
+DEMO
+4.自动切换 具体代码见 jQ-auto-tab-01.html
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/tab">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/tab" data-id="34eb82a7066c1f9b94f3d8ab88c8aae5" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/back-to-top">
+    <h1 class="article-title" itemprop="name">
+        实现返回顶部效果的3种方式
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-22 22:56:30 &#43;0800 CST" itemprop="datePublished">2016-04-22</time>
+            &middot;
+            189
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8">返回顶部</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    现在的网页内容比较多，基本上无法在一屏完全显示出来。这个时候，用户需要移动滚动条（滑动鼠标滚轮）来查看全部内容，如果想要返回顶部同样需要移动滚动条。如果页面太长，这样的体验显然不够好。因此，返回顶部的按钮就应运而生了。
+返回顶部的实现方式主要有以下3种。
+实现方式一：设置锚链接 最简单快捷的方式是设置锚链接&lt;a href=&quot;#&quot;&gt; 。京东就是使用这种方式。
+优点：简单快速，没有浏览器兼容问题。
+参考代码如下：
+HTML代码
+ &lt;div id=&quot;go-top&quot;&gt; &lt;a href=&quot;#&quot; id=&quot;gotop-btn&quot;&gt;&lt;/a&gt;&lt;!&ndash; 直接使用锚链接来返回顶部 &ndash;&gt; &lt;/div&gt;  实现方式二：借助jQuery来实现 参考代码如下：
+HTML代码
+&lt;div id=&quot;go-top&quot;&gt; &lt;a href=&quot;javascript:;&quot; id=&quot;gotop-btn&quot;&gt;&lt;/a&gt; &lt;/div&gt;  JavaScript代码
+&lt;script type=&quot;text/javascript&quot;&gt; $(function() { $(window).scroll(function(){ // 当滚动条距顶部超过100像素时，返回顶部按钮出现，否则消失 if ($(window).scrollTop()&gt;=100){ $(&quot;#gotop-btn&quot;).fadeIn(500); } else{ $(&quot;#gotop-btn&quot;).fadeOut(500); } }); //当点击跳转链接后，回到页面顶部位置 $(&quot;#gotop-btn&quot;).click(function(){ $(&lsquo;body,html&rsquo;).animate({scrollTop:0},300); }); }); &lt;/script&gt;  实现方式三：通过原生JavaScript来动态操作。 需要用到以下知识
+DOM 操作： 1.根据ID获取元素：document.getElementById
+2.滚动条的数值，可读写：document.documentElment.scrollTop
+事件运用： 1.页面加载完毕后触发window.onload
+2.点击后触发onclick
+3.滚动条滚动时触发 window.onscroll
+定时器： 1.setInterval() : 设置定时器，需要传两个参数。
+2.clearInterval(): 关闭定时器，需要传两个参数。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/back-to-top">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/back-to-top" data-id="f51f0070bf0b2e732bd157ddfaa93bf1" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/git-intro">
+    <h1 class="article-title" itemprop="name">
+        Git学习笔记
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-03 22:43:39 &#43;0800 CST" itemprop="datePublished">2016-04-03</time>
+            &middot;
+            135
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/git">Git</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    Git是一款分布式的代码管理工具，方便多人协作时的代码管理。在win7系统中使用Git管理代码有2种主要的方式。
+方式一： msysgit Step 1: 下载并安装msysgit msysgit 是Windows版的Git。下载，然后按默认选项安装即可。安装完成后，在开始菜单里找到“ Git ”-&gt;“ Git Bash ”，点击会弹出一个命令行窗口，说明Git安装成功。
+Step 2: 设置用户名 在命令行输入以下命令
+$ git config &ndash;global user.name &quot;Your Name&quot; $ git config &ndash;global user.email &quot;email@example.com&quot;  注意： git config命令的&ndash;global参数，用了这个参数，表示你这台电脑上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
+Step 3: 创建版本库 选择一个合适的地方，创建一个空目录：
+$ mkdir gitskills // 创建一个名gitskills的目录 $ cd gitskills // 切换gitskills目录 $ pwd //pwd 命令用于显示当前目录 $ git init //初始化Git仓库，当前目录中会多了一个.git目录（默认是隐藏的）  注意：为避免莫名其妙地报错，请确保目录名（包括父目录）不包含 中文。
+Step 4: 把文件添加到版本库 在刚刚创建的目录(比如gitskills)下新建文件，或者从其他地方拷贝文件到该目录下。
+$ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交时的附加信息&quot; //把文件提交到仓库,并附上相关的说明文字（用引号括起来）  注意： 每次修改文件，都需要先git add到暂存区，然后才能git commit到仓库。可以add一个文件之后commit，也可以add多个文件，然后一起commit。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/git-intro">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/git-intro" data-id="5c7d4660a78e886259fcd5554c1fe020" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/dropdown-menu">
+    <h1 class="article-title" itemprop="name">
+        常见的下拉菜单
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-03-03 23:55:37 &#43;0800 CST" itemprop="datePublished">2016-03-03</time>
+            &middot;
+            366
+            words
+            &middot;
+            2
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95">下拉菜单</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    HTML结构 网页中导航栏是一个很常见的组件。通常，我们使用无序列表来制作导航栏。比如
+&lt;div id=&quot;nav&quot;&gt; &lt;ul class=&quot;navMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;跟团游&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自助游&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;游轮&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自驾&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;  有些导航栏有下拉的二级菜单，那么我们在相应的位置上再加上列表构成二级菜单，比如
+&lt;div id=&quot;nav&quot;&gt; &lt;ul class=&quot;navMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;跟团游&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;周边跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;当地参团&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自助游&lt;/a&gt; &lt;ul class=&quot;subMenu&quot; &gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境自助&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内自助&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;机票+酒店&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;火车+酒店&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;游轮&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;包船专享&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;日韩航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;欧洲航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;三峡航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;美洲航线&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自驾&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;周边自驾&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内自驾&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境自驾&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;  基本的CSS样式 列表默认是垂直方向排列的，而常见的导航栏主菜单是水平方向排列，二级下拉菜单是垂直方向排列的，所以我们需要对主菜单的li元素设置浮动，让其水平排列。设置浮动后，应记得清除浮动。可以使用class来作为公共的浮动和清除浮动的样式，然后在需要浮动的元素上添加相应的class，在浮动元素的父元素上添加清除浮动的class。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/dropdown-menu">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/dropdown-menu" data-id="e242ef885581033878050e63830e826f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+
+    <nav id="page-nav">
+
+    
+        <a class="extend prev" rel="prev" href="http://www.wangxingfeng.com/">
+            « Prev
+        </a>
+    
+    
+
+</nav>
+
+</section>
+
+
+    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/build-blog-with-hugo" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/2017-04-03banner.jpg)" alt="Frank Wang&#39;s Coding World" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">
+                        tools
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/build-blog-with-hugo" class="title">用Hugo快速搭建个人静态博客</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-03 20:49:23 &#43;0800 CST" itemprop="datePublished">2017-04-03</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/fix-inline-bug" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/fix-inline-bug" class="title">代码换行导致的inline元素间距bug</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-11 21:48:19 &#43;0800 CST" itemprop="datePublished">2017-01-11</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/js-reg" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/2016-12-18banner.jpg)" alt="Frank Wang&#39;s Coding World" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/js-reg" class="title">JavaScript的正则表达式</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-12-18 21:56:37 &#43;0800 CST" itemprop="datePublished">2016-12-18</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/cdn" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/cdn" class="title">推荐几个常用的CDN公共库</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-08-20 21:07:46 &#43;0800 CST" itemprop="datePublished">2016-08-20</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/seo" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/seo" class="title">前端工程师应该具备的SEO基础知识</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-08-01 21:49:40 &#43;0800 CST" itemprop="datePublished">2016-08-01</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://www.wangxingfeng.com/categories/frontend">
+                    frontend
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://www.wangxingfeng.com/categories/others">
+                    others
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://www.wangxingfeng.com/categories/tools">
+                    tools
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/bug" style="font-size: 12px;">bug</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/cdn%E5%85%AC%E5%85%B1%E5%BA%93" style="font-size: 12px;">cdn公共库</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/css3" style="font-size: 12px;">css3</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/git" style="font-size: 12px;">git</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/github" style="font-size: 12px;">github</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/hugo" style="font-size: 12px;">hugo</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/markdown" style="font-size: 12px;">markdown</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/regexp" style="font-size: 12px;">regexp</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/seo" style="font-size: 12px;">seo</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/sublime-text" style="font-size: 12px;">sublime-text</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/tab%E5%88%87%E6%8D%A2" style="font-size: 12px;">tab切换</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95" style="font-size: 12px;">下拉菜单</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8" style="font-size: 12px;">返回顶部</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    </div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      <a href="//www.wangxingfeng.com">Frank Wang</a>. Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://www.wangxingfeng.com/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://www.wangxingfeng.com/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>
