@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/build-blog-with-hugo</loc>
+    <lastmod>2017-04-03T20:49:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/fix-inline-bug</loc>
+    <lastmod>2017-01-11T21:48:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/js-reg</loc>
+    <lastmod>2016-12-18T21:56:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/cdn</loc>
+    <lastmod>2016-08-20T21:07:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/seo</loc>
+    <lastmod>2016-08-01T21:49:40+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C</loc>
+    <lastmod>2016-07-11T21:03:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/markdonw-notes</loc>
+    <lastmod>2016-06-05T22:05:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/sublimetext-notes</loc>
+    <lastmod>2016-05-13T00:14:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tab</loc>
+    <lastmod>2016-05-08T23:36:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/back-to-top</loc>
+    <lastmod>2016-04-22T22:56:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/git-intro</loc>
+    <lastmod>2016-04-03T22:43:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/dropdown-menu</loc>
+    <lastmod>2016-03-03T23:55:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/bug/</loc>
+    <lastmod>2017-01-11T21:48:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/cdn%E5%85%AC%E5%85%B1%E5%BA%93/</loc>
+    <lastmod>2016-08-20T21:07:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/css3/</loc>
+    <lastmod>2016-07-11T21:03:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/</loc>
+    <lastmod>2017-04-03T20:49:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/categories/frontend/</loc>
+    <lastmod>2017-01-11T21:48:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/git/</loc>
+    <lastmod>2016-04-03T22:43:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/github/</loc>
+    <lastmod>2017-04-03T20:49:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/hugo/</loc>
+    <lastmod>2017-04-03T20:49:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/markdown/</loc>
+    <lastmod>2016-06-05T22:05:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/categories/others/</loc>
+    <lastmod>2016-06-05T22:05:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/post/</loc>
+    <lastmod>2017-04-03T20:49:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/regexp/</loc>
+    <lastmod>2016-12-18T21:56:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/seo/</loc>
+    <lastmod>2016-08-01T21:49:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/sublime-text/</loc>
+    <lastmod>2016-05-13T00:14:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/tab%E5%88%87%E6%8D%A2/</loc>
+    <lastmod>2016-05-08T23:36:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/categories/tools/</loc>
+    <lastmod>2017-04-03T20:49:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95/</loc>
+    <lastmod>2016-03-03T23:55:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.wangxingfeng.com/tags/%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8/</loc>
+    <lastmod>2016-04-22T22:56:30+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

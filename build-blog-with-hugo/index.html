@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>用Hugo快速搭建个人静态博客 &middot; Frank Wang&#39;s Coding World</title>
+    <meta name="generator" content="Hugo 0.19" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Frank Wang">
+    
+      <meta name="description" content="用Hugo快速搭建个人静态博客，并托管到GitHub">
+    
+    
+    <link rel="canonical" href="http://www.wangxingfeng.com/build-blog-with-hugo"/>
+    <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
+    <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/monokai.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="用Hugo快速搭建个人静态博客" />
+<meta property="og:description" content="用Hugo快速搭建个人静态博客，并托管到GitHub" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.wangxingfeng.com/build-blog-with-hugo" />
+
+  <meta property="og:image" content="http://www.wangxingfeng.com/images/2017-04-03sm.jpg" />
+
+
+
+<meta property="article:published_time" content="2017-04-03T20:49:23&#43;08:00"/>
+<meta property="article:modified_time" content="2017-04-03T20:49:23&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="用Hugo快速搭建个人静态博客">
+<meta itemprop="description" content="用Hugo快速搭建个人静态博客，并托管到GitHub">
+
+
+<meta itemprop="dateModified" content="2017-04-03T20:49:23&#43;08:00" />
+<meta itemprop="wordCount" content="348">
+
+  <meta itemprop="image" content="http://www.wangxingfeng.com/images/2017-04-03sm.jpg">
+
+
+
+<meta itemprop="keywords" content="frontend,others,tools,bug,cdn公共库,css3,git,github,hugo,markdown,regexp,seo,sublime-text,tab切换,下拉菜单,返回顶部," />
+
+    
+
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="http://www.wangxingfeng.com/images/2017-04-03sm.jpg"/>
+
+
+
+<meta name="twitter:text:title" content="用Hugo快速搭建个人静态博客"/>
+<meta name="twitter:title" content="用Hugo快速搭建个人静态博客"/>
+<meta name="twitter:description" content="用Hugo快速搭建个人静态博客，并托管到GitHub"/>
+<meta name="twitter:site" content="@frankwang0909"/>
+
+    
+
+    
+
+    
+    <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://www.wangxingfeng.com/" id="logo">
+          
+          <i class="logo" style="background-image: url('http://www.wangxingfeng.com/css/images/logo.png')"></i>
+          
+          <span class="site-title">Frank Wang&#39;s Coding World</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend/">前端</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node/">Node</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python/">Python</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/php/">PHP</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools/">工具</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/others/">其他</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/about/">About</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://www.wangxingfeng.com/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="搜索">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend/">前端</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node/">Node</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python/">Python</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/php/">PHP</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools/">工具</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/others/">其他</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/about/">About</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.png">
+      <h2 id="name">Frank Wang</h2>
+      <h3 id="title">Blogger - Programmer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>China, Shenzhen</span>
+      
+          <a id="follow" href="https://github.com/frankwang0909" target="_blank">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        12
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          13
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/frankwang0909" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/frankwang0909" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="http://www.wangxingfeng.com/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+                <img src="http://www.wangxingfeng.com/images/2017-04-03banner.jpg" class="article-banner">
+            
+
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/build-blog-with-hugo">
+    <h1 class="article-title" itemprop="name">
+        用Hugo快速搭建个人静态博客
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-03 20:49:23 &#43;0800 CST" itemprop="datePublished">2017-04-03</time>
+            &middot;
+            348
+            words
+            &middot;
+            2
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/hugo">Hugo</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/github">GitHub</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<p>最近心血来潮，想要重新折腾一番自己的博客。于是，发现了Hugo比之前使用的Jekyll更好用。本文是个人参照<a href="https://gohugo.io/overview/quickstart/">Hugo官网</a> 搭建个人博客的记录。</p>
+
+<h2 id="step-1-install-hugo-下载-安装hugo">Step 1. Install Hugo 下载、安装Hugo</h2>
+
+<p>下载地址：<a href="https://github.com/spf13/hugo/releases">https://github.com/spf13/hugo/releases</a>。
+根据自己的操作系统，下载对应的安装包。我的操作系统是<code>Win7 64bit</code>， 选择了<code>hugo_0.19_Windows-64bit.zip</code>。</p>
+
+<p>下载完成之后，解压的文件夹包含以下3个文件：</p>
+
+<pre><code>hugo_0.19_windows_amd64.exe
+LICENSE.md
+README.md
+</code></pre>
+
+<p>将 <code>hugo_0.19_windows_amd64.exe</code> 重命名为<code>hugo.exe</code>。在你的软件安装盘新增名为<code>hugo</code>的文件目录，在里面在新建一个<code>bin</code>子目录。然后将<code>hugo.exe</code>放到<code>hugo\bin</code>目录下。再将这个<code>bin</code>目录的路径添加到<code>系统环境变量</code>中。</p>
+
+<p>完成以上步骤后，打开命令行输入</p>
+
+<pre><code>hugo help
+</code></pre>
+
+<p>如果得到如下信息，说明安装成功。</p>
+
+<pre><code>hugo is the main command, used to build your Hugo site.
+
+Hugo is a Fast and Flexible Static Site Generator
+built with love by spf13 and friends in Go.
+
+Complete documentation is available at http://gohugo.io/.
+</code></pre>
+
+<h2 id="step-2-创建一个名为blog的hugo站点">Step 2. 创建一个名为blog的Hugo站点</h2>
+
+<p>我希望在E盘下创建站点，所以我先切换目录</p>
+
+<pre><code>cd e:
+e:
+</code></pre>
+
+<p>然后输入命令：</p>
+
+<pre><code>hugo new site blog 
+</code></pre>
+
+<p>得到如下提示创建成功的信息：</p>
+
+<pre><code>Congratulations! Your new Hugo site is created in E:\blog.
+
+Just a few more steps and you're ready to go:
+
+1. Download a theme into the same-named folder.
+Choose a theme from https://themes.gohugo.io/, or
+create your own with the &quot;hugo new theme &lt;THEMENAME&gt;&quot; command.
+2. Perhaps you want to add some content. You can add single files
+with &quot;hugo new &lt;SECTIONNAME&gt;\&lt;FILENAME&gt;.&lt;FORMAT&gt;&quot;.
+3. Start the built-in live server via &quot;hugo server&quot;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+</code></pre>
+
+<p>进入该目录，可以看到自动生成了5个目录和一个配置文件config.toml</p>
+
+<pre><code>|-- archetypes
+|-- content   #存放内容的目录
+|-- data      
+|-- layouts   
+|-- static    #存放静态资源（图片,css,js）
+|-- themes    #存放主题
+|-- config.toml  #配置文件
+</code></pre>
+
+<h2 id="step-3-添加内容">Step 3. 添加内容</h2>
+
+<p>切换到该目录下，然后输入如下命令，会在<code>content</code>的目录下创建<code>post</code>目录，在<code>post</code>目录下创建名为<code>test.md</code>的文件。</p>
+
+<pre><code>cd blog
+hugo new post/test.md
+</code></pre>
+
+<p>提示文件创建成功：</p>
+
+<pre><code>E:\blog\content\post\test.md created
+</code></pre>
+
+<p>用文本编辑器打开文件<code>test.md</code>文件
+可以看到如下内容：</p>
+
+<pre><code>+++
+date = &quot;2017-01-02T17:45:06+08:00&quot;  #创建文件的时间
+title = &quot;test&quot;                      #文件的标题
+draft = true                        # 是否为草稿
+
++++
+</code></pre>
+
+<p>上述内容为自动创建的与文章有关的内容。自己也可以在两个<code>+++</code>之间添加如下内容：</p>
+
+<pre><code>image = &quot;hugo.png&quot;            #指定图片。
+category = &quot;test&quot;             #文章的类别
+tags = [&quot;Hugo&quot;, &quot;intro&quot;]      #文章的标签分类。
+url = &quot;new_start&quot;             #该文章访问时的相对的url地址，默认为文件名。
+</code></pre>
+
+<p>更多的设置，可以参考<a href="https://gohugo.io/content/front-matter/">官方文档</a>。</p>
+
+<p>以后写博客文章就是这样创建<code>markdown</code>文件, 之后通过<code>Hugo</code>编译成静态的html文件。</p>
+
+<h2 id="step-4-添加主题">Step 4. 添加主题</h2>
+
+<p>官方提供了多种主题可供选择，具体在 <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a> 可以找到。</p>
+
+<p>找到想要的主题后，切换到<code>themes</code>目录（该目录可以存放多个不同的主题）。</p>
+
+<pre><code>cd themes
+</code></pre>
+
+<p>由于需要使用到Git下载主题，以及版本管理和代码推送。需要事先下载安装好<a href="https://git-for-windows.github.io/">Git</a>，关于如何安装和使用Git，可以参考我之前的一篇文章：<a href="http://www.wangxingfeng.com/post/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Git学习笔记</a>。</p>
+
+<p>把选定的主题下载到<code>themes</code>目录下。</p>
+
+<pre><code>git clone https://github.com/dim0627/hugo_theme_robust.git
+</code></pre>
+
+<h2 id="step-5-启动服务-本地预览">Step 5. 启动服务，本地预览</h2>
+
+<p>先从<code>themes</code>目录下退回到<code>blog</code>目录, 然后启动服务。</p>
+
+<pre><code>cd ..
+hugo server --theme=hugo_theme_robust --buildDrafts
+</code></pre>
+
+<p>在浏览器中打开 <code>[http://localhost:1313/](https://themes.gohugo.io/)</code></p>
+
+<h2 id="step-6-修改配置文件-config-toml">Step 6. 修改配置文件<code>config.toml</code></h2>
+
+<pre><code>languageCode = &quot;zh-cn&quot;
+title = &quot;Frank Wang's Coding World&quot;
+baseurl = &quot;http://www.wangxingfeng.com/&quot;  
+
+[Params]
+    Author =&quot;Frank Wang&quot;
+</code></pre>
+
+<h2 id="step-7-生成网站">Step 7.  生成网站</h2>
+
+<h3 id="1-改变文章-draft-草稿-状态">1.改变文章<code>draft</code>（草稿）状态：</h3>
+
+<pre><code>hugo undraft content/post/*.md
+</code></pre>
+
+<h3 id="2-启动-hugo-生成发布文件到-public-目录下">2. 启动<code>hugo</code>, 生成发布文件到<code>public</code>目录下。</h3>
+
+<pre><code>hugo --theme=hugo_theme_robust
+</code></pre>
+
+<h2 id="step-8-托管到-github-pages">Step 8. 托管到<code>GitHub Pages</code></h2>
+
+<h3 id="1-使用-git-来进行版本管理">1. 使用<code>Git</code>来进行版本管理</h3>
+
+<pre><code>git init
+echo &quot;/public/&quot; &gt;&gt; .gitignore
+echo &quot;/themes/&quot; &gt;&gt; .gitignore
+git add --all
+git commit -m &quot;Initial commit&quot;
+</code></pre>
+
+<h3 id="2-创建-git-远程仓库">2. 创建<code>Git</code> 远程仓库：</h3>
+
+<p>登录你的<code>GitHub</code>. 创建一个新的仓库，仓库名为<code>Github用户.github.io</code>
+比如我的是<code>frankwang0909.github.io</code>.</p>
+
+<h3 id="3-添加-git-远程仓库-并提交代码">3. 添加<code>Git</code> 远程仓库，并提交代码。</h3>
+
+<pre><code>cd public
+git init
+git remote add origin git@github.com:frankwang0909/frankwang0909.github.io.git
+
+git add --all
+git commit -m &quot;blog added&quot;
+git push -u origin master
+</code></pre>
+
+<h3 id="4-以后有内容改动-提交代码">4.以后有内容改动，提交代码.</h3>
+
+<pre><code>(cd ..; hugo --theme=hugo_theme_robust)
+git add --all
+git commit -m &quot;&lt;some change message&gt;&quot;
+git push -u origin master
+</code></pre>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/build-blog-with-hugo" data-id="dcc330a77bec717717582f2785f49af7" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://www.wangxingfeng.com/fix-inline-bug" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          上一篇
+      </strong>
+      <div class="article-nav-title">代码换行导致的inline元素间距bug</div>
+    </a>
+    
+
+    
+</nav>
+
+
+    </article>
+
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/build-blog-with-hugo" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/2017-04-03banner.jpg)" alt="用Hugo快速搭建个人静态博客" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">
+                        tools
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/build-blog-with-hugo" class="title">用Hugo快速搭建个人静态博客</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-03 20:49:23 &#43;0800 CST" itemprop="datePublished">2017-04-03</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/fix-inline-bug" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/fix-inline-bug" class="title">代码换行导致的inline元素间距bug</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-11 21:48:19 &#43;0800 CST" itemprop="datePublished">2017-01-11</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/js-reg" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/2016-12-18banner.jpg)" alt="用Hugo快速搭建个人静态博客" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/js-reg" class="title">JavaScript的正则表达式</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-12-18 21:56:37 &#43;0800 CST" itemprop="datePublished">2016-12-18</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/cdn" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/cdn" class="title">推荐几个常用的CDN公共库</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-08-20 21:07:46 &#43;0800 CST" itemprop="datePublished">2016-08-20</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/seo" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/seo" class="title">前端工程师应该具备的SEO基础知识</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-08-01 21:49:40 &#43;0800 CST" itemprop="datePublished">2016-08-01</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://www.wangxingfeng.com/categories/frontend">
+                    frontend
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://www.wangxingfeng.com/categories/others">
+                    others
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://www.wangxingfeng.com/categories/tools">
+                    tools
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/bug" style="font-size: 12px;">bug</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/cdn%E5%85%AC%E5%85%B1%E5%BA%93" style="font-size: 12px;">cdn公共库</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/css3" style="font-size: 12px;">css3</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/git" style="font-size: 12px;">git</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/github" style="font-size: 12px;">github</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/hugo" style="font-size: 12px;">hugo</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/markdown" style="font-size: 12px;">markdown</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/regexp" style="font-size: 12px;">regexp</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/seo" style="font-size: 12px;">seo</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/sublime-text" style="font-size: 12px;">sublime-text</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/tab%E5%88%87%E6%8D%A2" style="font-size: 12px;">tab切换</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95" style="font-size: 12px;">下拉菜单</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8" style="font-size: 12px;">返回顶部</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      <a href="//www.wangxingfeng.com">Frank Wang</a>. Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://www.wangxingfeng.com/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://www.wangxingfeng.com/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>
