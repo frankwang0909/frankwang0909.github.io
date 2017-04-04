@@ -40,9 +40,9 @@
 
 &lt;p&gt;启动服务：&lt;/p&gt;
 
-&lt;p&gt;在命令行切换到项目的根目录，然后输入&lt;code&gt;anywhere&lt;/code&gt;即可。服务启动后，会自动打开你的默认浏览器，&lt;a href=&#34;http://localhost:8000。&#34;&gt;http://localhost:8000。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在命令行切换到项目的根目录，然后输入&lt;code&gt;anywhere&lt;/code&gt;即可。服务启动后，会自动打开你的默认浏览器，&lt;a href=&#34;http://192.168.31.192:8000/。&#34;&gt;http://192.168.31.192:8000/。&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;此时，如果你想在手机上测试index.html页面，你只需要在手机上访问 &lt;code&gt;http://localhost:8000/index.html&lt;/code&gt; 即可看到效果。&lt;/p&gt;
+&lt;p&gt;此时，如果你想在手机上测试index.html页面，你只需要在手机上访问 &lt;code&gt;http://192.168.31.192:8000/index.html&lt;/code&gt; 即可看到效果。&lt;/p&gt;
 
 &lt;p&gt;当然，这里有一个前提，就是你的手机和电脑是在同一个局域网内的。&lt;/p&gt;
 </description>
