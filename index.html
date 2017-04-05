@@ -336,7 +336,7 @@
                     1.ZeroClipboard.js 点击按钮实现复制链接或者一段文本到剪贴板，这个小功能想必不少人都见过。GitHub上就有这么一个点击按钮复制仓库地址的功能。如下图所示：
 Github用的是ZeroClipboard来实现这一功能。这个库是用一个不可见的Flash来完成剪贴操作的。即将 Flash 做成透明的，以便于我们放在诸如链接、按钮等需要放置的任何地方。这样，用户界面看起来没有变化，当点击链接或按钮时，实际上点击是却是 Flash，从而实现复制操作。具体实现方法，可以参考官方文档<a href="http://zeroclipboard.org。">http://zeroclipboard.org。</a>
 我们知道Flash正走向没落，不少功能被越来越强大的HTML5所替代。而且，出于安全方面的考虑，不少浏览器都默认禁用了Flash。那么有没有不是Flash的实现方式呢？
-2.clipboard.js clipboard.js是个更加轻量的JavaScript库，没有使用Flash，而是依赖于Selection和[execCommand]()这两个API，并且使用了HTML5的特性，比如自定义数据的data-* 属性。因此，clipboard.js在兼容性方面比ZeroClipboard.js差，但现代浏览器(IE9+)基本能够兼容。
+2.clipboard.js clipboard.js是个更加轻量的JavaScript库，没有使用Flash，而是依赖于Selection和execCommand这两个API，并且使用了HTML5的特性，比如自定义数据的data-* 属性。因此，clipboard.js在兼容性方面比ZeroClipboard.js差，但现代浏览器(IE9+)基本能够兼容。
 使用方法非常简单：
 1)下载代码，并引入到文件中。
 &lt;script src=&quot;dist/clipboard.min.js&quot;&gt;&lt;/script&gt;  2)实例化一个Clipboard对象，参数可以是CSS选择器、HTML节点、NodeList对象

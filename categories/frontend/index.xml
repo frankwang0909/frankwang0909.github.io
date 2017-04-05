@@ -29,7 +29,7 @@
 
 &lt;h2 id=&#34;2-clipboard-js&#34;&gt;2.clipboard.js&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://clipboardjs.com/&#34;&gt;clipboard.js&lt;/a&gt;是个更加轻量的JavaScript库，没有使用Flash，而是依赖于&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Selection&#34;&gt;Selection&lt;/a&gt;和[execCommand]()这两个API，并且使用了HTML5的特性，比如自定义数据的&lt;code&gt;data-* 属性&lt;/code&gt;。因此，clipboard.js在兼容性方面比ZeroClipboard.js差，但现代浏览器(IE9+)基本能够兼容。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://clipboardjs.com/&#34;&gt;clipboard.js&lt;/a&gt;是个更加轻量的JavaScript库，没有使用Flash，而是依赖于&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Selection&#34;&gt;Selection&lt;/a&gt;和&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand&#34;&gt;execCommand&lt;/a&gt;这两个API，并且使用了HTML5的特性，比如自定义数据的&lt;code&gt;data-* 属性&lt;/code&gt;。因此，clipboard.js在兼容性方面比ZeroClipboard.js差，但现代浏览器(IE9+)基本能够兼容。&lt;/p&gt;
 
 &lt;p&gt;使用方法非常简单：&lt;/p&gt;
 
