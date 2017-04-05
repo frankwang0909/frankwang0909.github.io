@@ -7,8 +7,107 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Tue, 04 Apr 2017 21:02:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Apr 2017 20:29:51 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>JavaScript实现复制内容到剪贴板的功能</title>
+      <link>http://www.wangxingfeng.com/copy2clipboard</link>
+      <pubDate>Wed, 05 Apr 2017 20:29:51 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/copy2clipboard</guid>
+      <description>
+
+&lt;h2 id=&#34;1-zeroclipboard-js&#34;&gt;1.ZeroClipboard.js&lt;/h2&gt;
+
+&lt;p&gt;点击按钮实现复制链接或者一段文本到剪贴板，这个小功能想必不少人都见过。GitHub上就有这么一个点击按钮复制仓库地址的功能。如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040501.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Github&lt;/code&gt;用的是&lt;a href=&#34;http://zeroclipboard.org/&#34;&gt;ZeroClipboard&lt;/a&gt;来实现这一功能。这个库是用一个不可见的Flash来完成剪贴操作的。即将 Flash 做成透明的，以便于我们放在诸如链接、按钮等需要放置的任何地方。这样，用户界面看起来没有变化，当点击链接或按钮时，实际上点击是却是 Flash，从而实现复制操作。具体实现方法，可以参考官方文档&lt;a href=&#34;http://zeroclipboard.org。&#34;&gt;http://zeroclipboard.org。&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;我们知道&lt;code&gt;Flash&lt;/code&gt;正走向没落，不少功能被越来越强大的&lt;code&gt;HTML5&lt;/code&gt;所替代。而且，出于安全方面的考虑，不少浏览器都默认禁用了Flash。那么有没有不是Flash的实现方式呢？&lt;/p&gt;
+
+&lt;h2 id=&#34;2-clipboard-js&#34;&gt;2.clipboard.js&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://clipboardjs.com/&#34;&gt;clipboard.js&lt;/a&gt;是个更加轻量的JavaScript库，没有使用Flash，而是依赖于&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Selection&#34;&gt;Selection&lt;/a&gt;和[execCommand]()这两个API，并且使用了HTML5的特性，比如自定义数据的&lt;code&gt;data-* 属性&lt;/code&gt;。因此，clipboard.js在兼容性方面比ZeroClipboard.js差，但现代浏览器(IE9+)基本能够兼容。&lt;/p&gt;
+
+&lt;p&gt;使用方法非常简单：&lt;/p&gt;
+
+&lt;p&gt;1)&lt;a href=&#34;https://github.com/zenorocha/clipboard.js/archive/master.zip&#34;&gt;下载代码&lt;/a&gt;，并引入到文件中。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;script src=&amp;quot;dist/clipboard.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2)实例化一个Clipboard对象，参数可以是&lt;code&gt;CSS选择器&lt;/code&gt;、&lt;code&gt;HTML节点&lt;/code&gt;、NodeList对象&lt;/p&gt;
+
+&lt;p&gt;参数为&lt;code&gt;CSS选择器&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;new Clipboard(&#39;.btn&#39;); // btn为DOM元素的class名, 跟jQuery的用法一样。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参数为&lt;code&gt;HTML节点&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var btn = document.getElementById(&#39;btn&#39;);
+var clipboard = new Clipboard(btn);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参数为&lt;code&gt;NodeList对象&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var btns = document.querySelectorAll(&#39;button&#39;);
+var clipboard = new Clipboard(btns);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3)实例化对象的时候，可以同时设置复制的内容：&lt;/p&gt;
+
+&lt;p&gt;var clipboard = new Clipboard(&amp;lsquo;.btn&amp;rsquo;, {
+        text: function() {
+            return &amp;lsquo;to be or not to be&amp;rsquo;; //剪贴板上的文本
+        }
+    });&lt;/p&gt;
+
+&lt;p&gt;4)也可以通过data-*属性来设置要复制的内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- Target --&amp;gt;
+&amp;lt;input id=&amp;quot;foo&amp;quot; value=&amp;quot;https://github.com/zenorocha/clipboard.js.git&amp;quot;&amp;gt;
+
+&amp;lt;!-- Trigger --&amp;gt;
+&amp;lt;button class=&amp;quot;btn&amp;quot; data-clipboard-target=&amp;quot;#foo&amp;quot;&amp;gt;点击复制&amp;lt;/button&amp;gt;
+
+&amp;lt;script&amp;gt;
+    var clipboard = new Clipboard(&#39;.btn&#39;);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;点击一下，看看是否成功复制到剪贴板：&lt;/p&gt;
+
+&lt;p&gt;&lt;input id=&#34;foo&#34; value=&#34;https://github.com/zenorocha/clipboard.js.git&#34; style=&#34;width:300px;&#34;&gt;
+&lt;button class=&#34;btn&#34; data-clipboard-target=&#34;#foo&#34;&gt;点击复制&lt;/button&gt;
+&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; &gt;
+    var clipboard = new Clipboard(&#39;.btn&#39;);
+&lt;/script&gt;
+
+&lt;p&gt;&lt;code&gt;data-clipboard-target&lt;/code&gt;属性的值&amp;rsquo;#foo`对应的是目标节点的CSS选择器。&lt;/p&gt;
+
+&lt;p&gt;5）更多的配置信息和使用方法，请查阅&lt;a href=&#34;https://clipboardjs.com/&#34;&gt;clipboard.js官网&lt;/a&gt;，有兴趣的朋友，应该看看它的源码。&lt;/p&gt;
+
+&lt;p&gt;注意我说的是源码，指的是&lt;code&gt;src目录&lt;/code&gt;的代码。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040502.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040505.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;代码是长这样的。没错，这是ES6的写法。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040504.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;千万不要去看&lt;code&gt;dist&lt;/code&gt;下的&lt;code&gt;clipboard.js&lt;/code&gt; ，那个是编译之后的代码，因为目前主流浏览器环境中还不完全支持ES6。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040503.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>通过userAgent识别移动设备，自动跳转移动端站点</title>
@@ -336,7 +435,7 @@ url = &amp;quot;new_start&amp;quot;             #该文章访问时的相对的u
 
 &lt;p&gt;把选定的主题下载到&lt;code&gt;themes&lt;/code&gt;目录下。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/dim0627/hugo_theme_robust.git
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/dim0627/hugo-icarus-theme.git
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;step-5-启动服务-本地预览&#34;&gt;Step 5. 启动服务，本地预览&lt;/h2&gt;
@@ -344,7 +443,7 @@ url = &amp;quot;new_start&amp;quot;             #该文章访问时的相对的u
 &lt;p&gt;先从&lt;code&gt;themes&lt;/code&gt;目录下退回到&lt;code&gt;blog&lt;/code&gt;目录, 然后启动服务。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;cd ..
-hugo server --theme=hugo_theme_robust --buildDrafts
+hugo server --theme=hugo-icarus-theme --buildDrafts
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;在浏览器中打开 &lt;code&gt;[http://localhost:1313/](https://themes.gohugo.io/)&lt;/code&gt;&lt;/p&gt;
@@ -1610,222 +1709,6 @@ $ git commit -m &amp;quot;提交时的附加信息&amp;quot;  //把文件提交�
 &lt;h2 id=&#34;方式二-使用-gihub-提供的-github-for-windows&#34;&gt;方式二： 使用&lt;code&gt;GiHub&lt;/code&gt;提供的&lt;code&gt;GitHub for Windows&lt;/code&gt;&lt;/h2&gt;
 
 &lt;p&gt;在window平台下使用Git的最简单的方式是使用GitHub网站提供的&lt;a href=&#34;https://desktop.github.com/&#34;&gt;GitHub for Windows&lt;/a&gt;。优点是直接图形化的操作界面，完全不用记命令。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>常见的下拉菜单</title>
-      <link>http://www.wangxingfeng.com/dropdown-menu</link>
-      <pubDate>Thu, 03 Mar 2016 23:55:37 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/dropdown-menu</guid>
-      <description>
-
-&lt;h2 id=&#34;html结构&#34;&gt;HTML结构&lt;/h2&gt;
-
-&lt;p&gt;网页中导航栏是一个很常见的组件。通常，我们使用无序列表来制作导航栏。比如&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;nav&amp;quot;&amp;gt;
-    &amp;lt;ul class=&amp;quot;navMenu&amp;quot;&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;首页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;跟团游&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自助游&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;游轮&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-    &amp;lt;/ul&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;有些导航栏有下拉的二级菜单，那么我们在相应的位置上再加上列表构成二级菜单，比如&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;nav&amp;quot;&amp;gt;
-    &amp;lt;ul class=&amp;quot;navMenu&amp;quot;&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;首页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;跟团游&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;当地参团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自助游&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot; &amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;机票+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;火车+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;游轮&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;包船专享&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;日韩航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;欧洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;三峡航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;美洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自驾&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-    &amp;lt;/ul&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;基本的css样式&#34;&gt;基本的CSS样式&lt;/h2&gt;
-
-&lt;p&gt;列表默认是垂直方向排列的，而常见的导航栏主菜单是水平方向排列，二级下拉菜单是垂直方向排列的，所以我们需要对主菜单的li元素设置浮动，让其水平排列。设置浮动后，应记得清除浮动。可以使用class来作为公共的浮动和清除浮动的样式，然后在需要浮动的元素上添加相应的class，在浮动元素的父元素上添加清除浮动的class。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;CSS代码&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
-    /*reset*/
-    body, div, ul,li, a{padding: 0; margin:0;}
-    ul{list-style: none; }
-    /*浮动和清除浮动*/
-    .fl{float: left; }
-    .clearfix:after{content:&amp;quot;&amp;quot;;display:block;clear:both;}
-    .clearfix{zoom:1;} 
-    /*导航栏*/
-    #nav{width: 600px; height: 40px; margin:0 auto; background-color: #eee; }
-    .navMenu li{ text-align: center; line-height: 40px; position: relative;}
-    .navMenu li a{text-decoration: none;color:#000; padding: 0 20px; display: block; width:80px; }
-    .subMenu{position: absolute; top: 40px; left: 0;display: none;}/*默认隐藏二级菜单*/
-    .subMenu li{float:none; background-color:#eee; margin-left: 2px; }
-&amp;lt;/style&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;HTML代码&lt;/strong&gt; 改为如下所示：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;body&amp;gt;
-    &amp;lt;div id=&amp;quot;nav&amp;quot;&amp;gt;
-        &amp;lt;ul class=&amp;quot;navMenu clearfix&amp;quot;&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;首页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;跟团游&amp;lt;/a&amp;gt;
-                &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;当地参团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/li&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自助游&amp;lt;/a&amp;gt;
-                &amp;lt;ul class=&amp;quot;subMenu&amp;quot; &amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;机票+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;火车+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/li&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;游轮&amp;lt;/a&amp;gt;
-                &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;包船专享&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;日韩航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;欧洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;三峡航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;美洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/li&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自驾&amp;lt;/a&amp;gt;
-                &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/li&amp;gt;
-        &amp;lt;/ul&amp;gt;
-    &amp;lt;/div&amp;gt;
-&amp;lt;body&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;下拉菜单效果的实现&#34;&gt;下拉菜单效果的实现&lt;/h2&gt;
-
-&lt;p&gt;如何实现鼠标移动到主菜单相应的li元素位置时，显示二级菜单，而移开鼠标则隐藏二级菜单。基本的实现方法纯CSS样式、jQuery、 原生JavaScript等三种实现方法。&lt;/p&gt;
-
-&lt;h3 id=&#34;方法一-纯css样式-见demo1-http-www-wangxingfeng-com-posts-demo1-html&#34;&gt;方法一、 纯CSS样式：&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo1.html&#34;&gt;见demo1&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;最简单的方式是直接使用css的 &lt;code&gt;:hover&lt;/code&gt; 来实现。当鼠标移动到主菜单的对应的li上时，二级菜单设置为可见的块级元素  &lt;code&gt;display: block;&lt;/code&gt;
-    .navMenu li:hover .subMenu{display: block;} /&lt;em&gt;hover是显示二级菜单&lt;/em&gt;/&lt;/p&gt;
-
-&lt;h3 id=&#34;方法二-jquery-见demo2-http-www-wangxingfeng-com-posts-demo2-html&#34;&gt;方法二、 jQuery：&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo2.html&#34;&gt;见demo2&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;使用jQuery获取li元素，绑定mouseover、mouseout事件，调用jQuery的show()、hide()方法。参考代码如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;script src=&amp;quot;js/jquery-2.2.3.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
-    $(function() {
-        $(&#39;.navMenu&amp;gt;li&#39;).mouseover( function() {
-            $(this).children(&#39;ul&#39;).show();
-        });
-            $(&#39;.navMenu&amp;gt;li&#39;).mouseout( function() {
-            $(this).children(&#39;ul&#39;).hide();
-        });
-    });
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;方法三-原生javascript-见demo3-http-www-wangxingfeng-com-posts-demo3-html&#34;&gt;方法三、 原生JavaScript：&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo3.html&#34;&gt;见demo3&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;先定义显示和隐藏元素的函数&lt;/p&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-    // 定义显示函数
-    function showsubmenu(li) {
-        var submenu = li.getElementsByClassName(&#39;subMenu&#39;)[0];
-        submenu.style.display=&#34;block&#34;;
-    }
-    // 定义隐藏函数
-    function hidesubmenu(li){
-        var submenu = li.getElementsByClassName(&#39;subMenu&#39;)[0];
-        submenu.style.display=&#34;none&#34;;
-    }
-&lt;/script&gt;
-
-&lt;p&gt;再调用函数， 在HTML代码中对应的li元素，添加函数的调用，代码修改如下。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;nav&amp;quot;&amp;gt;
-    &amp;lt;ul class=&amp;quot;navMenu clearfix&amp;quot;&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;首页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;跟团游&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;当地参团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自助游&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot; &amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;机票+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;火车+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;游轮&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;包船专享&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;日韩航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;欧洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;三峡航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;美洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自驾&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-    &amp;lt;/ul&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

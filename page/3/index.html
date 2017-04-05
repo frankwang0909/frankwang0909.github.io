@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:updated_time" content="2016-04-22T22:56:30&#43;08:00"/>
+<meta property="og:updated_time" content="2016-05-08T23:36:44&#43;08:00"/>
 
 
 
@@ -198,12 +198,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        15
+        16
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          16
+          17
         
         <span>
             Tags
@@ -278,6 +278,170 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/tab">
+    <h1 class="article-title" itemprop="name">
+        实现Tab切换的几种方式
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-05-08 23:36:44 &#43;0800 CST" itemprop="datePublished">2016-05-08</time>
+            &middot;
+            72
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/tab%E5%88%87%E6%8D%A2">tab切换</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    Tab 切换是网页中常见的组件。适当地使用，可以节省页面空间，在同一个大小的页面中展现更多的内容。Tab 切换的效果千差万别，只需要学会基本的思路，便可变换出各种各样的效果。下面我分别使用了原生js和jQuery来实现四种不同的Tab切换效果。
+方式一：用原生js实现各种Tab切换效果。 1.鼠标滑动切换 : 这是最简单的Tab切换。鼠标滑过时，切换Tab.
+首先，通过getElementById、 getElementsByTagNameL等方法来获取相应的元素。
+然后，对相应的元素绑定mouseover事件即可。
+具体代码见 js-mouseover-tab.html
+DEMO
+2.鼠标点击切换 与第一种的区别在于绑定的事件不同。获取元素的方法是一样的，只需把绑定mouseovers事件改为click事件即可。
+具体代码见 js-click-tab.html
+DEMO
+3.鼠标滑动延迟切换 延迟切换涉及到了一个时间问题，可以通过设置定时器来实现延迟的效果。定时器有setTimeout()和setInterval()两种方式来设置。
+setTimeout() 方法用于在指定的毫秒数后调用函数或计算表达式。setTimeout() 只执行 code 一次。如果要多次调用，需要使用 setInterval()。
+setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。
+因为这里的延迟切换是在指定的延迟时间之后才实现切换效果，所以使用setTimeout() 。
+具体代码见 js-delay-tab.html
+DEMO
+4.自动切换 自动切换，即按指定的周期自动切换到下一个Tab。这里也需要一个定时器，而且是按周期调用函数，因此使用setInterval() 方法来实现。 当鼠标滑动到某个Tab时，高亮显示当前页，同时停止自动切换，此时需要用到 clearInterval()方法来清除定时器。
+具体代码见 js-auto-tab-01.html
+优化后的代码见 js-auto-tab-02.html
+DEMO
+方式二：用jQuery实现各种Tab切换效果: 实现思路与原生的JavaScript是一样的,只是jQuery封装了一些方法可以更方便操作DOM元素。 1.鼠标滑动切换 具体代码见 jQ-mouseover-tab.html
+DEMO
+2.鼠标点击切换 具体代码见 jQ-click-tab.html
+DEMO
+3.鼠标滑动延迟切换 具体代码见 jQ-delay-tab.html
+DEMO
+4.自动切换 具体代码见 jQ-auto-tab-01.html
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/tab">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/tab" data-id="34eb82a7066c1f9b94f3d8ab88c8aae5" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -747,6 +911,32 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/copy2clipboard" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170405banner.jpg)" alt="Frank Wang&#39;s Coding World" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/copy2clipboard" class="title">JavaScript实现复制内容到剪贴板的功能</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-05 20:29:51 &#43;0800 CST" itemprop="datePublished">2017-04-05</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/useragent" class="thumbnail">
                     
                         <span class="thumbnail-image thumbnail-none"></span>
@@ -849,32 +1039,6 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/fix-inline-bug" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/fix-inline-bug" class="title">代码换行导致的inline元素间距bug</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-01-11 21:48:19 &#43;0800 CST" itemprop="datePublished">2017-01-11</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -893,7 +1057,7 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
                 <a class="category-list-link" href="http://www.wangxingfeng.com/categories/frontend">
                     frontend
                 </a>
-                <span class="category-list-count">9</span>
+                <span class="category-list-count">10</span>
             </li>
             
             <li class="category-list-item">
@@ -943,6 +1107,9 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
         
         
         <a href="http://www.wangxingfeng.com/tags/cdn%E5%85%AC%E5%85%B1%E5%BA%93" style="font-size: 12px;">cdn公共库</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/clipboard" style="font-size: 12px;">clipboard</a>
         
         
         <a href="http://www.wangxingfeng.com/tags/css3" style="font-size: 12px;">css3</a>
