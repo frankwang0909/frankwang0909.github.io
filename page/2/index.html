@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-01-11T21:48:19&#43;08:00"/>
+<meta property="og:updated_time" content="2017-04-03T20:49:23&#43;08:00"/>
 
 
 
@@ -198,12 +198,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        17
+        18
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          18
+          19
         
         <span>
             Tags
@@ -278,6 +278,156 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/build-blog-with-hugo">
+    <h1 class="article-title" itemprop="name">
+        用Hugo快速搭建个人静态博客
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-03 20:49:23 &#43;0800 CST" itemprop="datePublished">2017-04-03</time>
+            &middot;
+            348
+            words
+            &middot;
+            2
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/hugo">Hugo</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/github">GitHub</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    最近心血来潮，想要重新折腾一番自己的博客。于是，发现了Hugo比之前使用的Jekyll更好用。本文是个人参照Hugo官网 搭建个人博客的记录。
+Step 1. Install Hugo 下载、安装Hugo 下载地址：<a href="https://github.com/spf13/hugo/releases。">https://github.com/spf13/hugo/releases。</a> 根据自己的操作系统，下载对应的安装包。我的操作系统是Win7 64bit， 选择了hugo_0.19_Windows-64bit.zip。
+下载完成之后，解压的文件夹包含以下3个文件：
+hugo_0.19_windows_amd64.exe LICENSE.md README.md  将 hugo_0.19_windows_amd64.exe 重命名为hugo.exe。在你的软件安装盘新增名为hugo的文件目录，在里面在新建一个bin子目录。然后将hugo.exe放到hugo\bin目录下。再将这个bin目录的路径添加到系统环境变量中。
+完成以上步骤后，打开命令行输入
+hugo help  如果得到如下信息，说明安装成功。
+hugo is the main command, used to build your Hugo site. Hugo is a Fast and Flexible Static Site Generator built with love by spf13 and friends in Go. Complete documentation is available at <a href="http://gohugo.io/">http://gohugo.io/</a>.  Step 2. 创建一个名为blog的Hugo站点 我希望在E盘下创建站点，所以我先切换目录
+cd e: e:  然后输入命令：
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/build-blog-with-hugo">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/build-blog-with-hugo" data-id="dcc330a77bec717717582f2785f49af7" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1036,169 +1186,6 @@ linear 匀速 ease 慢速开始，然后变快，然后慢速结束。 ease-in �
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/markdonw-notes">
-    <h1 class="article-title" itemprop="name">
-        Markdown 学习笔记
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-06-05 22:05:46 &#43;0800 CST" itemprop="datePublished">2016-06-05</time>
-            &middot;
-            64
-            words
-            &middot;
-            1
-            minute read
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/markdown">Markdown</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    定义： 维基百科上的介绍：
-Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。
-Markdown同时还是一个由Gruber编写的Perl脚本：Markdown.pl。它把用markdown语法编写的内容转换成有效的、结构良好的XHTML或HTML内容，并将左尖括号(&rsquo;&lt;&lsquo;)和&amp;号替换成它们各自的字符实体引用。它可以用作单独的脚本，Blosxom和Movable Type的插件又或者BBEdit的文本过滤器.
-用处： 从维基百科的介绍来看，markdown就是一种标记语言。它简洁的语法代替排版，可以使我们专心于码字，用「标记」语法来代替常见的排版格式。比如我现在这个博客的内容，就是直接用Markdown写的。 不用考虑复杂的排版，只需要记住几个简单常用的语法就行，然后可以轻松地转换成HTML文件，变成可以被浏览器解析的网页。 如果你有一个自己独立的博客，只是想码码字，不想编写复杂HTML和CSS代码，Markdown无疑是一个很好地选择。
-最基本的语法： 1.标题：
-如果一段文字被定义为标题，只要在这段文字前加 #号即可。1个#表示 一级标题；##表示 二级标题；以此类推，总共6级标题， #号后加一个空格。
-2.引用代码：
-1）引用整段代码，只需要空是个空格或者一个Tab键，完整地保留代码缩进格式。 2）在一行内引入代码片段。用Tab键上方的反引号() 包围代码。  3.链接：
-用方括号[]括起来要添加超链接的文字，用圆括号()把url括起来。写法如下：
-<code>[Markdown维基百科英文版](https://en.wikipedia.org/wiki/Markdown)</code>  效果如右边所示：Markdown维基百科英文版
-4.图片:
-插入链接与插入图片的语法很像，区别在一个 !号。图片为：<img src="url" alt="文字描述" />。
-5.分割线:
-用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。可以在星号或是减号中间插入空格
-6.列表：
-1)无序列表无序列表使用<code>星号</code>、<code>加号</code>或是<code>减号</code>作为列表标记； 2)有序列表则直接在文字前加<code>1.</code> <code>2.</code> <code>3.</code> 符号要和文字之间加上一个字符的空格。  7.粗体与斜体:
-用两个 * 包含一段文本就是粗体的语法，用一个 *包含一段文本就是斜体的语法。
-这是粗体文字
-这是斜体文体
-8.空格与换行：
-单个回车 视为空格；连续回车才能分段。
-9.区块引用 Blockquotes
-Markdown 标记区块引用是使用类似 email 中用 &gt;的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; ：
-相关链接：  快速入门指南
- Markdown官网
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/markdonw-notes">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/markdonw-notes" data-id="a01e097e3f7ce233ece67ab08ceca76c" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1226,6 +1213,32 @@ Markdown 标记区块引用是使用类似 email 中用 &gt;的引用方式。�
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/js-array" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/js-array" class="title">JavaScript数组的常用方法总结</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-06 22:31:32 &#43;0800 CST" itemprop="datePublished">2017-04-06</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1331,32 +1344,6 @@ Markdown 标记区块引用是使用类似 email 中用 &gt;的引用方式。�
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/everybody-can-speak-english" class="thumbnail">
-                    
-                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170404banner.jpg)" alt="Frank Wang&#39;s Coding World" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/english">
-                        english
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/everybody-can-speak-english" class="title">人人都能说英语</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-04 15:31:56 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1383,7 +1370,7 @@ Markdown 标记区块引用是使用类似 email 中用 &gt;的引用方式。�
                 <a class="category-list-link" href="http://www.wangxingfeng.com/categories/frontend">
                     frontend
                 </a>
-                <span class="category-list-count">10</span>
+                <span class="category-list-count">11</span>
             </li>
             
             <li class="category-list-item">
@@ -1464,6 +1451,9 @@ Markdown 标记区块引用是使用类似 email 中用 &gt;的引用方式。�
         
         
         <a href="http://www.wangxingfeng.com/tags/%E6%94%92%E8%AF%8D%E6%B1%87" style="font-size: 12px;">攒词汇</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/%E6%95%B0%E7%BB%84" style="font-size: 12px;">数组</a>
         
         
         <a href="http://www.wangxingfeng.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8" style="font-size: 12px;">服务器</a>
