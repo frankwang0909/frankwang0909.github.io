@@ -7,8 +7,36 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Wed, 05 Apr 2017 20:29:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 06 Apr 2017 20:33:42 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>童鞋，放开那本词汇书</title>
+      <link>http://www.wangxingfeng.com/throw-away-vocabulary-books</link>
+      <pubDate>Thu, 06 Apr 2017 20:33:42 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/throw-away-vocabulary-books</guid>
+      <description>
+
+&lt;h2 id=&#34;词汇是攒的&#34;&gt;词汇是攒的&lt;/h2&gt;
+
+&lt;p&gt;其实，语言的学习的本质是相通的。我们先来回顾小时候学习汉语的过程。有人遇到过要求背诵《新华字典》、《辞海》的语文老师或者家长吗？我想绝大部分人应该是没有的。&lt;/p&gt;
+
+&lt;p&gt;我们的中文词汇量不是通过背《新华字典》，而是通过日复一日地学习，逐渐攒起来的。实际上，到了中学阶段，我们掌握了常用的3500个汉字后，阅读中文基本已经没有什么障碍了。你也许有遇到一些生僻字或词组，比如“同侪”、“鬼魅魍魉”。这时候，你可能会停下来去查一下字典，看看它是怎么读的，有什么含义。如果这个单词有多个中文释义，你还会思考一下，到底哪个中文释义放在这句话里面才是更加通顺的。&lt;/p&gt;
+
+&lt;p&gt;学习英语也是同样的道理，遇到不懂的单词就去查词典。现在，我们有了智能手机、电脑，你都不用纸质版的字典了，直接搜索一下，立马出来结果。这样慢慢攒起来的词汇，才是你真正掌握的词汇。&lt;/p&gt;
+
+&lt;p&gt;可是，为什么有那么多人想通过背单词书，快速提升自己的英语词汇量呢？大部分英语词汇书第1页都有一个单词叫做&amp;rdquo;abandon&amp;rdquo;，意思是“放弃”。你看词汇书的小编多么用心良苦，在第1页就告诉你了：放弃吧，别背单词书了。当然，这是一个关于背单词的老梗。&lt;/p&gt;
+
+&lt;p&gt;如果你是在准备某个考试，比如说四六级，那么，你很可能会买一本词汇书。但是，别妄想通过背完这个词汇书，你的词汇量就上去。仅仅是背诵单词书，背完就会忘掉。背单词书，本身是一件极其低效和反人类的事情，所以，你的大脑根本就不配合你。这就是为什么，很多人买了单词书，一个学期下来，就只有前面和最后的几个单元是旧的，中间都是崭新的。&lt;/p&gt;
+
+&lt;h2 id=&#34;放下词汇书&#34;&gt;放下词汇书&lt;/h2&gt;
+
+&lt;p&gt;别整什么艾斯豪宾的记忆曲线法了！如果是备考四六级，乖乖地把历年真题刷一遍。每做完一套题目，就把你不熟悉的单词用手机查出来，标注出来，弄懂文章中的每一句话。这些词汇才是你应该需要重点记忆的词汇。你会看到这些词汇反复出现在真题里。一段时间之后，你会惊喜地发现自己不仅能够记住某个单词的中文意思，还知道它是怎么用的。这时候，你才真正掌握了这个单词，而且不会轻易忘掉。&lt;/p&gt;
+
+&lt;p&gt;童鞋，放下你手中的单词书，放下心中快速提升词汇量的妄念。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>JavaScript实现复制内容到剪贴板的功能</title>
@@ -60,11 +88,12 @@ var clipboard = new Clipboard(btns);
 
 &lt;p&gt;3)实例化对象的时候，可以同时设置复制的内容：&lt;/p&gt;
 
-&lt;p&gt;var clipboard = new Clipboard(&amp;lsquo;.btn&amp;rsquo;, {
-        text: function() {
-            return &amp;lsquo;to be or not to be&amp;rsquo;; //剪贴板上的文本
-        }
-    });&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var clipboard = new Clipboard(&#39;.btn&#39;, {
+    text: function() {
+        return &#39;to be or not to be&#39;; //剪贴板上的文本
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;4)也可以通过data-*属性来设置要复制的内容&lt;/p&gt;
 
@@ -89,11 +118,11 @@ var clipboard = new Clipboard(btns);
     var clipboard = new Clipboard(&#39;.btn&#39;);
 &lt;/script&gt;
 
-&lt;p&gt;&lt;code&gt;data-clipboard-target&lt;/code&gt;属性的值&amp;rsquo;#foo`对应的是目标节点的CSS选择器。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;data-clipboard-target&lt;/code&gt;属性的值&lt;code&gt;#foo&lt;/code&gt;对应的是目标节点的CSS选择器。&lt;/p&gt;
 
 &lt;p&gt;5）更多的配置信息和使用方法，请查阅&lt;a href=&#34;https://clipboardjs.com/&#34;&gt;clipboard.js官网&lt;/a&gt;，有兴趣的朋友，应该看看它的源码。&lt;/p&gt;
 
-&lt;p&gt;注意我说的是源码，指的是&lt;code&gt;src目录&lt;/code&gt;的代码。&lt;/p&gt;
+&lt;p&gt;注意我说的看源码，指的是&lt;code&gt;src目录&lt;/code&gt;的代码。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040502.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
@@ -103,7 +132,7 @@ var clipboard = new Clipboard(btns);
 
 &lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040504.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;千万不要去看&lt;code&gt;dist&lt;/code&gt;下的&lt;code&gt;clipboard.js&lt;/code&gt; ，那个是编译之后的代码，因为目前主流浏览器环境中还不完全支持ES6。&lt;/p&gt;
+&lt;p&gt;千万不要去看&lt;code&gt;dist&lt;/code&gt;下的&lt;code&gt;clipboard.js&lt;/code&gt; ，那个是编译之后的代码。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040503.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
@@ -1633,82 +1662,6 @@ js代码
     }
 &amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Git学习笔记</title>
-      <link>http://www.wangxingfeng.com/git-intro</link>
-      <pubDate>Sun, 03 Apr 2016 22:43:39 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/git-intro</guid>
-      <description>
-
-&lt;p&gt;&lt;code&gt;Git&lt;/code&gt;是一款分布式的代码管理工具，方便多人协作时的代码管理。在&lt;code&gt;win7&lt;/code&gt;系统中使用Git管理代码有2种主要的方式。&lt;/p&gt;
-
-&lt;h2 id=&#34;方式一-msysgit&#34;&gt;方式一： &lt;code&gt;msysgit&lt;/code&gt;&lt;/h2&gt;
-
-&lt;h3 id=&#34;step-1-下载并安装-msysgit&#34;&gt;Step 1: 下载并安装&lt;code&gt;msysgit&lt;/code&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://git-for-windows.github.io&#34;&gt;msysgit&lt;/a&gt; 是Windows版的Git。下载，然后按默认选项安装即可。安装完成后，在开始菜单里找到“ Git ”-&amp;gt;“ Git Bash ”，点击会弹出一个命令行窗口，说明Git安装成功。&lt;/p&gt;
-
-&lt;h3 id=&#34;step-2-设置用户名&#34;&gt;Step 2: 设置用户名&lt;/h3&gt;
-
-&lt;p&gt;在命令行输入以下命令&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git config --global user.name &amp;quot;Your Name&amp;quot;
-$ git config --global user.email &amp;quot;email@example.com&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;： &lt;code&gt;git confi&lt;/code&gt;g命令的&lt;code&gt;--global&lt;/code&gt;参数，用了这个参数，表示你这台电脑上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。&lt;/p&gt;
-
-&lt;h3 id=&#34;step-3-创建版本库&#34;&gt;Step 3: 创建版本库&lt;/h3&gt;
-
-&lt;p&gt;选择一个合适的地方，创建一个空目录：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ mkdir  gitskills  // 创建一个名gitskills的目录
-$ cd   gitskills    // 切换gitskills目录
-$ pwd           //pwd 命令用于显示当前目录
-$ git init      //初始化Git仓库，当前目录中会多了一个.git目录（默认是隐藏的）
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：为避免莫名其妙地报错，请确保目录名（包括父目录）不包含 &lt;strong&gt;中文&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h3 id=&#34;step-4-把文件添加到版本库&#34;&gt;Step 4: 把文件添加到版本库&lt;/h3&gt;
-
-&lt;p&gt;在刚刚创建的目录(比如gitskills)下新建文件，或者从其他地方拷贝文件到该目录下。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git add readme.md  //新增一个readme.md文件
-$ git commit -m &amp;quot;提交时的附加信息&amp;quot;  //把文件提交到仓库,并附上相关的说明文字（用引号括起来）
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;： 每次修改文件，都需要先&lt;code&gt;git add&lt;/code&gt;到暂存区，然后才能&lt;code&gt;git commit&lt;/code&gt;到仓库。可以&lt;code&gt;add&lt;/code&gt;一个文件之后&lt;code&gt;commit&lt;/code&gt;，也可以&lt;code&gt;add&lt;/code&gt;多个文件，然后一起&lt;code&gt;commit&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h3 id=&#34;常用的git命令&#34;&gt;常用的Git命令：&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;查看状态 : &lt;code&gt;git status&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;推送到远程库： &lt;code&gt;git remote add origin git@github.com: 具体远程库的名称&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;查看difference: &lt;code&gt;git diff readme.md&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;查看历史记录： &lt;code&gt;git log&lt;/code&gt; 或者 &lt;code&gt;git log --pretty=oneline&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;你会看到一大串类似&lt;code&gt;commit: 8a56b4...ba53c1e50&lt;/code&gt;十六进制字符串，它是版本号&lt;code&gt;commit id&lt;/code&gt;， 回退时会用到。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;版本回退： 仅退到上一个版本可使用命令 &lt;code&gt;git reset --hard HEAD^&lt;/code&gt;； 如果版本比较多，可以先 &lt;code&gt;git log&lt;/code&gt; 找到对应的版本号commit_id， 然后使用命令 &lt;code&gt;git reset --hard commit_id&lt;/code&gt;（版本号可以不用写全，git会自动查找匹配的）&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;查看命令历史： &lt;code&gt;git reflog&lt;/code&gt;， 如果回退之后又后悔了，而且已经关了Git，那就使用 &lt;code&gt;git reflog&lt;/code&gt;，找到对应的commit，以便回到未来的哪个版本。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;更新本地库：推送前先  &lt;code&gt;git pull&lt;/code&gt; 更新本地库，以免远程库已经改变导致推送失败报错。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;方式二-使用-gihub-提供的-github-for-windows&#34;&gt;方式二： 使用&lt;code&gt;GiHub&lt;/code&gt;提供的&lt;code&gt;GitHub for Windows&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;在window平台下使用Git的最简单的方式是使用GitHub网站提供的&lt;a href=&#34;https://desktop.github.com/&#34;&gt;GitHub for Windows&lt;/a&gt;。优点是直接图形化的操作界面，完全不用记命令。&lt;/p&gt;
 </description>
     </item>
     

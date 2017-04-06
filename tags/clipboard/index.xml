@@ -59,11 +59,12 @@ var clipboard = new Clipboard(btns);
 
 &lt;p&gt;3)实例化对象的时候，可以同时设置复制的内容：&lt;/p&gt;
 
-&lt;p&gt;var clipboard = new Clipboard(&amp;lsquo;.btn&amp;rsquo;, {
-        text: function() {
-            return &amp;lsquo;to be or not to be&amp;rsquo;; //剪贴板上的文本
-        }
-    });&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var clipboard = new Clipboard(&#39;.btn&#39;, {
+    text: function() {
+        return &#39;to be or not to be&#39;; //剪贴板上的文本
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;4)也可以通过data-*属性来设置要复制的内容&lt;/p&gt;
 
@@ -88,11 +89,11 @@ var clipboard = new Clipboard(btns);
     var clipboard = new Clipboard(&#39;.btn&#39;);
 &lt;/script&gt;
 
-&lt;p&gt;&lt;code&gt;data-clipboard-target&lt;/code&gt;属性的值&amp;rsquo;#foo`对应的是目标节点的CSS选择器。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;data-clipboard-target&lt;/code&gt;属性的值&lt;code&gt;#foo&lt;/code&gt;对应的是目标节点的CSS选择器。&lt;/p&gt;
 
 &lt;p&gt;5）更多的配置信息和使用方法，请查阅&lt;a href=&#34;https://clipboardjs.com/&#34;&gt;clipboard.js官网&lt;/a&gt;，有兴趣的朋友，应该看看它的源码。&lt;/p&gt;
 
-&lt;p&gt;注意我说的是源码，指的是&lt;code&gt;src目录&lt;/code&gt;的代码。&lt;/p&gt;
+&lt;p&gt;注意我说的看源码，指的是&lt;code&gt;src目录&lt;/code&gt;的代码。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040502.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
@@ -102,7 +103,7 @@ var clipboard = new Clipboard(btns);
 
 &lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040504.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;千万不要去看&lt;code&gt;dist&lt;/code&gt;下的&lt;code&gt;clipboard.js&lt;/code&gt; ，那个是编译之后的代码，因为目前主流浏览器环境中还不完全支持ES6。&lt;/p&gt;
+&lt;p&gt;千万不要去看&lt;code&gt;dist&lt;/code&gt;下的&lt;code&gt;clipboard.js&lt;/code&gt; ，那个是编译之后的代码。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017040503.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
