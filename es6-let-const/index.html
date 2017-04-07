@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>Sublime Text 学习笔记 &middot; Frank Wang&#39;s Coding World</title>
+    <title>ES6的块级作用域以及let、const命令 &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Frank Wang">
     
-      <meta name="description" content="Sublime Text 学习笔记，Sublime Text 新手指南，前端工程师的编辑神器">
+      <meta name="description" content="ES6的块级作用域, let声明变量, 暂时性死区,const声明常量 ">
     
     
-    <link rel="canonical" href="http://www.wangxingfeng.com/sublimetext-notes"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/es6-let-const"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -20,15 +20,15 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Sublime Text 学习笔记" />
-<meta property="og:description" content="Sublime Text 学习笔记，Sublime Text 新手指南，前端工程师的编辑神器" />
+    <meta property="og:title" content="ES6的块级作用域以及let、const命令" />
+<meta property="og:description" content="ES6的块级作用域, let声明变量, 暂时性死区,const声明常量 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.wangxingfeng.com/sublimetext-notes" />
+<meta property="og:url" content="http://www.wangxingfeng.com/es6-let-const" />
 
 
 
-<meta property="article:published_time" content="2016-05-13T00:14:00&#43;08:00"/>
-<meta property="article:modified_time" content="2016-05-13T00:14:00&#43;08:00"/>
+<meta property="article:published_time" content="2017-04-07T20:18:56&#43;08:00"/>
+<meta property="article:modified_time" content="2017-04-07T20:18:56&#43;08:00"/>
 
 
 
@@ -42,11 +42,11 @@
 
     
     
-<meta itemprop="name" content="Sublime Text 学习笔记">
-<meta itemprop="description" content="Sublime Text 学习笔记，Sublime Text 新手指南，前端工程师的编辑神器">
+<meta itemprop="name" content="ES6的块级作用域以及let、const命令">
+<meta itemprop="description" content="ES6的块级作用域, let声明变量, 暂时性死区,const声明常量 ">
 
 
-<meta itemprop="dateModified" content="2016-05-13T00:14:00&#43;08:00" />
+<meta itemprop="dateModified" content="2017-04-07T20:18:56&#43;08:00" />
 <meta itemprop="wordCount" content="170">
 
 
@@ -59,9 +59,9 @@
 
 
 
-<meta name="twitter:text:title" content="Sublime Text 学习笔记"/>
-<meta name="twitter:title" content="Sublime Text 学习笔记"/>
-<meta name="twitter:description" content="Sublime Text 学习笔记，Sublime Text 新手指南，前端工程师的编辑神器"/>
+<meta name="twitter:text:title" content="ES6的块级作用域以及let、const命令"/>
+<meta name="twitter:title" content="ES6的块级作用域以及let、const命令"/>
+<meta name="twitter:description" content="ES6的块级作用域, let声明变量, 暂时性死区,const声明常量 "/>
 <meta name="twitter:site" content="@frankwang0909"/>
 
     
@@ -301,13 +301,11 @@
     <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
         <div class="article-inner">
             
-                <img src="http://www.wangxingfeng.com/images/20160513banner.jpg" class="article-banner">
-            
 
             <header class="article-header">
-    <a href="http://www.wangxingfeng.com/sublimetext-notes">
+    <a href="http://www.wangxingfeng.com/es6-let-const">
     <h1 class="article-title" itemprop="name">
-        Sublime Text 学习笔记
+        ES6的块级作用域以及let、const命令
     </h1>
     </a>
     <div class="article-meta">
@@ -315,7 +313,7 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2016-05-13 00:14:00 &#43;0800 CST" itemprop="datePublished">2016-05-13</time>
+            <time datetime="2017-04-07 20:18:56 &#43;0800 CST" itemprop="datePublished">2017-04-07</time>
             &middot;
             170
             words
@@ -331,7 +329,7 @@
                 <i class="fa fa-folder"></i>
                 
                 
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
                 
                 
             </div>
@@ -345,7 +343,7 @@
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/sublime-text">Sublime Text</a>
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F">块级作用域</a>
                 
                 
             </div>
@@ -357,123 +355,96 @@
             <div class="article-entry" itemprop="articleBody">
                 
 
-<p>自从把主力代码编辑器改为<a href="https://www.sublimetext.com/">Sublime Text</a>之后，写代码的效率明显高了许多。最近，我开始尝试着给身边的朋友推荐这款编辑器。</p>
+<h2 id="1-块级作用域">1.块级作用域</h2>
 
-<h2 id="一-sublime-text-的优点">一、Sublime Text 的优点</h2>
+<p><code>ES5</code> 只有<code>全局作用域</code>和<code>函数作用域</code>，没有<code>块级作用域</code>。</p>
 
-<p>1.跨平台；</p>
+<p>在函数外部声明的变量，都是全局变量，容易导致变量冲突。因此，我们不得不使用<code>立即执行函数</code>来避免全局变量的冲突。另外，在循环内用来计数的变量也会泄露成全局变量。</p>
 
-<p>2.轻量级，可拓展：有大量插件可由用户自行选择安装(首推<code>Emmet</code>插件)。</p>
+<p>为此，<code>ES6</code> 引入了<code>块级作用域</code>的概念。</p>
 
-<p>3.支持几乎所有的主流编程语言的语法高亮显示；</p>
+<h2 id="2-let-声明变量">2.<code>let</code> 声明变量</h2>
 
-<p>4.代码自动补全，支持代码段（Code Snippet）；</p>
+<p>2.1 <code>let</code>声明的变量，只在它所在的代码块（块级作用域）内有效。</p>
 
-<p>5.右上角的<code>minimap</code>: 用来查看标注、快速拖动、迅速定位；</p>
+<pre><code>{
+    var a = 1;
+    let b = 2;
+}
+a //1 
+b // Uncaught ReferenceError: b is not defined
+</code></pre>
 
-<p>6.快速跳转到不同的文件/方法/函数：支持模糊匹配；</p>
+<p>2.2 <code>for循环</code>的计数器使用<code>let</code>命令来声明。</p>
 
-<p>7.快速切换<code>Tab</code>与<code>Space</code>；</p>
+<pre><code>for (let i = 0; i &lt; 10; i++) {
+    //
+}
+console.log(i);  //ReferenceError: i is not defined
+</code></pre>
 
-<p>8.格式化代码；</p>
+<p>2.3 不存在<code>变量提升</code>。变量应该遵循<code>先声明后使用</code>的原则。</p>
 
-<h2 id="二-安装sublime-text">二、安装Sublime Text</h2>
+<p><code>var</code>声明的变量会提升到作用域的顶部,在变量可以在声明之前可以使用，值为<code>undefined</code>。<code>let</code>声明的变量不存在<code>变量提升</code>, 声明之前使用，会报错。</p>
 
-<p>1.下载安装包：</p>
+<p>2.4 暂时性死区(temporal dead zone，简称 TDZ):</p>
 
-<p>Sublime Text官网地址：<a href="https://www.sublimetext.com/">https://www.sublimetext.com/</a> 根据自己的系统选择对应的安装包下载并安装。目前稳定版本为<code>Sublime Text 3</code>;</p>
+<p>只要<code>块级作用域</code>内存在<code>let命令</code>，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。在let命令声明该变量之前的区域内，该变量不能使用，即使外部声明了该变量。</p>
 
-<p>2.安装Package Control:</p>
+<pre><code>let a = 1;
+if (true) {
+    // TDZ开始
+    console.log(a); //Uncaught ReferenceError: a is not defined
 
-<p>下载插件之前需要先安装<code>Package Control</code>，它是用来管理和下载插件的控制组件。 <code>Package Control</code>官网安装地址：<a href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a></p>
+    let a;  //TDZ结束
+}
 
-<p><img src="/images/2016051301.jpg" alt="" /></p>
+let b = 1;
+if (true) {
+    let b = 100; 
+    console.log(b);  //100
+} 
+</code></pre>
 
-<p>1）使用快键键 <code>ctrl+</code> <code>或者</code>View<code>&gt;</code>Show Console` 菜单打开控制台，然后，然后回车让它安装。</p>
+<p>可以这么理解暂时性死区：只要一进入当前的块级作用域，所有将要使用的变量就已经存在了，但是还暂时无法获取，只有等到声明变量之后，才可以获取和使用该变量。</p>
 
-<p><img src="/images/2016051302.jpg" alt="" /></p>
+<p>2.5 不能重复声明变量</p>
 
-<p>2）根据Sublime Text的版本选择复制对应的版本代码；</p>
+<p>在同一个作用域内，<code>let</code>命令不能重复声明同一个变量。</p>
 
-<p><img src="/images/2016051303.jpg" alt="" /></p>
+<pre><code>function () {
+    let x = 10;
+    var x = 20;
+}
+// Uncaught SyntaxError: Identifier 'x' has already been declared
+</code></pre>
 
-<p>3）黏贴到控制台输入框里，按<code>Enter键</code>，插件管理包就进入正在下载安装的状态（可能需要一点时间）；</p>
+<h2 id="3-const-声明常量">3.<code>const</code> 声明常量</h2>
 
-<p>3.自定义安装各种插件：</p>
+<p>3.1 <code>ES6</code> 引入了<code>常量</code>的概念。<code>const 命令</code>是用来声明<code>常量</code>的, 通常用<code>大写字母</code>表示常量。一旦声明，常量的值就不能改变。</p>
 
-<p>在 Package Control官网地址：<a href="https://packagecontrol.io/">https://packagecontrol.io/</a>可以看到各种插件以及它的下载量排名，找到自己感兴趣的，下载下来试用。</p>
+<pre><code>const PI = 3.1415;
+PI = 3; //Uncaught TypeError: Assignment to constant variable.
+</code></pre>
 
-<p>下载安装方法如下： (windows平台)</p>
+<p>3.2 `声明变量时，必须立即赋值。否则会报错。</p>
 
-<p>1）按下 <code>Ctrl+Shift+P</code> 调出命令面板，输入<code>install</code>， 调出 <code>Install Package</code> 选项并回车，出来这样的画面，</p>
+<pre><code>const SIN //Uncaught SyntaxError: Missing initializer in const declaration
+</code></pre>
 
-<p><img src="/images/2016051305.jpg" alt="" /></p>
+<p>3.3 <code>const</code>的作用域与<code>let</code>命令相同：常量只在它声明时所在的<code>块级作用域</code>内有效。</p>
 
-<p>2）然后输入自己想要下载的插件名称，比如: <code>HTML Extended</code></p>
+<pre><code>if (true) {
+  const A = 5;
+}
+A // Uncaught ReferenceError: A is not defined
+</code></pre>
 
-<p><img src="/images/2016051306.jpg" alt="" /></p>
-
-<p>3）下载安装完成后会弹出类似这样的文件，说明已经成功安装该插件。</p>
-
-<p><img src="/images/2016051307.jpg" alt="" /></p>
-
-<p>或者在左下角提示成功安装：</p>
-
-<p><img src="/images/2016051308.jpg" alt="" /></p>
-
-<h2 id="三-推荐几个好用的插件">三、推荐几个好用的插件：</h2>
-
-<p>1.Emmet：通过简单的命令直接生成一大段代码。</p>
-
-<p>2.ConvertToUTF8(转换成utf-8格式): 默认情况下，gbk编码格式的中文会变成乱码，这个插件可以实现自动转换。</p>
-
-<p>3.JsFormat：格式化js代码。可以还原别人网站被压缩过难以阅读的js代码。</p>
-
-<p>4.HTMLBeautify：格式化HTML。</p>
-
-<p>5.Hasher:符号转义。</p>
-
-<p>6.TrailingSpaces：多余空格标记。</p>
-
-<p>7.SideBarEnhancementS: 侧边栏增强功能。</p>
-
-<ol>
-<li>ChineseLocalization：汉化插件。</li>
-</ol>
-
-<h2 id="四-常用的快捷键-windows平台下">四、常用的快捷键（windows平台下）：</h2>
-
-<p>1.<code>Ctrl + Shift + N</code>新建窗口；<code>Ctrl + W</code>关闭该窗口。</p>
-
-<p>2.<code>Ctrl + N</code>新建标签；<code>Ctrl + W</code> 关闭当前标签；<code>Ctrl + Shift + T</code> 恢复刚刚关闭的标签。</p>
-
-<p>3.<code>Alt + Shift + 2</code>左右分屏； <code>Alt + Shift + 8</code>  上下分屏；<code>Alt + Shift + 5</code>  上下左右分为四屏。<code>Ctrl + 数字键</code> 跳转到指定屏；<code>Ctrl + Shift + 数字键</code> 将当前屏移动到指定。</p>
-
-<p><code>ctrl+ 1</code> 变回一屏显示。</p>
-
-<p>4.<code>F11</code> 切换普通全屏; <code>Shift + F11</code>切换无干扰全屏。</p>
-
-<p>5.<code>Ctrl + P</code> 会列出当前打开的所有文件，点击某个文件可以快速跳转；</p>
-
-<p>6.<code>Ctrl + R</code> 对于md文件，会列出大纲。</p>
-
-<p><img src="/images/2016051309.jpg" alt="" /></p>
-
-<p>7.<code>Ctrl + F</code> 调出搜索框进行搜索；<code>Ctrl + H</code> 替换</p>
-
-<p>8.<code>Ctrl + J</code> 把选中区域合并为一行；<code>Ctrl + Shift + L</code> 可以将当前选中区域打散，然后进行同时编辑：</p>
-
-<p>9.多行游标（可同时编辑多行代码）：<code>Ctrl + D</code> 选择当前光标所在的词并高亮该词所有出现的位置，再次<code>Ctrl + D</code>选择该词出现的下一个位置，在多重选词的过程中，使用<code>Ctrl + K</code> 进行跳过，使用<code>Ctrl + U</code>进行回退，使用<code>Esc</code>退出多重编辑。</p>
-
-<p>10.<code>Ctrl + Enter</code> 在当前行下面新增一行然后跳至该行；<code>Ctrl + Shift + Enter</code> 在当前行上面增加一行并跳至该行。</p>
-
-<p>11.<code>Ctrl + E</code> 自动生成代码片段（安装Emmet插件之后）。</p>
-
-<p>12.<code>Ctrl + shift + D</code>在下一行复制当前行内容，并跳至该行。</p>
+<p>3.4 <code>const</code>命令声明的常量也是不提升，同样存在<code>暂时性死区</code>，只能在声明的位置后面使用。同时，也不能重复声明。</p>
 
             </div>
             <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/sublimetext-notes" data-id="35d8c4e8537ef1ad63ad98699e489072" class="article-share-link">
+    <a data-url="http://www.wangxingfeng.com/es6-let-const" data-id="36e884e10c21bba212085c54eeebc630" class="article-share-link">
         <i class="fa fa-share"></i>
         分享
     </a>
@@ -550,21 +521,14 @@
         
 <nav id="article-nav">
     
-    <a href="http://www.wangxingfeng.com/tab" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="http://www.wangxingfeng.com/js-array" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           上一篇
       </strong>
-      <div class="article-nav-title">实现Tab切换的几种方式</div>
+      <div class="article-nav-title">JavaScript数组的常用方法总结</div>
     </a>
     
 
-    
-    <a href="http://www.wangxingfeng.com/markdonw-notes" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          下一篇
-      </strong>
-      <div class="article-nav-title">Markdown 学习笔记</div>
-    </a>
     
 </nav>
 
@@ -641,7 +605,7 @@
                 <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/throw-away-vocabulary-books" class="thumbnail">
                     
-                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170406dictionary.jpg)" alt="Sublime Text 学习笔记" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170406dictionary.jpg)" alt="ES6的块级作用域以及let、const命令" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -667,7 +631,7 @@
                 <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/copy2clipboard" class="thumbnail">
                     
-                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170405banner.jpg)" alt="Sublime Text 学习笔记" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170405banner.jpg)" alt="ES6的块级作用域以及let、const命令" class="thumbnail-image"></span>
                     
                     </a>
                 </div>

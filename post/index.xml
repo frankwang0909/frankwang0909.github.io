@@ -7,8 +7,105 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Thu, 06 Apr 2017 22:31:32 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 07 Apr 2017 20:18:56 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ES6的块级作用域以及let、const命令</title>
+      <link>http://www.wangxingfeng.com/es6-let-const</link>
+      <pubDate>Fri, 07 Apr 2017 20:18:56 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/es6-let-const</guid>
+      <description>
+
+&lt;h2 id=&#34;1-块级作用域&#34;&gt;1.块级作用域&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;ES5&lt;/code&gt; 只有&lt;code&gt;全局作用域&lt;/code&gt;和&lt;code&gt;函数作用域&lt;/code&gt;，没有&lt;code&gt;块级作用域&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;在函数外部声明的变量，都是全局变量，容易导致变量冲突。因此，我们不得不使用&lt;code&gt;立即执行函数&lt;/code&gt;来避免全局变量的冲突。另外，在循环内用来计数的变量也会泄露成全局变量。&lt;/p&gt;
+
+&lt;p&gt;为此，&lt;code&gt;ES6&lt;/code&gt; 引入了&lt;code&gt;块级作用域&lt;/code&gt;的概念。&lt;/p&gt;
+
+&lt;h2 id=&#34;2-let-声明变量&#34;&gt;2.&lt;code&gt;let&lt;/code&gt; 声明变量&lt;/h2&gt;
+
+&lt;p&gt;2.1 &lt;code&gt;let&lt;/code&gt;声明的变量，只在它所在的代码块（块级作用域）内有效。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    var a = 1;
+    let b = 2;
+}
+a //1 
+b // Uncaught ReferenceError: b is not defined
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.2 &lt;code&gt;for循环&lt;/code&gt;的计数器使用&lt;code&gt;let&lt;/code&gt;命令来声明。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for (let i = 0; i &amp;lt; 10; i++) {
+    //
+}
+console.log(i);  //ReferenceError: i is not defined
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.3 不存在&lt;code&gt;变量提升&lt;/code&gt;。变量应该遵循&lt;code&gt;先声明后使用&lt;/code&gt;的原则。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;var&lt;/code&gt;声明的变量会提升到作用域的顶部,在变量可以在声明之前可以使用，值为&lt;code&gt;undefined&lt;/code&gt;。&lt;code&gt;let&lt;/code&gt;声明的变量不存在&lt;code&gt;变量提升&lt;/code&gt;, 声明之前使用，会报错。&lt;/p&gt;
+
+&lt;p&gt;2.4 暂时性死区(temporal dead zone，简称 TDZ):&lt;/p&gt;
+
+&lt;p&gt;只要&lt;code&gt;块级作用域&lt;/code&gt;内存在&lt;code&gt;let命令&lt;/code&gt;，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。在let命令声明该变量之前的区域内，该变量不能使用，即使外部声明了该变量。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let a = 1;
+if (true) {
+    // TDZ开始
+    console.log(a); //Uncaught ReferenceError: a is not defined
+
+    let a;  //TDZ结束
+}
+
+let b = 1;
+if (true) {
+    let b = 100; 
+    console.log(b);  //100
+} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以这么理解暂时性死区：只要一进入当前的块级作用域，所有将要使用的变量就已经存在了，但是还暂时无法获取，只有等到声明变量之后，才可以获取和使用该变量。&lt;/p&gt;
+
+&lt;p&gt;2.5 不能重复声明变量&lt;/p&gt;
+
+&lt;p&gt;在同一个作用域内，&lt;code&gt;let&lt;/code&gt;命令不能重复声明同一个变量。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function () {
+    let x = 10;
+    var x = 20;
+}
+// Uncaught SyntaxError: Identifier &#39;x&#39; has already been declared
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;3-const-声明常量&#34;&gt;3.&lt;code&gt;const&lt;/code&gt; 声明常量&lt;/h2&gt;
+
+&lt;p&gt;3.1 &lt;code&gt;ES6&lt;/code&gt; 引入了&lt;code&gt;常量&lt;/code&gt;的概念。&lt;code&gt;const 命令&lt;/code&gt;是用来声明&lt;code&gt;常量&lt;/code&gt;的, 通常用&lt;code&gt;大写字母&lt;/code&gt;表示常量。一旦声明，常量的值就不能改变。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;const PI = 3.1415;
+PI = 3; //Uncaught TypeError: Assignment to constant variable.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.2 `声明变量时，必须立即赋值。否则会报错。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;const SIN //Uncaught SyntaxError: Missing initializer in const declaration
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.3 &lt;code&gt;const&lt;/code&gt;的作用域与&lt;code&gt;let&lt;/code&gt;命令相同：常量只在它声明时所在的&lt;code&gt;块级作用域&lt;/code&gt;内有效。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if (true) {
+  const A = 5;
+}
+A // Uncaught ReferenceError: A is not defined
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.4 &lt;code&gt;const&lt;/code&gt;命令声明的常量也是不提升，同样存在&lt;code&gt;暂时性死区&lt;/code&gt;，只能在声明的位置后面使用。同时，也不能重复声明。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>JavaScript数组的常用方法总结</title>
@@ -1734,93 +1831,6 @@ Safari 支持替代的 -webkit-transition 属性。&lt;/p&gt;
 &lt;p&gt;11.&lt;code&gt;Ctrl + E&lt;/code&gt; 自动生成代码片段（安装Emmet插件之后）。&lt;/p&gt;
 
 &lt;p&gt;12.&lt;code&gt;Ctrl + shift + D&lt;/code&gt;在下一行复制当前行内容，并跳至该行。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>实现Tab切换的几种方式</title>
-      <link>http://www.wangxingfeng.com/tab</link>
-      <pubDate>Sun, 08 May 2016 23:36:44 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/tab</guid>
-      <description>
-
-&lt;p&gt;Tab 切换是网页中常见的组件。适当地使用，可以节省页面空间，在同一个大小的页面中展现更多的内容。Tab 切换的效果千差万别，只需要学会基本的思路，便可变换出各种各样的效果。下面我分别使用了原生js和jQuery来实现四种不同的Tab切换效果。&lt;/p&gt;
-
-&lt;h2 id=&#34;方式一-用原生js实现各种tab切换效果&#34;&gt;方式一：用原生js实现各种Tab切换效果。&lt;/h2&gt;
-
-&lt;h3 id=&#34;1-鼠标滑动切换&#34;&gt;1.鼠标滑动切换 :&lt;/h3&gt;
-
-&lt;p&gt;这是最简单的Tab切换。鼠标滑过时，切换Tab.&lt;/p&gt;
-
-&lt;p&gt;首先，通过getElementById、 getElementsByTagNameL等方法来获取相应的元素。&lt;/p&gt;
-
-&lt;p&gt;然后，对相应的元素绑定mouseover事件即可。&lt;/p&gt;
-
-&lt;p&gt;具体代码见  &lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/js-mouseover-tab.html&#34;&gt;js-mouseover-tab.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo/js-mouseover-tab.html&#34;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;2-鼠标点击切换&#34;&gt;2.鼠标点击切换&lt;/h3&gt;
-
-&lt;p&gt;与第一种的区别在于绑定的事件不同。获取元素的方法是一样的，只需把绑定mouseovers事件改为click事件即可。&lt;/p&gt;
-
-&lt;p&gt;具体代码见  &lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/js-click-tab.html&#34;&gt;js-click-tab.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo/js-click-tab.html&#34;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;3-鼠标滑动延迟切换&#34;&gt;3.鼠标滑动延迟切换&lt;/h3&gt;
-
-&lt;p&gt;延迟切换涉及到了一个时间问题，可以通过设置定时器来实现延迟的效果。定时器有setTimeout()和setInterval()两种方式来设置。&lt;/p&gt;
-
-&lt;p&gt;setTimeout() 方法用于在指定的毫秒数后调用函数或计算表达式。setTimeout() 只执行 code 一次。如果要多次调用，需要使用 setInterval()。&lt;/p&gt;
-
-&lt;p&gt;setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。&lt;/p&gt;
-
-&lt;p&gt;因为这里的延迟切换是在指定的延迟时间之后才实现切换效果，所以使用setTimeout() 。&lt;/p&gt;
-
-&lt;p&gt;具体代码见  &lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/js-delay-tab.html&#34;&gt;js-delay-tab.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo/js-delay-tab.html&#34;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;4-自动切换&#34;&gt;4.自动切换&lt;/h3&gt;
-
-&lt;p&gt;自动切换，即按指定的周期自动切换到下一个Tab。这里也需要一个定时器，而且是按周期调用函数，因此使用setInterval() 方法来实现。
-当鼠标滑动到某个Tab时，高亮显示当前页，同时停止自动切换，此时需要用到 clearInterval()方法来清除定时器。&lt;/p&gt;
-
-&lt;p&gt;具体代码见  &lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/js-auto-tab-01.html&#34;&gt;js-auto-tab-01.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;优化后的代码见 &lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/js-auto-tab-02.html&#34;&gt;js-auto-tab-02.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo/js-auto-tab-02.html&#34;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;方式二-用jquery实现各种tab切换效果-实现思路与原生的javascript是一样的-只是jquery封装了一些方法可以更方便操作dom元素&#34;&gt;方式二：用jQuery实现各种Tab切换效果: 实现思路与原生的JavaScript是一样的,只是jQuery封装了一些方法可以更方便操作DOM元素。&lt;/h2&gt;
-
-&lt;h3 id=&#34;1-鼠标滑动切换-1&#34;&gt;1.鼠标滑动切换&lt;/h3&gt;
-
-&lt;p&gt;具体代码见  &lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/jQ-mouseover-tab.html&#34;&gt;jQ-mouseover-tab.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo/jQ-mouseover-tab.html&#34;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;2-鼠标点击切换-1&#34;&gt;2.鼠标点击切换&lt;/h3&gt;
-
-&lt;p&gt;具体代码见  &lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/jQ-click-tab.html&#34;&gt;jQ-click-tab.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo/jQ-click-tab.html&#34;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;3-鼠标滑动延迟切换-1&#34;&gt;3.鼠标滑动延迟切换&lt;/h3&gt;
-
-&lt;p&gt;具体代码见  &lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/jQ-delay-tab.html&#34;&gt;jQ-delay-tab.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo/jQ-delay-tab.html&#34;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;4-自动切换-1&#34;&gt;4.自动切换&lt;/h3&gt;
-
-&lt;p&gt;具体代码见  &lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/jQ-auto-tab-01.html&#34;&gt;jQ-auto-tab-01.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;优化后的代码 见&lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/jQ-auto-tab-02.html&#34;&gt;jQ-auto-tab-02.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo/jQ-auto-tab-02.html&#34;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:updated_time" content="2016-06-05T22:05:46&#43;08:00"/>
+<meta property="og:updated_time" content="2016-07-11T21:03:27&#43;08:00"/>
 
 
 
@@ -198,12 +198,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        18
+        19
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          19
+          20
         
         <span>
             Tags
@@ -278,6 +278,153 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">
+    <h1 class="article-title" itemprop="name">
+         CSS3 动画效果
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-07-11 21:03:27 &#43;0800 CST" itemprop="datePublished">2016-07-11</time>
+            &middot;
+            59
+            words
+            &middot;
+            1
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css3">CSS3</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    作用 用来定义样式变化的过渡效果, 在某些情况下（移动端），可以代替JavaScript代码来实现动画效果。
+transition属性是一个简写属性，用于设置四个过渡属性：
+1. transition-property 规定设置过渡效果的 CSS 属性的名称, 默认值为all, 表示所有属性，也可以单独设置某个css属性。
+2. transition-duration 过渡时间，值以秒或毫秒计。
+3. transition-timing-function 过渡效果的速度曲线。该属性允许过渡效果随着时间来改变其速度。
+默认值为linear。常见的有以下值：
+linear 匀速 ease 慢速开始，然后变快，然后慢速结束。 ease-in 以慢速开始 ease-out 以慢速结束 ease-in-out 以慢速开始和结束的过渡效果  4. transition-delay 过渡效果的延迟，值以秒或毫秒计。默认为0。如果为正值，则表示延迟执行过渡效果；如果为负值（如-0.1s)，则会从过渡效果的执行0.1s的状态为初始状态开始执行过渡效果。
+兼容性 Internet Explorer 10、Firefox、Opera 和 Chrome等现代浏览器 支持 transition 属性。 Safari 支持替代的 -webkit-transition 属性。
+示例  .trans { display:block; width:100px; height:30px; background:#0ff; transition:width 2s ease; } .trans:hover{ width:500px; }  过渡效果
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C" data-id="9508aef33ce686af8138fc2075656a6f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1076,147 +1223,6 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/dropdown-menu">
-    <h1 class="article-title" itemprop="name">
-        常见的下拉菜单
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-03-03 23:55:37 &#43;0800 CST" itemprop="datePublished">2016-03-03</time>
-            &middot;
-            366
-            words
-            &middot;
-            2
-            minute read
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95">下拉菜单</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    HTML结构 网页中导航栏是一个很常见的组件。通常，我们使用无序列表来制作导航栏。比如
-&lt;div id=&quot;nav&quot;&gt; &lt;ul class=&quot;navMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;跟团游&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自助游&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;游轮&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自驾&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;  有些导航栏有下拉的二级菜单，那么我们在相应的位置上再加上列表构成二级菜单，比如
-&lt;div id=&quot;nav&quot;&gt; &lt;ul class=&quot;navMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;跟团游&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;周边跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;当地参团&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自助游&lt;/a&gt; &lt;ul class=&quot;subMenu&quot; &gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境自助&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内自助&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;机票+酒店&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;火车+酒店&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;游轮&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;包船专享&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;日韩航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;欧洲航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;三峡航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;美洲航线&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自驾&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;周边自驾&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内自驾&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境自驾&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;  基本的CSS样式 列表默认是垂直方向排列的，而常见的导航栏主菜单是水平方向排列，二级下拉菜单是垂直方向排列的，所以我们需要对主菜单的li元素设置浮动，让其水平排列。设置浮动后，应记得清除浮动。可以使用class来作为公共的浮动和清除浮动的样式，然后在需要浮动的元素上添加相应的class，在浮动元素的父元素上添加清除浮动的class。
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/dropdown-menu">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/dropdown-menu" data-id="e242ef885581033878050e63830e826f" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1225,6 +1231,10 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
             « Prev
         </a>
     
+    
+        <a class="extend next" rel="next" href="http://www.wangxingfeng.com/page/4/">
+            Next »
+        </a>
     
 
 </nav>
@@ -1240,6 +1250,32 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/es6-let-const" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/es6-let-const" class="title">ES6的块级作用域以及let、const命令</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-07 20:18:56 &#43;0800 CST" itemprop="datePublished">2017-04-07</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1345,32 +1381,6 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/anywhere-npm" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">
-                        node
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/anywhere-npm" class="title">快速启动Node服务器，调试本地静态文件代码</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-04 17:41:35 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1397,7 +1407,7 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
                 <a class="category-list-link" href="http://www.wangxingfeng.com/categories/frontend">
                     frontend
                 </a>
-                <span class="category-list-count">11</span>
+                <span class="category-list-count">12</span>
             </li>
             
             <li class="category-list-item">
@@ -1475,6 +1485,9 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
         
         
         <a href="http://www.wangxingfeng.com/tags/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95" style="font-size: 12px;">下拉菜单</a>
+        
+        
+        <a href="http://www.wangxingfeng.com/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F" style="font-size: 12px;">块级作用域</a>
         
         
         <a href="http://www.wangxingfeng.com/tags/%E6%94%92%E8%AF%8D%E6%B1%87" style="font-size: 12px;">攒词汇</a>
