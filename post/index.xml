@@ -16,7 +16,7 @@
       <pubDate>Sun, 23 Apr 2017 16:28:38 +0800</pubDate>
       
       <guid>http://www.wangxingfeng.com/less</guid>
-      <description>&lt;p&gt;&lt;/p&gt;
+      <description>
 
 &lt;h2 id=&#34;1-css&#34;&gt;1.CSS&lt;/h2&gt;
 
@@ -270,7 +270,8 @@ background-color: #112244 + #111; // result is #223355
 
 &lt;h3 id=&#34;3-5-官网&#34;&gt;3.5 官网&lt;/h3&gt;
 
-&lt;p&gt;更多内容，可以访问&lt;a href=&#34;http://lesscss.org/&#34;&gt;http://lesscss.org/&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;更多内容，可以访问&lt;a href=&#34;http://lesscss.org/&#34;&gt;http://lesscss.org/&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
