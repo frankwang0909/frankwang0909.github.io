@@ -2166,3 +2166,39 @@ ol.toc {
   max-height:146px;
   overflow: hidden;
 }
+
+// CSS3 页面翻转、图片翻转效果
+.rotate-container {
+  perspective: 1000;
+  margin:0 auto;
+  
+}
+.rotate-container:hover .flipper,
+.rotate-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+.rotate-container, .front, .back {
+  width: 320px;
+  height: 380px;
+  margin:0 auto;
+  text-align: center;
+  color:blue;
+
+}
+.flipper {
+  transition-duration:1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.front {
+  z-index: 2; 
+}
+.back {
+  transform: rotateY(180deg);
+}

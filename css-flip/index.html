@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>JavaScript的正则表达式 &middot; Frank Wang&#39;s Coding World</title>
+    <title>用CSS实现图片翻转的动画效果 &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Frank Wang">
     
-      <meta name="description" content="JavaScript的正则表达式学习笔记">
+      <meta name="description" content="CSS如何实现图片翻转效果，CSS如何实现页面翻转效果,CSS3, transform,">
     
     
-    <link rel="canonical" href="http://www.wangxingfeng.com/js-reg"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/css-flip"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -20,15 +20,15 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="JavaScript的正则表达式" />
-<meta property="og:description" content="JavaScript的正则表达式学习笔记" />
+    <meta property="og:title" content="用CSS实现图片翻转的动画效果" />
+<meta property="og:description" content="CSS如何实现图片翻转效果，CSS如何实现页面翻转效果,CSS3, transform," />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.wangxingfeng.com/js-reg" />
+<meta property="og:url" content="http://www.wangxingfeng.com/css-flip" />
 
 
 
-<meta property="article:published_time" content="2016-12-18T21:56:37&#43;08:00"/>
-<meta property="article:modified_time" content="2016-12-18T21:56:37&#43;08:00"/>
+<meta property="article:published_time" content="2017-04-29T21:24:00&#43;08:00"/>
+<meta property="article:modified_time" content="2017-04-29T21:24:00&#43;08:00"/>
 
 
 
@@ -42,12 +42,12 @@
 
     
     
-<meta itemprop="name" content="JavaScript的正则表达式">
-<meta itemprop="description" content="JavaScript的正则表达式学习笔记">
+<meta itemprop="name" content="用CSS实现图片翻转的动画效果">
+<meta itemprop="description" content="CSS如何实现图片翻转效果，CSS如何实现页面翻转效果,CSS3, transform,">
 
 
-<meta itemprop="dateModified" content="2016-12-18T21:56:37&#43;08:00" />
-<meta itemprop="wordCount" content="490">
+<meta itemprop="dateModified" content="2017-04-29T21:24:00&#43;08:00" />
+<meta itemprop="wordCount" content="119">
 
 
 
@@ -59,9 +59,9 @@
 
 
 
-<meta name="twitter:text:title" content="JavaScript的正则表达式"/>
-<meta name="twitter:title" content="JavaScript的正则表达式"/>
-<meta name="twitter:description" content="JavaScript的正则表达式学习笔记"/>
+<meta name="twitter:text:title" content="用CSS实现图片翻转的动画效果"/>
+<meta name="twitter:title" content="用CSS实现图片翻转的动画效果"/>
+<meta name="twitter:description" content="CSS如何实现图片翻转效果，CSS如何实现页面翻转效果,CSS3, transform,"/>
 <meta name="twitter:site" content="@frankwang0909"/>
 
     
@@ -315,13 +315,11 @@
     <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
         <div class="article-inner">
             
-                <img src="http://www.wangxingfeng.com/images/2016-12-18banner.jpg" class="article-banner">
-            
 
             <header class="article-header">
-    <a href="http://www.wangxingfeng.com/js-reg">
+    <a href="http://www.wangxingfeng.com/css-flip">
     <h1 class="article-title" itemprop="name">
-        JavaScript的正则表达式
+        用CSS实现图片翻转的动画效果
     </h1>
     </a>
     <div class="article-meta">
@@ -329,7 +327,7 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2016-12-18 21:56:37 &#43;0800 CST" itemprop="datePublished">2016-12-18</time>
+            <time datetime="2017-04-29 21:24:00 &#43;0800 CST" itemprop="datePublished">2017-04-29</time>
         </div>
         
         
@@ -353,7 +351,7 @@
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/regexp">RegExp</a>
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css%E7%BF%BB%E8%BD%AC%E5%8A%A8%E7%94%BB">CSS翻转动画</a>
                 
                 
             </div>
@@ -365,397 +363,152 @@
             <div class="article-entry" itemprop="articleBody">
                 
 
-<h2 id="1-基本概念">1.基本概念</h2>
+<h2 id="用css实现页面或图片翻转的动画效果">用CSS实现页面或图片翻转的动画效果</h2>
 
-<p>正则表达式(<code>Regular Expression</code>)是一个字符串，定义了某个规则，按照这种规则来描述、匹配一系列符合条件的字符串。</p>
+<p>Web开发中常常会有动画的交互效果，以前我们只能用JavaScript来实现，随着浏览器对CSS3新特性的支持度越来越好，很多的特效都可以通过CSS代码来实现。</p>
 
-<h2 id="2-通配符">2.通配符</h2>
+<p>我们在浏览网站的时候，经常能够看到图片会翻转的动画效果，比如<code>Demo 1</code>所示。</p>
 
-<p>当前目录下查找文件(linux 命令行)</p>
+<div class="rotate-container" style="border:2px solid #000;">
+    <div class="flipper">
+        <div class="front">
+            <!-- 前面内容 -->
+            <p >正面内容</p>
+            <img src="https://images-cn.ssl-images-amazon.com/images/I/51fD0ZgQoXL._SL400_.jpg" alt="">
+        </div>
+        <div class="back">
+            <p>反面内容</p>
+            <img src="https://images-cn.ssl-images-amazon.com/images/G/28/kindle/merch/2014/campaign/Gen7-Launch/Associate/Associate_AssociateCenrter_300_250_Family._V325383366_.jpg" alt="">
+        </div>
+    </div>
+</div>
 
-<pre><code>find ./ -name *.txt
+<p>能否用纯CSS来实现这种翻转动画效果呢？答案是肯定的。</p>
+
+<p>我们知道CSS3的<code>transform</code>属性非常强大，可以实现2D或者3D的旋转、缩放、移动或倾斜。</p>
+
+<p>上述Demo1是沿着Y轴3D翻转的，我们可以想到用<code>transform</code>属性的<code>rotateY()</code>方法来实现。</p>
+
+<h2 id="示例代码">示例代码</h2>
+
+<p>HTML代码</p>
+
+<pre><code>&lt;div class=&quot;rotate-container&quot;&quot;&gt;
+    &lt;div class=&quot;flipper&quot;&gt;
+        &lt;div class=&quot;front&quot;&gt;
+            &lt;!-- 前面内容 --&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;back&quot;&gt;
+            &lt;!-- 背面内容 --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 
-<h2 id="3-在线图形工具">3.在线图形工具：</h2>
+<p>CSS代码</p>
 
-<p><a href="https://regexper.com/">https://regexper.com/</a> 是一款非常实用的正则表达式图形化工具。你也可以<a href="https://regexper.com/">下载</a>到本地，运行速度更快</p>
-
-<h2 id="4-ide中可以支持正则表达式">4.IDE中可以支持正则表达式：</h2>
-
-<p>我用的是编辑器是<code>Sublime Text 3</code>。快捷键<code>Ctrl+F</code>查找字符串，<code>Ctrl+H</code>替换字符串，在底部唤出的面板左上角有开启正则表达式（快捷键<code>Alt+R</code>）</p>
-
-<pre><code>http://www.wangxingfeng.com
-http://m.wangxingfeng.com
-http://cosmic.wangxingfeng.com
-http://blog.wangxingfeng.com
-http://img.wangxingfeng.com/1234.jpg
-http://img.wangxingfeng.com/158.png
-https://img.wangxingfeng.com/128744.jpg
-http://img.wangxingfeng.com/1285.jpg
-http://img.wangxingfeng.com/7884.png
-</code></pre>
-
-<p><code>Sublime</code>中找出上面的<code>url</code>中<code>http</code>协议的<code>jpg</code>文件，去掉其协议头</p>
-
-<pre><code>Find What: http:\/\/(.+\.jpg)
-replace with: $1
-</code></pre>
-
-<h2 id="5-javascript中实例化-regexp-对象">5.JavaScript中实例化<code>RegExp</code>对象</h2>
-
-<p>5.1.字面量:</p>
-
-<pre><code>var reg = /\d/; 
-var reg2 = /[a-zA-Z0-9]/g;
-</code></pre>
-
-<p>5.2.构造函数:</p>
-
-<pre><code>var reg = new RegExp(\d); 
-var reg = new RegExp('[a-zA-Z0-9]', 'g');
-</code></pre>
-
-<h2 id="6-修饰符">6.修饰符：</h2>
-
-<p>6.1.<code>g</code>(global):表示全局匹配，不添加则默认匹配到第一个字符串。</p>
-
-<p>6.2.<code>i</code>(ignore case):表示忽略大小写,不添加则默认大小写敏感。</p>
-
-<p>6.3.<code>m</code>(multiple lines):表示多行匹配。</p>
-
-<h2 id="7-原意文本字符-和元字符">7.原意文本字符 和元字符：</h2>
-
-<p>7.1.原意文本字符：表示字符的原本含义，如<code>a</code>表示小写字母a，<code>1</code>表示数字1。</p>
-
-<p>7.2.元字符：在正则表达式中有特殊含义的非字母字符，如星号<code>*</code>，问号<code>？</code>等。</p>
-
-<p>7.3.常用元字符及其含义：</p>
-
-<pre><code>1）[]:构建字符类，范围类等；
-2）{}:量词，表示字符的个数；
-3）():构建分组；
-4）*：表示任意个字符；可理解为{0,}；
-5）？：表示最多有一个该字符{0,1}；
-6）+：表示至少有一个该字符{1,}；
-7）^: 取反；
-8）\n: 换行符；
-9）\r: 回车符；
-10）\0: 空字符；
-11）\t: 水平制表符；
-12）\v:  垂直制表符；
-13）\f: 换页符。
-</code></pre>
-
-<h2 id="8-字符类">8.字符类：</h2>
-
-<p>8.1.通常，正则表达式一个字符对应字符串一个字符，如<code>/a/</code>对应字母a。元字符<code>[]</code>构建一个字符类，如<code>[abc]</code>可以匹配字符a或b或c中的任意一个。在浏览器调试界面控制台输入：</p>
-
-<pre><code>'a1b2c3d4a'.match(/[abc]/g);
-</code></pre>
-
-<p>会得到匹配的字符串：</p>
-
-<pre><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;a&quot;]
-</code></pre>
-
-<p>8.2字符类取反：</p>
-
-<p>在<code>[]</code>内使用元字符^创建反向类，即匹配不属于某个字符类的字符串。如<code>[^abc]</code>匹配不是字符a、b、c的内容。
-在浏览器调试界面控制台输入：</p>
-
-<pre><code>'a1b2c3d4a'.match(/[^abc]/g);
-</code></pre>
-
-<p>会得到匹配的字符串：</p>
-
-<pre><code>[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;d&quot;, &quot;4&quot;]
-</code></pre>
-
-<p>8.3范围类：</p>
-
-<p>1)<code>[a-z]</code>表示：a到z的任意一个字符；</p>
-
-<p>在浏览器调试界面控制台输入：</p>
-
-<pre><code>'a1b2c3d4a'.match(/[a-z]/g);
-</code></pre>
-
-<p>会得到匹配的字符串：</p>
-
-<pre><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;a&quot;]
-</code></pre>
-
-<p>2)<code>[a-zA-Z]</code>表示：a到z以及A到Z的任意一个字符。</p>
-
-<p>在浏览器调试界面控制台输入：</p>
-
-<pre><code>'a1B2Zc3d4'.match(/[a-zA-Z]/g);
-</code></pre>
-
-<p>会得到匹配的字符串：</p>
-
-<pre><code>[&quot;a&quot;, &quot;B&quot;, &quot;Z&quot;, &quot;c&quot;, &quot;d&quot;]
-</code></pre>
-
-<p>8.4 预定义类（简写）</p>
-
-<pre><code>1) /./ =&gt; /[^\r\n]/  除了回车符和换行符之外的任何字符
-2) /\d/ =&gt; [0-9]  数字字符
-3) /\D/ =&gt; [^0-9] 非数字字符
-4) /\s/ =&gt; 空白字符
-5) /\S/ =&gt; 非空白字符
-6) /\w/ =&gt; [a-zA-Z0-9_]单词字符（字母，数字，下划线. 
-7) /\W/ =&gt; [^a-zA-Z0-9_]非单词字符
-8) \b: 单词边界
-9) \B：非单词边界；
-</code></pre>
-
-<p>9.量词：在字符后跟一个{}表示重复前面字符的次数。</p>
-
-<pre><code>1.) /\d{1,20}/: 1~20个数字；
-2.) /\d*/ =&gt; /\d{0,}/: 任意个数字;
-3.) /\d+/ =&gt; /\d{1,}/  :至少一个数字；
-4.) /\d?/ =&gt; /\d{0,1}/ :之多一个数字；
-5.) /\d{3}/ : 3个数字
-</code></pre>
-
-<h2 id="10-贪婪模式与非贪婪模式">10.贪婪模式与非贪婪模式：</h2>
-
-<p>10.1.贪婪模式：正则表达式会尽可能多地去匹配字符。</p>
-
-<p>例如，下面的正则表达式，匹配3到6个数字的字符串，默认会尽可能多地去匹配。</p>
-
-<pre><code>'b12345678A5879e123'.match(/\d{3,6}/g)
-
-&gt;&gt;&gt;[&quot;123456&quot;, &quot;5879&quot;, &quot;123&quot;]
-</code></pre>
-
-<p>10.2.非贪婪模式：在量词后加一个问号, 尽可能少地去匹配字符串。</p>
-
-<pre><code>'b12345678A5879e123'.match(/\d{3,6}?/g)
-
-&gt;&gt;&gt;[&quot;123&quot;, &quot;456&quot;, &quot;587&quot;, &quot;123&quot;]
-</code></pre>
-
-<h2 id="11-分组">11.分组：</h2>
-
-<p>11.1.括号“()”把字符串变成分组，使量词作用于分组。</p>
-
-<p>示例代码：</p>
-
-<pre><code>'abcabcabccc'.match(/abc{3}/g); 
-&gt;&gt;&gt;[&quot;abccc&quot;]
-
-'abcabcabccc'.match(/(abc){3}/g);
-&gt;&gt;&gt;[&quot;abcabcabc&quot;]
-</code></pre>
-
-<p>11.2.逻辑或：竖线 “|” 作用于分组, 可以表示选择多个分支中的一个。</p>
-
-<pre><code>'whatwhaowho'.match(/wh(at|o)/g)；
-&gt;&gt;&gt;[&quot;what&quot;, &quot;who&quot;]
-
-'whatwhaowhowhy'.match(/wh(at|o|y)/g)
-&gt;&gt;&gt;[&quot;what&quot;, &quot;who&quot;, &quot;why&quot;]
-</code></pre>
-
-<p>11.3.捕获分组，反向引用</p>
-
-<p>想要把如下日期格式化：<code>2016-01-20</code> =&gt; <code>01/20/2016</code>；可以这样写</p>
-
-<pre><code>'2016-01-20'.replace(/(\d{4})-(\d{2})-(\d{2})/g, &quot;$2/$3/$1&quot;)
-&gt;&gt;&gt;&quot;01/20/2016&quot;
-</code></pre>
-
-<p><code>$</code>加上一个数字，数字对应的是分组的序号，第一个分组的内容用<code>$1</code>来捕获，第二分组的内容用<code>$2</code>来捕获，以此类推。</p>
-
-<p>11.4.忽略分组：分组内加上<code>?:</code>表示忽略该分组，而捕获该组的内容。</p>
-
-<pre><code>'2016-01-20'.replace(/(?:\d{4})-(\d{2})-(\d{2})/g, &quot;$1/$2&quot;)
-&gt;&gt;&gt;&quot;01/20&quot;
-</code></pre>
-
-<h2 id="12-断言">12.断言：</h2>
-
-<p>12.1.正则表达式从文本头部向文本尾部开始解析，文本尾部方向称为“前”，反之，为“后”。</p>
-
-<p>12.2.前瞻与后顾：正则表达式匹配到规则的时候，向前检查是否符合断言，称为&rdquo;前瞻&rdquo;。向后检查是否符合断言则称为&rdquo;后顾&rdquo;。JavaScript不支持后顾。</p>
-
-<p>12.3.正向/肯定前瞻：向前符合断言。exp(?=assert)</p>
-
-<pre><code>    '5a68cz7'.match(/\d(?=[a-z])/g);
-    &gt;&gt;&gt;[&quot;5&quot;, &quot;8&quot;]
-</code></pre>
-
-<p>12.4.负向/否定前瞻：向前不符合断言。exp(?!assert)</p>
-
-<pre><code>'5a68cz7'.match(/\d(?=[a-z])/g);
-&gt;&gt;&gt;[&quot;6&quot;, &quot;7&quot;]
-</code></pre>
-
-<h3 id="13-regexp对象属性">13.RegExp对象属性</h3>
-
-<p>13.1.<code>global</code>: 是否全文搜索（只读属性）;</p>
-
-<p>13.2.<code>ignoreCase</code>：是否大小写敏感（只读属性）;</p>
-
-<p>13.3.<code>multline</code>: 是否多行（只读属性）;</p>
-
-<p>13.4.<code>source</code>：正则表达式文本内容；（只读属性）;</p>
-
-<p>13.5.<code>lastIndex</code>: 当前表达式匹配内容的最后一个字符的下一个位置。</p>
-
-<pre><code>var reg1 = /\d{3,5}-\w{6}/, reg2 = /\d{3,5}-\w{6}/gim;
-reg1.global
-&gt;&gt;&gt;false
-reg1.ignoreCase
-&gt;&gt;&gt;false
-reg1.multiline
-&gt;&gt;&gt;false
-reg2.global
-&gt;&gt;&gt;true
-reg2.multiline
-&gt;&gt;&gt;true
-reg2.ignoreCase
-&gt;&gt;&gt;true
-reg1.source
-&gt;&gt;&gt;&quot;\d{3,5}-\w{6}&quot;
-reg2.source
-&gt;&gt;&gt;&quot;\d{3,5}-\w{6}&quot;
-reg1.source == reg2.source
-&gt;&gt;&gt;true
-</code></pre>
-
-<h2 id="14-regexp的方法-test-exec">14.RegExp的方法：<code>test()</code>, <code>exec()</code>;</h2>
-
-<p>14.1.<code>RegExp.test(string)</code>: 测试某个字符串是否能够匹配该正则表达式。参数为字符串；返回值为布尔值。</p>
-
-<pre><code>var reg1 = /\d/, reg2 = /\d/g;
-reg1.test('a12ab');
-&gt;&gt;&gt;true
-
-reg2.test('a12ab');
-&gt;&gt;&gt;true
-
-reg2.test('a12ab');
-&gt;&gt;&gt;true
-
-reg2.test('a12ab'); //注意这里变成`false`了就是因为每执行一次，`lastIndex`属性变了一次导致的。所以用`test`方法的RegExp不要用全局匹配模式。
-&gt;&gt;&gt;false
-
-reg2.test('a12ab');
-&gt;&gt;&gt;true
-
-reg2.test('a12ab');
-&gt;&gt;&gt;true
-
-while(reg2.test('a12ab')){
-    console.log('reg2.lastIndex:' +reg2.lastIndex);
+<pre><code>.rotate-container:hover .flipper{
+    transform: rotateY(180deg);
 }
-&gt;&gt;&gt; reg2.lastIndex:2
-&gt;&gt;&gt; reg2.lastIndex:3
-</code></pre>
 
-<p>14.2.<code>RegExp.exec(string)</code>: 返回匹配信息的数组。</p>
-
-<p>如果没有匹配的文本，则返回<code>null</code>，否则返回一个结果数组。非全局匹配模式，<code>lastIndex</code>为0，不会变。全局模式下，每次执行，<code>lastIndex</code>都会跟着改变。</p>
-
-<pre><code>var reg1 = /\d+(\w)\d/, reg2 = /\d+(\w)\d/g, str=&quot;1a2ce58g79ht&quot;;
-var result = reg1.exec(str);
-console.log(reg1.lastIndex + '\t' + result.index+ '\t' + result.toString());
-&gt;&gt;&gt; 0   0   1a2,a
-while(result=reg2.exec(str)){
-    console.log('reg2.lastIndex:'+ reg2.lastIndex + '\t' + 'result.index:'+ result.index+ '\t' + result.toString());    
+.rotate-container, .front, .back {
+    width: 320px;
+    height: 480px;
 }
-&gt;&gt;&gt;reg2.lastIndex:3 result.index:0  1a2,a
-&gt;&gt;&gt;reg2.lastIndex:9 result.index:5  58g7,g
+
+.flipper {
+    transition-duration: 1s;  
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front {
+    z-index: 2;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
 </code></pre>
 
-<h2 id="15-string-的一些正则操作-查找-替换-切分等-方法-match-search-replace-split">15.<code>String</code>的一些正则操作(查找、替换、切分等)方法：<code>match()</code>、<code>search()</code>、<code>replace()</code>、<code>split()</code>;</h2>
+<h2 id="关键的技术点解释">关键的技术点解释：</h2>
 
-<p>15.1. <code>string.match(RegExp)</code>：</p>
+<h3 id="1-transform-变形">1.transform：变形</h3>
 
-<p>1)非全局模式下，返回第一个匹配结果及其<code>index</code>以及原字符串的引用(见示例代码)；</p>
+<p><code>transform: rotateY(180deg)</code> 表示沿着Y轴旋转180度。
+<style>
+    .rotateY{
+        transition-duration:1.5s;
+    }
+    .rotateY45:hover{
+        transform: rotateY(45deg);
+    }
+    .rotateY90:hover{
+        transform: rotateY(90deg);
+    }
+    .rotateY180:hover{
+        transform: rotateY(180deg);</p>
 
-<p>2)全局模式下，返回所有匹配结果为元素的数组；</p>
-
-<p>3)匹配失败则返回<code>null</code>。</p>
-
-<pre><code>var reg1 = /\d{4}-\d{2}-\d{2}/;
-var reg2 = /\d{4}-\d{2}-\d{2}/g;
-var str = &quot;2016-10-01 2017-10-01 20181001&quot;;
-var matchArray1 = str.match(reg1);
-var matchArray2 = str.match(reg2);
-console.log(matchArray1);
-&gt;&gt;&gt;[&quot;2016-10-01&quot;, index: 0, input: &quot;2016-10-01 2017-10-01 20181001&quot;]
-
-console.log(matchArray2);
-&gt;&gt;&gt;[&quot;2016-10-01&quot;, &quot;2017-10-01&quot;]
+<pre><code>}
+.bf-hidden{
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
 </code></pre>
 
-<p>15.2.<code>string.search(RegExp)</code>:</p>
+<p></style>
+<p>Demo2：沿着Y轴旋转180度(旋转到背面可见)</p>
+<div class="rotateY rotateY180">
+    <img src="https://images-cn.ssl-images-amazon.com/images/I/51fD0ZgQoXL._SL400_.jpg" alt="">
+</div>
+<p>Demo3：沿着Y轴旋转90度</p>
+<div class="rotateY rotateY90">
+    <img src="https://images-cn.ssl-images-amazon.com/images/I/51fD0ZgQoXL._SL400_.jpg" alt="">
+</div>
+<p>Demo4：沿着Y轴旋转45度</p>
+<div class="rotateY rotateY45">
+    <img src="https://images-cn.ssl-images-amazon.com/images/I/51fD0ZgQoXL._SL400_.jpg" alt="">
+</div></p>
 
-<p>参数可以是<code>子字符串</code>也可以是<code>正则表达式</code>。这个方法用来寻找某个子字符串或者正则表达式在该字符串中第一次匹配成功的位置，如果不成功，则返回<code>-1</code>.</p>
+<h3 id="2-transform-style-指定该元素的子元素所在空间">2.transform-style：指定该元素的子元素所在空间。</h3>
 
-<p>15.3.<code>string.replace(RegExp, replacement)</code>：</p>
+<p>指定该元素的子元素是（看起来）位于三维空间内，还是在该元素所在的平面内被扁平化。</p>
 
-<p>1)这个方法用来进行正则表达式替换，将<code>RegExp</code>能匹配的文本替换成第二个参数<code>replacement</code>。默认只进行一次匹配。如果设定为全局模式，则所有能匹配的文本都会替换。</p>
+<p><code>transform-style</code>属性有两个参数，<code>flat</code>和<code>preserve-3d</code>。<code>flat</code>为默认值，指定子元素位于此元素所在平面内; <code>preserve-3d</code>指定子元素定位在三维空间内。</p>
 
-<pre><code>&quot;2016-10-01 2017-10-01 20181001&quot;.replace(/\d{4}-\d{2}-\d{2}/, &quot;Date&quot;);
-&gt;&gt;&gt;&quot;Date 2017-10-01 20181001&quot;
+<h3 id="3-backface-visibility-指定元素旋转到背面时是否可见">3.backface-visibility 指定元素旋转到背面时是否可见。</h3>
 
-&quot;2016-10-01 2017-10-01 20181001&quot;.replace(/\d{4}-\d{2}-\d{2}/g, &quot;Date&quot;);
-&gt;&gt;&gt;&quot;Date Date 20181001&quot;
-</code></pre>
+<p>默认为visible，即背面是可见的, 如<code>Demo2</code>所示。</p>
 
-<p>2)如果第二个参数字符串中引用分组，可以使用<code>$1</code>表示第一个分组，<code>$2</code>表示第二个分组，以此类推。</p>
+<p>在Demo1中，由于翻转过来的是另外一张图片，所以设置为backface-visibility:hidden背面是不可见的。</p>
 
-<pre><code>&quot;2016-10-01 2017-10-01 20181001&quot;.replace(/(\d{4})-(\d{2})-(\d{2})/, &quot;$2/$3/$1&quot;);
-&gt;&gt;&gt;&quot;10/01/2016 2017-10-01 20181001&quot;
+<p><p>Demo5: 沿着Y轴旋转180度(旋转到背面不可见)</p>
+<div class="rotate-container">
+    <div class="flipper" >
+        <div class="front">
+            <img src="https://images-cn.ssl-images-amazon.com/images/I/51fD0ZgQoXL._SL400_.jpg" alt="">
+        </div>
+    </div>
+</div></p>
 
-&quot;2016-10-01 2017-10-01 20181001&quot;.replace(/(\d{4})-(\d{2})-(\d{2})/g, &quot;$2/$3/$1&quot;);
-&gt;&gt;&gt;&quot;10/01/2016 10/01/2017 20181001&quot;
+<h3 id="4-transition-duration-表示完成过渡效果需要花费的时间">4.transition-duration：表示完成过渡效果需要花费的时间。</h3>
 
-&quot;2016-10-01 2017-10-01 20181001&quot;.replace(/(\d{4})-?(\d{2})-?(\d{2})/g, &quot;$2/$3/$1&quot;);
-&gt;&gt;&gt;&quot;10/01/2016 10/01/2017 10/01/2018&quot;
-</code></pre>
+<p><code>transition-duration：1s</code>可以用简写的形式<code>transition:1s</code>。</p>
 
-<p>3)如果要在第二个参数中表示<code>$</code>字符，则必须使用<code>$$</code>转义。</p>
+<h3 id="5-position-absolute-绝对定位">5.position:absolute：绝对定位。</h3>
 
-<pre><code>&quot;the price is 12.99&quot;.replace(/([\d+\.\d{0,2}|\d+])/, &quot;$$$1&quot;);
-&gt;&gt;&gt;&quot;the price is $12.99&quot;
-
-&quot;the price is 12&quot;.replace(/([\d+\.\d{0,2}|\d+])/, &quot;$$$1&quot;);
-&quot;the price is $12&quot;
-
-&quot;the price is 12.99&quot;.replace(/(\d+\.\d{0,2})/, &quot;￥$1&quot;);
-&gt;&gt;&gt;&quot;the price is ￥12.99&quot;
-
-&quot;the price is 12&quot;.replace(/([\d+\.\d{0,2}|\d+])/, &quot;$&quot;);
-&quot;the price is $12&quot;
-</code></pre>
-
-<p>4)第二个参数还可以是函数。</p>
-
-<p>下面的例子展示了如何将t开头的单词转换为大写。</p>
-
-<pre><code>&quot;one two three&quot;.replace(/\bt[a-zA-Z]+\b/g, function(m){
-    return m.toUpperCase();
-});
-&gt;&gt;&gt;&quot;one TWO THREE&quot;
-</code></pre>
-
-<p>15.4. <code>string.split(RegExp)</code>:</p>
-
-<p>这个方法使用一个正则表达式切分字符串，正则表达式是否使用了全局模式对结果没有影响。</p>
-
-<pre><code>&quot;one two three&quot;.split(/s+/);
-&gt;&gt;&gt;[&quot;one two three&quot;]
-</code></pre>
+<p>使用绝对定位<code>position:absolute</code>把翻转前后的两个元素摆放到同一个位置。</p>
 
             </div>
             <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/js-reg" data-id="ba4230bd277f2c6ee4c1166e056fd631" class="article-share-link">
+    <a data-url="http://www.wangxingfeng.com/css-flip" data-id="3c8336be73cfadc20284463177c3ddf5" class="article-share-link">
         <i class="fa fa-share"></i>
         分享
     </a>
@@ -832,21 +585,14 @@ console.log(matchArray2);
         
 <nav id="article-nav">
     
-    <a href="http://www.wangxingfeng.com/cdn" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="http://www.wangxingfeng.com/less" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           上一篇
       </strong>
-      <div class="article-nav-title">推荐几个常用的CDN公共库</div>
+      <div class="article-nav-title">CSS预处理器之Less</div>
     </a>
     
 
-    
-    <a href="http://www.wangxingfeng.com/fix-inline-bug" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          下一篇
-      </strong>
-      <div class="article-nav-title">代码换行导致的inline元素间距bug</div>
-    </a>
     
 </nav>
 
@@ -975,7 +721,7 @@ console.log(matchArray2);
                 <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/throw-away-vocabulary-books" class="thumbnail">
                     
-                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170406dictionary.jpg)" alt="JavaScript的正则表达式" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170406dictionary.jpg)" alt="用CSS实现图片翻转的动画效果" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
