@@ -116,7 +116,7 @@ transform: skew(-30deg);
     </item>
     
     <item>
-      <title>用border-radius绘制椭圆、半椭圆、四分之一椭圆</title>
+      <title>用CSS绘制椭圆、半椭圆、四分之一椭圆</title>
       <link>http://www.wangxingfeng.com/ellipse-border-radius.html</link>
       <pubDate>Sun, 30 Apr 2017 11:25:58 +0800</pubDate>
       
