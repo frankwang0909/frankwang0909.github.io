@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>Categories &middot; Frank Wang&#39;s Coding World</title>
+    <title>CSS预处理器之Less &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="baidu-site-verification" content="WSqfBuzd3t" />
     <meta name="author" content="Frank Wang">
     
-      <meta name="keywords" content="人人都能说英语，Hugo快速建站，前端学习笔记， CSS，Node, HTML, JavaScript, ES6">
+      <meta name="keywords" content="[CSS预处理器 Less CSS Preprocessors]">
     
     
-      <meta name="description" content="Frank Wang’s Personal Blog, 前端工程师成长记录">
+      <meta name="description" content="CSS预处理器之Less, CSS Preprocessors, CSS预处理器为CSS的编写提供变量、mixin、函数、规则嵌套、颜色处理等便利">
     
     
-      <link href="http://www.wangxingfeng.com/categories/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-      <link href="http://www.wangxingfeng.com/categories/index.xml" rel="feed" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-    
-    <link rel="canonical" href="http://www.wangxingfeng.com/categories/"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/less.html"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -27,13 +24,15 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Categories" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://www.wangxingfeng.com/categories/" />
+    <meta property="og:title" content="CSS预处理器之Less" />
+<meta property="og:description" content="CSS预处理器之Less, CSS Preprocessors, CSS预处理器为CSS的编写提供变量、mixin、函数、规则嵌套、颜色处理等便利" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.wangxingfeng.com/less.html" />
 
 
 
+<meta property="article:published_time" content="2017-04-23T16:28:38&#43;08:00"/>
+<meta property="article:modified_time" content="2017-04-23T16:28:38&#43;08:00"/>
 
 
 
@@ -47,11 +46,28 @@
 
     
     
-<meta itemprop="name" content="Categories">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="CSS预处理器之Less">
+<meta itemprop="description" content="CSS预处理器之Less, CSS Preprocessors, CSS预处理器为CSS的编写提供变量、mixin、函数、规则嵌套、颜色处理等便利">
 
+
+<meta itemprop="dateModified" content="2017-04-23T16:28:38&#43;08:00" />
+<meta itemprop="wordCount" content="380">
+
+
+
+<meta itemprop="keywords" content="english,frontend,node,tools,bug,cdn,clipboard,css,css3,git,github,hugo,markdown,regexp,seo,sublime-text,tab切换,useragent,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
 
     
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="CSS预处理器之Less"/>
+<meta name="twitter:title" content="CSS预处理器之Less"/>
+<meta name="twitter:description" content="CSS预处理器之Less, CSS Preprocessors, CSS预处理器为CSS的编写提供变量、mixin、函数、规则嵌套、颜色处理等便利"/>
+<meta name="twitter:site" content="@frankwang0909"/>
+
     
 
     
@@ -84,10 +100,10 @@
 </head>
 <body>
 <div class="container">
- 
+
 
 <div id="container">
-    <header id="header">
+	<header id="header">
   <div id="header-main" class="header-inner">
     <div class="outer">
       <a href="http://www.wangxingfeng.com/" id="logo">
@@ -199,8 +215,10 @@
   </div>
 </header>
 
-    <div class="outer">
-        <aside id="profile">
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
   <div class="inner profile-inner">
     <div class="base-info profile-block">
       <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.png">
@@ -307,39 +325,422 @@
 
 </aside>
 
-        <section id="main">
-            <section class="layout-wrap">
-                <div class="layout-title">
-                    <span>Categories</span>
-                </div>
-                <div class="layout-wrap-inner list-categories">
-                    <ul class="category-list">
-                         
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="frontend">frontend</a>
-                            <span class="category-list-count">16</span>
-                        </li>
-                        
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="tools">tools</a>
-                            <span class="category-list-count">4</span>
-                        </li>
-                        
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="english">english</a>
-                            <span class="category-list-count">2</span>
-                        </li>
-                        
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="node">node</a>
-                            <span class="category-list-count">1</span>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </section>
-        </section>
-        <aside id="sidebar">
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/less.html">
+    <h1 class="article-title" itemprop="name">
+        CSS预处理器之Less
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-23 16:28:38 &#43;0800 CST" itemprop="datePublished">2017-04-23</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<h2 id="1-css">1.CSS</h2>
+
+<p><code>CSS</code>层叠样式表(Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。</p>
+
+<p>由于<code>CSS</code>不想普通的编程语言有自己的变量、常量、条件语句、函数等编程语法，而只是一行行单纯的属性描述，所以写起来相当的费事，代码难以组织和维护。</p>
+
+<h2 id="2-dry">2.DRY</h2>
+
+<p><code>DRY</code>, 即 Don&rsquo;t Repeat Yourself， 是一种为程序员所熟悉的编程理念，优秀的程序员通常遵循这种规范编写代码。
+<code>DRY</code>可以显著地提升代码的可维护性，比如在需要改变某个参数的时候，只需要改动一处或者少数几处地方。</p>
+
+<h2 id="3-css预处理器">3.CSS预处理器</h2>
+
+<p>纯粹的<code>CSS</code>代码并没有变量、嵌套、条件等概念，难以做到DRY, 这令程序员们头痛不已。因此，有程序员尝试为 <code>CSS</code> 增加一些编程的的特性，使得在 <code>CSS</code> 中使用变量、简单的程序逻辑、函数成为可能。</p>
+
+<p>目前，最常用的CSS预处理器，主要有3个：<code>Less</code>、<code>SASS</code>、<code>Stylus</code>。
+从<a href="https://github.com/showcases/css-preprocessors">GitHub</a>上可以看出<code>Less</code>是最受欢迎的<code>CSS</code>预处理器。
+<img src="/images/2017042301.jpg" alt="" /></p>
+
+<h2 id="3-less">3.Less</h2>
+
+<h3 id="3-1-安装">3.1 安装</h3>
+
+<p>因为<code>Less</code>是使用<code>JavaScript</code>语言写的，它可以运行在服务端的<code>NodeJS</code>环境中，因此，最简单的安装方式是用 <code>npm install</code>。</p>
+
+<pre><code>npm install -g less # -g表示全局安装
+</code></pre>
+
+<h3 id="3-2-编译">3.2 编译</h3>
+
+<p><code>Less</code>文件的后缀名为<code>.less</code>. 浏览器并不能直接识别<code>.less</code>的文件，需要编译成<code>.css</code>结尾的<code>CSS</code>样式文件。
+假设你已经有一个<code>less</code>文件<code>demo.less</code>，在命令行执行以下命令，即可编译生成<code>demo.css</code>。</p>
+
+<pre><code>lessc demo.less demo.css  
+</code></pre>
+
+<p><code>lessc</code>是Less的命令，第一个参数demo.less为指定需要编译的源文件名， 第二个参数demo.css为编译后的CSS文件名。</p>
+
+<p>如果需要编译成压缩的CSS文件，可以全局安装下载一个Less官方提供的插件 <a href="https://github.com/less/less-plugin-clean-css">clean-css plugin</a>。</p>
+
+<pre><code>npm install -g less-plugin-clean-css
+</code></pre>
+
+<p>然后，在命令行输入如下命令：</p>
+
+<pre><code>lessc --clean-css demo.less demo.min.css #多了一个参数 --clean-css
+</code></pre>
+
+<h3 id="3-3-基本语法">3.3 基本语法</h3>
+
+<h4 id="3-3-1-变量">3.3.1 变量</h4>
+
+<p>Less 的变量名使用<code>@</code>符号开始, 比如：</p>
+
+<pre><code>@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+
+#header {
+  color: @light-blue;
+}
+</code></pre>
+
+<p>编译之后，得到如下代码：</p>
+
+<pre><code>#header {
+  color: #6c94be;
+}
+</code></pre>
+
+<p>注意：Less的变量本质上是常量，只能定义 一次。</p>
+
+<h4 id="3-3-2-mixins">3.3.2 Mixins</h4>
+
+<p>将一系列属性从一个规则集引入(“混合”)到另一个规则集的方式。</p>
+
+<p>比如，先定义了一个规则</p>
+
+<pre><code>.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+</code></pre>
+
+<p>想要在其他的地方使用到这个规则，可以这样：</p>
+
+<pre><code>#menu a {
+  color: #111;
+  .bordered;
+}
+
+.post a {
+  color: red;
+  .bordered;
+}
+</code></pre>
+
+<p>编译结果如下：</p>
+
+<pre><code>.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+#menu a {
+  color: #111;
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+.post a {
+  color: red;
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+</code></pre>
+
+<h4 id="3-3-3-嵌套">3.3.3 嵌套</h4>
+
+<p>根据HTML结构来嵌套样式规则。</p>
+
+<pre><code>#header {
+  color: black;
+  .navigation {
+    font-size: 12px;
+  }
+  .logo {
+    width: 300px;
+  }
+}
+</code></pre>
+
+<p>编译之后的CSS样式文件：</p>
+
+<pre><code>#header {
+  color: black;
+}
+#header .navigation {
+  font-size: 12px;
+}
+#header .logo {
+  width: 300px;
+}
+</code></pre>
+
+<p>还可以结合伪类来嵌套，比如“清除浮动”的样式可以这样写：</p>
+
+<pre><code>.clearfix {
+  display: block;
+  zoom: 1;
+
+  &amp;:after {
+    content: &quot; &quot;;
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+</code></pre>
+
+<p>上述代码里的符号<code>&amp;</code>表示当前选择器的父选择器。</p>
+
+<p>编译之后的结果如下：</p>
+
+<pre><code>.clearfix {
+  display: block;
+  zoom: 1;
+}
+.clearfix:after {
+  content: &quot; &quot;;
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+</code></pre>
+
+<h4 id="3-3-4-媒体查询及嵌套">3.3.4 媒体查询及嵌套</h4>
+
+<p>媒体查询（Media query ）可以嵌套在选择器中，编译时，会自动把选择器复制到媒体查询体内。媒体查询规则里还可以嵌套媒体查询。</p>
+
+<pre><code>.screen-color {
+  @media screen {
+    color: green;
+    @media (min-width: 768px) {
+      color: red;
+    }
+  }
+  @media tv {
+    color: black;
+  }
+}
+</code></pre>
+
+<p>编译结果：</p>
+
+<pre><code>@media screen {
+  .screen-color {
+    color: green;
+  }
+}
+@media screen and (min-width: 768px) {
+  .screen-color {
+    color: red;
+  }
+}
+@media tv {
+  .screen-color {
+    color: black;
+  }
+}
+</code></pre>
+
+<h4 id="3-3-5-运算">3.3.5 运算</h4>
+
+<p>在Less中，数值、颜色、变量可以进行加、减、乘、除的运算。</p>
+
+<pre><code>@color: #224488 / 2; //results in #112244
+background-color: #112244 + #111; // result is #223355
+
+@base: 5%;
+@filler: @base * 2; // result is 10%
+@other: @base + @filler; // result is 15%
+</code></pre>
+
+<h4 id="3-3-6-函数">3.3.6 函数</h4>
+
+<p><code>Less</code>提供了许多用于转换颜色、处理字符串 以及进行算术运算的函数。具体可以参考<a href="http://lesscss.org/functions/">Less Function Reference</a></p>
+
+<p>这些函数使用起来非常简单。</p>
+
+<pre><code>@base: #f04615;
+@width: 0.5;
+
+.class {
+  width: percentage(@width); 
+  color: saturate(@base, 5%);
+  background-color: spin(lighten(@base, 25%), 8);
+}
+</code></pre>
+
+<p>在上述代码中我们使用 函数<code>percentage()</code> 将 0.5 转换为 50%，然后用 函数<code>saturate()</code>将基础颜色值的饱和度增加了 5%，再使用 函数lighten() 将背景颜色的亮度增加了 25%，最后通过函数spin()又将色相值增加 8。编译之后：</p>
+
+<pre><code>.class {
+  width: 50%;
+  color: #f6430f;
+  background-color: #f8b38d;
+}
+</code></pre>
+
+<h3 id="3-5-官网">3.5 官网</h3>
+
+<p>更多内容，可以访问<a href="http://lesscss.org/">http://lesscss.org/</a></p>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/less.html" data-id="c7852a6039e768207d98adb82fb6e401" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://www.wangxingfeng.com/es6-let-const" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          上一篇
+      </strong>
+      <div class="article-nav-title">ES6的块级作用域以及let、const命令</div>
+    </a>
+    
+
+    
+    <a href="http://www.wangxingfeng.com/css-flip.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          下一篇
+      </strong>
+      <div class="article-nav-title">用CSS实现图片翻转的动画效果</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
     
 <div class="widget-wrap">
     <h3 class="widget-title">
@@ -498,7 +899,8 @@
 	<div id="toTop" class="fa fa-angle-up"></div>
 </aside>
 
-    </div>
+	    
+	</div>
 </div>
 
 <footer id="footer">
@@ -533,5 +935,4 @@ MathJax.Hub.Config({
 
 
 </body>
-
 </html>
