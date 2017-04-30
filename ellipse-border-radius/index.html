@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>实现Tab切换的几种方式 &middot; Frank Wang&#39;s Coding World</title>
+    <title>用border-radius绘制椭圆、半椭圆、四分之一椭圆 &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="baidu-site-verification" content="WSqfBuzd3t" />
     <meta name="author" content="Frank Wang">
     
-      <meta name="keywords" content="[Tab切换]">
+      <meta name="keywords" content="[border-radius, 绘制椭圆, 半椭圆, 四分之一椭圆]">
     
     
-      <meta name="description" content="实现Tab切换的几种方式">
+      <meta name="description" content="用border-radius绘制椭圆、半椭圆、四分之一椭圆">
     
     
-    <link rel="canonical" href="http://www.wangxingfeng.com/tab"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/ellipse-border-radius"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -24,15 +24,15 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="实现Tab切换的几种方式" />
-<meta property="og:description" content="实现Tab切换的几种方式" />
+    <meta property="og:title" content="用border-radius绘制椭圆、半椭圆、四分之一椭圆" />
+<meta property="og:description" content="用border-radius绘制椭圆、半椭圆、四分之一椭圆" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.wangxingfeng.com/tab" />
+<meta property="og:url" content="http://www.wangxingfeng.com/ellipse-border-radius" />
 
 
 
-<meta property="article:published_time" content="2016-05-08T23:36:44&#43;08:00"/>
-<meta property="article:modified_time" content="2016-05-08T23:36:44&#43;08:00"/>
+<meta property="article:published_time" content="2017-04-30T11:25:58&#43;08:00"/>
+<meta property="article:modified_time" content="2017-04-30T11:25:58&#43;08:00"/>
 
 
 
@@ -46,12 +46,12 @@
 
     
     
-<meta itemprop="name" content="实现Tab切换的几种方式">
-<meta itemprop="description" content="实现Tab切换的几种方式">
+<meta itemprop="name" content="用border-radius绘制椭圆、半椭圆、四分之一椭圆">
+<meta itemprop="description" content="用border-radius绘制椭圆、半椭圆、四分之一椭圆">
 
 
-<meta itemprop="dateModified" content="2016-05-08T23:36:44&#43;08:00" />
-<meta itemprop="wordCount" content="72">
+<meta itemprop="dateModified" content="2017-04-30T11:25:58&#43;08:00" />
+<meta itemprop="wordCount" content="87">
 
 
 
@@ -63,9 +63,9 @@
 
 
 
-<meta name="twitter:text:title" content="实现Tab切换的几种方式"/>
-<meta name="twitter:title" content="实现Tab切换的几种方式"/>
-<meta name="twitter:description" content="实现Tab切换的几种方式"/>
+<meta name="twitter:text:title" content="用border-radius绘制椭圆、半椭圆、四分之一椭圆"/>
+<meta name="twitter:title" content="用border-radius绘制椭圆、半椭圆、四分之一椭圆"/>
+<meta name="twitter:description" content="用border-radius绘制椭圆、半椭圆、四分之一椭圆"/>
 <meta name="twitter:site" content="@frankwang0909"/>
 
     
@@ -335,9 +335,9 @@
             
 
             <header class="article-header">
-    <a href="http://www.wangxingfeng.com/tab">
+    <a href="http://www.wangxingfeng.com/ellipse-border-radius">
     <h1 class="article-title" itemprop="name">
-        实现Tab切换的几种方式
+        用border-radius绘制椭圆、半椭圆、四分之一椭圆
     </h1>
     </a>
     <div class="article-meta">
@@ -345,7 +345,7 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2016-05-08 23:36:44 &#43;0800 CST" itemprop="datePublished">2016-05-08</time>
+            <time datetime="2017-04-30 11:25:58 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
         </div>
         
         
@@ -369,7 +369,7 @@
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/tab%E5%88%87%E6%8D%A2">tab切换</a>
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
                 
                 
             </div>
@@ -381,86 +381,114 @@
             <div class="article-entry" itemprop="articleBody">
                 
 
-<p>Tab 切换是网页中常见的组件。适当地使用，可以节省页面空间，在同一个大小的页面中展现更多的内容。Tab 切换的效果千差万别，只需要学会基本的思路，便可变换出各种各样的效果。下面我分别使用了原生js和jQuery来实现四种不同的Tab切换效果。</p>
+<h2 id="1-border-radius">1.border-radius</h2>
 
-<h2 id="方式一-用原生js实现各种tab切换效果">方式一：用原生js实现各种Tab切换效果。</h2>
+<p>border-radius可以为元素添加圆角边框，比如 按钮。</p>
 
-<h3 id="1-鼠标滑动切换">1.鼠标滑动切换 :</h3>
+<p><button style="display:block; width:160px; height:60px; margin:10px auto;color:#fff;background: #ff5722; border-radius:8px; border:none;outline:none; ">
+    示例按钮
+</button></p>
 
-<p>这是最简单的Tab切换。鼠标滑过时，切换Tab.</p>
+<h2 id="2-兼容性-ie9-以上都很好地能够兼容border-radius">2.兼容性： IE9+以上都很好地能够兼容border-radius。</h2>
 
-<p>首先，通过getElementById、 getElementsByTagNameL等方法来获取相应的元素。</p>
+<h2 id="3-border-radius绘制圆形">3.border-radius绘制圆形</h2>
 
-<p>然后，对相应的元素绑定mouseover事件即可。</p>
+<p>如果我们给一个正方形的元素设置一个足够大的border-radius值（只要大于等于正方形边长的一半）的话，就可以被这个元素变成圆形。
+但考虑到元素的高宽可能不是固定的，那么，我们可以设置百分比，这个百分比是基于元素的尺寸大小来解析的。当我们给一个正方形的元素设置border-radius：50%时，我们会得到一个自适应的圆形。</p>
 
-<p>具体代码见  <a href="https://github.com/frankwang0909/Tab/blob/master/js-mouseover-tab.html">js-mouseover-tab.html</a></p>
+<pre><code>width:200px;
+height:200px;
+border-radius:50%; /*在这里等价于border-radius:100px; 建议写成百分比*/
+</code></pre>
 
-<p><a href="http://www.wangxingfeng.com/posts/demo/js-mouseover-tab.html">DEMO</a></p>
+<p>如下所示：
+<div style="width:200px; height:200px; border-radius: 50%; background: #03a9f4; margin: 10px auto"></div></p>
 
-<h3 id="2-鼠标点击切换">2.鼠标点击切换</h3>
+<h2 id="4-border-radius绘制自适应椭圆">4.border-radius绘制自适应椭圆</h2>
 
-<p>与第一种的区别在于绑定的事件不同。获取元素的方法是一样的，只需把绑定mouseovers事件改为click事件即可。</p>
+<p>当元素的高宽不相等时，我们来看下会变成什么样子。</p>
 
-<p>具体代码见  <a href="https://github.com/frankwang0909/Tab/blob/master/js-click-tab.html">js-click-tab.html</a></p>
+<pre><code>width:300px; /*宽度变长了*/
+height:200px;
+border-radius:50%; 
+</code></pre>
 
-<p><a href="http://www.wangxingfeng.com/posts/demo/js-click-tab.html">DEMO</a></p>
+<p>如下所示：
+<div style="width:300px; height:200px; border-radius: 50%; background: #cddc39; margin: 10px auto"></div></p>
 
-<h3 id="3-鼠标滑动延迟切换">3.鼠标滑动延迟切换</h3>
+<p>如上图所示，当元素的高宽不相等，border-radius设置为50%，我们将会得到一个自适应的椭圆。</p>
 
-<p>延迟切换涉及到了一个时间问题，可以通过设置定时器来实现延迟的效果。定时器有setTimeout()和setInterval()两种方式来设置。</p>
+<h2 id="5-border-radius绘制半个椭圆">5.border-radius绘制半个椭圆</h2>
 
-<p>setTimeout() 方法用于在指定的毫秒数后调用函数或计算表达式。setTimeout() 只执行 code 一次。如果要多次调用，需要使用 setInterval()。</p>
+<p>如果想要得到半个椭圆，怎么办呢？</p>
 
-<p>setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。</p>
+<div style="width:300px; height:100px; border-radius: 50% / 100% 100% 0 0; background: #795548; margin: 10px auto"></div>
 
-<p>因为这里的延迟切换是在指定的延迟时间之后才实现切换效果，所以使用setTimeout() 。</p>
+<p>我们需要补充以下两个知识点：</p>
 
-<p>具体代码见  <a href="https://github.com/frankwang0909/Tab/blob/master/js-delay-tab.html">js-delay-tab.html</a></p>
+<p>1.border-radius的值是可以单独指定水平方向上的半径和垂直方向上的半径的，中间需要用一个斜杠(/)分隔开两个值。</p>
 
-<p><a href="http://www.wangxingfeng.com/posts/demo/js-delay-tab.html">DEMO</a></p>
+<p>2.border-radius是一个简写属性，我们可以单独为元素的每个角指定不同的值。border-radius展开的话是以下4个属性：</p>
 
-<h3 id="4-自动切换">4.自动切换</h3>
+<pre><code>border-top-left-radius
+border-top-right-radius
+border-bottom-right-radius
+border-bottom-left-radius
+</code></pre>
 
-<p>自动切换，即按指定的周期自动切换到下一个Tab。这里也需要一个定时器，而且是按周期调用函数，因此使用setInterval() 方法来实现。
-当鼠标滑动到某个Tab时，高亮显示当前页，同时停止自动切换，此时需要用到 clearInterval()方法来清除定时器。</p>
+<p>我们不必分开写，可以给border-radius指定4个值，用空格分开。浏览器解析的时候，是按顺时针顺序应用到元素的四个角的（和margin、padding等其他的常见属性的简写类似）。</p>
 
-<p>具体代码见  <a href="https://github.com/frankwang0909/Tab/blob/master/js-auto-tab-01.html">js-auto-tab-01.html</a></p>
+<p>我们来分析一下这个半椭圆形。</p>
 
-<p>优化后的代码见 <a href="https://github.com/frankwang0909/Tab/blob/master/js-auto-tab-02.html">js-auto-tab-02.html</a></p>
+<p>1.它是垂直对称的，说明左上角和右上角的半径值是相同的；左下角和右下角的半径值也应该是相同的。</p>
 
-<p><a href="http://www.wangxingfeng.com/posts/demo/js-auto-tab-02.html">DEMO</a></p>
+<p>2.它的顶部边缘是曲线的，说明左上角和右上角的半径值之和应该是等于这个元素的宽的。</p>
 
-<h2 id="方式二-用jquery实现各种tab切换效果-实现思路与原生的javascript是一样的-只是jquery封装了一些方法可以更方便操作dom元素">方式二：用jQuery实现各种Tab切换效果: 实现思路与原生的JavaScript是一样的,只是jQuery封装了一些方法可以更方便操作DOM元素。</h2>
+<p>3.由前面两点可以推出，左上角和右上角的半径在水平方向上是50%。</p>
 
-<h3 id="1-鼠标滑动切换-1">1.鼠标滑动切换</h3>
+<p>4.再看垂直方向上，顶部的两个圆角占据了整个元素的高度，而底部完全没有任何圆角。因此，可以推断左上角和右上角的半径在垂直方向上是100%，左下角和右下角在垂直方向上是0。</p>
 
-<p>具体代码见  <a href="https://github.com/frankwang0909/Tab/blob/master/jQ-mouseover-tab.html">jQ-mouseover-tab.html</a></p>
+<p>综上所述，<code>border-radius</code>的值应该是<code>50% / 100% 100% 0 0</code>;</p>
 
-<p><a href="http://www.wangxingfeng.com/posts/demo/jQ-mouseover-tab.html">DEMO</a></p>
+<pre><code>width:300px;
+height:100px;
+border-radius: 50% / 100% 100% 0 0;
+</code></pre>
 
-<h3 id="2-鼠标点击切换-1">2.鼠标点击切换</h3>
+<div style="width:300px; height:100px; border-radius: 50% / 100% 100% 0 0; background: #795548; margin: 10px auto"></div>
 
-<p>具体代码见  <a href="https://github.com/frankwang0909/Tab/blob/master/jQ-click-tab.html">jQ-click-tab.html</a></p>
+<p>如果我们把垂直方向上的值改为0 0 100% 100%，则可以得到另一个半椭圆。</p>
 
-<p><a href="http://www.wangxingfeng.com/posts/demo/jQ-click-tab.html">DEMO</a></p>
+<pre><code>width:300px;
+height:100px;
+border-radius: 50% /0 0 100% 100% ;
+</code></pre>
 
-<h3 id="3-鼠标滑动延迟切换-1">3.鼠标滑动延迟切换</h3>
+<div style="width:300px; height:100px; border-radius: 50% / 0 0 100% 100%; background: #4caf50; margin: 10px auto"></div>
 
-<p>具体代码见  <a href="https://github.com/frankwang0909/Tab/blob/master/jQ-delay-tab.html">jQ-delay-tab.html</a></p>
+<p>如果把<code>水平方向</code><code>border-raduis</code>设置为<code>50%</code>; <code>垂直方向</code>上，左上角和左下角设置为<code>100%</code>； 右上角和右下角设为<code>0</code>，则可以得到一个<code>沿Y轴劈开的半椭圆形</code>。</p>
 
-<p><a href="http://www.wangxingfeng.com/posts/demo/jQ-delay-tab.html">DEMO</a></p>
+<pre><code>width:150px;
+height:200px;
+border-radius: 100% 0 0 100% / 50%;
+</code></pre>
 
-<h3 id="4-自动切换-1">4.自动切换</h3>
+<div style="width:150px; height:200px; border-radius: 100% 0 0 100% / 50% ; background: #9c27b0; margin: 10px auto"></div>
 
-<p>具体代码见  <a href="https://github.com/frankwang0909/Tab/blob/master/jQ-auto-tab-01.html">jQ-auto-tab-01.html</a></p>
+<h2 id="6-border-radius绘制椭圆的四分之一">6.border-radius绘制椭圆的四分之一</h2>
 
-<p>优化后的代码 见<a href="https://github.com/frankwang0909/Tab/blob/master/jQ-auto-tab-02.html">jQ-auto-tab-02.html</a></p>
+<p>如果想要得到四分之一个椭圆呢？顺着之前的思路，我们可以设置其中一个角的<code>border-radius</code>值为<code>100%</code>，其他三个角为<code>0</code>.</p>
 
-<p><a href="http://www.wangxingfeng.com/posts/demo/jQ-auto-tab-02.html">DEMO</a></p>
+<pre><code>width:150px;
+height:100px;
+border-radius: 100% 0 0 0;
+</code></pre>
+
+<div style="width:150px; height:100px; border-radius: 100% 0 0 0 ; background: #9e9e9e; margin: 10px auto"></div>
 
             </div>
             <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/tab" data-id="34eb82a7066c1f9b94f3d8ab88c8aae5" class="article-share-link">
+    <a data-url="http://www.wangxingfeng.com/ellipse-border-radius" data-id="2cd0ee427872ae3df30aee37964c0f7c" class="article-share-link">
         <i class="fa fa-share"></i>
         分享
     </a>
@@ -537,21 +565,14 @@
         
 <nav id="article-nav">
     
-    <a href="http://www.wangxingfeng.com/back-to-top" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="http://www.wangxingfeng.com/css-flip" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           上一篇
       </strong>
-      <div class="article-nav-title">实现返回顶部效果的3种方式</div>
+      <div class="article-nav-title">用CSS实现图片翻转的动画效果</div>
     </a>
     
 
-    
-    <a href="http://www.wangxingfeng.com/sublimetext-notes" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          下一篇
-      </strong>
-      <div class="article-nav-title">Sublime Text 学习笔记</div>
-    </a>
     
 </nav>
 

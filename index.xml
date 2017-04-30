@@ -7,8 +7,123 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Sat, 29 Apr 2017 21:24:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 30 Apr 2017 11:25:58 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>用border-radius绘制椭圆、半椭圆、四分之一椭圆</title>
+      <link>http://www.wangxingfeng.com/ellipse-border-radius</link>
+      <pubDate>Sun, 30 Apr 2017 11:25:58 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/ellipse-border-radius</guid>
+      <description>
+
+&lt;h2 id=&#34;1-border-radius&#34;&gt;1.border-radius&lt;/h2&gt;
+
+&lt;p&gt;border-radius可以为元素添加圆角边框，比如 按钮。&lt;/p&gt;
+
+&lt;p&gt;&lt;button style=&#34;display:block; width:160px; height:60px; margin:10px auto;color:#fff;background: #ff5722; border-radius:8px; border:none;outline:none; &#34;&gt;
+    示例按钮
+&lt;/button&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;2-兼容性-ie9-以上都很好地能够兼容border-radius&#34;&gt;2.兼容性： IE9+以上都很好地能够兼容border-radius。&lt;/h2&gt;
+
+&lt;h2 id=&#34;3-border-radius绘制圆形&#34;&gt;3.border-radius绘制圆形&lt;/h2&gt;
+
+&lt;p&gt;如果我们给一个正方形的元素设置一个足够大的border-radius值（只要大于等于正方形边长的一半）的话，就可以被这个元素变成圆形。
+但考虑到元素的高宽可能不是固定的，那么，我们可以设置百分比，这个百分比是基于元素的尺寸大小来解析的。当我们给一个正方形的元素设置border-radius：50%时，我们会得到一个自适应的圆形。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;width:200px;
+height:200px;
+border-radius:50%; /*在这里等价于border-radius:100px; 建议写成百分比*/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如下所示：
+&lt;div style=&#34;width:200px; height:200px; border-radius: 50%; background: #03a9f4; margin: 10px auto&#34;&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;4-border-radius绘制自适应椭圆&#34;&gt;4.border-radius绘制自适应椭圆&lt;/h2&gt;
+
+&lt;p&gt;当元素的高宽不相等时，我们来看下会变成什么样子。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;width:300px; /*宽度变长了*/
+height:200px;
+border-radius:50%; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如下所示：
+&lt;div style=&#34;width:300px; height:200px; border-radius: 50%; background: #cddc39; margin: 10px auto&#34;&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;如上图所示，当元素的高宽不相等，border-radius设置为50%，我们将会得到一个自适应的椭圆。&lt;/p&gt;
+
+&lt;h2 id=&#34;5-border-radius绘制半个椭圆&#34;&gt;5.border-radius绘制半个椭圆&lt;/h2&gt;
+
+&lt;p&gt;如果想要得到半个椭圆，怎么办呢？&lt;/p&gt;
+
+&lt;div style=&#34;width:300px; height:100px; border-radius: 50% / 100% 100% 0 0; background: #795548; margin: 10px auto&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;我们需要补充以下两个知识点：&lt;/p&gt;
+
+&lt;p&gt;1.border-radius的值是可以单独指定水平方向上的半径和垂直方向上的半径的，中间需要用一个斜杠(/)分隔开两个值。&lt;/p&gt;
+
+&lt;p&gt;2.border-radius是一个简写属性，我们可以单独为元素的每个角指定不同的值。border-radius展开的话是以下4个属性：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;border-top-left-radius
+border-top-right-radius
+border-bottom-right-radius
+border-bottom-left-radius
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们不必分开写，可以给border-radius指定4个值，用空格分开。浏览器解析的时候，是按顺时针顺序应用到元素的四个角的（和margin、padding等其他的常见属性的简写类似）。&lt;/p&gt;
+
+&lt;p&gt;我们来分析一下这个半椭圆形。&lt;/p&gt;
+
+&lt;p&gt;1.它是垂直对称的，说明左上角和右上角的半径值是相同的；左下角和右下角的半径值也应该是相同的。&lt;/p&gt;
+
+&lt;p&gt;2.它的顶部边缘是曲线的，说明左上角和右上角的半径值之和应该是等于这个元素的宽的。&lt;/p&gt;
+
+&lt;p&gt;3.由前面两点可以推出，左上角和右上角的半径在水平方向上是50%。&lt;/p&gt;
+
+&lt;p&gt;4.再看垂直方向上，顶部的两个圆角占据了整个元素的高度，而底部完全没有任何圆角。因此，可以推断左上角和右上角的半径在垂直方向上是100%，左下角和右下角在垂直方向上是0。&lt;/p&gt;
+
+&lt;p&gt;综上所述，&lt;code&gt;border-radius&lt;/code&gt;的值应该是&lt;code&gt;50% / 100% 100% 0 0&lt;/code&gt;;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;width:300px;
+height:100px;
+border-radius: 50% / 100% 100% 0 0;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:300px; height:100px; border-radius: 50% / 100% 100% 0 0; background: #795548; margin: 10px auto&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;如果我们把垂直方向上的值改为0 0 100% 100%，则可以得到另一个半椭圆。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;width:300px;
+height:100px;
+border-radius: 50% /0 0 100% 100% ;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:300px; height:100px; border-radius: 50% / 0 0 100% 100%; background: #4caf50; margin: 10px auto&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;如果把&lt;code&gt;水平方向&lt;/code&gt;&lt;code&gt;border-raduis&lt;/code&gt;设置为&lt;code&gt;50%&lt;/code&gt;; &lt;code&gt;垂直方向&lt;/code&gt;上，左上角和左下角设置为&lt;code&gt;100%&lt;/code&gt;； 右上角和右下角设为&lt;code&gt;0&lt;/code&gt;，则可以得到一个&lt;code&gt;沿Y轴劈开的半椭圆形&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;width:150px;
+height:200px;
+border-radius: 100% 0 0 100% / 50%;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:150px; height:200px; border-radius: 100% 0 0 100% / 50% ; background: #9c27b0; margin: 10px auto&#34;&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;6-border-radius绘制椭圆的四分之一&#34;&gt;6.border-radius绘制椭圆的四分之一&lt;/h2&gt;
+
+&lt;p&gt;如果想要得到四分之一个椭圆呢？顺着之前的思路，我们可以设置其中一个角的&lt;code&gt;border-radius&lt;/code&gt;值为&lt;code&gt;100%&lt;/code&gt;，其他三个角为&lt;code&gt;0&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;width:150px;
+height:100px;
+border-radius: 100% 0 0 0;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:150px; height:100px; border-radius: 100% 0 0 0 ; background: #9e9e9e; margin: 10px auto&#34;&gt;&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>用CSS实现图片翻转的动画效果</title>
@@ -1979,69 +2094,6 @@ CDN加载失败时，还可以加载自己本地的jQuery文件。&lt;a href=&#3
 &lt;p&gt;8.减少&lt;code&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt;的使用。iframes 阻塞页面加载, 延迟触发window.onload事件，给用户的感觉就是这个网页非常慢。&lt;/p&gt;
 
 &lt;p&gt;9.重要内容HTML代码放在最前面，然后通过CSS属性控制位置。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title> CSS3 动画效果</title>
-      <link>http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C</link>
-      <pubDate>Mon, 11 Jul 2016 21:03:27 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C</guid>
-      <description>
-
-&lt;h2 id=&#34;作用&#34;&gt;作用&lt;/h2&gt;
-
-&lt;p&gt;用来定义样式变化的过渡效果, 在某些情况下（移动端），可以代替JavaScript代码来实现动画效果。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;transition&lt;/code&gt;属性是一个简写属性，用于设置四个过渡属性：&lt;/p&gt;
-
-&lt;h3 id=&#34;1-transition-property&#34;&gt;1. transition-property&lt;/h3&gt;
-
-&lt;p&gt;规定设置过渡效果的 CSS 属性的名称, 默认值为&lt;code&gt;all&lt;/code&gt;, 表示所有属性，也可以单独设置某个css属性。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-transition-duration&#34;&gt;2. transition-duration&lt;/h3&gt;
-
-&lt;p&gt;过渡时间，值以秒或毫秒计。&lt;/p&gt;
-
-&lt;h3 id=&#34;3-transition-timing-function&#34;&gt;3. transition-timing-function&lt;/h3&gt;
-
-&lt;p&gt;过渡效果的速度曲线。该属性允许过渡效果随着时间来改变其速度。&lt;/p&gt;
-
-&lt;p&gt;默认值为&lt;code&gt;linear&lt;/code&gt;。常见的有以下值：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;linear  匀速
-ease    慢速开始，然后变快，然后慢速结束。
-ease-in 以慢速开始
-ease-out    以慢速结束
-ease-in-out 以慢速开始和结束的过渡效果
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;4-transition-delay&#34;&gt;4. transition-delay&lt;/h3&gt;
-
-&lt;p&gt;过渡效果的延迟，值以秒或毫秒计。默认为0。如果为正值，则表示延迟执行过渡效果；如果为负值（如-0.1s)，则会从过渡效果的执行0.1s的状态为初始状态开始执行过渡效果。&lt;/p&gt;
-
-&lt;h2 id=&#34;兼容性&#34;&gt;兼容性&lt;/h2&gt;
-
-&lt;p&gt;Internet Explorer 10、Firefox、Opera 和 Chrome等现代浏览器 支持 transition 属性。
-Safari 支持替代的 -webkit-transition 属性。&lt;/p&gt;
-
-&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
-
-&lt;style&gt;
- .trans {
-    display:block;
-    width:100px;
-    height:30px;
-    background:#0ff;
-    transition:width 2s ease;
- }
- .trans:hover{
-    width:500px;
- }
-&lt;/style&gt;
-
-&lt;p&gt;&lt;a class=&#34;trans&#34;&gt;过渡效果&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

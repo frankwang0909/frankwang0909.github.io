@@ -8,7 +8,10 @@
     <meta name="baidu-site-verification" content="WSqfBuzd3t" />
     <meta name="author" content="Frank Wang">
     
-      <meta name="description" content="人人都能说英语，Hugo快速建站，前端学习笔记， 英语学习">
+      <meta name="keywords" content="人人都能说英语，Hugo快速建站，前端学习笔记， CSS，Node, HTML, JavaScript, ES6">
+    
+    
+      <meta name="description" content="Frank Wang’s Personal Blog, 前端工程师成长记录">
     
     
       <link href="http://www.wangxingfeng.com/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
@@ -31,7 +34,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-04-29T21:24:00&#43;08:00"/>
+<meta property="og:updated_time" content="2017-04-30T11:25:58&#43;08:00"/>
 
 
 
@@ -213,7 +216,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        21
+        22
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -307,6 +310,158 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/ellipse-border-radius">
+    <h1 class="article-title" itemprop="name">
+        用border-radius绘制椭圆、半椭圆、四分之一椭圆
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-30 11:25:58 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    1.border-radius border-radius可以为元素添加圆角边框，比如 按钮。
+示例按钮
+2.兼容性： IE9+以上都很好地能够兼容border-radius。 3.border-radius绘制圆形 如果我们给一个正方形的元素设置一个足够大的border-radius值（只要大于等于正方形边长的一半）的话，就可以被这个元素变成圆形。 但考虑到元素的高宽可能不是固定的，那么，我们可以设置百分比，这个百分比是基于元素的尺寸大小来解析的。当我们给一个正方形的元素设置border-radius：50%时，我们会得到一个自适应的圆形。
+width:200px; height:200px; border-radius:50%; /<em>在这里等价于border-radius:100px; 建议写成百分比</em>/  如下所示：
+4.border-radius绘制自适应椭圆 当元素的高宽不相等时，我们来看下会变成什么样子。
+width:300px; /<em>宽度变长了</em>/ height:200px; border-radius:50%;  如下所示：
+如上图所示，当元素的高宽不相等，border-radius设置为50%，我们将会得到一个自适应的椭圆。
+5.border-radius绘制半个椭圆 如果想要得到半个椭圆，怎么办呢？
+ 我们需要补充以下两个知识点：
+1.border-radius的值是可以单独指定水平方向上的半径和垂直方向上的半径的，中间需要用一个斜杠(/)分隔开两个值。
+2.border-radius是一个简写属性，我们可以单独为元素的每个角指定不同的值。border-radius展开的话是以下4个属性：
+border-top-left-radius border-top-right-radius border-bottom-right-radius border-bottom-left-radius  我们不必分开写，可以给border-radius指定4个值，用空格分开。浏览器解析的时候，是按顺时针顺序应用到元素的四个角的（和margin、padding等其他的常见属性的简写类似）。
+我们来分析一下这个半椭圆形。
+1.它是垂直对称的，说明左上角和右上角的半径值是相同的；左下角和右下角的半径值也应该是相同的。
+2.它的顶部边缘是曲线的，说明左上角和右上角的半径值之和应该是等于这个元素的宽的。
+3.由前面两点可以推出，左上角和右上角的半径在水平方向上是50%。
+4.再看垂直方向上，顶部的两个圆角占据了整个元素的高度，而底部完全没有任何圆角。因此，可以推断左上角和右上角的半径在垂直方向上是100%，左下角和右下角在垂直方向上是0。
+综上所述，border-radius的值应该是50% / 100% 100% 0 0;
+width:300px; height:100px; border-radius: 50% / 100% 100% 0 0;   如果我们把垂直方向上的值改为0 0 100% 100%，则可以得到另一个半椭圆。
+width:300px; height:100px; border-radius: 50% /0 0 100% 100% ;   如果把水平方向border-raduis设置为50%; 垂直方向上，左上角和左下角设置为100%； 右上角和右下角设为0，则可以得到一个沿Y轴劈开的半椭圆形。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/ellipse-border-radius">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/ellipse-border-radius" data-id="2cd0ee427872ae3df30aee37964c0f7c" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1158,6 +1313,429 @@ var clipboard = new Clipboard(&lsquo;.btn&rsquo;, { text: function() { return &l
         </div>
     </article>
     
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/useragent">
+    <h1 class="article-title" itemprop="name">
+        通过userAgent识别移动设备，自动跳转移动端站点
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-04 21:02:50 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/useragent">userAgent</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    不少互联网公司的网站都分为PC端和手机端。如果用户用手机访问PC站点，受限于手机网络，很可能会出现加载网页缓慢的情况。 因此，如何识别用户访问网站的设备，并且自动跳转到对应的站点呢？
+navigator.userAgent navigator是JavaScript中的一个独立的对象，用于提供用户所使用的浏览器以及操作系统等信息，以navigator对象属性的形式来提供。所有浏览器都支持该对象。
+navigator对象有一个userAgent属性，会返回用户的设备操作系统和浏览器的信息。
+1.用谷歌浏览器，随便打开一个网页，F12打开Chrome调试工具，输入navigator.userAgent, 会返回如下的字符串：
+&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36&quot;  这个字符串可以分成四个主要的部分，我来解释一下各个部分的含义：
+1）Mozilla/5.0 ：表示兼容Mozilla, 几乎所有的浏览器都有这个字符; 2) (Windows NT 6.1; Win64; x64): 表示设备的操作系统版本，以及CPU信息； 3）AppleWebKit/537.36 (KHTML, like Gecko)：表示浏览器的内核； 4) Chrome/57.0.2987.98 Safari/537.36: 表示浏览器的版本号。  2.用火狐浏览器，随便打开一个网页，F12打开调试工具，同样地在控制台输入navigator.userAgent, 返回如下的字符串：
+&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:52.0) Gecko/20100101 Firefox/52.0&quot;  与之前的结果区别：
+1)浏览器内核是Gecko内核， 2)浏览器版本是火狐的Firefox/52.0。从这里我们可以看出火狐浏览器是基于Gecko内核。  3.用谷歌浏览器模拟手机访问，选择iPhone6s，同样在调试工具控制台输入navigator.userAgent, 会返回如下的字符串：
+&quot;Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/useragent">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/useragent" data-id="f417a75413daacaf92a7cb348ea74f46" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/anywhere-npm">
+    <h1 class="article-title" itemprop="name">
+        快速启动Node服务器，调试本地静态文件代码
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-04 17:41:35 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">node</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    如何在移动设备上测试静态文件？ 现在移动端优先的情况下，前端工程师写好静态页面后，通常是需要测试不同的设备上效果，看看有没有兼容性的问题。谷歌浏览器有一个模拟手机的调试功能，一般，我们先用谷歌调试好。但毕竟是模拟的，为了保险起见，还是需要用真机测试的。
+可是静态的html文件怎么放到手机上调试呢？难不成把文件拷一份，放到不同的手机上？显然不是。
+NodeJS的一个npm模块anywhere 就可以快速地把你的当前目录变成一个静态文件服务器的根目录。
+anywhere的安装及使用 首先，安装Node。具体操作请看Node的官网。傻瓜式地安装。
+其次，安装anywhere。在命令行输入
+npm install anywhere -g  npm install + 模块名 从NPM服务器下载别人编写的第三方包的固定写法。
+-g 表示全局安装，在电脑的任何部门都可以使用anywhere模块。
+启动服务：
+在命令行切换到项目的根目录，然后输入anywhere即可。服务启动后，会自动打开你的默认浏览器，<a href="http://192.168.31.192:8000/。">http://192.168.31.192:8000/。</a>
+此时，如果你想在手机上测试index.html页面，你只需要在手机上访问 <a href="http://192.168.31.192:8000/index.html">http://192.168.31.192:8000/index.html</a> 即可看到效果。
+当然，这里有一个前提，就是你的手机和电脑是在同一个局域网内的。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/anywhere-npm">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/anywhere-npm" data-id="644c9e5feaac5c5854c84f03f0e0056f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/everybody-can-speak-english">
+    <h1 class="article-title" itemprop="name">
+        人人都能说英语
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-04 15:31:56 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/english">english</a>
+                
+                
+            </div>
+            
+        
+
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    1.为什么要学习英语？ 1.1真的有必要学习英语吗？ 对于学生而言，英语是一门必修课，不得不学。对于上班族而言，有人因为工作需要而学习英语，比如外企员工、涉外导游、外贸从业者；有人出于兴趣爱好而学习英语，比如想看原版的英美电影、听英文歌，甚至看英文小说。
+然而，绝大多数的人，学习了十多年的英语，却从未真正掌握这门语言，原因何在？我觉得，学习目的不明确，导致没有内在的学习动力是一个很重要的原因。
+试着问问自己，为什么要学习英语？真的有必要花费时间在学习英语这件事情上吗？也许，你真的不用白费力气学英语。
+1.2谈谈英语给我带来的好处 1）休闲：去国外旅游，不需要导游，全程自助；
+2）娱乐：看最新的英剧、美剧或者英文电影，不用等待字幕组翻译字幕，不怕被剧透；
+3）工作：查阅技术文档，直接看官网，不用看他人蹩脚的翻译；
+4）学习：在Coursera、Khan Academy、FutureLearn 上学习自己感兴趣的课程。
+2.如何才能学好英语？ 2.1刻意地练习 我们是如何学习并掌握一项技能的呢？需要我们有多高的智商，或者需要有强大的毅力吗？
+如果你会开车，那么你可以试着回顾一下自己学习并掌握驾驶汽车这项技能的过程。你需要的仅仅是在教练的指导下，刻意地练习一段时间。
+英语，就像开车一样，是几乎人人都可以孰能生巧的技能，仅仅需要你刻意地练习一段时间。不需要纠结于词汇量，也不需要背诵各种语法规则以及各种规则的例外情况。
+2.2 词汇 曾经有不少学生跟我说，老师，我每天拿个单词书背单词，可是第二天就全忘了，怎么办？
+如果是备考托福、SAT的学生跟我这么说，我会问他，你是正常人吗？ 第一遍就记得住的都不是正常人！单词就得反反复复背几遍，同时TOP或者SAT真题练习别偷懒。等你在做题中遇到这些词汇，你就认识他们了。
+如果是实用口语班的学生，我通常会粗暴地说：背个毛线的单词书！好好练习常用的句型就够了，有空多看看美剧。
+2.3 语法 语法重要吗？废话，当然重要，但是没有你想象得那么重要。最基本的语法，尤其是句法还是要懂一点。
+什么主谓宾、定状补同，还有就是三大从句还是要会的，不然你看到复杂的句子，就一脸懵逼了。只看单词都认识，放一起就不知所云的，多半是没搞明白三大从句，不知道怎么断句的。
+如果不是英语专业，想要专研语法的，就别整什么薄冰、张道真的语法书。推荐两本比较好的语法书：旋元佑的《文法俱乐部》、张满胜《英语语法新思维》。
+2.4 一直在学习，从来没实践 既然人人都可以习得英语这项技能，为什么有那么多人花费大量时间、金钱仍然无法熟练使用英语？因为一直在学习，从来没有实际使用过英语！
+在国内，没有老外朋友，工作上也用不上英语，怎么用起来呢？
+看看美剧、听听英文歌、阅读英文小说、看BBC的纪录片、 听VOA的新闻、看TED上的视频、交个外国朋友或网友。只要你想，你总能找到使用英语的场景。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/everybody-can-speak-english">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/everybody-can-speak-english" data-id="755c6892dccbdbda7d470273638956d2" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
 
     <nav id="page-nav">
 
@@ -1181,6 +1759,32 @@ var clipboard = new Clipboard(&lsquo;.btn&rsquo;, { text: function() { return &l
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/ellipse-border-radius" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/ellipse-border-radius" class="title">用border-radius绘制椭圆、半椭圆、四分之一椭圆</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-30 11:25:58 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1282,32 +1886,6 @@ var clipboard = new Clipboard(&lsquo;.btn&rsquo;, { text: function() { return &l
                     <p class="item-title"><a href="http://www.wangxingfeng.com/js-array" class="title">JavaScript数组的常用方法总结</a></p>
                     <p class="item-date">
                         <time datetime="2017-04-06 22:31:32 &#43;0800 CST" itemprop="datePublished">2017-04-06</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/throw-away-vocabulary-books" class="thumbnail">
-                    
-                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170406dictionary.jpg)" alt="Frank Wang&#39;s Coding World" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/english">
-                        english
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/throw-away-vocabulary-books" class="title">童鞋，放开那本词汇书</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-06 20:33:42 &#43;0800 CST" itemprop="datePublished">2017-04-06</time>
                     </p>
                 </div>
             </li>

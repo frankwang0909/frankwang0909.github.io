@@ -8,7 +8,10 @@
     <meta name="baidu-site-verification" content="WSqfBuzd3t" />
     <meta name="author" content="Frank Wang">
     
-      <meta name="description" content="人人都能说英语，Hugo快速建站，前端学习笔记， 英语学习">
+      <meta name="keywords" content="人人都能说英语，Hugo快速建站，前端学习笔记， CSS，Node, HTML, JavaScript, ES6">
+    
+    
+      <meta name="description" content="Frank Wang’s Personal Blog, 前端工程师成长记录">
     
     
       <link href="http://www.wangxingfeng.com/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
@@ -31,7 +34,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-04-04T21:02:50&#43;08:00"/>
+<meta property="og:updated_time" content="2017-04-03T20:49:23&#43;08:00"/>
 
 
 
@@ -213,7 +216,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        21
+        22
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -307,441 +310,6 @@
 
     <section id="main">
     
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/useragent">
-    <h1 class="article-title" itemprop="name">
-        通过userAgent识别移动设备，自动跳转移动端站点
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-04 21:02:50 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/useragent">userAgent</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    不少互联网公司的网站都分为PC端和手机端。如果用户用手机访问PC站点，受限于手机网络，很可能会出现加载网页缓慢的情况。 因此，如何识别用户访问网站的设备，并且自动跳转到对应的站点呢？
-navigator.userAgent navigator是JavaScript中的一个独立的对象，用于提供用户所使用的浏览器以及操作系统等信息，以navigator对象属性的形式来提供。所有浏览器都支持该对象。
-navigator对象有一个userAgent属性，会返回用户的设备操作系统和浏览器的信息。
-1.用谷歌浏览器，随便打开一个网页，F12打开Chrome调试工具，输入navigator.userAgent, 会返回如下的字符串：
-&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36&quot;  这个字符串可以分成四个主要的部分，我来解释一下各个部分的含义：
-1）Mozilla/5.0 ：表示兼容Mozilla, 几乎所有的浏览器都有这个字符; 2) (Windows NT 6.1; Win64; x64): 表示设备的操作系统版本，以及CPU信息； 3）AppleWebKit/537.36 (KHTML, like Gecko)：表示浏览器的内核； 4) Chrome/57.0.2987.98 Safari/537.36: 表示浏览器的版本号。  2.用火狐浏览器，随便打开一个网页，F12打开调试工具，同样地在控制台输入navigator.userAgent, 返回如下的字符串：
-&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:52.0) Gecko/20100101 Firefox/52.0&quot;  与之前的结果区别：
-1)浏览器内核是Gecko内核， 2)浏览器版本是火狐的Firefox/52.0。从这里我们可以看出火狐浏览器是基于Gecko内核。  3.用谷歌浏览器模拟手机访问，选择iPhone6s，同样在调试工具控制台输入navigator.userAgent, 会返回如下的字符串：
-&quot;Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/useragent">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/useragent" data-id="f417a75413daacaf92a7cb348ea74f46" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/anywhere-npm">
-    <h1 class="article-title" itemprop="name">
-        快速启动Node服务器，调试本地静态文件代码
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-04 17:41:35 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">node</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    如何在移动设备上测试静态文件？ 现在移动端优先的情况下，前端工程师写好静态页面后，通常是需要测试不同的设备上效果，看看有没有兼容性的问题。谷歌浏览器有一个模拟手机的调试功能，一般，我们先用谷歌调试好。但毕竟是模拟的，为了保险起见，还是需要用真机测试的。
-可是静态的html文件怎么放到手机上调试呢？难不成把文件拷一份，放到不同的手机上？显然不是。
-NodeJS的一个npm模块anywhere 就可以快速地把你的当前目录变成一个静态文件服务器的根目录。
-anywhere的安装及使用 首先，安装Node。具体操作请看Node的官网。傻瓜式地安装。
-其次，安装anywhere。在命令行输入
-npm install anywhere -g  npm install + 模块名 从NPM服务器下载别人编写的第三方包的固定写法。
--g 表示全局安装，在电脑的任何部门都可以使用anywhere模块。
-启动服务：
-在命令行切换到项目的根目录，然后输入anywhere即可。服务启动后，会自动打开你的默认浏览器，<a href="http://192.168.31.192:8000/。">http://192.168.31.192:8000/。</a>
-此时，如果你想在手机上测试index.html页面，你只需要在手机上访问 <a href="http://192.168.31.192:8000/index.html">http://192.168.31.192:8000/index.html</a> 即可看到效果。
-当然，这里有一个前提，就是你的手机和电脑是在同一个局域网内的。
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/anywhere-npm">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/anywhere-npm" data-id="644c9e5feaac5c5854c84f03f0e0056f" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/everybody-can-speak-english">
-    <h1 class="article-title" itemprop="name">
-        人人都能说英语
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-04 15:31:56 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/english">english</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E8%8B%B1%E8%AF%AD">英语</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    1.为什么要学习英语？ 1.1真的有必要学习英语吗？ 对于学生而言，英语是一门必修课，不得不学。对于上班族而言，有人因为工作需要而学习英语，比如外企员工、涉外导游、外贸从业者；有人出于兴趣爱好而学习英语，比如想看原版的英美电影、听英文歌，甚至看英文小说。
-然而，绝大多数的人，学习了十多年的英语，却从未真正掌握这门语言，原因何在？我觉得，学习目的不明确，导致没有内在的学习动力是一个很重要的原因。
-试着问问自己，为什么要学习英语？真的有必要花费时间在学习英语这件事情上吗？也许，你真的不用白费力气学英语。
-1.2谈谈英语给我带来的好处 1）休闲：去国外旅游，不需要导游，全程自助；
-2）娱乐：看最新的英剧、美剧或者英文电影，不用等待字幕组翻译字幕，不怕被剧透；
-3）工作：查阅技术文档，直接看官网，不用看他人蹩脚的翻译；
-4）学习：在Coursera、Khan Academy、FutureLearn 上学习自己感兴趣的课程。
-2.如何才能学好英语？ 2.1刻意地练习 我们是如何学习并掌握一项技能的呢？需要我们有多高的智商，或者需要有强大的毅力吗？
-如果你会开车，那么你可以试着回顾一下自己学习并掌握驾驶汽车这项技能的过程。你需要的仅仅是在教练的指导下，刻意地练习一段时间。
-英语，就像开车一样，是几乎人人都可以孰能生巧的技能，仅仅需要你刻意地练习一段时间。不需要纠结于词汇量，也不需要背诵各种语法规则以及各种规则的例外情况。
-2.2 词汇 曾经有不少学生跟我说，老师，我每天拿个单词书背单词，可是第二天就全忘了，怎么办？
-如果是备考托福、SAT的学生跟我这么说，我会问他，你是正常人吗？ 第一遍就记得住的都不是正常人！单词就得反反复复背几遍，同时TOP或者SAT真题练习别偷懒。等你在做题中遇到这些词汇，你就认识他们了。
-如果是实用口语班的学生，我通常会粗暴地说：背个毛线的单词书！好好练习常用的句型就够了，有空多看看美剧。
-2.3 语法 语法重要吗？废话，当然重要，但是没有你想象得那么重要。最基本的语法，尤其是句法还是要懂一点。
-什么主谓宾、定状补同，还有就是三大从句还是要会的，不然你看到复杂的句子，就一脸懵逼了。只看单词都认识，放一起就不知所云的，多半是没搞明白三大从句，不知道怎么断句的。
-如果不是英语专业，想要专研语法的，就别整什么薄冰、张道真的语法书。推荐两本比较好的语法书：旋元佑的《文法俱乐部》、张满胜《英语语法新思维》。
-2.4 一直在学习，从来没实践 既然人人都可以习得英语这项技能，为什么有那么多人花费大量时间、金钱仍然无法熟练使用英语？因为一直在学习，从来没有实际使用过英语！
-在国内，没有老外朋友，工作上也用不上英语，怎么用起来呢？
-看看美剧、听听英文歌、阅读英文小说、看BBC的纪录片、 听VOA的新闻、看TED上的视频、交个外国朋友或网友。只要你想，你总能找到使用英语的场景。
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/everybody-can-speak-english">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/everybody-can-speak-english" data-id="42700cd0f2d720bc87a50494ba0eb29e" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1164,6 +732,1083 @@ var reg = new RegExp(\d); var reg = new RegExp(&rsquo;[a-zA-Z0-9]&lsquo;, &lsquo
         </div>
     </article>
     
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/cdn">
+    <h1 class="article-title" itemprop="name">
+        推荐几个常用的CDN公共库
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-08-20 21:07:46 &#43;0800 CST" itemprop="datePublished">2016-08-20</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/cdn">CDN</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    CDN CDN的全称是Content Delivery Network，即内容分发网络。是指一种通过互联网互相连接的电脑网络系统，利用最靠近每位用户的服务器，更快、更可靠地将音乐、图片、视频、应用程序及其他文件发送给用户，来提供高性能、可扩展性及低成本的网络内容传递给用户。
+CDN公共库 CDN公共库指将常用的js库存放在CDN节点，以方便广大开发者直接调用。与存放在服务器单机上相比，CDN公共库更加稳定、高速。一般的CDN公共库都会包含全球所有最流行的开源JavaScript库，可以直接引用。
+优点： 1.提高访问速度：
+假设你网站的jQuery引用了新浪的CDN，那么当用户的浏览器提交请求时，浏览器自动下载网络上最近的可用的文件，下载速度会更快。
+2.更好的缓存:
+许多网站都使用了国内或者是国外的几个知名的CDN公共库。很可能用户浏览器的缓存区里早就已经下载了许多版本的jQuery，访问你的网站时，不需要重复下载jQuery。如果你用自己的服务器提供jQuery，那么你的用户至少要下载一次它。
+推荐几个常用前端公共库CDN 国外的 1.jQuery: <a href="https://code.jquery.com/">https://code.jquery.com/</a>
+2.Google: <a href="https://developers.google.com/speed/libraries/">https://developers.google.com/speed/libraries/</a>
+3.CDNJS: <a href="https://cdnjs.com/libraries">https://cdnjs.com/libraries</a>
+国内的 1.cdnjs: <a href="http://cdnjs.net/">http://cdnjs.net/</a>
+2.百度：<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs">http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs</a>
+3.360：<a href="http://libs.useso.com/">http://libs.useso.com/</a>
+4.又拍云：<a href="http://upcdn.b0.upaiyun.com/">http://upcdn.b0.upaiyun.com/</a>
+5.新浪：<a href="http://lib.sinaapp.com/">http://lib.sinaapp.com/</a>
+国内外常用的jQueryCDN： 1.jQuery官网： <a href="http://code.jquery.com/jquery-2.0.0.min.js">http://code.jquery.com/jquery-2.0.0.min.js</a>
+2.CDNJS： <a href="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js">http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js</a>
+3.Google Hosted Libraries： <a href="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js</a>
+4.jsDeliver： <a href="http://cdn.jsdelivr.net/jquery/2.0.0/jquery-2.0.0.min.js">http://cdn.jsdelivr.net/jquery/2.0.0/jquery-2.0.0.min.js</a>
+5.七牛: <a href="http://cdn.staticfile.org/jquery/2.0.0/jquery.min.js">http://cdn.staticfile.org/jquery/2.0.0/jquery.min.js</a>
+6.百度: <a href="http://libs.baidu.com/jquery/2.0.0/jquery.min.js">http://libs.baidu.com/jquery/2.0.0/jquery.min.js</a>
+7.新浪: <a href="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js">http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js</a>
+8.又拍云: <a href="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.0.min.js">http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.0.min.js</a>
+9.360: <a href="http://libs.useso.com/js/jquery/2.0.0/jquery.min.js">http://libs.useso.com/js/jquery/2.0.0/jquery.min.js</a>
+当然，毕竟第三方的服务也不一定完全靠谱，如果引用的是国外的站点的话，哪天被墙了也有可能。所以，我们可以加入以下代码，当 CDN加载失败时，还可以加载自己本地的jQuery文件。以下代码来源链接
+&lt;script&gt; window.jQuery || document.write(&rsquo;&lt;script src=&quot;js/libs/jquery-2.1.0.min.js&quot;&gt;&lt;/script&gt;&rsquo;); &lt;/script&gt;
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/cdn">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/cdn" data-id="39e25ee71ba484018b68260be7d978b4" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/seo">
+    <h1 class="article-title" itemprop="name">
+        前端工程师应该具备的SEO基础知识
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-08-01 21:49:40 &#43;0800 CST" itemprop="datePublished">2016-08-01</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/seo">seo</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    SEO 是什么？ SEO 是“Search Engine Optimization”（搜索引擎优化）或“Search Engine Optimizer”（搜索引擎优化服务商）的首字母缩略词。通俗地说，SEO就是通过对网站内部调整优化及站外优化，使网站满足搜索引擎收录排名需求，在搜索引擎中提高关键词排名，从而把精准用户带到网站，获得免费流量，产生直接销售或品牌推广。
+新手入门可以阅读Google 搜索引擎优化 (SEO) 单页指南.pdf.
+如果想要进一步学习，可以参考Google搜索引擎优化入门指南 （需翻墙），如果翻不了，可以点击这里。
+前端工程师应该掌握的SEO知识 目前不少公司设有SEO的专职岗位，而前端工程师不是专业做SEO优化推广的，并不需要变成SEO专家，但应掌握以下SEO基础知识。
+一、结构布局的优化 1.结构扁平化。
+网站的层次结构尽量不超过三层。这样搜索引擎或者用户点击跳转3次可以到达网站内任何一个内页。
+2.优化导航。
+设置页面的主导航、副导航、分类导航、面包屑导航、分页页码等，方便用户跳转到想访问的页面。
+二、标签的语义化 搜索引擎的爬虫会依赖于标记来确定上下文和各个关键字的权重.因此，正确使用语义化的标签有利于搜索引擎抓取和收录网页内容。
+1.锚链接 &lt;a&gt; 标签：
+1）添加属性 title=&ldquo;链接的文字说明&rdquo;，增加对该链接的说明，尤其是指向本站的链接。
+2）添加属性 rel=&ldquo;no follow&rdquo;。 对于指向非本站的链接，增加这个属性是告诉爬虫该页面无需追踪。
+2.正文标题用&lt;h1&gt;,副标题用&lt;h2&gt;, 不要滥用标题。
+3.正文内容用&lt;p&gt;，正文内的换行用&lt;br&gt;， 其他地方不要滥用&lt;br&gt;来换行，而是通过CSS样式来设置。
+4.图片&lt;img&gt;添加属性 alt=&ldquo;图片的文字注释&rdquo;.
+5.表格用&lt;table&gt; ，表格的标题使用 &lt;caption&gt;
+6.有序列表用&lt;ol&gt;， 无序列表用&lt;ul&gt;， 定义列表用&lt; dl&gt;、
+7.强调标签： &lt;strong&gt; 表示强调， 可以用于突出关键词，有较大的权重。&lt;em&gt;也表示强调，权重比strong稍低。&lt;b&gt;标签虽然也有加粗效果，但没有强调的作用，因此不会增加标签内的文本权重。
+8.减少&lt;iframe&gt;的使用。iframes 阻塞页面加载, 延迟触发window.onload事件，给用户的感觉就是这个网页非常慢。
+9.重要内容HTML代码放在最前面，然后通过CSS属性控制位置。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/seo">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/seo" data-id="2381cc41a4a92b881d235ffb414093dc" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">
+    <h1 class="article-title" itemprop="name">
+         CSS3 动画效果
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-07-11 21:03:27 &#43;0800 CST" itemprop="datePublished">2016-07-11</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css3">CSS3</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    作用 用来定义样式变化的过渡效果, 在某些情况下（移动端），可以代替JavaScript代码来实现动画效果。
+transition属性是一个简写属性，用于设置四个过渡属性：
+1. transition-property 规定设置过渡效果的 CSS 属性的名称, 默认值为all, 表示所有属性，也可以单独设置某个css属性。
+2. transition-duration 过渡时间，值以秒或毫秒计。
+3. transition-timing-function 过渡效果的速度曲线。该属性允许过渡效果随着时间来改变其速度。
+默认值为linear。常见的有以下值：
+linear 匀速 ease 慢速开始，然后变快，然后慢速结束。 ease-in 以慢速开始 ease-out 以慢速结束 ease-in-out 以慢速开始和结束的过渡效果  4. transition-delay 过渡效果的延迟，值以秒或毫秒计。默认为0。如果为正值，则表示延迟执行过渡效果；如果为负值（如-0.1s)，则会从过渡效果的执行0.1s的状态为初始状态开始执行过渡效果。
+兼容性 Internet Explorer 10、Firefox、Opera 和 Chrome等现代浏览器 支持 transition 属性。 Safari 支持替代的 -webkit-transition 属性。
+示例  .trans { display:block; width:100px; height:30px; background:#0ff; transition:width 2s ease; } .trans:hover{ width:500px; }  过渡效果
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C" data-id="9508aef33ce686af8138fc2075656a6f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/markdonw-notes">
+    <h1 class="article-title" itemprop="name">
+        Markdown 学习笔记
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-06-05 22:05:46 &#43;0800 CST" itemprop="datePublished">2016-06-05</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/markdown">Markdown</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    定义： 维基百科上的介绍：
+Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。
+Markdown同时还是一个由Gruber编写的Perl脚本：Markdown.pl。它把用markdown语法编写的内容转换成有效的、结构良好的XHTML或HTML内容，并将左尖括号(&rsquo;&lt;&lsquo;)和&amp;号替换成它们各自的字符实体引用。它可以用作单独的脚本，Blosxom和Movable Type的插件又或者BBEdit的文本过滤器.
+用处： 从维基百科的介绍来看，markdown就是一种标记语言。它简洁的语法代替排版，可以使我们专心于码字，用「标记」语法来代替常见的排版格式。比如我现在这个博客的内容，就是直接用Markdown写的。 不用考虑复杂的排版，只需要记住几个简单常用的语法就行，然后可以轻松地转换成HTML文件，变成可以被浏览器解析的网页。 如果你有一个自己独立的博客，只是想码码字，不想编写复杂HTML和CSS代码，Markdown无疑是一个很好地选择。
+最基本的语法： 1.标题：
+如果一段文字被定义为标题，只要在这段文字前加 #号即可。1个#表示 一级标题；##表示 二级标题；以此类推，总共6级标题， #号后加一个空格。
+2.引用代码：
+1）引用整段代码，只需要空是个空格或者一个Tab键，完整地保留代码缩进格式。 2）在一行内引入代码片段。用Tab键上方的反引号() 包围代码。  3.链接：
+用方括号[]括起来要添加超链接的文字，用圆括号()把url括起来。写法如下：
+<code>[Markdown维基百科英文版](https://en.wikipedia.org/wiki/Markdown)</code>  效果如右边所示：Markdown维基百科英文版
+4.图片:
+插入链接与插入图片的语法很像，区别在一个 !号。图片为：<img src="url" alt="文字描述" />。
+5.分割线:
+用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。可以在星号或是减号中间插入空格
+6.列表：
+1)无序列表无序列表使用<code>星号</code>、<code>加号</code>或是<code>减号</code>作为列表标记； 2)有序列表则直接在文字前加<code>1.</code> <code>2.</code> <code>3.</code> 符号要和文字之间加上一个字符的空格。  7.粗体与斜体:
+用两个 * 包含一段文本就是粗体的语法，用一个 *包含一段文本就是斜体的语法。
+这是粗体文字
+这是斜体文体
+8.空格与换行：
+单个回车 视为空格；连续回车才能分段。
+9.区块引用 Blockquotes
+Markdown 标记区块引用是使用类似 email 中用 &gt;的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; ：
+相关链接：  快速入门指南
+ Markdown官网
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/markdonw-notes">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/markdonw-notes" data-id="a01e097e3f7ce233ece67ab08ceca76c" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/sublimetext-notes">
+    <h1 class="article-title" itemprop="name">
+        Sublime Text 学习笔记
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-05-13 00:14:00 &#43;0800 CST" itemprop="datePublished">2016-05-13</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/sublime-text">Sublime Text</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    自从把主力代码编辑器改为Sublime Text之后，写代码的效率明显高了许多。最近，我开始尝试着给身边的朋友推荐这款编辑器。
+一、Sublime Text 的优点 1.跨平台；
+2.轻量级，可拓展：有大量插件可由用户自行选择安装(首推Emmet插件)。
+3.支持几乎所有的主流编程语言的语法高亮显示；
+4.代码自动补全，支持代码段（Code Snippet）；
+5.右上角的minimap: 用来查看标注、快速拖动、迅速定位；
+6.快速跳转到不同的文件/方法/函数：支持模糊匹配；
+7.快速切换Tab与Space；
+8.格式化代码；
+二、安装Sublime Text 1.下载安装包：
+Sublime Text官网地址：<a href="https://www.sublimetext.com/">https://www.sublimetext.com/</a> 根据自己的系统选择对应的安装包下载并安装。目前稳定版本为Sublime Text 3;
+2.安装Package Control:
+下载插件之前需要先安装Package Control，它是用来管理和下载插件的控制组件。 Package Control官网安装地址：<a href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a>
+1）使用快键键 ctrl+ 或者View&gt;Show Console` 菜单打开控制台，然后，然后回车让它安装。
+2）根据Sublime Text的版本选择复制对应的版本代码；
+3）黏贴到控制台输入框里，按Enter键，插件管理包就进入正在下载安装的状态（可能需要一点时间）；
+3.自定义安装各种插件：
+在 Package Control官网地址：<a href="https://packagecontrol.io/可以看到各种插件以及它的下载量排名，找到自己感兴趣的，下载下来试用。">https://packagecontrol.io/可以看到各种插件以及它的下载量排名，找到自己感兴趣的，下载下来试用。</a>
+下载安装方法如下： (windows平台)
+1）按下 Ctrl+Shift+P 调出命令面板，输入install， 调出 Install Package 选项并回车，出来这样的画面，
+2）然后输入自己想要下载的插件名称，比如: HTML Extended
+3）下载安装完成后会弹出类似这样的文件，说明已经成功安装该插件。
+或者在左下角提示成功安装：
+三、推荐几个好用的插件： 1.Emmet：通过简单的命令直接生成一大段代码。
+2.ConvertToUTF8(转换成utf-8格式): 默认情况下，gbk编码格式的中文会变成乱码，这个插件可以实现自动转换。
+3.JsFormat：格式化js代码。可以还原别人网站被压缩过难以阅读的js代码。
+4.HTMLBeautify：格式化HTML。
+5.Hasher:符号转义。
+6.TrailingSpaces：多余空格标记。
+7.SideBarEnhancementS: 侧边栏增强功能。
+ ChineseLocalization：汉化插件。  四、常用的快捷键（windows平台下）： 1.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/sublimetext-notes">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/sublimetext-notes" data-id="35d8c4e8537ef1ad63ad98699e489072" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/tab">
+    <h1 class="article-title" itemprop="name">
+        实现Tab切换的几种方式
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-05-08 23:36:44 &#43;0800 CST" itemprop="datePublished">2016-05-08</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/tab%E5%88%87%E6%8D%A2">tab切换</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    Tab 切换是网页中常见的组件。适当地使用，可以节省页面空间，在同一个大小的页面中展现更多的内容。Tab 切换的效果千差万别，只需要学会基本的思路，便可变换出各种各样的效果。下面我分别使用了原生js和jQuery来实现四种不同的Tab切换效果。
+方式一：用原生js实现各种Tab切换效果。 1.鼠标滑动切换 : 这是最简单的Tab切换。鼠标滑过时，切换Tab.
+首先，通过getElementById、 getElementsByTagNameL等方法来获取相应的元素。
+然后，对相应的元素绑定mouseover事件即可。
+具体代码见 js-mouseover-tab.html
+DEMO
+2.鼠标点击切换 与第一种的区别在于绑定的事件不同。获取元素的方法是一样的，只需把绑定mouseovers事件改为click事件即可。
+具体代码见 js-click-tab.html
+DEMO
+3.鼠标滑动延迟切换 延迟切换涉及到了一个时间问题，可以通过设置定时器来实现延迟的效果。定时器有setTimeout()和setInterval()两种方式来设置。
+setTimeout() 方法用于在指定的毫秒数后调用函数或计算表达式。setTimeout() 只执行 code 一次。如果要多次调用，需要使用 setInterval()。
+setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。
+因为这里的延迟切换是在指定的延迟时间之后才实现切换效果，所以使用setTimeout() 。
+具体代码见 js-delay-tab.html
+DEMO
+4.自动切换 自动切换，即按指定的周期自动切换到下一个Tab。这里也需要一个定时器，而且是按周期调用函数，因此使用setInterval() 方法来实现。 当鼠标滑动到某个Tab时，高亮显示当前页，同时停止自动切换，此时需要用到 clearInterval()方法来清除定时器。
+具体代码见 js-auto-tab-01.html
+优化后的代码见 js-auto-tab-02.html
+DEMO
+方式二：用jQuery实现各种Tab切换效果: 实现思路与原生的JavaScript是一样的,只是jQuery封装了一些方法可以更方便操作DOM元素。 1.鼠标滑动切换 具体代码见 jQ-mouseover-tab.html
+DEMO
+2.鼠标点击切换 具体代码见 jQ-click-tab.html
+DEMO
+3.鼠标滑动延迟切换 具体代码见 jQ-delay-tab.html
+DEMO
+4.自动切换 具体代码见 jQ-auto-tab-01.html
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/tab">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/tab" data-id="34eb82a7066c1f9b94f3d8ab88c8aae5" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/back-to-top">
+    <h1 class="article-title" itemprop="name">
+        实现返回顶部效果的3种方式
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-22 22:56:30 &#43;0800 CST" itemprop="datePublished">2016-04-22</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8">返回顶部</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    现在的网页内容比较多，基本上无法在一屏完全显示出来。这个时候，用户需要移动滚动条（滑动鼠标滚轮）来查看全部内容，如果想要返回顶部同样需要移动滚动条。如果页面太长，这样的体验显然不够好。因此，返回顶部的按钮就应运而生了。
+返回顶部的实现方式主要有以下3种。
+实现方式一：设置锚链接 最简单快捷的方式是设置锚链接&lt;a href=&quot;#&quot;&gt; 。京东就是使用这种方式。
+优点：简单快速，没有浏览器兼容问题。
+参考代码如下：
+HTML代码
+ &lt;div id=&quot;go-top&quot;&gt; &lt;a href=&quot;#&quot; id=&quot;gotop-btn&quot;&gt;&lt;/a&gt;&lt;!&ndash; 直接使用锚链接来返回顶部 &ndash;&gt; &lt;/div&gt;  实现方式二：借助jQuery来实现 参考代码如下：
+HTML代码
+&lt;div id=&quot;go-top&quot;&gt; &lt;a href=&quot;javascript:;&quot; id=&quot;gotop-btn&quot;&gt;&lt;/a&gt; &lt;/div&gt;  JavaScript代码
+&lt;script type=&quot;text/javascript&quot;&gt; $(function() { $(window).scroll(function(){ // 当滚动条距顶部超过100像素时，返回顶部按钮出现，否则消失 if ($(window).scrollTop()&gt;=100){ $(&quot;#gotop-btn&quot;).fadeIn(500); } else{ $(&quot;#gotop-btn&quot;).fadeOut(500); } }); //当点击跳转链接后，回到页面顶部位置 $(&quot;#gotop-btn&quot;).click(function(){ $(&lsquo;body,html&rsquo;).animate({scrollTop:0},300); }); }); &lt;/script&gt;  实现方式三：通过原生JavaScript来动态操作。 需要用到以下知识
+DOM 操作： 1.根据ID获取元素：document.getElementById
+2.滚动条的数值，可读写：document.documentElment.scrollTop
+事件运用： 1.页面加载完毕后触发window.onload
+2.点击后触发onclick
+3.滚动条滚动时触发 window.onscroll
+定时器： 1.setInterval() : 设置定时器，需要传两个参数。
+2.clearInterval(): 关闭定时器，需要传两个参数。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/back-to-top">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/back-to-top" data-id="f51f0070bf0b2e732bd157ddfaa93bf1" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
 
     <nav id="page-nav">
 
@@ -1191,6 +1836,32 @@ var reg = new RegExp(\d); var reg = new RegExp(&rsquo;[a-zA-Z0-9]&lsquo;, &lsquo
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/ellipse-border-radius" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/ellipse-border-radius" class="title">用border-radius绘制椭圆、半椭圆、四分之一椭圆</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-30 11:25:58 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1292,32 +1963,6 @@ var reg = new RegExp(\d); var reg = new RegExp(&rsquo;[a-zA-Z0-9]&lsquo;, &lsquo
                     <p class="item-title"><a href="http://www.wangxingfeng.com/js-array" class="title">JavaScript数组的常用方法总结</a></p>
                     <p class="item-date">
                         <time datetime="2017-04-06 22:31:32 &#43;0800 CST" itemprop="datePublished">2017-04-06</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/throw-away-vocabulary-books" class="thumbnail">
-                    
-                        <span style="background-image:url(http://www.wangxingfeng.com/images/20170406dictionary.jpg)" alt="Frank Wang&#39;s Coding World" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/english">
-                        english
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/throw-away-vocabulary-books" class="title">童鞋，放开那本词汇书</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-06 20:33:42 &#43;0800 CST" itemprop="datePublished">2017-04-06</time>
                     </p>
                 </div>
             </li>
