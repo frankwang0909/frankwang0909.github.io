@@ -10,6 +10,112 @@
     <atom:link href="http://www.wangxingfeng.com/categories/frontend/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>用CSS创建内容不倾斜的平行四边形</title>
+      <link>http://www.wangxingfeng.com/parallelograms.html</link>
+      <pubDate>Sun, 30 Apr 2017 16:44:06 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/parallelograms.html</guid>
+      <description>
+
+&lt;h2 id=&#34;1-平行四边形&#34;&gt;1.平行四边形&lt;/h2&gt;
+
+&lt;p&gt;普通的网页元素是矩形的。但有时候，我们需要创建可以传达出一种动感的形状，比如平行四边形。&lt;/p&gt;
+
+&lt;p&gt;说到&lt;code&gt;倾斜&lt;/code&gt;，我们会想到使用&lt;code&gt;transform&lt;/code&gt;属性的&lt;code&gt;skew()&lt;/code&gt;方法来对普通的矩形元素进行&lt;code&gt;斜向拉伸&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;width:100px;
+height:60px;
+transform: skew(-30deg);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:100px;height:60px;margin:10px auto;color:#fff;background: #673ab7;font-size: 16px;line-height: 60px;text-align: center;transform: skew(-30deg);&#34;&gt;平行四边形&lt;/div&gt;
+
+&lt;p&gt;如上所示，我们得到了一个平行四边形，但是内容也跟着斜向变形了。我们希望只是容器倾斜，而内容是不倾斜的。怎么办？&lt;/p&gt;
+
+&lt;h2 id=&#34;2-嵌套元素方案&#34;&gt;2.嵌套元素方案&lt;/h2&gt;
+
+&lt;p&gt;首先，我们可以先在容器内部新增一个元素，包裹里面的内容，对这个元素再次进行斜向变形，值为负的外面容器的斜向变形值，这样刚好可以抵消掉斜向变形。&lt;/p&gt;
+
+&lt;p&gt;HTML代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;parallelograms-container&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;parallelograms-inner&amp;quot;&amp;gt;
+        平行四边形
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;CSS代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.parallelograms-container{
+    width:100px;
+    height:60px;
+    transform: skew(-30deg);
+}
+
+.parallelograms-inner{
+    transform:skew(30deg);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;parallelograms-container&#34;&gt;
+    &lt;div class=&#34;parallelograms-inner&#34;&gt;
+        平行四边形
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;3-伪元素方案&#34;&gt;3.伪元素方案&lt;/h2&gt;
+
+&lt;p&gt;如果我们不想添加额外的HTML结构，能否用纯CSS来实现呢？&lt;/p&gt;
+
+&lt;p&gt;答案是肯定的。&lt;/p&gt;
+
+&lt;p&gt;我们可以考虑用CSS生成&lt;code&gt;伪元素&lt;/code&gt;，然后把所有样式（背景、边框等）应用到伪元素上，用&lt;code&gt;绝对定位&lt;/code&gt;将伪元素重叠在内容之下，然后再对伪元素进行&lt;code&gt;斜向拉伸&lt;/code&gt;变形。这样内容就可以保持不倾斜。&lt;/p&gt;
+
+&lt;p&gt;HTML 代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;pseudo-container&amp;quot;&amp;gt;
+    平行四边形
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;CSS 代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.pseudo-container{
+    position:relative;
+    /* 内容的文字大小、颜色、内边距等样式在这里*/
+    width:100px;
+    height:60px;
+    margin:0 auto;
+    color:#fff;
+    font-size: 16px;
+    line-height: 60px;
+    text-align: center;
+    background:transparent;
+}
+
+.pseudo-container::before{
+    content:&amp;quot;&amp;quot;;
+    position:absolute;
+    top:0;right:0;bottom:0;left:0;
+    z-index:-1;
+    background: #673ab7;
+    transform: skew(-30deg);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果如下：
+&lt;div class=&#34;pseudo-container&#34;&gt;
+    平行四边形
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;注意这里有个小坑。由于我们对这个伪元素设置了&lt;code&gt;z-index:-1&lt;/code&gt;, 所以，必须确保这个伪元素的容器、以及容器的&lt;code&gt;祖先元素&lt;/code&gt;(一直追溯到&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;的&lt;code&gt;直接子元素&lt;/code&gt;)的背景都必须是透明的，否则将会遮盖住这个&lt;code&gt;伪元素&lt;/code&gt;。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>用border-radius绘制椭圆、半椭圆、四分之一椭圆</title>
       <link>http://www.wangxingfeng.com/ellipse-border-radius</link>
       <pubDate>Sun, 30 Apr 2017 11:25:58 +0800</pubDate>
@@ -2051,222 +2157,6 @@ js代码
         }
     }
 &amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>常见的下拉菜单</title>
-      <link>http://www.wangxingfeng.com/dropdown-menu</link>
-      <pubDate>Thu, 03 Mar 2016 23:55:37 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/dropdown-menu</guid>
-      <description>
-
-&lt;h2 id=&#34;html结构&#34;&gt;HTML结构&lt;/h2&gt;
-
-&lt;p&gt;网页中导航栏是一个很常见的组件。通常，我们使用无序列表来制作导航栏。比如&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;nav&amp;quot;&amp;gt;
-    &amp;lt;ul class=&amp;quot;navMenu&amp;quot;&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;首页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;跟团游&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自助游&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;游轮&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-    &amp;lt;/ul&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;有些导航栏有下拉的二级菜单，那么我们在相应的位置上再加上列表构成二级菜单，比如&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;nav&amp;quot;&amp;gt;
-    &amp;lt;ul class=&amp;quot;navMenu&amp;quot;&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;首页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;跟团游&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;当地参团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自助游&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot; &amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;机票+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;火车+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;游轮&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;包船专享&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;日韩航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;欧洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;三峡航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;美洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自驾&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-    &amp;lt;/ul&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;基本的css样式&#34;&gt;基本的CSS样式&lt;/h2&gt;
-
-&lt;p&gt;列表默认是垂直方向排列的，而常见的导航栏主菜单是水平方向排列，二级下拉菜单是垂直方向排列的，所以我们需要对主菜单的li元素设置浮动，让其水平排列。设置浮动后，应记得清除浮动。可以使用class来作为公共的浮动和清除浮动的样式，然后在需要浮动的元素上添加相应的class，在浮动元素的父元素上添加清除浮动的class。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;CSS代码&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
-    /*reset*/
-    body, div, ul,li, a{padding: 0; margin:0;}
-    ul{list-style: none; }
-    /*浮动和清除浮动*/
-    .fl{float: left; }
-    .clearfix:after{content:&amp;quot;&amp;quot;;display:block;clear:both;}
-    .clearfix{zoom:1;} 
-    /*导航栏*/
-    #nav{width: 600px; height: 40px; margin:0 auto; background-color: #eee; }
-    .navMenu li{ text-align: center; line-height: 40px; position: relative;}
-    .navMenu li a{text-decoration: none;color:#000; padding: 0 20px; display: block; width:80px; }
-    .subMenu{position: absolute; top: 40px; left: 0;display: none;}/*默认隐藏二级菜单*/
-    .subMenu li{float:none; background-color:#eee; margin-left: 2px; }
-&amp;lt;/style&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;HTML代码&lt;/strong&gt; 改为如下所示：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;body&amp;gt;
-    &amp;lt;div id=&amp;quot;nav&amp;quot;&amp;gt;
-        &amp;lt;ul class=&amp;quot;navMenu clearfix&amp;quot;&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;首页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;跟团游&amp;lt;/a&amp;gt;
-                &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;当地参团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/li&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自助游&amp;lt;/a&amp;gt;
-                &amp;lt;ul class=&amp;quot;subMenu&amp;quot; &amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;机票+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;火车+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/li&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;游轮&amp;lt;/a&amp;gt;
-                &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;包船专享&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;日韩航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;欧洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;三峡航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;美洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/li&amp;gt;
-            &amp;lt;li class=&amp;quot;fl&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自驾&amp;lt;/a&amp;gt;
-                &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/li&amp;gt;
-        &amp;lt;/ul&amp;gt;
-    &amp;lt;/div&amp;gt;
-&amp;lt;body&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;下拉菜单效果的实现&#34;&gt;下拉菜单效果的实现&lt;/h2&gt;
-
-&lt;p&gt;如何实现鼠标移动到主菜单相应的li元素位置时，显示二级菜单，而移开鼠标则隐藏二级菜单。基本的实现方法纯CSS样式、jQuery、 原生JavaScript等三种实现方法。&lt;/p&gt;
-
-&lt;h3 id=&#34;方法一-纯css样式-见demo1-http-www-wangxingfeng-com-posts-demo1-html&#34;&gt;方法一、 纯CSS样式：&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo1.html&#34;&gt;见demo1&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;最简单的方式是直接使用css的 &lt;code&gt;:hover&lt;/code&gt; 来实现。当鼠标移动到主菜单的对应的li上时，二级菜单设置为可见的块级元素  &lt;code&gt;display: block;&lt;/code&gt;
-    .navMenu li:hover .subMenu{display: block;} /&lt;em&gt;hover是显示二级菜单&lt;/em&gt;/&lt;/p&gt;
-
-&lt;h3 id=&#34;方法二-jquery-见demo2-http-www-wangxingfeng-com-posts-demo2-html&#34;&gt;方法二、 jQuery：&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo2.html&#34;&gt;见demo2&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;使用jQuery获取li元素，绑定mouseover、mouseout事件，调用jQuery的show()、hide()方法。参考代码如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;script src=&amp;quot;js/jquery-2.2.3.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
-    $(function() {
-        $(&#39;.navMenu&amp;gt;li&#39;).mouseover( function() {
-            $(this).children(&#39;ul&#39;).show();
-        });
-            $(&#39;.navMenu&amp;gt;li&#39;).mouseout( function() {
-            $(this).children(&#39;ul&#39;).hide();
-        });
-    });
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;方法三-原生javascript-见demo3-http-www-wangxingfeng-com-posts-demo3-html&#34;&gt;方法三、 原生JavaScript：&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo3.html&#34;&gt;见demo3&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;先定义显示和隐藏元素的函数&lt;/p&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-    // 定义显示函数
-    function showsubmenu(li) {
-        var submenu = li.getElementsByClassName(&#39;subMenu&#39;)[0];
-        submenu.style.display=&#34;block&#34;;
-    }
-    // 定义隐藏函数
-    function hidesubmenu(li){
-        var submenu = li.getElementsByClassName(&#39;subMenu&#39;)[0];
-        submenu.style.display=&#34;none&#34;;
-    }
-&lt;/script&gt;
-
-&lt;p&gt;再调用函数， 在HTML代码中对应的li元素，添加函数的调用，代码修改如下。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;nav&amp;quot;&amp;gt;
-    &amp;lt;ul class=&amp;quot;navMenu clearfix&amp;quot;&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;首页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;跟团游&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边跟团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;当地参团&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自助游&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot; &amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自助&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;机票+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;火车+酒店&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;游轮&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;包船专享&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;日韩航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;欧洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;三峡航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;美洲航线&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-        &amp;lt;li class=&amp;quot;fl&amp;quot; onmouseover=&amp;quot;showsubmenu(this)&amp;quot; onmouseout=&amp;quot;hidesubmenu(this)&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;自驾&amp;lt;/a&amp;gt;
-            &amp;lt;ul class=&amp;quot;subMenu&amp;quot;&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;周边自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;国内自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;出境自驾&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-            &amp;lt;/ul&amp;gt;
-        &amp;lt;/li&amp;gt;
-    &amp;lt;/ul&amp;gt;
-&amp;lt;/div&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>

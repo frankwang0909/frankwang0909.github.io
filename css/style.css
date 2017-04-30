@@ -239,6 +239,9 @@ code {
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
+.article-inner{
+  background: transparent;
+}
 .article-entry h1,
 .widget h1 {
   font-size: 2em;
@@ -2167,7 +2170,9 @@ ol.toc {
   overflow: hidden;
 }
 
-// CSS3 页面翻转、图片翻转效果
+
+/* CSS3 页面翻转、图片翻转效果*/
+
 .rotate-container {
   perspective: 1000;
   margin:0 auto;
@@ -2201,4 +2206,47 @@ ol.toc {
 }
 .back {
   transform: rotateY(180deg);
+}
+
+
+/*平行四边形*/
+
+.parallelograms-container{
+  width:100px;
+  height:60px;
+  line-height: 60px;
+  margin:10px auto;
+  color:#fff;
+  background: #673ab7;
+  font-size: 16px;
+  text-align: center;
+  transform: skew(-30deg);
+}
+
+.parallelograms-inner{
+  transform:skew(30deg);
+}
+
+.pseudo-container{
+  position: relative;
+  /*内容的样式*/
+  width:100px;
+  height:60px;
+  margin:0 auto;
+  color:#fff;
+  font-size: 16px;
+  line-height: 60px;
+  text-align: center;
+  background:transparent;
+   /*注意这个容器、以及容器的父元素(一直追溯到<body>的子元素)，背景都必须是透明的，否则将会遮盖住伪元素*/
+}
+
+.pseudo-container::before{
+  /*用伪元素生成一个平行四边形*/
+  content:'';
+  position:absolute;
+  top:0;right:0;bottom:0;left:0;
+  z-index: -1;
+  background: #673ab7;
+  transform: skew(-30deg);
 }

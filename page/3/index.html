@@ -34,7 +34,7 @@
 
 
 
-<meta property="og:updated_time" content="2016-04-03T22:43:39&#43;08:00"/>
+<meta property="og:updated_time" content="2016-04-22T22:56:30&#43;08:00"/>
 
 
 
@@ -216,7 +216,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        22
+        23
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -310,6 +310,155 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/back-to-top">
+    <h1 class="article-title" itemprop="name">
+        实现返回顶部效果的3种方式
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-22 22:56:30 &#43;0800 CST" itemprop="datePublished">2016-04-22</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8">返回顶部</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    现在的网页内容比较多，基本上无法在一屏完全显示出来。这个时候，用户需要移动滚动条（滑动鼠标滚轮）来查看全部内容，如果想要返回顶部同样需要移动滚动条。如果页面太长，这样的体验显然不够好。因此，返回顶部的按钮就应运而生了。
+返回顶部的实现方式主要有以下3种。
+实现方式一：设置锚链接 最简单快捷的方式是设置锚链接&lt;a href=&quot;#&quot;&gt; 。京东就是使用这种方式。
+优点：简单快速，没有浏览器兼容问题。
+参考代码如下：
+HTML代码
+ &lt;div id=&quot;go-top&quot;&gt; &lt;a href=&quot;#&quot; id=&quot;gotop-btn&quot;&gt;&lt;/a&gt;&lt;!&ndash; 直接使用锚链接来返回顶部 &ndash;&gt; &lt;/div&gt;  实现方式二：借助jQuery来实现 参考代码如下：
+HTML代码
+&lt;div id=&quot;go-top&quot;&gt; &lt;a href=&quot;javascript:;&quot; id=&quot;gotop-btn&quot;&gt;&lt;/a&gt; &lt;/div&gt;  JavaScript代码
+&lt;script type=&quot;text/javascript&quot;&gt; $(function() { $(window).scroll(function(){ // 当滚动条距顶部超过100像素时，返回顶部按钮出现，否则消失 if ($(window).scrollTop()&gt;=100){ $(&quot;#gotop-btn&quot;).fadeIn(500); } else{ $(&quot;#gotop-btn&quot;).fadeOut(500); } }); //当点击跳转链接后，回到页面顶部位置 $(&quot;#gotop-btn&quot;).click(function(){ $(&lsquo;body,html&rsquo;).animate({scrollTop:0},300); }); }); &lt;/script&gt;  实现方式三：通过原生JavaScript来动态操作。 需要用到以下知识
+DOM 操作： 1.根据ID获取元素：document.getElementById
+2.滚动条的数值，可读写：document.documentElment.scrollTop
+事件运用： 1.页面加载完毕后触发window.onload
+2.点击后触发onclick
+3.滚动条滚动时触发 window.onscroll
+定时器： 1.setInterval() : 设置定时器，需要传两个参数。
+2.clearInterval(): 关闭定时器，需要传两个参数。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/back-to-top">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/back-to-top" data-id="f51f0070bf0b2e732bd157ddfaa93bf1" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -612,6 +761,32 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/parallelograms.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/parallelograms.html" class="title">用CSS创建内容不倾斜的平行四边形</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-30 16:44:06 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/ellipse-border-radius" class="thumbnail">
                     
                         <span class="thumbnail-image thumbnail-none"></span>
@@ -710,32 +885,6 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
                     <p class="item-title"><a href="http://www.wangxingfeng.com/es6-let-const" class="title">ES6的块级作用域以及let、const命令</a></p>
                     <p class="item-date">
                         <time datetime="2017-04-07 20:18:56 &#43;0800 CST" itemprop="datePublished">2017-04-07</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/js-array" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/js-array" class="title">JavaScript数组的常用方法总结</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-06 22:31:32 &#43;0800 CST" itemprop="datePublished">2017-04-06</time>
                     </p>
                 </div>
             </li>
