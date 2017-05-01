@@ -10,6 +10,141 @@
     <atom:link href="http://www.wangxingfeng.com/categories/frontend/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>如何用CSS代码实现网页设计中的菱形图片</title>
+      <link>http://www.wangxingfeng.com/diamond-picture.html</link>
+      <pubDate>Mon, 01 May 2017 22:00:03 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/diamond-picture.html</guid>
+      <description>
+
+&lt;p&gt;在网页设计中，我们常常能够看到被裁切成菱形的图片。&lt;/p&gt;
+
+&lt;p&gt;传统的实现方式是预先在图像处理软件中把图片裁切好，当然这种方式的可维护性差。&lt;/p&gt;
+
+&lt;p&gt;而现在，随着CSS的新特性的支持度越来越好了，CSS也越来越强大，我们已经可以用CSS代码来实现菱形图片了。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-基于tranform的实现方法&#34;&gt;1. 基于tranform的实现方法&lt;/h2&gt;
+
+&lt;p&gt;原图
+&lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; style=&#34;display:block; max-width: 200px; margin:0 auto&#34;&gt;
+用一个&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; 把图片包裹起来，对这个容器&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;应用&lt;code&gt;transform:rotate(45deg)&lt;/code&gt;, 进行旋转45度，我们得到如下的效果：图片应该也会跟着旋转了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div{
+    width:200px;
+    transform: rotate(45deg);
+    overflow: hidden;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; &gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果我们对里面的图片进行反向旋转45度，那么图片的旋转就会抵消掉。看看效果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
+    max-width:100%;
+    transform: rotate(-45deg);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;我们得到了一个裁成&lt;code&gt;八边形&lt;/code&gt;的图片。&lt;/p&gt;
+
+&lt;p&gt;问题出在哪里呢？我给外面的&lt;code&gt;div&lt;/code&gt;加一个边框，这样就容易看出来了。&lt;/p&gt;
+
+&lt;div class=&#34;diamond-pic&#34; style=&#34;border:1px solid red&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;问题出在了这里图片的宽度是与容器&lt;code&gt;div&lt;/code&gt;的&lt;code&gt;边长&lt;/code&gt;相等，其实我们应该让图片的宽度与&lt;code&gt;对角线&lt;/code&gt;相等。&lt;/p&gt;
+
+&lt;p&gt;运用勾股定理，可以计算出图片的宽度应该是√2倍，我们取1.42倍。&lt;/p&gt;
+
+&lt;p&gt;如果通过&lt;code&gt;width属性&lt;/code&gt;设置来放大图片,会得到如下的效果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
+    max-width:142%;
+    transform: rotate(-45deg);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;max-width:142%;&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;因为是以图片的&lt;code&gt;左上角&lt;/code&gt;为原点进行放大的。我们还需要在通过设置&lt;code&gt;margin:-45px;&lt;/code&gt;才能得到菱形图片。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
+    max-width:142%;
+    transform: rotate(-45deg);
+    margin:-45px;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;max-width:142%; margin:-45px&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;当然，我们可以通过&lt;code&gt;transform:scale(1.42)&lt;/code&gt;来放大图片1.42倍。&lt;code&gt;scale()&lt;/code&gt;是以图片的&lt;code&gt;中心点&lt;/code&gt;进行缩放的，这样我们就不用额外地设置&lt;code&gt;margin&lt;/code&gt;值了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
+    max-width:100%;
+    transform: scale(1.42) rotate(-45deg);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;transform: rotate(-45deg) scale(1.42);&#34;&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;2-基于裁切路径clip-path方法&#34;&gt;2. 基于裁切路径clip-path方法&lt;/h2&gt;
+
+&lt;p&gt;第一种方法虽然可以奏效，但存在一些缺点：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1.需要一层额外的HTML标签；
+2.代码不够直观；
+3.如果处理的图片不是正方形，将无法得到一个菱形图片，如下图所示：
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adam-sleeping.jpg&#34; class=&#34;diamond-img&#34; style=&#34;transform: rotate(-45deg) scale(1.42);&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;SVG&lt;/code&gt;中，有个名叫&lt;code&gt;&amp;lt;clipPath&amp;gt;&lt;/code&gt;的元素，专门用来定义剪裁路径。其实CSS中也有一个类似的属性，即&lt;code&gt;clip-path属性&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;clip-path&lt;/code&gt;可以把元素裁切成我们想要的任何形状。我们通过&lt;code&gt;polygon()函数&lt;/code&gt;来指定一个菱形，参数是一系列用&lt;code&gt;逗号&lt;/code&gt;分隔的&lt;code&gt;坐标点&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;img{
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://csssecrets.io/images/adam-sleeping.jpg&#34; class=&#34;diamon-pic-clip-path&#34; &gt;&lt;/p&gt;
+
+&lt;p&gt;如上图所示，这个方法可以很好的适应非正方形的图片。&lt;/p&gt;
+
+&lt;p&gt;另外，因为&lt;code&gt;clip-path&lt;/code&gt;属性可以参与动画，我们还可以给这个图片动画过渡效果。比如，当我们的鼠标悬停到图片上时，菱形图片平滑地扩展为完整的原图。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;img{
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    transition: 1s clip-path;
+}
+img:hover{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://csssecrets.io/images/adam-sleeping.jpg&#34; class=&#34;diamon-pic-clip-path-2&#34; &gt;&lt;/p&gt;
+
+&lt;p&gt;注意，除了谷歌浏览器，其他浏览器对这个clip-path属性的支持度都还不是很好。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>用CSS创建内容不倾斜的平行四边形</title>
       <link>http://www.wangxingfeng.com/parallelograms.html</link>
       <pubDate>Sun, 30 Apr 2017 16:44:06 +0800</pubDate>
@@ -2018,146 +2153,6 @@ Safari 支持替代的 -webkit-transition 属性。&lt;/p&gt;
 &lt;p&gt;优化后的代码 见&lt;a href=&#34;https://github.com/frankwang0909/Tab/blob/master/jQ-auto-tab-02.html&#34;&gt;jQ-auto-tab-02.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.wangxingfeng.com/posts/demo/jQ-auto-tab-02.html&#34;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>实现返回顶部效果的3种方式</title>
-      <link>http://www.wangxingfeng.com/back-to-top</link>
-      <pubDate>Fri, 22 Apr 2016 22:56:30 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/back-to-top</guid>
-      <description>
-
-&lt;p&gt;现在的网页内容比较多，基本上无法在一屏完全显示出来。这个时候，用户需要移动滚动条（滑动鼠标滚轮）来查看全部内容，如果想要返回顶部同样需要移动滚动条。如果页面太长，这样的体验显然不够好。因此，&lt;code&gt;返回顶部&lt;/code&gt;的按钮就应运而生了。&lt;/p&gt;
-
-&lt;p&gt;返回顶部的实现方式主要有以下3种。&lt;/p&gt;
-
-&lt;h2 id=&#34;实现方式一-设置锚链接&#34;&gt;实现方式一：设置锚链接&lt;/h2&gt;
-
-&lt;p&gt;最简单快捷的方式是设置锚链接&lt;code&gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;&lt;/code&gt; 。&lt;code&gt;京东&lt;/code&gt;就是使用这种方式。&lt;/p&gt;
-
-&lt;p&gt;优点：简单快速，没有浏览器兼容问题。&lt;/p&gt;
-
-&lt;p&gt;参考代码如下：&lt;/p&gt;
-
-&lt;p&gt;HTML代码&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    &amp;lt;div id=&amp;quot;go-top&amp;quot;&amp;gt;
-        &amp;lt;a href=&amp;quot;#&amp;quot;  id=&amp;quot;gotop-btn&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;!-- 直接使用锚链接来返回顶部 --&amp;gt;
-    &amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;实现方式二-借助jquery来实现&#34;&gt;实现方式二：借助jQuery来实现&lt;/h2&gt;
-
-&lt;p&gt;参考代码如下：&lt;/p&gt;
-
-&lt;p&gt;HTML代码&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;go-top&amp;quot;&amp;gt;
-    &amp;lt;a href=&amp;quot;javascript:;&amp;quot;  id=&amp;quot;gotop-btn&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;JavaScript代码&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
-    $(function() {
-        $(window).scroll(function(){
-            // 当滚动条距顶部超过100像素时，返回顶部按钮出现，否则消失
-    if ($(window).scrollTop()&amp;gt;=100){
-        $(&amp;quot;#gotop-btn&amp;quot;).fadeIn(500);
-    }
-    else{
-        $(&amp;quot;#gotop-btn&amp;quot;).fadeOut(500);
-    }
-    });
-    //当点击跳转链接后，回到页面顶部位置
-    $(&amp;quot;#gotop-btn&amp;quot;).click(function(){
-        $(&#39;body,html&#39;).animate({scrollTop:0},300);
-    });
-});
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;实现方式三-通过原生javascript来动态操作&#34;&gt;实现方式三：通过原生JavaScript来动态操作。&lt;/h2&gt;
-
-&lt;p&gt;需要用到以下知识&lt;/p&gt;
-
-&lt;h3 id=&#34;dom-操作&#34;&gt;DOM 操作：&lt;/h3&gt;
-
-&lt;p&gt;1.根据ID获取元素：&lt;code&gt;document.getElementById&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;2.滚动条的数值，可读写：&lt;code&gt;document.documentElment.scrollTop&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;事件运用&#34;&gt;事件运用：&lt;/h3&gt;
-
-&lt;p&gt;1.页面加载完毕后触发&lt;code&gt;window.onload&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;2.点击后触发&lt;code&gt;onclick&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;3.滚动条滚动时触发 &lt;code&gt;window.onscroll&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;定时器&#34;&gt;定时器：&lt;/h3&gt;
-
-&lt;p&gt;1.&lt;code&gt;setInterval()&lt;/code&gt; : 设置定时器，需要传两个参数。&lt;/p&gt;
-
-&lt;p&gt;2.&lt;code&gt;clearInterval()&lt;/code&gt;: 关闭定时器，需要传两个参数。&lt;/p&gt;
-
-&lt;p&gt;参考代码：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;HTML代码
-&amp;lt;div id=&amp;quot;go-top&amp;quot;&amp;gt;
-    &amp;lt;a href=&amp;quot;javascript:;&amp;quot;  id=&amp;quot;gotop-btn&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;
-&amp;lt;/div&amp;gt;
-
-js代码
-&amp;lt;script  type=&amp;quot;text/javascript&amp;quot; &amp;gt;
-    // 加载后触发事件
-    window.onload = function() {
-        var obtn = document.getElementById(&#39;gotop-btn&#39;);
-        // 获取页面可视区域高度
-        var clientHeight = document.documentElement.clientHeight;
-        var timer = null;
-        var isTop = true;
-        // 滚动条滚动时触发事件，清除定时器，停在当前位置。
-        window.onscroll = function() {
-            // 获取滚动条距离顶部的数值
-            var osTop = document.documentElement.scrollTop || document.body.scrollTop; 
-
-            if(osTop &amp;gt;= clientHeight){
-                // 显示返回按钮
-                obtn.style.display = &amp;quot;block&amp;quot;;
-            }
-            else{
-                // 隐藏返回按钮
-                obtn.style.display = &amp;quot;none&amp;quot;;
-            }
-            if(!isTop){
-                clearInterval(timer);
-            }
-            isTop = false;
-        }
-        obtn.onclick = function() {
-            // 设置定时器
-            timer = setInterval(function() {
-                var osTop = document.documentElement.scrollTop || document.body.scrollTop; 
-                // chrome使用document.body.scrollTop 来获取滚动条到顶部的距离。
-                // 滚动条滚动由快到慢，即减少的距离从大到小。
-                var ispeed = Math.floor(-osTop /6);
-                // Math.floor()向下取整, 如果ispeed去正数，会导致osTop最后无法等于0，从而无法消除定时器。
-                document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed;
-                //滚动条到了顶部之后，清除定时器，否则会一直返回顶部没法下拉滚动条看底下的网页内容。
-                isTop = true;
-                // console.log(osTop-ispeed);
-                if(osTop == 0){
-                    clearInterval(timer);
-                }
-            },50)
-        }
-    }
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

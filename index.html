@@ -34,7 +34,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-04-30T16:44:06&#43;08:00"/>
+<meta property="og:updated_time" content="2017-05-01T22:00:03&#43;08:00"/>
 
 
 
@@ -216,7 +216,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        23
+        24
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -310,6 +310,154 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/diamond-picture.html">
+    <h1 class="article-title" itemprop="name">
+        如何用CSS代码实现网页设计中的菱形图片
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-05-01 22:00:03 &#43;0800 CST" itemprop="datePublished">2017-05-01</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    在网页设计中，我们常常能够看到被裁切成菱形的图片。
+传统的实现方式是预先在图像处理软件中把图片裁切好，当然这种方式的可维护性差。
+而现在，随着CSS的新特性的支持度越来越好了，CSS也越来越强大，我们已经可以用CSS代码来实现菱形图片了。
+1. 基于tranform的实现方法 原图 用一个&lt;div&gt; 把图片包裹起来，对这个容器&lt;div&gt;应用transform:rotate(45deg), 进行旋转45度，我们得到如下的效果：图片应该也会跟着旋转了
+div{ width:200px; transform: rotate(45deg); overflow: hidden; };   如果我们对里面的图片进行反向旋转45度，那么图片的旋转就会抵消掉。看看效果。
+div&gt;img{ max-width:100%; transform: rotate(-45deg); };   我们得到了一个裁成八边形的图片。
+问题出在哪里呢？我给外面的div加一个边框，这样就容易看出来了。
+ 问题出在了这里图片的宽度是与容器div的边长相等，其实我们应该让图片的宽度与对角线相等。
+运用勾股定理，可以计算出图片的宽度应该是√2倍，我们取1.42倍。
+如果通过width属性设置来放大图片,会得到如下的效果。
+div&gt;img{ max-width:142%; transform: rotate(-45deg); };   因为是以图片的左上角为原点进行放大的。我们还需要在通过设置margin:-45px;才能得到菱形图片。
+div&gt;img{ max-width:142%; transform: rotate(-45deg); margin:-45px; };   当然，我们可以通过transform:scale(1.42)来放大图片1.42倍。scale()是以图片的中心点进行缩放的，这样我们就不用额外地设置margin值了。
+div&gt;img{ max-width:100%; transform: scale(1.42) rotate(-45deg); };   2. 基于裁切路径clip-path方法 第一种方法虽然可以奏效，但存在一些缺点：
+1.需要一层额外的HTML标签； 2.代码不够直观； 3.如果处理的图片不是正方形，将无法得到一个菱形图片，如下图所示：   SVG中，有个名叫&lt;clipPath&gt;的元素，专门用来定义剪裁路径。其实CSS中也有一个类似的属性，即clip-path属性。
+clip-path可以把元素裁切成我们想要的任何形状。我们通过polygon()函数来指定一个菱形，参数是一系列用逗号分隔的坐标点。
+img{ clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }  如上图所示，这个方法可以很好的适应非正方形的图片。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/diamond-picture.html">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/diamond-picture.html" data-id="37b0114b3c6680d0767acb978c56b9f3" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1598,149 +1746,6 @@ navigator对象有一个userAgent属性，会返回用户的设备操作系统�
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/anywhere-npm">
-    <h1 class="article-title" itemprop="name">
-        快速启动Node服务器，调试本地静态文件代码
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-04 17:41:35 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">node</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    如何在移动设备上测试静态文件？ 现在移动端优先的情况下，前端工程师写好静态页面后，通常是需要测试不同的设备上效果，看看有没有兼容性的问题。谷歌浏览器有一个模拟手机的调试功能，一般，我们先用谷歌调试好。但毕竟是模拟的，为了保险起见，还是需要用真机测试的。
-可是静态的html文件怎么放到手机上调试呢？难不成把文件拷一份，放到不同的手机上？显然不是。
-NodeJS的一个npm模块anywhere 就可以快速地把你的当前目录变成一个静态文件服务器的根目录。
-anywhere的安装及使用 首先，安装Node。具体操作请看Node的官网。傻瓜式地安装。
-其次，安装anywhere。在命令行输入
-npm install anywhere -g  npm install + 模块名 从NPM服务器下载别人编写的第三方包的固定写法。
--g 表示全局安装，在电脑的任何部门都可以使用anywhere模块。
-启动服务：
-在命令行切换到项目的根目录，然后输入anywhere即可。服务启动后，会自动打开你的默认浏览器，<a href="http://192.168.31.192:8000/。">http://192.168.31.192:8000/。</a>
-此时，如果你想在手机上测试index.html页面，你只需要在手机上访问 <a href="http://192.168.31.192:8000/index.html">http://192.168.31.192:8000/index.html</a> 即可看到效果。
-当然，这里有一个前提，就是你的手机和电脑是在同一个局域网内的。
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/anywhere-npm">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/anywhere-npm" data-id="644c9e5feaac5c5854c84f03f0e0056f" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1764,6 +1769,32 @@ npm install anywhere -g  npm install + 模块名 从NPM服务器下载别人编�
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/diamond-picture.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/diamond-picture.html" class="title">如何用CSS代码实现网页设计中的菱形图片</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-01 22:00:03 &#43;0800 CST" itemprop="datePublished">2017-05-01</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1865,32 +1896,6 @@ npm install anywhere -g  npm install + 模块名 从NPM服务器下载别人编�
                     <p class="item-title"><a href="http://www.wangxingfeng.com/less.html" class="title">CSS预处理器之Less</a></p>
                     <p class="item-date">
                         <time datetime="2017-04-23 16:28:38 &#43;0800 CST" itemprop="datePublished">2017-04-23</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/es6-let-const" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/es6-let-const" class="title">ES6的块级作用域以及let、const命令</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-07 20:18:56 &#43;0800 CST" itemprop="datePublished">2017-04-07</time>
                     </p>
                 </div>
             </li>

@@ -10,6 +10,141 @@
     <atom:link href="http://www.wangxingfeng.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>如何用CSS代码实现网页设计中的菱形图片</title>
+      <link>http://www.wangxingfeng.com/diamond-picture.html</link>
+      <pubDate>Mon, 01 May 2017 22:00:03 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/diamond-picture.html</guid>
+      <description>
+
+&lt;p&gt;在网页设计中，我们常常能够看到被裁切成菱形的图片。&lt;/p&gt;
+
+&lt;p&gt;传统的实现方式是预先在图像处理软件中把图片裁切好，当然这种方式的可维护性差。&lt;/p&gt;
+
+&lt;p&gt;而现在，随着CSS的新特性的支持度越来越好了，CSS也越来越强大，我们已经可以用CSS代码来实现菱形图片了。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-基于tranform的实现方法&#34;&gt;1. 基于tranform的实现方法&lt;/h2&gt;
+
+&lt;p&gt;原图
+&lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; style=&#34;display:block; max-width: 200px; margin:0 auto&#34;&gt;
+用一个&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; 把图片包裹起来，对这个容器&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;应用&lt;code&gt;transform:rotate(45deg)&lt;/code&gt;, 进行旋转45度，我们得到如下的效果：图片应该也会跟着旋转了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div{
+    width:200px;
+    transform: rotate(45deg);
+    overflow: hidden;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; &gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果我们对里面的图片进行反向旋转45度，那么图片的旋转就会抵消掉。看看效果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
+    max-width:100%;
+    transform: rotate(-45deg);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;我们得到了一个裁成&lt;code&gt;八边形&lt;/code&gt;的图片。&lt;/p&gt;
+
+&lt;p&gt;问题出在哪里呢？我给外面的&lt;code&gt;div&lt;/code&gt;加一个边框，这样就容易看出来了。&lt;/p&gt;
+
+&lt;div class=&#34;diamond-pic&#34; style=&#34;border:1px solid red&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;问题出在了这里图片的宽度是与容器&lt;code&gt;div&lt;/code&gt;的&lt;code&gt;边长&lt;/code&gt;相等，其实我们应该让图片的宽度与&lt;code&gt;对角线&lt;/code&gt;相等。&lt;/p&gt;
+
+&lt;p&gt;运用勾股定理，可以计算出图片的宽度应该是√2倍，我们取1.42倍。&lt;/p&gt;
+
+&lt;p&gt;如果通过&lt;code&gt;width属性&lt;/code&gt;设置来放大图片,会得到如下的效果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
+    max-width:142%;
+    transform: rotate(-45deg);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;max-width:142%;&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;因为是以图片的&lt;code&gt;左上角&lt;/code&gt;为原点进行放大的。我们还需要在通过设置&lt;code&gt;margin:-45px;&lt;/code&gt;才能得到菱形图片。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
+    max-width:142%;
+    transform: rotate(-45deg);
+    margin:-45px;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;max-width:142%; margin:-45px&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;当然，我们可以通过&lt;code&gt;transform:scale(1.42)&lt;/code&gt;来放大图片1.42倍。&lt;code&gt;scale()&lt;/code&gt;是以图片的&lt;code&gt;中心点&lt;/code&gt;进行缩放的，这样我们就不用额外地设置&lt;code&gt;margin&lt;/code&gt;值了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
+    max-width:100%;
+    transform: scale(1.42) rotate(-45deg);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;transform: rotate(-45deg) scale(1.42);&#34;&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;2-基于裁切路径clip-path方法&#34;&gt;2. 基于裁切路径clip-path方法&lt;/h2&gt;
+
+&lt;p&gt;第一种方法虽然可以奏效，但存在一些缺点：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1.需要一层额外的HTML标签；
+2.代码不够直观；
+3.如果处理的图片不是正方形，将无法得到一个菱形图片，如下图所示：
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;diamond-pic&#34;&gt;
+    &lt;img src=&#34;http://csssecrets.io/images/adam-sleeping.jpg&#34; class=&#34;diamond-img&#34; style=&#34;transform: rotate(-45deg) scale(1.42);&#34;&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;SVG&lt;/code&gt;中，有个名叫&lt;code&gt;&amp;lt;clipPath&amp;gt;&lt;/code&gt;的元素，专门用来定义剪裁路径。其实CSS中也有一个类似的属性，即&lt;code&gt;clip-path属性&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;clip-path&lt;/code&gt;可以把元素裁切成我们想要的任何形状。我们通过&lt;code&gt;polygon()函数&lt;/code&gt;来指定一个菱形，参数是一系列用&lt;code&gt;逗号&lt;/code&gt;分隔的&lt;code&gt;坐标点&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;img{
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://csssecrets.io/images/adam-sleeping.jpg&#34; class=&#34;diamon-pic-clip-path&#34; &gt;&lt;/p&gt;
+
+&lt;p&gt;如上图所示，这个方法可以很好的适应非正方形的图片。&lt;/p&gt;
+
+&lt;p&gt;另外，因为&lt;code&gt;clip-path&lt;/code&gt;属性可以参与动画，我们还可以给这个图片动画过渡效果。比如，当我们的鼠标悬停到图片上时，菱形图片平滑地扩展为完整的原图。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;img{
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    transition: 1s clip-path;
+}
+img:hover{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://csssecrets.io/images/adam-sleeping.jpg&#34; class=&#34;diamon-pic-clip-path-2&#34; &gt;&lt;/p&gt;
+
+&lt;p&gt;注意，除了谷歌浏览器，其他浏览器对这个clip-path属性的支持度都还不是很好。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>用CSS创建内容不倾斜的平行四边形</title>
       <link>http://www.wangxingfeng.com/parallelograms.html</link>
       <pubDate>Sun, 30 Apr 2017 16:44:06 +0800</pubDate>

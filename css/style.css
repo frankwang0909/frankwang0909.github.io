@@ -2250,3 +2250,31 @@ ol.toc {
   background: #673ab7;
   transform: skew(-30deg);
 }
+
+/* 菱形图片*/ 
+
+.diamond-pic{
+  width:200px;
+  transform: rotate(45deg);
+  overflow: hidden;
+  margin:100px auto;
+}
+.diamond-pic .diamond-img{
+  max-width: 100%;
+  transform: rotate(-45deg);
+}
+
+.diamon-pic-clip-path{
+  width:200px;
+  -webkit-clip-path:polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.diamon-pic-clip-path-2{
+  width:200px;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  transition: 1s clip-path;
+}
+.diamon-pic-clip-path-2:hover{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
