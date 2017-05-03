@@ -34,7 +34,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-05-01T22:00:03&#43;08:00"/>
+<meta property="og:updated_time" content="2017-05-02T22:52:17&#43;08:00"/>
 
 
 
@@ -216,7 +216,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        24
+        25
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -310,6 +310,140 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/bevel-corners.html">
+    <h1 class="article-title" itemprop="name">
+        CSS实现切角效果
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-05-02 22:52:17 &#43;0800 CST" itemprop="datePublished">2017-05-02</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    扁平化设计风格中，很流行斜面切角，即把元素的一个或多个角切成45度的缺口。大多数网页开发者倾向于使用背景图片来实现切角效果。但使用背景图片会增加额外的HTTP请求，增加网页加载的时间，难以修改和维护。实际上，CSS已经足够强大，可以提供纯CSS的解决方案，我们仅用CSS代码就能实现切角效果。
+基于CSS渐变的切角效果 如果你对CSS渐变不陌生的话，应该知道CSS渐变可以接受一个角度作为方向，还可以设置百分比的色标的位置。当然，色标的位置也可以设置为绝对的长度值。  .demo{ width:300px; height: 200px; margin:10px auto; } .demo1{ background: linear-gradient(-45deg, red, green); } .demo2{ background: linear-gradient(-45deg, red 20%, green 70%); } .demo3{ background: linear-gradient(-45deg, red 20%, green 0); } .demo4{ background: linear-gradient(-45deg, transparent 20%, green 0); } .demo5{ background: linear-gradient(-45deg, transparent 30px, green 0), linear-gradient(45deg, transparent 30px, red 0); } .demo6{ background: linear-gradient(-45deg, transparent 30px, green 0) right, linear-gradient(45deg, transparent 30px, red 0) left; background-size:50% 100%; background-repeat:no-repeat; } .
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/bevel-corners.html">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/bevel-corners.html" data-id="6b129c90618d239a79550363f95ff612" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1605,147 +1739,6 @@ var clipboard = new Clipboard(&lsquo;.btn&rsquo;, { text: function() { return &l
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/useragent">
-    <h1 class="article-title" itemprop="name">
-        通过userAgent识别移动设备，自动跳转移动端站点
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-04 21:02:50 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/useragent">userAgent</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    不少互联网公司的网站都分为PC端和手机端。如果用户用手机访问PC站点，受限于手机网络，很可能会出现加载网页缓慢的情况。 因此，如何识别用户访问网站的设备，并且自动跳转到对应的站点呢？
-navigator.userAgent navigator是JavaScript中的一个独立的对象，用于提供用户所使用的浏览器以及操作系统等信息，以navigator对象属性的形式来提供。所有浏览器都支持该对象。
-navigator对象有一个userAgent属性，会返回用户的设备操作系统和浏览器的信息。
-1.用谷歌浏览器，随便打开一个网页，F12打开Chrome调试工具，输入navigator.userAgent, 会返回如下的字符串：
-&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36&quot;  这个字符串可以分成四个主要的部分，我来解释一下各个部分的含义：
-1）Mozilla/5.0 ：表示兼容Mozilla, 几乎所有的浏览器都有这个字符; 2) (Windows NT 6.1; Win64; x64): 表示设备的操作系统版本，以及CPU信息； 3）AppleWebKit/537.36 (KHTML, like Gecko)：表示浏览器的内核； 4) Chrome/57.0.2987.98 Safari/537.36: 表示浏览器的版本号。  2.用火狐浏览器，随便打开一个网页，F12打开调试工具，同样地在控制台输入navigator.userAgent, 返回如下的字符串：
-&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:52.0) Gecko/20100101 Firefox/52.0&quot;  与之前的结果区别：
-1)浏览器内核是Gecko内核， 2)浏览器版本是火狐的Firefox/52.0。从这里我们可以看出火狐浏览器是基于Gecko内核。  3.用谷歌浏览器模拟手机访问，选择iPhone6s，同样在调试工具控制台输入navigator.userAgent, 会返回如下的字符串：
-&quot;Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/useragent">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/useragent" data-id="f417a75413daacaf92a7cb348ea74f46" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1769,6 +1762,32 @@ navigator对象有一个userAgent属性，会返回用户的设备操作系统�
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/bevel-corners.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/bevel-corners.html" class="title">CSS实现切角效果</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-02 22:52:17 &#43;0800 CST" itemprop="datePublished">2017-05-02</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1870,32 +1889,6 @@ navigator对象有一个userAgent属性，会返回用户的设备操作系统�
                     <p class="item-title"><a href="http://www.wangxingfeng.com/css-flip.html" class="title">用CSS实现图片翻转的动画效果</a></p>
                     <p class="item-date">
                         <time datetime="2017-04-29 21:24:00 &#43;0800 CST" itemprop="datePublished">2017-04-29</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/less.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/less.html" class="title">CSS预处理器之Less</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-23 16:28:38 &#43;0800 CST" itemprop="datePublished">2017-04-23</time>
                     </p>
                 </div>
             </li>

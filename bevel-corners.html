@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>Node &middot; Frank Wang&#39;s Coding World</title>
+    <title>CSS实现切角效果 &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="baidu-site-verification" content="WSqfBuzd3t" />
     <meta name="author" content="Frank Wang">
     
-      <meta name="keywords" content="人人都能说英语，Hugo快速建站，前端学习笔记， CSS，Node, HTML, JavaScript, ES6">
+      <meta name="keywords" content="[切角效果，CSS实现切角效果，弧形切角，]">
     
     
-      <meta name="description" content="Frank Wang’s Personal Blog, 前端工程师成长记录">
+      <meta name="description" content="切角效果在网页设计中非常流行，大多数网页开发者倾向于使用背景图片来实现，这里提供纯CSS的解决方案，仅用CSS代码就能实现切角效果。">
     
     
-      <link href="http://www.wangxingfeng.com/categories/node/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-      <link href="http://www.wangxingfeng.com/categories/node/index.xml" rel="feed" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-    
-    <link rel="canonical" href="http://www.wangxingfeng.com/categories/node/"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/bevel-corners.html"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -27,14 +24,16 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Node" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://www.wangxingfeng.com/categories/node/" />
+    <meta property="og:title" content="CSS实现切角效果" />
+<meta property="og:description" content="切角效果在网页设计中非常流行，大多数网页开发者倾向于使用背景图片来实现，这里提供纯CSS的解决方案，仅用CSS代码就能实现切角效果。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.wangxingfeng.com/bevel-corners.html" />
 
 
 
-<meta property="og:updated_time" content="2017-04-04T17:41:35&#43;08:00"/>
+<meta property="article:published_time" content="2017-05-02T22:52:17&#43;08:00"/>
+<meta property="article:modified_time" content="2017-05-02T22:52:17&#43;08:00"/>
+
 
 
 
@@ -47,11 +46,28 @@
 
     
     
-<meta itemprop="name" content="Node">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="CSS实现切角效果">
+<meta itemprop="description" content="切角效果在网页设计中非常流行，大多数网页开发者倾向于使用背景图片来实现，这里提供纯CSS的解决方案，仅用CSS代码就能实现切角效果。">
 
+
+<meta itemprop="dateModified" content="2017-05-02T22:52:17&#43;08:00" />
+<meta itemprop="wordCount" content="236">
+
+
+
+<meta itemprop="keywords" content="english,frontend,node,tools,bug,cdn,clipboard,css,css3,git,github,hugo,markdown,regexp,seo,sublime-text,tab切换,useragent,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
 
     
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="CSS实现切角效果"/>
+<meta name="twitter:title" content="CSS实现切角效果"/>
+<meta name="twitter:description" content="切角效果在网页设计中非常流行，大多数网页开发者倾向于使用背景图片来实现，这里提供纯CSS的解决方案，仅用CSS代码就能实现切角效果。"/>
+<meta name="twitter:site" content="@frankwang0909"/>
+
     
 
     
@@ -87,7 +103,7 @@
 
 
 <div id="container">
-    <header id="header">
+	<header id="header">
   <div id="header-main" class="header-inner">
     <div class="outer">
       <a href="http://www.wangxingfeng.com/" id="logo">
@@ -199,8 +215,10 @@
   </div>
 </header>
 
-    <div class="outer">
-        <aside id="profile">
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
   <div class="inner profile-inner">
     <div class="base-info profile-block">
       <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.png">
@@ -307,37 +325,314 @@
 
 </aside>
 
-        <section id="main">
-            <section class="archives-wrap">
-                <div class="archive-category-wrap">
-                    <span class="archive-category">Node</span>
-                </div>
-                <div class="archives">
-                    
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/anywhere-npm">快速启动Node服务器，调试本地静态文件代码</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-04-04 17:41:35 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                </div>
-            </section>
-            <nav id="page-nav">
+	    
 
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/bevel-corners.html">
+    <h1 class="article-title" itemprop="name">
+        CSS实现切角效果
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-05-02 22:52:17 &#43;0800 CST" itemprop="datePublished">2017-05-02</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<p>扁平化设计风格中，很流行斜面切角，即把元素的一个或多个角切成45度的缺口。大多数网页开发者倾向于使用背景图片来实现切角效果。但使用背景图片会增加额外的HTTP请求，增加网页加载的时间，难以修改和维护。实际上，CSS已经足够强大，可以提供纯CSS的解决方案，我们仅用CSS代码就能实现切角效果。</p>
+
+<h2 id="基于-css渐变-的切角效果">基于<code>CSS渐变</code>的切角效果</h2>
+
+<p>如果你对CSS渐变不陌生的话，应该知道CSS渐变可以接受<code>一个角度</code>作为方向，还可以设置百分比的色标的位置。当然，色标的位置也可以设置为绝对的长度值。
+<style>
+    .demo{
+        width:300px;
+        height: 200px;
+        margin:10px auto;
+    }
+    .demo1{
+        background: linear-gradient(-45deg, red, green);
+    }
+    .demo2{
+        background: linear-gradient(-45deg, red 20%, green 70%);
+    }
+    .demo3{
+        background: linear-gradient(-45deg, red 20%, green 0);
+    }
+    .demo4{
+        background: linear-gradient(-45deg, transparent 20%, green 0);
+    }
+    .demo5{
+        background: linear-gradient(-45deg, transparent 30px, green 0),
+                    linear-gradient(45deg, transparent 30px, red 0);
+    }
+    .demo6{
+        background: linear-gradient(-45deg, transparent 30px, green 0) right,
+                    linear-gradient(45deg, transparent 30px, red 0) left;
+        background-size:50% 100%;
+        background-repeat:no-repeat;
+    }
+    .demo7{
+        background: linear-gradient(135deg, transparent 30px, green 0) top left,
+            linear-gradient(-135deg, transparent 30px, green 0) top right,
+            linear-gradient(-45deg, transparent 30px, green 0) bottom right,
+            linear-gradient(45deg, transparent 30px, green 0) bottom left;
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+    }
+    .demo8{</p>
+
+<pre><code>}
+</code></pre>
+
+<p></style></p>
+
+<h3 id="1-普通的线性渐变">1.普通的线性渐变</h3>
+
+<p>我们设置-45度为渐变方向，即从右下角到左上角渐变的方向。</p>
+
+<pre><code class="language-css">.demo{
+    background: linear-gradient(-45deg, red, green);
+}
+</code></pre>
+
+<p>渲染的效果是这样的：</p>
+
+<div class="demo demo1"></div>
+
+<h3 id="2-设置色标值的线性渐变">2.设置色标值的线性渐变</h3>
+
+<p>我们给这两个色标设置一个百分比，看看会是什么效果。</p>
+
+<pre><code class="language-css">.demo{
+    background: linear-gradient(-45deg, red 20%, green 70%);
+}
+</code></pre>
+
+<p>上述代码的意思从右下角到左上角渐变的方向上，0~20%的区域是纯红色的，20%-70%的区域是渐变，70%-100%的区域是纯绿色的。
+<div class="demo demo2"></div></p>
+
+<h3 id="3-色标值为0的线性渐变">3.色标值为0的线性渐变</h3>
+
+<p>如果我们再稍微做些修改，把第二个色标值改为0，会是什么效果呢？</p>
+
+<pre><code class="language-css">.demo{
+    background: linear-gradient(-45deg, red 20%, green 0);
+}
+</code></pre>
+
+<div class="demo demo3"></div>
+
+<p>是不是有点惊讶？！</p>
+
+<p>我们得到的图形是没有渐变的。从右下角到左上角渐变的方向上，0-20%的区域是纯红色，20%-100%的区域就是纯绿色。</p>
+
+<pre><code>注意：只要第二个色标值小于前一个色标值，那么浏览器就会默认解析为前一个色标值的。
+</code></pre>
+
+<p>上面的CSS代码等价于：</p>
+
+<pre><code class="language-css">.demo{
+    background: linear-gradient(-45deg, red 20%, green 20%);
+}
+</code></pre>
+
+<h3 id="4-切角效果">4.切角效果</h3>
+
+<p>将上面的代码再稍作改动，把右下角的<code>红色</code>改成<code>透明色</code>, 就能得到一个右下角的<code>切角效果</code>。</p>
+
+<pre><code class="language-css">.demo{
+    background: linear-gradient(-45deg, transparent 20%, green 0);
+}
+</code></pre>
+
+<div class="demo demo4"></div>
+
+<p>其实，实际的网页开发中，我们更倾向于一个固定大小的切角。那么，我们可以把百分比改为绝对的长度值，比如把20%改为30px.</p>
+
+<h3 id="5-两个切角效果">5.两个切角效果</h3>
+
+<p>如果我们需要的切角不止一个，怎么实现呢？</p>
+
+<p>是不是可以声明两条渐变规则呢？我们来试一下效果。</p>
+
+<pre><code class="language-css">.demo{
+    background: linear-gradient(-45deg, transparent 30px, green 0),
+                linear-gradient(45deg, transparent 30px, red 0);
+}
+</code></pre>
+
+<div class="demo demo5"></div>
+
+<p>尝试失败。因为默认情况下，两层渐变都会填满整个元素，导致相互重叠。这个时候，我们就需要用到<code>background-size</code>和<code>background-repeat</code>,让每层渐变分别占据整个元素的一半。</p>
+
+<pre><code class="language-css">.demo{
+    background: linear-gradient(-45deg, transparent 30px, green 0) right,
+                linear-gradient(45deg, transparent 30px, red 0) left;
+    background-size:50% 100%;
+    background-repeat:no-repeat;
+}
+</code></pre>
+
+<div class="demo demo6"></div>
+
+<h3 id="6-四个切角效果">6.四个切角效果</h3>
+
+<p>看了两个切角的实现方式，想必你也能推断出实现四个切角效果的思路了。我们需要<code>4层渐变</code>，每层只占整个元素的<code>4分之一</code>。</p>
+
+<pre><code class="language-css">.demo{
+    background: linear-gradient(135deg, transparent 30px, green 0) top left,
+        linear-gradient(-135deg, transparent 30px, green 0) top right,
+        linear-gradient(-45deg, transparent 30px, green 0) bottom right,
+        linear-gradient(45deg, transparent 30px, green 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+}
+</code></pre>
+
+<div class="demo demo7"></div>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/bevel-corners.html" data-id="6b129c90618d239a79550363f95ff612" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://www.wangxingfeng.com/diamond-picture.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          上一篇
+      </strong>
+      <div class="article-nav-title">如何用CSS代码实现网页设计中的菱形图片</div>
+    </a>
+    
+
+    
 </nav>
 
-        </section>
-        <aside id="sidebar">
+
+    </article>
+
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
     
 <div class="widget-wrap">
     <h3 class="widget-title">
@@ -496,7 +791,8 @@
 	<div id="toTop" class="fa fa-angle-up"></div>
 </aside>
 
-    </div>
+	    
+	</div>
 </div>
 
 <footer id="footer">

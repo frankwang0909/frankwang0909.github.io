@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wangxingfeng.com/bevel-corners.html</loc>
+    <lastmod>2017-05-02T22:52:17+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.wangxingfeng.com/diamond-picture.html</loc>
     <lastmod>2017-05-01T22:00:03+08:00</lastmod>
   </url>
@@ -146,7 +151,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/tags/css/</loc>
-    <lastmod>2017-05-01T22:00:03+08:00</lastmod>
+    <lastmod>2017-05-02T22:52:17+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -164,13 +169,13 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/</loc>
-    <lastmod>2017-05-01T22:00:03+08:00</lastmod>
+    <lastmod>2017-05-02T22:52:17+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.wangxingfeng.com/categories/frontend/</loc>
-    <lastmod>2017-05-01T22:00:03+08:00</lastmod>
+    <lastmod>2017-05-02T22:52:17+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -206,7 +211,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/post/</loc>
-    <lastmod>2017-05-01T22:00:03+08:00</lastmod>
+    <lastmod>2017-05-02T22:52:17+08:00</lastmod>
     <priority>0</priority>
   </url>
   

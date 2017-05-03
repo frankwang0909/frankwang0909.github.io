@@ -10,6 +10,169 @@
     <atom:link href="http://www.wangxingfeng.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>CSS实现切角效果</title>
+      <link>http://www.wangxingfeng.com/bevel-corners.html</link>
+      <pubDate>Tue, 02 May 2017 22:52:17 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/bevel-corners.html</guid>
+      <description>
+
+&lt;p&gt;扁平化设计风格中，很流行斜面切角，即把元素的一个或多个角切成45度的缺口。大多数网页开发者倾向于使用背景图片来实现切角效果。但使用背景图片会增加额外的HTTP请求，增加网页加载的时间，难以修改和维护。实际上，CSS已经足够强大，可以提供纯CSS的解决方案，我们仅用CSS代码就能实现切角效果。&lt;/p&gt;
+
+&lt;h2 id=&#34;基于-css渐变-的切角效果&#34;&gt;基于&lt;code&gt;CSS渐变&lt;/code&gt;的切角效果&lt;/h2&gt;
+
+&lt;p&gt;如果你对CSS渐变不陌生的话，应该知道CSS渐变可以接受&lt;code&gt;一个角度&lt;/code&gt;作为方向，还可以设置百分比的色标的位置。当然，色标的位置也可以设置为绝对的长度值。
+&lt;style&gt;
+    .demo{
+        width:300px;
+        height: 200px;
+        margin:10px auto;
+    }
+    .demo1{
+        background: linear-gradient(-45deg, red, green);
+    }
+    .demo2{
+        background: linear-gradient(-45deg, red 20%, green 70%);
+    }
+    .demo3{
+        background: linear-gradient(-45deg, red 20%, green 0);
+    }
+    .demo4{
+        background: linear-gradient(-45deg, transparent 20%, green 0);
+    }
+    .demo5{
+        background: linear-gradient(-45deg, transparent 30px, green 0),
+                    linear-gradient(45deg, transparent 30px, red 0);
+    }
+    .demo6{
+        background: linear-gradient(-45deg, transparent 30px, green 0) right,
+                    linear-gradient(45deg, transparent 30px, red 0) left;
+        background-size:50% 100%;
+        background-repeat:no-repeat;
+    }
+    .demo7{
+        background: linear-gradient(135deg, transparent 30px, green 0) top left,
+            linear-gradient(-135deg, transparent 30px, green 0) top right,
+            linear-gradient(-45deg, transparent 30px, green 0) bottom right,
+            linear-gradient(45deg, transparent 30px, green 0) bottom left;
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+    }
+    .demo8{&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/style&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;1-普通的线性渐变&#34;&gt;1.普通的线性渐变&lt;/h3&gt;
+
+&lt;p&gt;我们设置-45度为渐变方向，即从右下角到左上角渐变的方向。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, red, green);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;渲染的效果是这样的：&lt;/p&gt;
+
+&lt;div class=&#34;demo demo1&#34;&gt;&lt;/div&gt;
+
+&lt;h3 id=&#34;2-设置色标值的线性渐变&#34;&gt;2.设置色标值的线性渐变&lt;/h3&gt;
+
+&lt;p&gt;我们给这两个色标设置一个百分比，看看会是什么效果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, red 20%, green 70%);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上述代码的意思从右下角到左上角渐变的方向上，0~20%的区域是纯红色的，20%-70%的区域是渐变，70%-100%的区域是纯绿色的。
+&lt;div class=&#34;demo demo2&#34;&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-色标值为0的线性渐变&#34;&gt;3.色标值为0的线性渐变&lt;/h3&gt;
+
+&lt;p&gt;如果我们再稍微做些修改，把第二个色标值改为0，会是什么效果呢？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, red 20%, green 0);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo3&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;是不是有点惊讶？！&lt;/p&gt;
+
+&lt;p&gt;我们得到的图形是没有渐变的。从右下角到左上角渐变的方向上，0-20%的区域是纯红色，20%-100%的区域就是纯绿色。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;注意：只要第二个色标值小于前一个色标值，那么浏览器就会默认解析为前一个色标值的。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的CSS代码等价于：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, red 20%, green 20%);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-切角效果&#34;&gt;4.切角效果&lt;/h3&gt;
+
+&lt;p&gt;将上面的代码再稍作改动，把右下角的&lt;code&gt;红色&lt;/code&gt;改成&lt;code&gt;透明色&lt;/code&gt;, 就能得到一个右下角的&lt;code&gt;切角效果&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, transparent 20%, green 0);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo4&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;其实，实际的网页开发中，我们更倾向于一个固定大小的切角。那么，我们可以把百分比改为绝对的长度值，比如把20%改为30px.&lt;/p&gt;
+
+&lt;h3 id=&#34;5-两个切角效果&#34;&gt;5.两个切角效果&lt;/h3&gt;
+
+&lt;p&gt;如果我们需要的切角不止一个，怎么实现呢？&lt;/p&gt;
+
+&lt;p&gt;是不是可以声明两条渐变规则呢？我们来试一下效果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, transparent 30px, green 0),
+                linear-gradient(45deg, transparent 30px, red 0);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo5&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;尝试失败。因为默认情况下，两层渐变都会填满整个元素，导致相互重叠。这个时候，我们就需要用到&lt;code&gt;background-size&lt;/code&gt;和&lt;code&gt;background-repeat&lt;/code&gt;,让每层渐变分别占据整个元素的一半。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, transparent 30px, green 0) right,
+                linear-gradient(45deg, transparent 30px, red 0) left;
+    background-size:50% 100%;
+    background-repeat:no-repeat;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo6&#34;&gt;&lt;/div&gt;
+
+&lt;h3 id=&#34;6-四个切角效果&#34;&gt;6.四个切角效果&lt;/h3&gt;
+
+&lt;p&gt;看了两个切角的实现方式，想必你也能推断出实现四个切角效果的思路了。我们需要&lt;code&gt;4层渐变&lt;/code&gt;，每层只占整个元素的&lt;code&gt;4分之一&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(135deg, transparent 30px, green 0) top left,
+        linear-gradient(-135deg, transparent 30px, green 0) top right,
+        linear-gradient(-45deg, transparent 30px, green 0) bottom right,
+        linear-gradient(45deg, transparent 30px, green 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo7&#34;&gt;&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>如何用CSS代码实现网页设计中的菱形图片</title>
       <link>http://www.wangxingfeng.com/diamond-picture.html</link>
       <pubDate>Mon, 01 May 2017 22:00:03 +0800</pubDate>

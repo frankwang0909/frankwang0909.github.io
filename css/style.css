@@ -2278,3 +2278,10 @@ ol.toc {
 .diamon-pic-clip-path-2:hover{
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
+
+/* 切角效果*/
+
+.article-entry .bevel-corners-8{
+  border:30px solid transparent; 
+  border-image:1 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" fill="red"><polygon points="0, 1 1, 0 2, 0 3, 1 3, 2 2, 3 1, 3 0, 2"/></svg>');
+}
