@@ -53,9 +53,9 @@
     }
     .demo7{
         background: linear-gradient(135deg, transparent 30px, green 0) top left,
-            linear-gradient(-135deg, transparent 30px, green 0) top right,
-            linear-gradient(-45deg, transparent 30px, green 0) bottom right,
-            linear-gradient(45deg, transparent 30px, green 0) bottom left;
+            linear-gradient(-135deg, transparent 30px, red 0) top right,
+            linear-gradient(-45deg, transparent 30px, pink 0) bottom right,
+            linear-gradient(45deg, transparent 30px, blue 0) bottom left;
         background-size: 50% 50%;
         background-repeat: no-repeat;
     }
@@ -157,13 +157,13 @@
 
 &lt;h3 id=&#34;6-四个切角效果&#34;&gt;6.四个切角效果&lt;/h3&gt;
 
-&lt;p&gt;看了两个切角的实现方式，想必你也能推断出实现四个切角效果的思路了。我们需要&lt;code&gt;4层渐变&lt;/code&gt;，每层只占整个元素的&lt;code&gt;4分之一&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;看了两个切角的实现方式，想必你也能推断出实现&lt;code&gt;四个切角效果&lt;/code&gt;的思路了。我们需要&lt;code&gt;4层渐变&lt;/code&gt;，每层只占整个元素的&lt;code&gt;4分之一&lt;/code&gt;。下面的例子，我用了4种不同的颜色表示，这样可以更加直观的看出来每层渐变的大小和位置。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
     background: linear-gradient(135deg, transparent 30px, green 0) top left,
-        linear-gradient(-135deg, transparent 30px, green 0) top right,
-        linear-gradient(-45deg, transparent 30px, green 0) bottom right,
-        linear-gradient(45deg, transparent 30px, green 0) bottom left;
+        linear-gradient(-135deg, transparent 30px, red 0) top right,
+        linear-gradient(-45deg, transparent 30px, pink 0) bottom right,
+        linear-gradient(45deg, transparent 30px, blue 0) bottom left;
     background-size: 50% 50%;
     background-repeat: no-repeat;
 }
