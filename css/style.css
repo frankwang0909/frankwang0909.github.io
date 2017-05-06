@@ -659,6 +659,11 @@ code {
   margin: 10px auto 20px;
   width: 128px;
   height: 128px;
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    transition: 1s clip-path;
+}
+#profile .inner .base-info #avatar:hover{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 #profile .inner .base-info #name,
 #profile .inner .base-info #title,

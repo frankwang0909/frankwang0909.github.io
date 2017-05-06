@@ -233,7 +233,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        25
+        26
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -390,7 +390,7 @@
 <h2 id="1-基于tranform的实现方法">1. 基于tranform的实现方法</h2>
 
 <p>原图
-<img src="http://csssecrets.io/images/adamcatlace.jpg" style="display:block; max-width: 200px; margin:0 auto">
+<img src="/images/adamcatlace.jpg" style="display:block; max-width: 200px; margin:0 auto">
 用一个<code>&lt;div&gt;</code> 把图片包裹起来，对这个容器<code>&lt;div&gt;</code>应用<code>transform:rotate(45deg)</code>, 进行旋转45度，我们得到如下的效果：图片应该也会跟着旋转了</p>
 
 <pre><code>div{
@@ -401,7 +401,7 @@
 </code></pre>
 
 <div class="diamond-pic">
-    <img src="http://csssecrets.io/images/adamcatlace.jpg" >
+    <img src="/images/adamcatlace.jpg" >
 </div>
 
 <p>如果我们对里面的图片进行反向旋转45度，那么图片的旋转就会抵消掉。看看效果。</p>
@@ -413,7 +413,7 @@
 </code></pre>
 
 <div class="diamond-pic">
-    <img src="http://csssecrets.io/images/adamcatlace.jpg" class="diamond-img">
+    <img src="/images/adamcatlace.jpg" class="diamond-img">
 </div>
 
 <p>我们得到了一个裁成<code>八边形</code>的图片。</p>
@@ -421,7 +421,7 @@
 <p>问题出在哪里呢？我给外面的<code>div</code>加一个边框，这样就容易看出来了。</p>
 
 <div class="diamond-pic" style="border:1px solid red">
-    <img src="http://csssecrets.io/images/adamcatlace.jpg" class="diamond-img">
+    <img src="/images/adamcatlace.jpg" class="diamond-img">
 </div>
 
 <p>问题出在了这里图片的宽度是与容器<code>div</code>的<code>边长</code>相等，其实我们应该让图片的宽度与<code>对角线</code>相等。</p>
@@ -437,7 +437,7 @@
 </code></pre>
 
 <div class="diamond-pic">
-    <img src="http://csssecrets.io/images/adamcatlace.jpg" class="diamond-img" style="max-width:142%;">
+    <img src="/images/adamcatlace.jpg" class="diamond-img" style="max-width:142%;">
 </div>
 
 <p>因为是以图片的<code>左上角</code>为原点进行放大的。我们还需要在通过设置<code>margin:-45px;</code>才能得到菱形图片。</p>
@@ -450,7 +450,7 @@
 </code></pre>
 
 <div class="diamond-pic">
-    <img src="http://csssecrets.io/images/adamcatlace.jpg" class="diamond-img" style="max-width:142%; margin:-45px">
+    <img src="/images/adamcatlace.jpg" class="diamond-img" style="max-width:142%; margin:-45px">
 </div>
 
 <p>当然，我们可以通过<code>transform:scale(1.42)</code>来放大图片1.42倍。<code>scale()</code>是以图片的<code>中心点</code>进行缩放的，这样我们就不用额外地设置<code>margin</code>值了。</p>
@@ -462,7 +462,7 @@
 </code></pre>
 
 <div class="diamond-pic">
-    <img src="http://csssecrets.io/images/adamcatlace.jpg" class="diamond-img" style="transform: rotate(-45deg) scale(1.42);">
+    <img src="/images/adamcatlace.jpg" class="diamond-img" style="transform: rotate(-45deg) scale(1.42);">
 </div>
 
 <h2 id="2-基于裁切路径clip-path方法">2. 基于裁切路径clip-path方法</h2>
@@ -475,7 +475,7 @@
 </code></pre>
 
 <div class="diamond-pic">
-    <img src="http://csssecrets.io/images/adam-sleeping.jpg" class="diamond-img" style="transform: rotate(-45deg) scale(1.42);">
+    <img src="/images/adam-sleeping.jpg" class="diamond-img" style="transform: rotate(-45deg) scale(1.42);">
 </div>
 
 <p><code>SVG</code>中，有个名叫<code>&lt;clipPath&gt;</code>的元素，专门用来定义剪裁路径。其实CSS中也有一个类似的属性，即<code>clip-path属性</code>。</p>
@@ -487,7 +487,7 @@
 }
 </code></pre>
 
-<p><img src="http://csssecrets.io/images/adam-sleeping.jpg" class="diamon-pic-clip-path" ></p>
+<p><img src="/images/adam-sleeping.jpg" class="diamon-pic-clip-path" ></p>
 
 <p>如上图所示，这个方法可以很好的适应非正方形的图片。</p>
 
@@ -502,7 +502,7 @@ img:hover{
 }
 </code></pre>
 
-<p><img src="http://csssecrets.io/images/adam-sleeping.jpg" class="diamon-pic-clip-path-2" ></p>
+<p><img src="/images/adam-sleeping.jpg" class="diamon-pic-clip-path-2" ></p>
 
 <p>注意，除了谷歌浏览器，其他浏览器对这个clip-path属性的支持度都还不是很好。</p>
 
@@ -622,6 +622,32 @@ img:hover{
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/bevel-corners-svg.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/bevel-corners-svg.html" class="title">用border-image&#43;SVG实现切角效果</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-06 16:19:48 &#43;0800 CST" itemprop="datePublished">2017-05-06</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/bevel-corners.html" class="thumbnail">
                     
                         <span class="thumbnail-image thumbnail-none"></span>
@@ -720,32 +746,6 @@ img:hover{
                     <p class="item-title"><a href="http://www.wangxingfeng.com/ellipse-border-radius.html" class="title">用CSS绘制椭圆、半椭圆、四分之一椭圆</a></p>
                     <p class="item-date">
                         <time datetime="2017-04-30 11:25:58 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/css-flip.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/css-flip.html" class="title">用CSS实现图片翻转的动画效果</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-29 21:24:00 &#43;0800 CST" itemprop="datePublished">2017-04-29</time>
                     </p>
                 </div>
             </li>
