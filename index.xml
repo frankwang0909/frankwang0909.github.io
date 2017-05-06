@@ -7,43 +7,8 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Sat, 06 May 2017 16:19:48 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 02 May 2017 22:52:17 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>用border-image&#43;SVG实现切角效果</title>
-      <link>http://www.wangxingfeng.com/bevel-corners-svg.html</link>
-      <pubDate>Sat, 06 May 2017 16:19:48 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/bevel-corners-svg.html</guid>
-      <description>
-
-&lt;p&gt;之前写了一篇文章，介绍了&lt;a href=&#34;http://www.wangxingfeng.com/bevel-corners.html&#34;&gt;基于CSS渐变来实现切角效果&lt;/a&gt;的方法。今天再来介绍另一种方法，即使用&lt;code&gt;border-image&lt;/code&gt;+&lt;code&gt;SVG&lt;/code&gt;的方式来实现&lt;code&gt;切角效果&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-border-image的工作原理&#34;&gt;1. border-image的工作原理&lt;/h2&gt;
-
-&lt;p&gt;border-image&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    .demo{
-        border:30px solid transparent;
-        border-image:1 url(&#39;data:image/svg+xml,\
-            &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;3&amp;quot; height=&amp;quot;3&amp;quot; fill=&amp;quot;red&amp;quot;&amp;gt;\
-              &amp;lt;polygon points=&amp;quot;0,1 1,0 2, 0 3, 1 3, 2 2, 3 1, 3 0, 2&amp;quot;/&amp;gt;\
-            &amp;lt;/svg&amp;gt;&#39;);
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;300&#34; height=&#34;300&#34; fill=&#34;purple&#34;&gt;
-    &lt;polygon points=&#34;0, 100 100, 0 200, 0 300, 100 300, 200 200, 300 100, 300 0, 200&#34;/&gt;
-&lt;/svg&gt;
-&lt;div class=&#34;demo bevel-corners-8&#34;&gt;
-&lt;/div&gt;&lt;/p&gt;
-
-&lt;div&gt;
-    
-&lt;/div&gt;
-</description>
-    </item>
     
     <item>
       <title>CSS实现切角效果</title>
@@ -1895,6 +1860,105 @@ git add --all
 git commit -m &amp;quot;&amp;lt;some change message&amp;gt;&amp;quot;
 git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>代码换行导致的inline元素间距bug</title>
+      <link>http://www.wangxingfeng.com/fix-inline-bug</link>
+      <pubDate>Wed, 11 Jan 2017 21:48:19 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/fix-inline-bug</guid>
+      <description>
+
+&lt;h2 id=&#34;inline-元素&#34;&gt;inline 元素：&lt;/h2&gt;
+
+&lt;p&gt;如果inline元素(span, strong, b, em, i等)代码换行，它们之间会产生我们不希望的间隔。通过设置&lt;code&gt;margin:0&lt;/code&gt;或者&lt;code&gt;padding:0&lt;/code&gt; , 这个都间隔仍然存在，说明这个间隔并不是margin或者padding。&lt;/p&gt;
+
+&lt;style type=&#34;text/css&#34;&gt;
+    .inline p span:first-child {
+        background-color: #66d9ef;
+    }
+    .inline p span:nth-child(2) {
+        background-color: #c191c1;
+    }
+    .inline p span:nth-child(3) {
+        background-color: #9fe89f;
+    }
+    .inline p span:nth-child(4) {
+        background-color: #8787f1;
+    }
+    .inline p span:last-child{
+        background-color: #464141;
+    }
+    .inline p span{
+        font-size:16px;
+        color:#fff;
+        line-height:30px;
+    }
+
+    .inline-block span{
+        display: inline-block;
+        width:20%;
+    }
+    .fs0{
+        font-size: 0;
+    }
+&lt;/style&gt;
+
+&lt;div class=&#34;inline &#34;&gt;
+    &lt;p&gt;
+        &lt;span&gt;inline元素 1&lt;/span&gt;
+        &lt;span&gt;inline元素 2&lt;/span&gt;
+        &lt;span&gt;inline元素 3&lt;/span&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;是否为了不消除这个间隔，就必须把inline元素的html代码写在一行内呢？答案是否定的。
+开发的时候，为了方便阅读和调试，我们习惯于把代码写成这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;
+    &amp;lt;span&amp;gt;inline元素 1&amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;inline元素 2&amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;inline元素 3&amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;inline元素 4&amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;inline元素 5&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决方法：设置父元素&lt;code&gt;font-size:0&lt;/code&gt;，再给子元素单独设置&lt;code&gt;font-size&lt;/code&gt;，修复bug。
+&lt;div class=&#34;inline &#34;&gt;
+    &lt;p class=&#34;fs0&#34;&gt;
+        &lt;span&gt;inline元素 1&lt;/span&gt;
+        &lt;span&gt;inline元素 2&lt;/span&gt;
+        &lt;span&gt;inline元素 3&lt;/span&gt;
+    &lt;/p&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;inline-block-元素&#34;&gt;inline-block 元素：&lt;/h2&gt;
+
+&lt;p&gt;要在一行展示多个并列的元素，除了通过设置浮动&lt;code&gt;float:left;float:right&lt;/code&gt;，我们还可以通过设置&lt;code&gt;display:inline-block&lt;/code&gt; 把inline元素或block元素，转换成一个可以设置高度和宽度的inline-block元素。&lt;/p&gt;
+
+&lt;p&gt;如果有5个&lt;code&gt;inline-block&lt;/code&gt;元素，设置它们的宽度为&lt;code&gt;20%&lt;/code&gt;。我们期望它们是在一行展示的。但是因为html代码换行产生了间距，导致无法在一行内显示。
+&lt;div class=&#34;inline &#34;&gt;
+    &lt;p class=&#34;inline-block&#34;&gt;
+        &lt;span&gt;inline-block元素 1&lt;/span&gt;
+        &lt;span&gt;inline-block元素 2&lt;/span&gt;
+        &lt;span&gt;inline-block元素 3&lt;/span&gt;
+        &lt;span&gt;inline-block元素 4&lt;/span&gt;
+        &lt;span&gt;inline-block元素 5&lt;/span&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+解决方法: 设置父元素&lt;code&gt;font-size:0&lt;/code&gt;，再给子元素单独设置&lt;code&gt;font-size&lt;/code&gt;。
+&lt;div class=&#34;inline &#34;&gt;
+    &lt;p class=&#34;inline-block fs0&#34;&gt;
+        &lt;span&gt;inline-block元素 1&lt;/span&gt;
+        &lt;span&gt;inline-block元素 2&lt;/span&gt;
+        &lt;span&gt;inline-block元素 3&lt;/span&gt;
+        &lt;span&gt;inline-block元素 4&lt;/span&gt;
+        &lt;span&gt;inline-block元素 5&lt;/span&gt;
+    &lt;/p&gt;
+&lt;/div&gt;&lt;/p&gt;
 </description>
     </item>
     
