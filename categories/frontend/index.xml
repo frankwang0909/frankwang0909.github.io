@@ -10,6 +10,336 @@
     <atom:link href="http://www.wangxingfeng.com/categories/frontend/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>两个Safari浏览器不兼容的坑</title>
+      <link>http://www.wangxingfeng.com/safari-not-support.html</link>
+      <pubDate>Thu, 01 Jun 2017 07:35:15 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/safari-not-support.html</guid>
+      <description>
+
+&lt;h2 id=&#34;一-苹果手机的safari浏览器不兼容new-date-日期转换格式的坑&#34;&gt;一、 苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑&lt;/h2&gt;
+
+&lt;p&gt;需求：演唱会门票开售时间倒计时。&lt;/p&gt;
+
+&lt;p&gt;思路如下：开售时间减去现在的时间，得出一个时间毫秒数，然后再转换成xx天xx小时xx分xx秒。
+so easy! 然后开始写代码。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+function preSellCount(){
+    // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
+    var preSt = $(&#39;#preSellTime&#39;).val() || $(&#39;#showTime&#39;).val();  
+
+    // 如果没有设置开售时间，也没有设置演出的时间，则倒计时处显示“开售时间待定”
+    if (!preSt) {
+        $(&#39;#preSellCount&#39;).text(&amp;quot;开售时间待定&amp;quot;);
+    }else{
+
+        //取到的开售时间是一个字符串，先转换成毫秒数，
+        var sellTime = new Date(preSt).getTime();
+
+        //现在的毫秒数
+        var now = new Date().getTime();
+
+        var count, d, h, min, sec, timeStr, timer;
+
+        count = now &amp;gt; sellTime ? 0 : Math.floor((sellTime-now)/1000);
+
+        // 定时器
+        timer = setInterval(function() {
+            if (count === 0) {
+                clearInterval(timer);
+            }else{
+                
+                // 天数
+                d = Math.floor(count/86400); 
+
+                // 小时数
+                h = Math.floor(count%86400/3600); 
+
+                // 分钟数
+                min = Math.floor(count%86400%3600/60); 
+
+                // 秒钟数
+                sec = Math.floor(count%86400%3600%60);
+
+                // 小于10的时候，前面补一个‘0’。
+                if (min &amp;lt; 10) {
+                    min = &#39;0&#39; + min;
+                }
+                if (sec &amp;lt; 10 ) {
+                    sec = &#39;0&#39; + sec;
+                }
+
+                if (d == 0) {
+                    timeStr =  h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                }else{
+                    timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                }
+                // 得到倒计时的时间字符串
+                timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + sec + &amp;quot;秒&amp;quot;;
+
+                // 将字倒计时显示到页面上
+                $(&#39;#preSellCount&#39;).text(timeStr);
+
+                count -= 1;
+            }
+        }, 1000);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;用Chrome模拟各种手机调试都是一切正常。发布到本地测试环境，然后用自己的安卓手机访问，也一切正常。再用同事的苹果手机测试，倒计时不显示。WTF?&lt;/p&gt;
+
+&lt;p&gt;想想哪里可能会有兼容性问题呢？从头检查一遍代码。获取开售时间没有问题。取到的开售时间是一个字符串的日期，用&lt;code&gt;new Date(preSt).getTime()&lt;/code&gt;转换成毫秒数，有没有问题呢？Google一下&lt;code&gt;new Date() iOS&lt;/code&gt;， 果然发现有不少相关文章提到iOS下日期转换问题。由于Safari在iOS5及以下对&lt;code&gt;YYYY-MM-DD&lt;/code&gt;格式的日期不支持，所以需要转换格式。最简单的是用&lt;code&gt;正则表达式&lt;/code&gt;把日期转换成 &lt;code&gt;YYYY/MM/DD&lt;/code&gt;格式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+    preSt.replace(/-/g, &amp;quot;/&amp;quot;)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最终的代码是这样的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+function preSellCount(){
+    // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
+    var preSt = $(&#39;#preSellTime&#39;).val() || $(&#39;#showTime&#39;).val();  
+
+    // 如果没有设置开售时间，也没有设置演出的时间，则倒计时处显示“开售时间待定”
+    if (!preSt) {
+        $(&#39;#preSellCount&#39;).text(&amp;quot;开售时间待定&amp;quot;);
+    }else{
+
+        //取到的开售时间是一个字符串，先转换成毫秒数，
+        var sellTime = new Date(preSt.replace(/-/g, &amp;quot;/&amp;quot;)).getTime();
+
+        //现在的毫秒数
+        var now = new Date().getTime();
+
+        var count, d, h, min, sec, timeStr, timer;
+
+        count = now &amp;gt; sellTime ? 0 : Math.floor((sellTime-now)/1000);
+
+        // 定时器
+        timer = setInterval(function() {
+            if (count === 0) {
+                clearInterval(timer);
+            }else{
+                
+                // 天数
+                d = Math.floor(count/86400); 
+
+                // 小时数
+                h = Math.floor(count%86400/3600); 
+
+                // 分钟数
+                min = Math.floor(count%86400%3600/60); 
+
+                // 秒钟数
+                sec = Math.floor(count%86400%3600%60);
+
+                // 小于10的时候，前面补一个‘0’。
+                if (min &amp;lt; 10) {
+                    min = &#39;0&#39; + min;
+                }
+                if (sec &amp;lt; 10 ) {
+                    sec = &#39;0&#39; + sec;
+                }
+
+                if (d == 0) {
+                    timeStr =  h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                }else{
+                    timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                }
+                // 得到倒计时的时间字符串
+                timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + sec + &amp;quot;秒&amp;quot;;
+
+                // 将字倒计时显示到页面上
+                $(&#39;#preSellCount&#39;).text(timeStr);
+
+                count -= 1;
+            }
+        }, 1000);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;二-苹果手机的safari浏览器不支持-keydown-keypress-keyup-change等事件的坑&#34;&gt;二、苹果手机的Safari浏览器不支持 keydown, keypress, keyup, change等事件的坑。&lt;/h2&gt;
+
+&lt;p&gt;需求:在输入框中输入内容时，输入框后边显示清除按钮，点击可以清除输入框中的所有内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+var keyword = $(&amp;quot;#search-keyword&amp;quot;);
+var clear = $(&#39;.clear&#39;);
+
+keyword.on(&#39;keyup&#39;, function(event) {
+    if($(this).val().length&amp;gt;0){
+
+        //显示清空输入框的小图标
+        clear.show();
+
+    }else{
+
+        // 隐藏清空输入框的小图标
+        clear.hide();
+    }
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是在iOS的Safari中, keydown、keypress、 keyup、change等事件都无效，考虑监听input和propertychange事件作为代替。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+var keyword = $(&amp;quot;#search-keyword&amp;quot;);
+var clear = $(&#39;.clear&#39;);
+
+keyword.on(&#39;input propertychange&#39;, function(event) {
+    if($(this).val().length&amp;gt;0){
+        //显示清空输入框的小图标
+        clear.show();
+    }else{
+        // 隐藏清空输入框的小图标
+        clear.hide();
+    }
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>用border-image&#43;SVG实现切角效果</title>
+      <link>http://www.wangxingfeng.com/bevel-corners-svg.html</link>
+      <pubDate>Sat, 06 May 2017 16:19:48 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/bevel-corners-svg.html</guid>
+      <description>
+
+&lt;p&gt;之前写了一篇文章，介绍了&lt;a href=&#34;http://www.wangxingfeng.com/bevel-corners.html&#34;&gt;基于CSS渐变来实现切角效果&lt;/a&gt;的方法。今天再来介绍另一种方法，即使用&lt;code&gt;border-image&lt;/code&gt;+&lt;code&gt;SVG&lt;/code&gt;的方式来实现&lt;code&gt;切角效果&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;border-image的工作原理&#34;&gt;border-image的工作原理&lt;/h2&gt;
+
+&lt;p&gt;给一个元素设置边框，我们会使用&lt;code&gt;border&lt;/code&gt;这个属性。&lt;code&gt;border&lt;/code&gt;是&lt;code&gt;border-width&lt;/code&gt;、&lt;code&gt;border-style&lt;/code&gt;、&lt;code&gt;border-color&lt;/code&gt;等3个属性的简写形式。&lt;/p&gt;
+
+&lt;p&gt;我们给div设置一个宽20px、实线、颜色为&lt;code&gt;#58a&lt;/code&gt;的边框。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px; 
+		margin:20px auto;
+		border:40px solid #58a;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a;&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;border-image&lt;/code&gt;是CSS3的新属性，用于指定元素边框的背景图片。使用 border-image 时，border-style属性所设置的边框样式solid、dashed或dotted将不起作用。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;border-image&lt;/code&gt;属性也是一个简写：包含&lt;code&gt;border-image-source&lt;/code&gt;、&lt;code&gt;border-image-slice&lt;/code&gt;、&lt;code&gt;border-image-width&lt;/code&gt;、&lt;code&gt;border-image-outset&lt;/code&gt;、&lt;code&gt;border-image-repeat&lt;/code&gt;等5个属性。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-border-image-source&#34;&gt;1. &lt;code&gt;border-image-source&lt;/code&gt;:&lt;/h3&gt;
+
+&lt;p&gt;从这个属性的英文命名，我们就可以知道它表示的是边框背景图片资源的路径，默认值是&lt;code&gt;none&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg)&#34;&gt;&lt;/div&gt;
+
+&lt;h3 id=&#34;2-border-image-slice&#34;&gt;2. &lt;code&gt;border-image-slice&lt;/code&gt;:&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;border-image-slice&lt;/code&gt;属性指定图像的边界向内偏移。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice:10% 20% 30% 40%; 
+		border-image-repeat: none;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg);border-image-slice:10% 20% 30% 40%; border-image-repeat: round stretch;&#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 10% 30%;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 10% 30%;&#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 30 30% 45;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 30 30% 45;&#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 7 12 14 5; 
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 7 12 14 5; &#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 10% fill 7 12; 
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: border-image-slice: 10% fill 7 12; &#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    .demo{
+        border:30px solid transparent;
+        border-image:1 url(&#39;data:image/svg+xml,\
+            &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;3&amp;quot; height=&amp;quot;3&amp;quot; fill=&amp;quot;red&amp;quot;&amp;gt;\
+              &amp;lt;polygon points=&amp;quot;0,1 1,0 2, 0 3, 1 3, 2 2, 3 1, 3 0, 2&amp;quot;/&amp;gt;\
+            &amp;lt;/svg&amp;gt;&#39;);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;300&#34; height=&#34;300&#34; fill=&#34;purple&#34;&gt;
+    &lt;polygon points=&#34;0, 100 100, 0 200, 0 300, 100 300, 200 200, 300 100, 300 0, 200&#34;/&gt;
+&lt;/svg&gt;
+&lt;div class=&#34;demo bevel-corners-8&#34;&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;div&gt;
+    
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>CSS实现切角效果</title>
       <link>http://www.wangxingfeng.com/bevel-corners.html</link>
       <pubDate>Tue, 02 May 2017 22:52:17 +0800</pubDate>
@@ -2103,127 +2433,6 @@ CDN加载失败时，还可以加载自己本地的jQuery文件。&lt;a href=&#3
     window.jQuery || document.write(&#39;&amp;lt;script src=&amp;quot;js/libs/jquery-2.1.0.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&#39;);
 &amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>前端工程师应该具备的SEO基础知识</title>
-      <link>http://www.wangxingfeng.com/seo</link>
-      <pubDate>Mon, 01 Aug 2016 21:49:40 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/seo</guid>
-      <description>
-
-&lt;h2 id=&#34;seo-是什么&#34;&gt;SEO 是什么？&lt;/h2&gt;
-
-&lt;p&gt;SEO 是“Search Engine Optimization”（搜索引擎优化）或“Search Engine Optimizer”（搜索引擎优化服务商）的首字母缩略词。通俗地说，SEO就是通过对网站内部调整优化及站外优化，使网站满足搜索引擎收录排名需求，在搜索引擎中提高关键词排名，从而把精准用户带到网站，获得免费流量，产生直接销售或品牌推广。&lt;/p&gt;
-
-&lt;p&gt;新手入门可以阅读&lt;a href=&#34;https://support.google.com/webmasters/answer/35291?hl=zh-Hans&#34;&gt;Google 搜索引擎优化 (SEO) 单页指南.pdf&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;如果想要进一步学习，可以参考&lt;a href=&#34;http://static.googleusercontent.com/media/www.google.com/en/us/intl/zh-cn/webmasters/docs/search-engine-optimization-starter-guide-zh-cn.pdf&#34;&gt;Google搜索引擎优化入门指南&lt;/a&gt; （需翻墙），&lt;a href=&#34;http://www.wangxingfeng.com/posts/search-engine-optimization-starter-guide-zh-cn.pdf&#34;&gt;如果翻不了，可以点击这里&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h2 id=&#34;前端工程师应该掌握的seo知识&#34;&gt;前端工程师应该掌握的SEO知识&lt;/h2&gt;
-
-&lt;p&gt;目前不少公司设有SEO的专职岗位，而前端工程师不是专业做SEO优化推广的，并不需要变成SEO专家，但应掌握以下SEO基础知识。&lt;/p&gt;
-
-&lt;h3 id=&#34;一-结构布局的优化&#34;&gt;一、结构布局的优化&lt;/h3&gt;
-
-&lt;p&gt;1.结构扁平化。&lt;/p&gt;
-
-&lt;p&gt;网站的层次结构尽量不超过三层。这样搜索引擎或者用户点击跳转3次可以到达网站内任何一个内页。&lt;/p&gt;
-
-&lt;p&gt;2.优化导航。&lt;/p&gt;
-
-&lt;p&gt;设置页面的主导航、副导航、分类导航、面包屑导航、分页页码等，方便用户跳转到想访问的页面。&lt;/p&gt;
-
-&lt;h3 id=&#34;二-标签的语义化&#34;&gt;二、标签的语义化&lt;/h3&gt;
-
-&lt;p&gt;搜索引擎的爬虫会依赖于标记来确定上下文和各个关键字的权重.因此，正确使用语义化的标签有利于搜索引擎抓取和收录网页内容。&lt;/p&gt;
-
-&lt;p&gt;1.锚链接 &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; 标签：&lt;/p&gt;
-
-&lt;p&gt;1）添加属性 &lt;strong&gt;title=&amp;ldquo;链接的文字说明&amp;rdquo;&lt;/strong&gt;，增加对该链接的说明，尤其是指向本站的链接。&lt;/p&gt;
-
-&lt;p&gt;2）添加属性 &lt;strong&gt;rel=&amp;ldquo;no follow&amp;rdquo;&lt;/strong&gt;。 对于指向非本站的链接，增加这个属性是告诉爬虫该页面无需追踪。&lt;/p&gt;
-
-&lt;p&gt;2.正文标题用&lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;,副标题用&lt;code&gt;&amp;lt;h2&amp;gt;&lt;/code&gt;, 不要滥用标题。&lt;/p&gt;
-
-&lt;p&gt;3.正文内容用&lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt;，正文内的换行用&lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;， 其他地方不要滥用&lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;来换行，而是通过CSS样式来设置。&lt;/p&gt;
-
-&lt;p&gt;4.图片&lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;添加属性 &lt;strong&gt;alt=&amp;ldquo;图片的文字注释&amp;rdquo;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;5.表格用&lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt; ，表格的标题使用 &lt;code&gt;&amp;lt;caption&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;6.有序列表用&lt;code&gt;&amp;lt;ol&amp;gt;&lt;/code&gt;， 无序列表用&lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;， 定义列表用&lt;code&gt;&amp;lt; dl&amp;gt;&lt;/code&gt;、&lt;/p&gt;
-
-&lt;p&gt;7.强调标签： &lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt; 表示强调， 可以用于突出关键词，有较大的权重。&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;也表示强调，权重比strong稍低。&lt;code&gt;&amp;lt;b&amp;gt;&lt;/code&gt;标签虽然也有加粗效果，但没有强调的作用，因此不会增加标签内的文本权重。&lt;/p&gt;
-
-&lt;p&gt;8.减少&lt;code&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt;的使用。iframes 阻塞页面加载, 延迟触发window.onload事件，给用户的感觉就是这个网页非常慢。&lt;/p&gt;
-
-&lt;p&gt;9.重要内容HTML代码放在最前面，然后通过CSS属性控制位置。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title> CSS3 动画效果</title>
-      <link>http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C</link>
-      <pubDate>Mon, 11 Jul 2016 21:03:27 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C</guid>
-      <description>
-
-&lt;h2 id=&#34;作用&#34;&gt;作用&lt;/h2&gt;
-
-&lt;p&gt;用来定义样式变化的过渡效果, 在某些情况下（移动端），可以代替JavaScript代码来实现动画效果。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;transition&lt;/code&gt;属性是一个简写属性，用于设置四个过渡属性：&lt;/p&gt;
-
-&lt;h3 id=&#34;1-transition-property&#34;&gt;1. transition-property&lt;/h3&gt;
-
-&lt;p&gt;规定设置过渡效果的 CSS 属性的名称, 默认值为&lt;code&gt;all&lt;/code&gt;, 表示所有属性，也可以单独设置某个css属性。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-transition-duration&#34;&gt;2. transition-duration&lt;/h3&gt;
-
-&lt;p&gt;过渡时间，值以秒或毫秒计。&lt;/p&gt;
-
-&lt;h3 id=&#34;3-transition-timing-function&#34;&gt;3. transition-timing-function&lt;/h3&gt;
-
-&lt;p&gt;过渡效果的速度曲线。该属性允许过渡效果随着时间来改变其速度。&lt;/p&gt;
-
-&lt;p&gt;默认值为&lt;code&gt;linear&lt;/code&gt;。常见的有以下值：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;linear  匀速
-ease    慢速开始，然后变快，然后慢速结束。
-ease-in 以慢速开始
-ease-out    以慢速结束
-ease-in-out 以慢速开始和结束的过渡效果
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;4-transition-delay&#34;&gt;4. transition-delay&lt;/h3&gt;
-
-&lt;p&gt;过渡效果的延迟，值以秒或毫秒计。默认为0。如果为正值，则表示延迟执行过渡效果；如果为负值（如-0.1s)，则会从过渡效果的执行0.1s的状态为初始状态开始执行过渡效果。&lt;/p&gt;
-
-&lt;h2 id=&#34;兼容性&#34;&gt;兼容性&lt;/h2&gt;
-
-&lt;p&gt;Internet Explorer 10、Firefox、Opera 和 Chrome等现代浏览器 支持 transition 属性。
-Safari 支持替代的 -webkit-transition 属性。&lt;/p&gt;
-
-&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
-
-&lt;style&gt;
- .trans {
-    display:block;
-    width:100px;
-    height:30px;
-    background:#0ff;
-    transition:width 2s ease;
- }
- .trans:hover{
-    width:500px;
- }
-&lt;/style&gt;
-
-&lt;p&gt;&lt;a class=&#34;trans&#34;&gt;过渡效果&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

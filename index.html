@@ -33,7 +33,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-05-02T22:52:17&#43;08:00"/>
+<meta property="og:updated_time" content="2017-06-01T07:35:15&#43;08:00"/>
 
 
 
@@ -215,12 +215,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        25
+        27
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          20
+          21
         
         <span>
             Tags
@@ -291,24 +291,287 @@
       </table>
     </div>
   </div>
-  <div style="margin-top: 20px">
-      
-    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=136JQWBMQZDXMC5PEM82&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;margin-right:10px" frameborder="0"></iframe>
-    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=06DR0F7H0WPRDEY0X6G2&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
-  </div>
-  <div class="qcloud" style="margin:10px auto">
-    <a href="http://www.qcloud.com/redirect.php?redirect=1001&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云服务器安全可靠高性能，多种配置供您选择" target="_blank">
-      <img src="/images/120x140.jpg" alt="腾讯云服务器安全可靠高性能，多种配置供您选择">
-    </a>
-    <a href="http://www.qcloud.com/redirect.php?redirect=1003&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题" target="_blank" style="margin-left: 10px">
-      <img src="/images/云数据库-120X240.jpg" alt="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题">
-    </a>
-  </div>
+  
 
 </aside>
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/safari-not-support.html">
+    <h1 class="article-title" itemprop="name">
+        两个Safari浏览器不兼容的坑
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-06-01 07:35:15 &#43;0800 CST" itemprop="datePublished">2017-06-01</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/javascript">JavaScript</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    一、 苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑 需求：演唱会门票开售时间倒计时。
+思路如下：开售时间减去现在的时间，得出一个时间毫秒数，然后再转换成xx天xx小时xx分xx秒。 so easy! 然后开始写代码。
+function preSellCount(){ // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00 var preSt = $(&lsquo;#preSellTime&rsquo;).val() || $(&lsquo;#showTime&rsquo;).val(); // 如果没有设置开售时间，也没有设置演出的时间，则倒计时处显示“开售时间待定” if (!preSt) { $(&lsquo;#preSellCount&rsquo;).text(&quot;开售时间待定&quot;); }else{ //取到的开售时间是一个字符串，先转换成毫秒数， var sellTime = new Date(preSt).getTime(); //现在的毫秒数 var now = new Date().getTime(); var count, d, h, min, sec, timeStr, timer; count = now &gt; sellTime ? 0 : Math.floor((sellTime-now)/1000); // 定时器 timer = setInterval(function() { if (count === 0) { clearInterval(timer); }else{ // 天数 d = Math.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/safari-not-support.html">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/safari-not-support.html" data-id="cb6fe3a3c0d05ce8a6374b0760a3c561" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/bevel-corners-svg.html">
+    <h1 class="article-title" itemprop="name">
+        用border-image&#43;SVG实现切角效果
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-05-06 16:19:48 &#43;0800 CST" itemprop="datePublished">2017-05-06</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    之前写了一篇文章，介绍了基于CSS渐变来实现切角效果的方法。今天再来介绍另一种方法，即使用border-image+SVG的方式来实现切角效果。
+border-image的工作原理 给一个元素设置边框，我们会使用border这个属性。border是border-width、border-style、border-color等3个属性的简写形式。
+我们给div设置一个宽20px、实线、颜色为#58a的边框。
+div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; }   border-image是CSS3的新属性，用于指定元素边框的背景图片。使用 border-image 时，border-style属性所设置的边框样式solid、dashed或dotted将不起作用。
+border-image属性也是一个简写：包含border-image-source、border-image-slice、border-image-width、border-image-outset、border-image-repeat等5个属性。
+1. border-image-source: 从这个属性的英文命名，我们就可以知道它表示的是边框背景图片资源的路径，默认值是none。
+div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg); }   2. border-image-slice: border-image-slice属性指定图像的边界向内偏移。
+div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg); border-image-slice:10% 20% 30% 40%; border-image-repeat: none; }   div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg); border-image-slice: 10% 30%; }   div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/bevel-corners-svg.html">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/bevel-corners-svg.html" data-id="cdf847bfe1eba3026e6bb032781a70e1" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1454,290 +1717,6 @@ var copyArr = arr.slice(); copyArr; //[1, 2, 3, 4, 5, 6]  3.
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/throw-away-vocabulary-books">
-    <h1 class="article-title" itemprop="name">
-        童鞋，放开那本词汇书
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-06 20:33:42 &#43;0800 CST" itemprop="datePublished">2017-04-06</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/english">english</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E6%94%92%E8%AF%8D%E6%B1%87">攒词汇</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    词汇都是攒出来的 其实，语言学习的本质是相通的。我们不妨先来回顾一下学习汉语（普通话）的过程。有多少人在学习语文的过程中，遇到过要求背诵《新华字典》、《辞海》的语文老师或者家长？我想绝大部分人应该是没有这种经历的。
-我们绝大部分人，基本上是通过日复一日地学习，逐渐把中文词汇量攒起来的。实际上，到了中学阶段，我们掌握了常用的3500个汉字后，阅读中文基本已经没有什么障碍了。你也许有遇到一些生僻字或词组，比如“同侪”、“鬼魅魍魉”。这时候，你可能会停下来去查一下字典，看看它是怎么读的，有什么含义。如果这个字，是个多音字，你可能还会留意一下这个字的读音。
-学习英语也是同样的道理，遇到不懂的单词就去查词典。现在，我们有了智能手机、电脑，你都不用纸质版的字典了，直接搜索一下，立马出来结果。这样慢慢攒起来的词汇，才是你真正掌握的词汇。
-可是，为什么有那么多人想通过背单词书，快速提升自己的英语词汇量呢？大部分英语词汇书第1页都有一个单词叫做&rdquo;abandon&rdquo;，意思是“放弃”。你看词汇书的小编多么用心良苦，在第1页就告诉你了：放弃吧，别背单词书了。当然，这是一个关于背单词的老梗。
-如果你是在准备某个考试，比如说四六级，那么，你很可能会买一本词汇书。但是，千万别妄想通过背完这个词汇书，你的词汇量就上去。仅仅是背诵单词书，背完就会忘掉。背单词书，本身是一件极其低效和反人类的事情。所以，你的大脑根本就不配合你。这就是为什么，很多人买了各种各样的英语单词书，却只有最前和最后的几个单元是脏兮兮的，中间都是崭新的。
-放下词汇书，踏踏实实攒单词 别整什么艾斯豪宾的记忆曲线法了！也别整什么词根词缀、联想记忆法了！这些方法有用，那也是辅助记忆的方法。如果你在备考某个英语考试，乖乖地把历年真题刷一遍。每做完一套题目，就把你不熟悉的单词用手机查出来，标注出来，弄懂文章中的每一句话。这些词汇才是你应该需要重点记忆的词汇。你会看到这些词汇反复出现在真题里。一段时间之后，你会惊喜地发现自己不仅能够记住某个单词的中文意思，还知道它是怎么用的。这时候，你才真正掌握了这个单词，而且不会轻易忘掉。
-童鞋，放下你手中的单词书，放下心中快速提升词汇量的妄念。
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/throw-away-vocabulary-books">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/throw-away-vocabulary-books" data-id="dd704e73ca58b7bf10209899088d2a8b" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/copy2clipboard">
-    <h1 class="article-title" itemprop="name">
-        JavaScript实现复制内容到剪贴板的功能
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-05 20:29:51 &#43;0800 CST" itemprop="datePublished">2017-04-05</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/clipboard">Clipboard</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    1.ZeroClipboard.js 点击按钮实现复制链接或者一段文本到剪贴板，这个小功能想必不少人都见过。GitHub上就有这么一个点击按钮复制仓库地址的功能。如下图所示：
-Github用的是ZeroClipboard来实现这一功能。这个库是用一个不可见的Flash来完成剪贴操作的。即将 Flash 做成透明的，以便于我们放在诸如链接、按钮等需要放置的任何地方。这样，用户界面看起来没有变化，当点击链接或按钮时，实际上点击是却是 Flash，从而实现复制操作。具体实现方法，可以参考官方文档<a href="http://zeroclipboard.org。">http://zeroclipboard.org。</a>
-我们知道Flash正走向没落，不少功能被越来越强大的HTML5所替代。而且，出于安全方面的考虑，不少浏览器都默认禁用了Flash。那么有没有不是Flash的实现方式呢？
-2.clipboard.js clipboard.js是个更加轻量的JavaScript库，没有使用Flash，而是依赖于Selection和execCommand这两个API，并且使用了HTML5的特性，比如自定义数据的data-* 属性。因此，clipboard.js在兼容性方面比ZeroClipboard.js差，但现代浏览器(IE9+)基本能够兼容。
-使用方法非常简单：
-1)下载代码，并引入到文件中。
-&lt;script src=&quot;dist/clipboard.min.js&quot;&gt;&lt;/script&gt;  2)实例化一个Clipboard对象，参数可以是CSS选择器、HTML节点、NodeList对象
-参数为CSS选择器：
-new Clipboard(&lsquo;.btn&rsquo;); // btn为DOM元素的class名, 跟jQuery的用法一样。  参数为HTML节点：
-var btn = document.getElementById(&lsquo;btn&rsquo;); var clipboard = new Clipboard(btn);  参数为NodeList对象：
-var btns = document.querySelectorAll(&lsquo;button&rsquo;); var clipboard = new Clipboard(btns);  3)实例化对象的时候，可以同时设置复制的内容：
-var clipboard = new Clipboard(&lsquo;.btn&rsquo;, { text: function() { return &lsquo;to be or not to be&rsquo;; //剪贴板上的文本 } });  4)也可以通过data-*属性来设置要复制的内容
-&lt;!&ndash; Target &ndash;&gt; &lt;input id=&quot;foo&quot; value=&quot;<a href="https://github">https://github</a>.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/copy2clipboard">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/copy2clipboard" data-id="bf33d480633c0ab81d1cf66545fac534" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1761,6 +1740,58 @@ var clipboard = new Clipboard(&lsquo;.btn&rsquo;, { text: function() { return &l
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/safari-not-support.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/safari-not-support.html" class="title">两个Safari浏览器不兼容的坑</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-06-01 07:35:15 &#43;0800 CST" itemprop="datePublished">2017-06-01</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/bevel-corners-svg.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/bevel-corners-svg.html" class="title">用border-image&#43;SVG实现切角效果</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-06 16:19:48 &#43;0800 CST" itemprop="datePublished">2017-05-06</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1840,58 +1871,6 @@ var clipboard = new Clipboard(&lsquo;.btn&rsquo;, { text: function() { return &l
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/ellipse-border-radius.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/ellipse-border-radius.html" class="title">用CSS绘制椭圆、半椭圆、四分之一椭圆</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-30 11:25:58 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/css-flip.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/css-flip.html" class="title">用CSS实现图片翻转的动画效果</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-29 21:24:00 &#43;0800 CST" itemprop="datePublished">2017-04-29</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1909,6 +1888,19 @@ var clipboard = new Clipboard(&lsquo;.btn&rsquo;, { text: function() { return &l
 		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01A18WWAG&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;margin-right: 10px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01MQIE77V&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 	</div>
+	<div style="margin-top: 20px">
+      
+    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=136JQWBMQZDXMC5PEM82&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;margin-right:10px" frameborder="0"></iframe>
+    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=06DR0F7H0WPRDEY0X6G2&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
+  </div>
+  <div class="qcloud" style="margin:10px auto">
+    <a href="http://www.qcloud.com/redirect.php?redirect=1001&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云服务器安全可靠高性能，多种配置供您选择" target="_blank">
+      <img src="/images/120x140.jpg" alt="腾讯云服务器安全可靠高性能，多种配置供您选择">
+    </a>
+    <a href="http://www.qcloud.com/redirect.php?redirect=1003&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题" target="_blank" style="margin-left: 10px">
+      <img src="/images/云数据库-120X240.jpg" alt="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题">
+    </a>
+  </div>
 	<div id="toTop" class="fa fa-angle-up"></div>
 </aside>
 

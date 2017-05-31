@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>用CSS绘制椭圆、半椭圆、四分之一椭圆 &middot; Frank Wang&#39;s Coding World</title>
+    <title>两个Safari浏览器不兼容的坑 &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="baidu-site-verification" content="WSqfBuzd3t" />
     <meta name="author" content="Frank Wang">
     
-      <meta name="keywords" content="[border-radius, 绘制椭圆, 半椭圆, 四分之一椭圆]">
+      <meta name="keywords" content="[iOS系统, Safari浏览器,new Date()日期转换，keydown, keypress, keyup, change等事件不兼容，苹果手机]">
     
     
-      <meta name="description" content="用CSS绘制椭圆、半椭圆、四分之一椭圆">
+      <meta name="description" content="苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑, Safari在iOS5及以下对YYYY-MM-DD格式的日期不支持，所以需要转换日期的格式为YYYY/MM/DD。苹果手机的Safari浏览器不支持 keydown, keypress, keyup, change等事件的坑,在iOS的Safari中。 keydown、keypress、 keyup、change等事件都无效，考虑监听input和propertychange事件作为代替">
     
     
-    <link rel="canonical" href="http://www.wangxingfeng.com/ellipse-border-radius.html"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/safari-not-support.html"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -23,15 +23,15 @@
     <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.min.css">
     
 
-    <meta property="og:title" content="用CSS绘制椭圆、半椭圆、四分之一椭圆" />
-<meta property="og:description" content="用CSS绘制椭圆、半椭圆、四分之一椭圆" />
+    <meta property="og:title" content="两个Safari浏览器不兼容的坑" />
+<meta property="og:description" content="苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑, Safari在iOS5及以下对YYYY-MM-DD格式的日期不支持，所以需要转换日期的格式为YYYY/MM/DD。苹果手机的Safari浏览器不支持 keydown, keypress, keyup, change等事件的坑,在iOS的Safari中。 keydown、keypress、 keyup、change等事件都无效，考虑监听input和propertychange事件作为代替" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.wangxingfeng.com/ellipse-border-radius.html" />
+<meta property="og:url" content="http://www.wangxingfeng.com/safari-not-support.html" />
 
 
 
-<meta property="article:published_time" content="2017-04-30T11:25:58&#43;08:00"/>
-<meta property="article:modified_time" content="2017-04-30T11:25:58&#43;08:00"/>
+<meta property="article:published_time" content="2017-06-01T07:35:15&#43;08:00"/>
+<meta property="article:modified_time" content="2017-06-01T07:35:15&#43;08:00"/>
 
 
 
@@ -45,12 +45,12 @@
 
     
     
-<meta itemprop="name" content="用CSS绘制椭圆、半椭圆、四分之一椭圆">
-<meta itemprop="description" content="用CSS绘制椭圆、半椭圆、四分之一椭圆">
+<meta itemprop="name" content="两个Safari浏览器不兼容的坑">
+<meta itemprop="description" content="苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑, Safari在iOS5及以下对YYYY-MM-DD格式的日期不支持，所以需要转换日期的格式为YYYY/MM/DD。苹果手机的Safari浏览器不支持 keydown, keypress, keyup, change等事件的坑,在iOS的Safari中。 keydown、keypress、 keyup、change等事件都无效，考虑监听input和propertychange事件作为代替">
 
 
-<meta itemprop="dateModified" content="2017-04-30T11:25:58&#43;08:00" />
-<meta itemprop="wordCount" content="87">
+<meta itemprop="dateModified" content="2017-06-01T07:35:15&#43;08:00" />
+<meta itemprop="wordCount" content="413">
 
 
 
@@ -62,9 +62,9 @@
 
 
 
-<meta name="twitter:text:title" content="用CSS绘制椭圆、半椭圆、四分之一椭圆"/>
-<meta name="twitter:title" content="用CSS绘制椭圆、半椭圆、四分之一椭圆"/>
-<meta name="twitter:description" content="用CSS绘制椭圆、半椭圆、四分之一椭圆"/>
+<meta name="twitter:text:title" content="两个Safari浏览器不兼容的坑"/>
+<meta name="twitter:title" content="两个Safari浏览器不兼容的坑"/>
+<meta name="twitter:description" content="苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑, Safari在iOS5及以下对YYYY-MM-DD格式的日期不支持，所以需要转换日期的格式为YYYY/MM/DD。苹果手机的Safari浏览器不支持 keydown, keypress, keyup, change等事件的坑,在iOS的Safari中。 keydown、keypress、 keyup、change等事件都无效，考虑监听input和propertychange事件作为代替"/>
 <meta name="twitter:site" content="@frankwang0909"/>
 
     
@@ -322,9 +322,9 @@
             
 
             <header class="article-header">
-    <a href="http://www.wangxingfeng.com/ellipse-border-radius.html">
+    <a href="http://www.wangxingfeng.com/safari-not-support.html">
     <h1 class="article-title" itemprop="name">
-        用CSS绘制椭圆、半椭圆、四分之一椭圆
+        两个Safari浏览器不兼容的坑
     </h1>
     </a>
     <div class="article-meta">
@@ -332,7 +332,7 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-30 11:25:58 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
+            <time datetime="2017-06-01 07:35:15 &#43;0800 CST" itemprop="datePublished">2017-06-01</time>
         </div>
         
         
@@ -356,7 +356,7 @@
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/javascript">JavaScript</a>
                 
                 
             </div>
@@ -368,114 +368,198 @@
             <div class="article-entry" itemprop="articleBody">
                 
 
-<h2 id="1-border-radius">1.border-radius</h2>
+<h2 id="一-苹果手机的safari浏览器不兼容new-date-日期转换格式的坑">一、 苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑</h2>
 
-<p>border-radius可以为元素添加圆角边框，比如 按钮。</p>
+<p>需求：演唱会门票开售时间倒计时。</p>
 
-<p><button style="display:block; width:160px; height:60px; margin:10px auto;color:#fff;background: #ff5722; border-radius:8px; border:none;outline:none; ">
-    示例按钮
-</button></p>
+<p>思路如下：开售时间减去现在的时间，得出一个时间毫秒数，然后再转换成xx天xx小时xx分xx秒。
+so easy! 然后开始写代码。</p>
 
-<h2 id="2-兼容性-ie9-以上都很好地能够兼容border-radius">2.兼容性： IE9+以上都很好地能够兼容border-radius。</h2>
+<pre><code class="language-javascript">
+function preSellCount(){
+    // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
+    var preSt = $('#preSellTime').val() || $('#showTime').val();  
 
-<h2 id="3-border-radius绘制圆形">3.border-radius绘制圆形</h2>
+    // 如果没有设置开售时间，也没有设置演出的时间，则倒计时处显示“开售时间待定”
+    if (!preSt) {
+        $('#preSellCount').text(&quot;开售时间待定&quot;);
+    }else{
 
-<p>如果我们给一个正方形的元素设置一个足够大的border-radius值（只要大于等于正方形边长的一半）的话，就可以被这个元素变成圆形。
-但考虑到元素的高宽可能不是固定的，那么，我们可以设置百分比，这个百分比是基于元素的尺寸大小来解析的。当我们给一个正方形的元素设置border-radius：50%时，我们会得到一个自适应的圆形。</p>
+        //取到的开售时间是一个字符串，先转换成毫秒数，
+        var sellTime = new Date(preSt).getTime();
 
-<pre><code>width:200px;
-height:200px;
-border-radius:50%; /*在这里等价于border-radius:100px; 建议写成百分比*/
+        //现在的毫秒数
+        var now = new Date().getTime();
+
+        var count, d, h, min, sec, timeStr, timer;
+
+        count = now &gt; sellTime ? 0 : Math.floor((sellTime-now)/1000);
+
+        // 定时器
+        timer = setInterval(function() {
+            if (count === 0) {
+                clearInterval(timer);
+            }else{
+                
+                // 天数
+                d = Math.floor(count/86400); 
+
+                // 小时数
+                h = Math.floor(count%86400/3600); 
+
+                // 分钟数
+                min = Math.floor(count%86400%3600/60); 
+
+                // 秒钟数
+                sec = Math.floor(count%86400%3600%60);
+
+                // 小于10的时候，前面补一个‘0’。
+                if (min &lt; 10) {
+                    min = '0' + min;
+                }
+                if (sec &lt; 10 ) {
+                    sec = '0' + sec;
+                }
+
+                if (d == 0) {
+                    timeStr =  h + &quot;小时&quot; + min + &quot;分&quot; + s + &quot;秒&quot;;
+                }else{
+                    timeStr = d + &quot;天&quot; + h + &quot;小时&quot; + min + &quot;分&quot; + s + &quot;秒&quot;;
+                }
+                // 得到倒计时的时间字符串
+                timeStr = d + &quot;天&quot; + h + &quot;小时&quot; + min + &quot;分&quot; + sec + &quot;秒&quot;;
+
+                // 将字倒计时显示到页面上
+                $('#preSellCount').text(timeStr);
+
+                count -= 1;
+            }
+        }, 1000);
+    }
+}
+
 </code></pre>
 
-<p>如下所示：
-<div style="width:200px; height:200px; border-radius: 50%; background: #03a9f4; margin: 10px auto"></div></p>
+<p>用Chrome模拟各种手机调试都是一切正常。发布到本地测试环境，然后用自己的安卓手机访问，也一切正常。再用同事的苹果手机测试，倒计时不显示。WTF?</p>
 
-<h2 id="4-border-radius绘制自适应椭圆">4.border-radius绘制自适应椭圆</h2>
+<p>想想哪里可能会有兼容性问题呢？从头检查一遍代码。获取开售时间没有问题。取到的开售时间是一个字符串的日期，用<code>new Date(preSt).getTime()</code>转换成毫秒数，有没有问题呢？Google一下<code>new Date() iOS</code>， 果然发现有不少相关文章提到iOS下日期转换问题。由于Safari在iOS5及以下对<code>YYYY-MM-DD</code>格式的日期不支持，所以需要转换格式。最简单的是用<code>正则表达式</code>把日期转换成 <code>YYYY/MM/DD</code>格式</p>
 
-<p>当元素的高宽不相等时，我们来看下会变成什么样子。</p>
+<pre><code class="language-javascript">
+    preSt.replace(/-/g, &quot;/&quot;)
 
-<pre><code>width:300px; /*宽度变长了*/
-height:200px;
-border-radius:50%; 
 </code></pre>
 
-<p>如下所示：
-<div style="width:300px; height:200px; border-radius: 50%; background: #cddc39; margin: 10px auto"></div></p>
+<p>最终的代码是这样的：</p>
 
-<p>如上图所示，当元素的高宽不相等，border-radius设置为50%，我们将会得到一个自适应的椭圆。</p>
+<pre><code class="language-javascript">
+function preSellCount(){
+    // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
+    var preSt = $('#preSellTime').val() || $('#showTime').val();  
 
-<h2 id="5-border-radius绘制半个椭圆">5.border-radius绘制半个椭圆</h2>
+    // 如果没有设置开售时间，也没有设置演出的时间，则倒计时处显示“开售时间待定”
+    if (!preSt) {
+        $('#preSellCount').text(&quot;开售时间待定&quot;);
+    }else{
 
-<p>如果想要得到半个椭圆，怎么办呢？</p>
+        //取到的开售时间是一个字符串，先转换成毫秒数，
+        var sellTime = new Date(preSt.replace(/-/g, &quot;/&quot;)).getTime();
 
-<div style="width:300px; height:100px; border-radius: 50% / 100% 100% 0 0; background: #795548; margin: 10px auto"></div>
+        //现在的毫秒数
+        var now = new Date().getTime();
 
-<p>我们需要补充以下两个知识点：</p>
+        var count, d, h, min, sec, timeStr, timer;
 
-<p>1.border-radius的值是可以单独指定水平方向上的半径和垂直方向上的半径的，中间需要用一个斜杠(/)分隔开两个值。</p>
+        count = now &gt; sellTime ? 0 : Math.floor((sellTime-now)/1000);
 
-<p>2.border-radius是一个简写属性，我们可以单独为元素的每个角指定不同的值。border-radius展开的话是以下4个属性：</p>
+        // 定时器
+        timer = setInterval(function() {
+            if (count === 0) {
+                clearInterval(timer);
+            }else{
+                
+                // 天数
+                d = Math.floor(count/86400); 
 
-<pre><code>border-top-left-radius
-border-top-right-radius
-border-bottom-right-radius
-border-bottom-left-radius
+                // 小时数
+                h = Math.floor(count%86400/3600); 
+
+                // 分钟数
+                min = Math.floor(count%86400%3600/60); 
+
+                // 秒钟数
+                sec = Math.floor(count%86400%3600%60);
+
+                // 小于10的时候，前面补一个‘0’。
+                if (min &lt; 10) {
+                    min = '0' + min;
+                }
+                if (sec &lt; 10 ) {
+                    sec = '0' + sec;
+                }
+
+                if (d == 0) {
+                    timeStr =  h + &quot;小时&quot; + min + &quot;分&quot; + s + &quot;秒&quot;;
+                }else{
+                    timeStr = d + &quot;天&quot; + h + &quot;小时&quot; + min + &quot;分&quot; + s + &quot;秒&quot;;
+                }
+                // 得到倒计时的时间字符串
+                timeStr = d + &quot;天&quot; + h + &quot;小时&quot; + min + &quot;分&quot; + sec + &quot;秒&quot;;
+
+                // 将字倒计时显示到页面上
+                $('#preSellCount').text(timeStr);
+
+                count -= 1;
+            }
+        }, 1000);
+    }
+}
+
 </code></pre>
 
-<p>我们不必分开写，可以给border-radius指定4个值，用空格分开。浏览器解析的时候，是按顺时针顺序应用到元素的四个角的（和margin、padding等其他的常见属性的简写类似）。</p>
+<h2 id="二-苹果手机的safari浏览器不支持-keydown-keypress-keyup-change等事件的坑">二、苹果手机的Safari浏览器不支持 keydown, keypress, keyup, change等事件的坑。</h2>
 
-<p>我们来分析一下这个半椭圆形。</p>
+<p>需求:在输入框中输入内容时，输入框后边显示清除按钮，点击可以清除输入框中的所有内容</p>
 
-<p>1.它是垂直对称的，说明左上角和右上角的半径值是相同的；左下角和右下角的半径值也应该是相同的。</p>
+<pre><code class="language-javascript">
+var keyword = $(&quot;#search-keyword&quot;);
+var clear = $('.clear');
 
-<p>2.它的顶部边缘是曲线的，说明左上角和右上角的半径值之和应该是等于这个元素的宽的。</p>
+keyword.on('keyup', function(event) {
+    if($(this).val().length&gt;0){
 
-<p>3.由前面两点可以推出，左上角和右上角的半径在水平方向上是50%。</p>
+        //显示清空输入框的小图标
+        clear.show();
 
-<p>4.再看垂直方向上，顶部的两个圆角占据了整个元素的高度，而底部完全没有任何圆角。因此，可以推断左上角和右上角的半径在垂直方向上是100%，左下角和右下角在垂直方向上是0。</p>
+    }else{
 
-<p>综上所述，<code>border-radius</code>的值应该是<code>50% / 100% 100% 0 0</code>;</p>
+        // 隐藏清空输入框的小图标
+        clear.hide();
+    }
+});
 
-<pre><code>width:300px;
-height:100px;
-border-radius: 50% / 100% 100% 0 0;
 </code></pre>
 
-<div style="width:300px; height:100px; border-radius: 50% / 100% 100% 0 0; background: #795548; margin: 10px auto"></div>
+<p>但是在iOS的Safari中, keydown、keypress、 keyup、change等事件都无效，考虑监听input和propertychange事件作为代替。</p>
 
-<p>如果我们把垂直方向上的值改为0 0 100% 100%，则可以得到另一个半椭圆。</p>
+<pre><code class="language-javascript">
+var keyword = $(&quot;#search-keyword&quot;);
+var clear = $('.clear');
 
-<pre><code>width:300px;
-height:100px;
-border-radius: 50% /0 0 100% 100% ;
+keyword.on('input propertychange', function(event) {
+    if($(this).val().length&gt;0){
+        //显示清空输入框的小图标
+        clear.show();
+    }else{
+        // 隐藏清空输入框的小图标
+        clear.hide();
+    }
+});
+
 </code></pre>
-
-<div style="width:300px; height:100px; border-radius: 50% / 0 0 100% 100%; background: #4caf50; margin: 10px auto"></div>
-
-<p>如果把<code>水平方向</code><code>border-raduis</code>设置为<code>50%</code>; <code>垂直方向</code>上，左上角和左下角设置为<code>100%</code>； 右上角和右下角设为<code>0</code>，则可以得到一个<code>沿Y轴劈开的半椭圆形</code>。</p>
-
-<pre><code>width:150px;
-height:200px;
-border-radius: 100% 0 0 100% / 50%;
-</code></pre>
-
-<div style="width:150px; height:200px; border-radius: 100% 0 0 100% / 50% ; background: #9c27b0; margin: 10px auto"></div>
-
-<h2 id="6-border-radius绘制椭圆的四分之一">6.border-radius绘制椭圆的四分之一</h2>
-
-<p>如果想要得到四分之一个椭圆呢？顺着之前的思路，我们可以设置其中一个角的<code>border-radius</code>值为<code>100%</code>，其他三个角为<code>0</code>.</p>
-
-<pre><code>width:150px;
-height:100px;
-border-radius: 100% 0 0 0;
-</code></pre>
-
-<div style="width:150px; height:100px; border-radius: 100% 0 0 0 ; background: #9e9e9e; margin: 10px auto"></div>
 
             </div>
             <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/ellipse-border-radius.html" data-id="2cd0ee427872ae3df30aee37964c0f7c" class="article-share-link">
+    <a data-url="http://www.wangxingfeng.com/safari-not-support.html" data-id="cb6fe3a3c0d05ce8a6374b0760a3c561" class="article-share-link">
         <i class="fa fa-share"></i>
         分享
     </a>
@@ -552,21 +636,14 @@ border-radius: 100% 0 0 0;
         
 <nav id="article-nav">
     
-    <a href="http://www.wangxingfeng.com/css-flip.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="http://www.wangxingfeng.com/bevel-corners-svg.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           上一篇
       </strong>
-      <div class="article-nav-title">用CSS实现图片翻转的动画效果</div>
+      <div class="article-nav-title">用border-image&#43;SVG实现切角效果</div>
     </a>
     
 
-    
-    <a href="http://www.wangxingfeng.com/parallelograms.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          下一篇
-      </strong>
-      <div class="article-nav-title">用CSS创建内容不倾斜的平行四边形</div>
-    </a>
     
 </nav>
 

@@ -7,8 +7,338 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Tue, 02 May 2017 22:52:17 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Jun 2017 07:35:15 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>两个Safari浏览器不兼容的坑</title>
+      <link>http://www.wangxingfeng.com/safari-not-support.html</link>
+      <pubDate>Thu, 01 Jun 2017 07:35:15 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/safari-not-support.html</guid>
+      <description>
+
+&lt;h2 id=&#34;一-苹果手机的safari浏览器不兼容new-date-日期转换格式的坑&#34;&gt;一、 苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑&lt;/h2&gt;
+
+&lt;p&gt;需求：演唱会门票开售时间倒计时。&lt;/p&gt;
+
+&lt;p&gt;思路如下：开售时间减去现在的时间，得出一个时间毫秒数，然后再转换成xx天xx小时xx分xx秒。
+so easy! 然后开始写代码。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+function preSellCount(){
+    // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
+    var preSt = $(&#39;#preSellTime&#39;).val() || $(&#39;#showTime&#39;).val();  
+
+    // 如果没有设置开售时间，也没有设置演出的时间，则倒计时处显示“开售时间待定”
+    if (!preSt) {
+        $(&#39;#preSellCount&#39;).text(&amp;quot;开售时间待定&amp;quot;);
+    }else{
+
+        //取到的开售时间是一个字符串，先转换成毫秒数，
+        var sellTime = new Date(preSt).getTime();
+
+        //现在的毫秒数
+        var now = new Date().getTime();
+
+        var count, d, h, min, sec, timeStr, timer;
+
+        count = now &amp;gt; sellTime ? 0 : Math.floor((sellTime-now)/1000);
+
+        // 定时器
+        timer = setInterval(function() {
+            if (count === 0) {
+                clearInterval(timer);
+            }else{
+                
+                // 天数
+                d = Math.floor(count/86400); 
+
+                // 小时数
+                h = Math.floor(count%86400/3600); 
+
+                // 分钟数
+                min = Math.floor(count%86400%3600/60); 
+
+                // 秒钟数
+                sec = Math.floor(count%86400%3600%60);
+
+                // 小于10的时候，前面补一个‘0’。
+                if (min &amp;lt; 10) {
+                    min = &#39;0&#39; + min;
+                }
+                if (sec &amp;lt; 10 ) {
+                    sec = &#39;0&#39; + sec;
+                }
+
+                if (d == 0) {
+                    timeStr =  h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                }else{
+                    timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                }
+                // 得到倒计时的时间字符串
+                timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + sec + &amp;quot;秒&amp;quot;;
+
+                // 将字倒计时显示到页面上
+                $(&#39;#preSellCount&#39;).text(timeStr);
+
+                count -= 1;
+            }
+        }, 1000);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;用Chrome模拟各种手机调试都是一切正常。发布到本地测试环境，然后用自己的安卓手机访问，也一切正常。再用同事的苹果手机测试，倒计时不显示。WTF?&lt;/p&gt;
+
+&lt;p&gt;想想哪里可能会有兼容性问题呢？从头检查一遍代码。获取开售时间没有问题。取到的开售时间是一个字符串的日期，用&lt;code&gt;new Date(preSt).getTime()&lt;/code&gt;转换成毫秒数，有没有问题呢？Google一下&lt;code&gt;new Date() iOS&lt;/code&gt;， 果然发现有不少相关文章提到iOS下日期转换问题。由于Safari在iOS5及以下对&lt;code&gt;YYYY-MM-DD&lt;/code&gt;格式的日期不支持，所以需要转换格式。最简单的是用&lt;code&gt;正则表达式&lt;/code&gt;把日期转换成 &lt;code&gt;YYYY/MM/DD&lt;/code&gt;格式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+    preSt.replace(/-/g, &amp;quot;/&amp;quot;)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最终的代码是这样的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+function preSellCount(){
+    // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
+    var preSt = $(&#39;#preSellTime&#39;).val() || $(&#39;#showTime&#39;).val();  
+
+    // 如果没有设置开售时间，也没有设置演出的时间，则倒计时处显示“开售时间待定”
+    if (!preSt) {
+        $(&#39;#preSellCount&#39;).text(&amp;quot;开售时间待定&amp;quot;);
+    }else{
+
+        //取到的开售时间是一个字符串，先转换成毫秒数，
+        var sellTime = new Date(preSt.replace(/-/g, &amp;quot;/&amp;quot;)).getTime();
+
+        //现在的毫秒数
+        var now = new Date().getTime();
+
+        var count, d, h, min, sec, timeStr, timer;
+
+        count = now &amp;gt; sellTime ? 0 : Math.floor((sellTime-now)/1000);
+
+        // 定时器
+        timer = setInterval(function() {
+            if (count === 0) {
+                clearInterval(timer);
+            }else{
+                
+                // 天数
+                d = Math.floor(count/86400); 
+
+                // 小时数
+                h = Math.floor(count%86400/3600); 
+
+                // 分钟数
+                min = Math.floor(count%86400%3600/60); 
+
+                // 秒钟数
+                sec = Math.floor(count%86400%3600%60);
+
+                // 小于10的时候，前面补一个‘0’。
+                if (min &amp;lt; 10) {
+                    min = &#39;0&#39; + min;
+                }
+                if (sec &amp;lt; 10 ) {
+                    sec = &#39;0&#39; + sec;
+                }
+
+                if (d == 0) {
+                    timeStr =  h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                }else{
+                    timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                }
+                // 得到倒计时的时间字符串
+                timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + sec + &amp;quot;秒&amp;quot;;
+
+                // 将字倒计时显示到页面上
+                $(&#39;#preSellCount&#39;).text(timeStr);
+
+                count -= 1;
+            }
+        }, 1000);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;二-苹果手机的safari浏览器不支持-keydown-keypress-keyup-change等事件的坑&#34;&gt;二、苹果手机的Safari浏览器不支持 keydown, keypress, keyup, change等事件的坑。&lt;/h2&gt;
+
+&lt;p&gt;需求:在输入框中输入内容时，输入框后边显示清除按钮，点击可以清除输入框中的所有内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+var keyword = $(&amp;quot;#search-keyword&amp;quot;);
+var clear = $(&#39;.clear&#39;);
+
+keyword.on(&#39;keyup&#39;, function(event) {
+    if($(this).val().length&amp;gt;0){
+
+        //显示清空输入框的小图标
+        clear.show();
+
+    }else{
+
+        // 隐藏清空输入框的小图标
+        clear.hide();
+    }
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是在iOS的Safari中, keydown、keypress、 keyup、change等事件都无效，考虑监听input和propertychange事件作为代替。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
+var keyword = $(&amp;quot;#search-keyword&amp;quot;);
+var clear = $(&#39;.clear&#39;);
+
+keyword.on(&#39;input propertychange&#39;, function(event) {
+    if($(this).val().length&amp;gt;0){
+        //显示清空输入框的小图标
+        clear.show();
+    }else{
+        // 隐藏清空输入框的小图标
+        clear.hide();
+    }
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>用border-image&#43;SVG实现切角效果</title>
+      <link>http://www.wangxingfeng.com/bevel-corners-svg.html</link>
+      <pubDate>Sat, 06 May 2017 16:19:48 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/bevel-corners-svg.html</guid>
+      <description>
+
+&lt;p&gt;之前写了一篇文章，介绍了&lt;a href=&#34;http://www.wangxingfeng.com/bevel-corners.html&#34;&gt;基于CSS渐变来实现切角效果&lt;/a&gt;的方法。今天再来介绍另一种方法，即使用&lt;code&gt;border-image&lt;/code&gt;+&lt;code&gt;SVG&lt;/code&gt;的方式来实现&lt;code&gt;切角效果&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;border-image的工作原理&#34;&gt;border-image的工作原理&lt;/h2&gt;
+
+&lt;p&gt;给一个元素设置边框，我们会使用&lt;code&gt;border&lt;/code&gt;这个属性。&lt;code&gt;border&lt;/code&gt;是&lt;code&gt;border-width&lt;/code&gt;、&lt;code&gt;border-style&lt;/code&gt;、&lt;code&gt;border-color&lt;/code&gt;等3个属性的简写形式。&lt;/p&gt;
+
+&lt;p&gt;我们给div设置一个宽20px、实线、颜色为&lt;code&gt;#58a&lt;/code&gt;的边框。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px; 
+		margin:20px auto;
+		border:40px solid #58a;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a;&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;border-image&lt;/code&gt;是CSS3的新属性，用于指定元素边框的背景图片。使用 border-image 时，border-style属性所设置的边框样式solid、dashed或dotted将不起作用。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;border-image&lt;/code&gt;属性也是一个简写：包含&lt;code&gt;border-image-source&lt;/code&gt;、&lt;code&gt;border-image-slice&lt;/code&gt;、&lt;code&gt;border-image-width&lt;/code&gt;、&lt;code&gt;border-image-outset&lt;/code&gt;、&lt;code&gt;border-image-repeat&lt;/code&gt;等5个属性。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-border-image-source&#34;&gt;1. &lt;code&gt;border-image-source&lt;/code&gt;:&lt;/h3&gt;
+
+&lt;p&gt;从这个属性的英文命名，我们就可以知道它表示的是边框背景图片资源的路径，默认值是&lt;code&gt;none&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg)&#34;&gt;&lt;/div&gt;
+
+&lt;h3 id=&#34;2-border-image-slice&#34;&gt;2. &lt;code&gt;border-image-slice&lt;/code&gt;:&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;border-image-slice&lt;/code&gt;属性指定图像的边界向内偏移。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice:10% 20% 30% 40%; 
+		border-image-repeat: none;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg);border-image-slice:10% 20% 30% 40%; border-image-repeat: round stretch;&#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 10% 30%;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 10% 30%;&#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 30 30% 45;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 30 30% 45;&#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 7 12 14 5; 
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 7 12 14 5; &#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 10% fill 7 12; 
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: border-image-slice: 10% fill 7 12; &#34;&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    .demo{
+        border:30px solid transparent;
+        border-image:1 url(&#39;data:image/svg+xml,\
+            &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;3&amp;quot; height=&amp;quot;3&amp;quot; fill=&amp;quot;red&amp;quot;&amp;gt;\
+              &amp;lt;polygon points=&amp;quot;0,1 1,0 2, 0 3, 1 3, 2 2, 3 1, 3 0, 2&amp;quot;/&amp;gt;\
+            &amp;lt;/svg&amp;gt;&#39;);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;300&#34; height=&#34;300&#34; fill=&#34;purple&#34;&gt;
+    &lt;polygon points=&#34;0, 100 100, 0 200, 0 300, 100 300, 200 200, 300 100, 300 0, 200&#34;/&gt;
+&lt;/svg&gt;
+&lt;div class=&#34;demo bevel-corners-8&#34;&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;div&gt;
+    
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>CSS实现切角效果</title>
@@ -1660,305 +1990,6 @@ if(/micromessenger/i.test(ua){
 &lt;p&gt;在国内，没有老外朋友，工作上也用不上英语，怎么用起来呢？&lt;/p&gt;
 
 &lt;p&gt;看看美剧、听听英文歌、阅读英文小说、看BBC的纪录片、 听VOA的新闻、看TED上的视频、交个外国朋友或网友。只要你想，你总能找到使用英语的场景。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>用Hugo快速搭建个人静态博客</title>
-      <link>http://www.wangxingfeng.com/build-blog-with-hugo</link>
-      <pubDate>Mon, 03 Apr 2017 20:49:23 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/build-blog-with-hugo</guid>
-      <description>
-
-&lt;p&gt;最近心血来潮，想要重新折腾一番自己的博客。于是，发现了Hugo比之前使用的Jekyll更好用。本文是个人参照&lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo官网&lt;/a&gt; 搭建个人博客的记录。&lt;/p&gt;
-
-&lt;h2 id=&#34;step-1-install-hugo-下载-安装hugo&#34;&gt;Step 1. Install Hugo 下载、安装Hugo&lt;/h2&gt;
-
-&lt;p&gt;下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;https://github.com/spf13/hugo/releases&lt;/a&gt;。
-根据自己的操作系统，下载对应的安装包。我的操作系统是&lt;code&gt;Win7 64bit&lt;/code&gt;， 选择了&lt;code&gt;hugo_0.19_Windows-64bit.zip&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;下载完成之后，解压的文件夹包含以下3个文件：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo_0.19_windows_amd64.exe
-LICENSE.md
-README.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;将 &lt;code&gt;hugo_0.19_windows_amd64.exe&lt;/code&gt; 重命名为&lt;code&gt;hugo.exe&lt;/code&gt;。在你的软件安装盘新增名为&lt;code&gt;hugo&lt;/code&gt;的文件目录，在里面在新建一个&lt;code&gt;bin&lt;/code&gt;子目录。然后将&lt;code&gt;hugo.exe&lt;/code&gt;放到&lt;code&gt;hugo\bin&lt;/code&gt;目录下。再将这个&lt;code&gt;bin&lt;/code&gt;目录的路径添加到&lt;code&gt;系统环境变量&lt;/code&gt;中。&lt;/p&gt;
-
-&lt;p&gt;完成以上步骤后，打开命令行输入&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo help
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果得到如下信息，说明安装成功。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo is the main command, used to build your Hugo site.
-
-Hugo is a Fast and Flexible Static Site Generator
-built with love by spf13 and friends in Go.
-
-Complete documentation is available at http://gohugo.io/.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;step-2-创建一个名为blog的hugo站点&#34;&gt;Step 2. 创建一个名为blog的Hugo站点&lt;/h2&gt;
-
-&lt;p&gt;我希望在E盘下创建站点，所以我先切换目录&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd e:
-e:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后输入命令：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo new site blog 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;得到如下提示创建成功的信息：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Congratulations! Your new Hugo site is created in E:\blog.
-
-Just a few more steps and you&#39;re ready to go:
-
-1. Download a theme into the same-named folder.
-Choose a theme from https://themes.gohugo.io/, or
-create your own with the &amp;quot;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;quot; command.
-2. Perhaps you want to add some content. You can add single files
-with &amp;quot;hugo new &amp;lt;SECTIONNAME&amp;gt;\&amp;lt;FILENAME&amp;gt;.&amp;lt;FORMAT&amp;gt;&amp;quot;.
-3. Start the built-in live server via &amp;quot;hugo server&amp;quot;.
-
-Visit https://gohugo.io/ for quickstart guide and full documentation.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;进入该目录，可以看到自动生成了5个目录和一个配置文件config.toml&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;|-- archetypes
-|-- content   #存放内容的目录
-|-- data      
-|-- layouts   
-|-- static    #存放静态资源（图片,css,js）
-|-- themes    #存放主题
-|-- config.toml  #配置文件
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;step-3-添加内容&#34;&gt;Step 3. 添加内容&lt;/h2&gt;
-
-&lt;p&gt;切换到该目录下，然后输入如下命令，会在&lt;code&gt;content&lt;/code&gt;的目录下创建&lt;code&gt;post&lt;/code&gt;目录，在&lt;code&gt;post&lt;/code&gt;目录下创建名为&lt;code&gt;test.md&lt;/code&gt;的文件。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd blog
-hugo new post/test.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;提示文件创建成功：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;E:\blog\content\post\test.md created
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;用文本编辑器打开文件&lt;code&gt;test.md&lt;/code&gt;文件
-可以看到如下内容：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;+++
-date = &amp;quot;2017-01-02T17:45:06+08:00&amp;quot;  #创建文件的时间
-title = &amp;quot;test&amp;quot;                      #文件的标题
-draft = true                        # 是否为草稿
-
-+++
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上述内容为自动创建的与文章有关的内容。自己也可以在两个&lt;code&gt;+++&lt;/code&gt;之间添加如下内容：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;image = &amp;quot;hugo.png&amp;quot;            #指定图片。
-category = &amp;quot;test&amp;quot;             #文章的类别
-tags = [&amp;quot;Hugo&amp;quot;, &amp;quot;intro&amp;quot;]      #文章的标签分类。
-url = &amp;quot;new_start&amp;quot;             #该文章访问时的相对的url地址，默认为文件名。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;更多的设置，可以参考&lt;a href=&#34;https://gohugo.io/content/front-matter/&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;以后写博客文章就是这样创建&lt;code&gt;markdown&lt;/code&gt;文件, 之后通过&lt;code&gt;Hugo&lt;/code&gt;编译成静态的html文件。&lt;/p&gt;
-
-&lt;h2 id=&#34;step-4-添加主题&#34;&gt;Step 4. 添加主题&lt;/h2&gt;
-
-&lt;p&gt;官方提供了多种主题可供选择，具体在 &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;https://themes.gohugo.io/&lt;/a&gt; 可以找到。&lt;/p&gt;
-
-&lt;p&gt;找到想要的主题后，切换到&lt;code&gt;themes&lt;/code&gt;目录（该目录可以存放多个不同的主题）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd themes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;由于需要使用到Git下载主题，以及版本管理和代码推送。需要事先下载安装好&lt;a href=&#34;https://git-for-windows.github.io/&#34;&gt;Git&lt;/a&gt;，关于如何安装和使用Git，可以参考我之前的一篇文章：&lt;a href=&#34;http://www.wangxingfeng.com/git-intro/&#34;&gt;Git学习笔记&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;把选定的主题下载到&lt;code&gt;themes&lt;/code&gt;目录下。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/dim0627/hugo-icarus-theme.git
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;step-5-启动服务-本地预览&#34;&gt;Step 5. 启动服务，本地预览&lt;/h2&gt;
-
-&lt;p&gt;先从&lt;code&gt;themes&lt;/code&gt;目录下退回到&lt;code&gt;blog&lt;/code&gt;目录, 然后启动服务。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd ..
-hugo server --theme=hugo-icarus-theme --buildDrafts
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在浏览器中打开 &lt;code&gt;[http://localhost:1313/](https://themes.gohugo.io/)&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;step-6-修改配置文件-config-toml&#34;&gt;Step 6. 修改配置文件&lt;code&gt;config.toml&lt;/code&gt;&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;languageCode = &amp;quot;zh-cn&amp;quot;
-title = &amp;quot;Frank Wang&#39;s Coding World&amp;quot;
-baseurl = &amp;quot;http://www.wangxingfeng.com/&amp;quot;  
-
-[Params]
-    Author =&amp;quot;Frank Wang&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;step-7-生成网站&#34;&gt;Step 7.  生成网站&lt;/h2&gt;
-
-&lt;h3 id=&#34;1-改变文章-draft-草稿-状态&#34;&gt;1.改变文章&lt;code&gt;draft&lt;/code&gt;（草稿）状态：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo undraft content/post/*.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;2-启动-hugo-生成发布文件到-public-目录下&#34;&gt;2. 启动&lt;code&gt;hugo&lt;/code&gt;, 生成发布文件到&lt;code&gt;public&lt;/code&gt;目录下。&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo --theme=hugo-icarus-theme
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;step-8-托管到-github-pages&#34;&gt;Step 8. 托管到&lt;code&gt;GitHub Pages&lt;/code&gt;&lt;/h2&gt;
-
-&lt;h3 id=&#34;1-使用-git-来进行版本管理&#34;&gt;1. 使用&lt;code&gt;Git&lt;/code&gt;来进行版本管理&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;git init
-echo &amp;quot;/public/&amp;quot; &amp;gt;&amp;gt; .gitignore
-echo &amp;quot;/themes/&amp;quot; &amp;gt;&amp;gt; .gitignore
-git add --all
-git commit -m &amp;quot;Initial commit&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;2-创建-git-远程仓库&#34;&gt;2. 创建&lt;code&gt;Git&lt;/code&gt; 远程仓库：&lt;/h3&gt;
-
-&lt;p&gt;登录你的&lt;code&gt;GitHub&lt;/code&gt;. 创建一个新的仓库，仓库名为&lt;code&gt;Github用户.github.io&lt;/code&gt;
-比如我的是&lt;code&gt;frankwang0909.github.io&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;3-添加-git-远程仓库-并提交代码&#34;&gt;3. 添加&lt;code&gt;Git&lt;/code&gt; 远程仓库，并提交代码。&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;cd public
-git init
-git remote add origin git@github.com:frankwang0909/frankwang0909.github.io.git
-
-git add --all
-git commit -m &amp;quot;blog added&amp;quot;
-git push -u origin master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;4-以后有内容改动-提交代码&#34;&gt;4.以后有内容改动，提交代码.&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;(cd ..; hugo --theme=hugo_theme_robust)
-git add --all
-git commit -m &amp;quot;&amp;lt;some change message&amp;gt;&amp;quot;
-git push -u origin master
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>代码换行导致的inline元素间距bug</title>
-      <link>http://www.wangxingfeng.com/fix-inline-bug</link>
-      <pubDate>Wed, 11 Jan 2017 21:48:19 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/fix-inline-bug</guid>
-      <description>
-
-&lt;h2 id=&#34;inline-元素&#34;&gt;inline 元素：&lt;/h2&gt;
-
-&lt;p&gt;如果inline元素(span, strong, b, em, i等)代码换行，它们之间会产生我们不希望的间隔。通过设置&lt;code&gt;margin:0&lt;/code&gt;或者&lt;code&gt;padding:0&lt;/code&gt; , 这个都间隔仍然存在，说明这个间隔并不是margin或者padding。&lt;/p&gt;
-
-&lt;style type=&#34;text/css&#34;&gt;
-    .inline p span:first-child {
-        background-color: #66d9ef;
-    }
-    .inline p span:nth-child(2) {
-        background-color: #c191c1;
-    }
-    .inline p span:nth-child(3) {
-        background-color: #9fe89f;
-    }
-    .inline p span:nth-child(4) {
-        background-color: #8787f1;
-    }
-    .inline p span:last-child{
-        background-color: #464141;
-    }
-    .inline p span{
-        font-size:16px;
-        color:#fff;
-        line-height:30px;
-    }
-
-    .inline-block span{
-        display: inline-block;
-        width:20%;
-    }
-    .fs0{
-        font-size: 0;
-    }
-&lt;/style&gt;
-
-&lt;div class=&#34;inline &#34;&gt;
-    &lt;p&gt;
-        &lt;span&gt;inline元素 1&lt;/span&gt;
-        &lt;span&gt;inline元素 2&lt;/span&gt;
-        &lt;span&gt;inline元素 3&lt;/span&gt;
-    &lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;是否为了不消除这个间隔，就必须把inline元素的html代码写在一行内呢？答案是否定的。
-开发的时候，为了方便阅读和调试，我们习惯于把代码写成这样：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;
-    &amp;lt;span&amp;gt;inline元素 1&amp;lt;/span&amp;gt;
-    &amp;lt;span&amp;gt;inline元素 2&amp;lt;/span&amp;gt;
-    &amp;lt;span&amp;gt;inline元素 3&amp;lt;/span&amp;gt;
-    &amp;lt;span&amp;gt;inline元素 4&amp;lt;/span&amp;gt;
-    &amp;lt;span&amp;gt;inline元素 5&amp;lt;/span&amp;gt;
-&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;解决方法：设置父元素&lt;code&gt;font-size:0&lt;/code&gt;，再给子元素单独设置&lt;code&gt;font-size&lt;/code&gt;，修复bug。
-&lt;div class=&#34;inline &#34;&gt;
-    &lt;p class=&#34;fs0&#34;&gt;
-        &lt;span&gt;inline元素 1&lt;/span&gt;
-        &lt;span&gt;inline元素 2&lt;/span&gt;
-        &lt;span&gt;inline元素 3&lt;/span&gt;
-    &lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;inline-block-元素&#34;&gt;inline-block 元素：&lt;/h2&gt;
-
-&lt;p&gt;要在一行展示多个并列的元素，除了通过设置浮动&lt;code&gt;float:left;float:right&lt;/code&gt;，我们还可以通过设置&lt;code&gt;display:inline-block&lt;/code&gt; 把inline元素或block元素，转换成一个可以设置高度和宽度的inline-block元素。&lt;/p&gt;
-
-&lt;p&gt;如果有5个&lt;code&gt;inline-block&lt;/code&gt;元素，设置它们的宽度为&lt;code&gt;20%&lt;/code&gt;。我们期望它们是在一行展示的。但是因为html代码换行产生了间距，导致无法在一行内显示。
-&lt;div class=&#34;inline &#34;&gt;
-    &lt;p class=&#34;inline-block&#34;&gt;
-        &lt;span&gt;inline-block元素 1&lt;/span&gt;
-        &lt;span&gt;inline-block元素 2&lt;/span&gt;
-        &lt;span&gt;inline-block元素 3&lt;/span&gt;
-        &lt;span&gt;inline-block元素 4&lt;/span&gt;
-        &lt;span&gt;inline-block元素 5&lt;/span&gt;
-    &lt;/p&gt;
-&lt;/div&gt;
-解决方法: 设置父元素&lt;code&gt;font-size:0&lt;/code&gt;，再给子元素单独设置&lt;code&gt;font-size&lt;/code&gt;。
-&lt;div class=&#34;inline &#34;&gt;
-    &lt;p class=&#34;inline-block fs0&#34;&gt;
-        &lt;span&gt;inline-block元素 1&lt;/span&gt;
-        &lt;span&gt;inline-block元素 2&lt;/span&gt;
-        &lt;span&gt;inline-block元素 3&lt;/span&gt;
-        &lt;span&gt;inline-block元素 4&lt;/span&gt;
-        &lt;span&gt;inline-block元素 5&lt;/span&gt;
-    &lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;
 </description>
     </item>
     

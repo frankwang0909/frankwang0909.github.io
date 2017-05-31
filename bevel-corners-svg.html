@@ -50,11 +50,11 @@
 
 
 <meta itemprop="dateModified" content="2017-05-06T16:19:48&#43;08:00" />
-<meta itemprop="wordCount" content="32">
+<meta itemprop="wordCount" content="134">
 
 
 
-<meta itemprop="keywords" content="english,frontend,node,tools,bug,cdn,clipboard,css,css3,git,github,hugo,markdown,regexp,seo,sublime-text,tab切换,useragent,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
+<meta itemprop="keywords" content="english,frontend,node,tools,bug,cdn,clipboard,css,css3,git,github,hugo,javascript,markdown,regexp,seo,sublime-text,tab切换,useragent,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
 
     
 
@@ -232,12 +232,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        26
+        27
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          20
+          21
         
         <span>
             Tags
@@ -308,19 +308,7 @@
       </table>
     </div>
   </div>
-  <div style="margin-top: 20px">
-      
-    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=136JQWBMQZDXMC5PEM82&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;margin-right:10px" frameborder="0"></iframe>
-    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=06DR0F7H0WPRDEY0X6G2&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
-  </div>
-  <div class="qcloud" style="margin:10px auto">
-    <a href="http://www.qcloud.com/redirect.php?redirect=1001&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云服务器安全可靠高性能，多种配置供您选择" target="_blank">
-      <img src="/images/120x140.jpg" alt="腾讯云服务器安全可靠高性能，多种配置供您选择">
-    </a>
-    <a href="http://www.qcloud.com/redirect.php?redirect=1003&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题" target="_blank" style="margin-left: 10px">
-      <img src="/images/云数据库-120X240.jpg" alt="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题">
-    </a>
-  </div>
+  
 
 </aside>
 
@@ -382,9 +370,105 @@
 
 <p>之前写了一篇文章，介绍了<a href="http://www.wangxingfeng.com/bevel-corners.html">基于CSS渐变来实现切角效果</a>的方法。今天再来介绍另一种方法，即使用<code>border-image</code>+<code>SVG</code>的方式来实现<code>切角效果</code>。</p>
 
-<h2 id="1-border-image的工作原理">1. border-image的工作原理</h2>
+<h2 id="border-image的工作原理">border-image的工作原理</h2>
 
-<p>border-image</p>
+<p>给一个元素设置边框，我们会使用<code>border</code>这个属性。<code>border</code>是<code>border-width</code>、<code>border-style</code>、<code>border-color</code>等3个属性的简写形式。</p>
+
+<p>我们给div设置一个宽20px、实线、颜色为<code>#58a</code>的边框。</p>
+
+<pre><code class="language-css">	div{
+		width:200px;
+		height:150px; 
+		margin:20px auto;
+		border:40px solid #58a;
+	}
+</code></pre>
+
+<div style="width:200px; height:150px; margin:20px auto; border:40px solid #58a;"></div>
+
+<p><code>border-image</code>是CSS3的新属性，用于指定元素边框的背景图片。使用 border-image 时，border-style属性所设置的边框样式solid、dashed或dotted将不起作用。</p>
+
+<p><code>border-image</code>属性也是一个简写：包含<code>border-image-source</code>、<code>border-image-slice</code>、<code>border-image-width</code>、<code>border-image-outset</code>、<code>border-image-repeat</code>等5个属性。</p>
+
+<h3 id="1-border-image-source">1. <code>border-image-source</code>:</h3>
+
+<p>从这个属性的英文命名，我们就可以知道它表示的是边框背景图片资源的路径，默认值是<code>none</code>。</p>
+
+<pre><code class="language-css">	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+	}
+</code></pre>
+
+<div style="width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg)"></div>
+
+<h3 id="2-border-image-slice">2. <code>border-image-slice</code>:</h3>
+
+<p><code>border-image-slice</code>属性指定图像的边界向内偏移。</p>
+
+<pre><code class="language-css">	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice:10% 20% 30% 40%; 
+		border-image-repeat: none;
+	}
+</code></pre>
+
+<div style="width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg);border-image-slice:10% 20% 30% 40%; border-image-repeat: round stretch;"></div>
+
+<pre><code class="language-css">	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 10% 30%;
+	}
+</code></pre>
+
+<div style="width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 10% 30%;"></div>
+
+<pre><code class="language-css">	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 30 30% 45;
+	}
+</code></pre>
+
+<div style="width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 30 30% 45;"></div>
+
+<pre><code class="language-css">	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 7 12 14 5; 
+	}
+</code></pre>
+
+<div style="width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 7 12 14 5; "></div>
+
+<pre><code class="language-css">	div{
+		width:200px;
+		height:150px;
+		margin:20px auto;
+		border:40px solid #58a;
+		border-image-source:url(/images/adamcatlace.jpg);
+		border-image-slice: 10% fill 7 12; 
+	}
+</code></pre>
+
+<div style="width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: border-image-slice: 10% fill 7 12; "></div>
 
 <pre><code class="language-css">    .demo{
         border:30px solid transparent;
@@ -493,6 +577,13 @@
     
 
     
+    <a href="http://www.wangxingfeng.com/safari-not-support.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          下一篇
+      </strong>
+      <div class="article-nav-title">两个Safari浏览器不兼容的坑</div>
+    </a>
+    
 </nav>
 
 
@@ -511,6 +602,32 @@
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/safari-not-support.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/safari-not-support.html" class="title">两个Safari浏览器不兼容的坑</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-06-01 07:35:15 &#43;0800 CST" itemprop="datePublished">2017-06-01</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -616,32 +733,6 @@
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/ellipse-border-radius.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/ellipse-border-radius.html" class="title">用CSS绘制椭圆、半椭圆、四分之一椭圆</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-30 11:25:58 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -659,6 +750,19 @@
 		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01A18WWAG&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;margin-right: 10px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01MQIE77V&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 	</div>
+	<div style="margin-top: 20px">
+      
+    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=136JQWBMQZDXMC5PEM82&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;margin-right:10px" frameborder="0"></iframe>
+    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=06DR0F7H0WPRDEY0X6G2&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
+  </div>
+  <div class="qcloud" style="margin:10px auto">
+    <a href="http://www.qcloud.com/redirect.php?redirect=1001&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云服务器安全可靠高性能，多种配置供您选择" target="_blank">
+      <img src="/images/120x140.jpg" alt="腾讯云服务器安全可靠高性能，多种配置供您选择">
+    </a>
+    <a href="http://www.qcloud.com/redirect.php?redirect=1003&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题" target="_blank" style="margin-left: 10px">
+      <img src="/images/云数据库-120X240.jpg" alt="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题">
+    </a>
+  </div>
 	<div id="toTop" class="fa fa-angle-up"></div>
 </aside>
 
