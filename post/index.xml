@@ -7,8 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Thu, 01 Jun 2017 07:35:15 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Jun 2017 08:03:43 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>重新学习Python</title>
+      <link>http://www.wangxingfeng.com/learn-python-again.html</link>
+      <pubDate>Thu, 01 Jun 2017 08:03:43 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/learn-python-again.html</guid>
+      <description>&lt;p&gt;一年多没怎么用Python这门编程语言了，如今想要写个爬虫啥的，都忘了怎么写。那就重新学习一遍，反正有基础，也花不了多少时间。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>两个Safari浏览器不兼容的坑</title>
@@ -1926,70 +1936,6 @@ if(/micromessenger/i.test(ua){
 &lt;p&gt;此时，如果你想在手机上测试index.html页面，你只需要在手机上访问 &lt;code&gt;http://192.168.31.192:8000/index.html&lt;/code&gt; 即可看到效果。&lt;/p&gt;
 
 &lt;p&gt;当然，这里有一个前提，就是你的手机和电脑是在同一个局域网内的。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>人人都能说英语</title>
-      <link>http://www.wangxingfeng.com/everybody-can-speak-english</link>
-      <pubDate>Tue, 04 Apr 2017 15:31:56 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/everybody-can-speak-english</guid>
-      <description>
-
-&lt;h2 id=&#34;1-为什么要学习英语&#34;&gt;1.为什么要学习英语？&lt;/h2&gt;
-
-&lt;h3 id=&#34;1-1真的有必要学习英语吗&#34;&gt;1.1真的有必要学习英语吗？&lt;/h3&gt;
-
-&lt;p&gt;对于学生而言，英语是一门必修课，不得不学。对于上班族而言，有人因为工作需要而学习英语，比如外企员工、涉外导游、外贸从业者；有人出于兴趣爱好而学习英语，比如想看原版的英美电影、听英文歌，甚至看英文小说。&lt;/p&gt;
-
-&lt;p&gt;然而，绝大多数的人，学习了十多年的英语，却从未真正掌握这门语言，原因何在？我觉得，学习目的不明确，导致没有内在的学习动力是一个很重要的原因。&lt;/p&gt;
-
-&lt;p&gt;试着问问自己，为什么要学习英语？真的有必要花费时间在学习英语这件事情上吗？也许，你真的不用白费力气学英语。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-2谈谈英语给我带来的好处&#34;&gt;1.2谈谈英语给我带来的好处&lt;/h3&gt;
-
-&lt;p&gt;1）休闲：去国外旅游，不需要导游，全程自助；&lt;/p&gt;
-
-&lt;p&gt;2）娱乐：看最新的英剧、美剧或者英文电影，不用等待字幕组翻译字幕，不怕被剧透；&lt;/p&gt;
-
-&lt;p&gt;3）工作：查阅技术文档，直接看官网，不用看他人蹩脚的翻译；&lt;/p&gt;
-
-&lt;p&gt;4）学习：在Coursera、Khan Academy、FutureLearn 上学习自己感兴趣的课程。&lt;/p&gt;
-
-&lt;h2 id=&#34;2-如何才能学好英语&#34;&gt;2.如何才能学好英语？&lt;/h2&gt;
-
-&lt;h3 id=&#34;2-1刻意地练习&#34;&gt;2.1刻意地练习&lt;/h3&gt;
-
-&lt;p&gt;我们是如何学习并掌握一项技能的呢？需要我们有多高的智商，或者需要有强大的毅力吗？&lt;/p&gt;
-
-&lt;p&gt;如果你会开车，那么你可以试着回顾一下自己学习并掌握驾驶汽车这项技能的过程。你需要的仅仅是在教练的指导下，刻意地练习一段时间。&lt;/p&gt;
-
-&lt;p&gt;英语，就像开车一样，是几乎人人都可以孰能生巧的技能，仅仅需要你刻意地练习一段时间。不需要纠结于词汇量，也不需要背诵各种语法规则以及各种规则的例外情况。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-2-词汇&#34;&gt;2.2 词汇&lt;/h3&gt;
-
-&lt;p&gt;曾经有不少学生跟我说，老师，我每天拿个单词书背单词，可是第二天就全忘了，怎么办？&lt;/p&gt;
-
-&lt;p&gt;如果是备考托福、SAT的学生跟我这么说，我会问他，你是正常人吗？  第一遍就记得住的都不是正常人！单词就得反反复复背几遍，同时TOP或者SAT真题练习别偷懒。等你在做题中遇到这些词汇，你就认识他们了。&lt;/p&gt;
-
-&lt;p&gt;如果是实用口语班的学生，我通常会粗暴地说：背个毛线的单词书！好好练习常用的句型就够了，有空多看看美剧。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-3-语法&#34;&gt;2.3 语法&lt;/h3&gt;
-
-&lt;p&gt;语法重要吗？废话，当然重要，但是没有你想象得那么重要。最基本的语法，尤其是句法还是要懂一点。&lt;/p&gt;
-
-&lt;p&gt;什么主谓宾、定状补同，还有就是三大从句还是要会的，不然你看到复杂的句子，就一脸懵逼了。只看单词都认识，放一起就不知所云的，多半是没搞明白三大从句，不知道怎么断句的。&lt;/p&gt;
-
-&lt;p&gt;如果不是英语专业，想要专研语法的，就别整什么薄冰、张道真的语法书。推荐两本比较好的语法书：旋元佑的《文法俱乐部》、张满胜《英语语法新思维》。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-4-一直在学习-从来没实践&#34;&gt;2.4 一直在学习，从来没实践&lt;/h3&gt;
-
-&lt;p&gt;既然人人都可以习得英语这项技能，为什么有那么多人花费大量时间、金钱仍然无法熟练使用英语？因为一直在学习，从来没有实际使用过英语！&lt;/p&gt;
-
-&lt;p&gt;在国内，没有老外朋友，工作上也用不上英语，怎么用起来呢？&lt;/p&gt;
-
-&lt;p&gt;看看美剧、听听英文歌、阅读英文小说、看BBC的纪录片、 听VOA的新闻、看TED上的视频、交个外国朋友或网友。只要你想，你总能找到使用英语的场景。&lt;/p&gt;
 </description>
     </item>
     

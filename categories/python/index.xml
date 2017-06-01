@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Frank Wang&#39;s Coding World</title>
+    <link>http://www.wangxingfeng.com/categories/python/index.xml</link>
+    <description>Recent content in Python on Frank Wang&#39;s Coding World</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://www.wangxingfeng.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>重新学习Python</title>
+      <link>http://www.wangxingfeng.com/learn-python-again.html</link>
+      <pubDate>Thu, 01 Jun 2017 08:03:43 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/learn-python-again.html</guid>
+      <description>&lt;p&gt;一年多没怎么用Python这门编程语言了，如今想要写个爬虫啥的，都忘了怎么写。那就重新学习一遍，反正有基础，也花不了多少时间。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
