@@ -19,15 +19,22 @@
 
 &lt;h2 id=&#34;一-苹果手机的safari浏览器不兼容new-date-日期转换格式的坑&#34;&gt;一、 苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑&lt;/h2&gt;
 
-&lt;p&gt;需求：演唱会门票开售时间倒计时。&lt;/p&gt;
+&lt;p&gt;做Web项目的开发，&lt;code&gt;倒计时&lt;/code&gt;是个很常见的需求。我的需求是做一个演唱会门票开售时间的倒计时。&lt;/p&gt;
 
-&lt;p&gt;思路如下：开售时间减去现在的时间，得出一个时间毫秒数，然后再转换成xx天xx小时xx分xx秒。
-so easy! 然后开始写代码。&lt;/p&gt;
+&lt;h3 id=&#34;思路如下&#34;&gt;思路如下：&lt;/h3&gt;
+
+&lt;p&gt;取到 &lt;code&gt;开售时间&lt;/code&gt;和&lt;code&gt;服务器上现在的时间&lt;/code&gt;，用&lt;code&gt;开售时间&lt;/code&gt;减去&lt;code&gt;现在的时间&lt;/code&gt;，得出一个时间毫秒数，然后再转换成xx天xx小时xx分xx秒。&lt;/p&gt;
+
+&lt;p&gt;跟后台技术小哥简单沟通了一下，后台会将&lt;code&gt;开售时间&lt;/code&gt;和&lt;code&gt;现在的时间&lt;/code&gt;传到页面上，放在&lt;code&gt;隐藏域&lt;/code&gt;里，这样我用JavaScript就能取到时间了。so easy! 然后我就开始写代码了。&lt;/p&gt;
+
+&lt;p&gt;一开始我是这样写的：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
 function preSellCount(){
     // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
     var preSt = $(&#39;#preSellTime&#39;).val() || $(&#39;#showTime&#39;).val();  
+
+    var nowTime = $(&#39;#nowTime&#39;).val();
 
     // 如果没有设置开售时间，也没有设置演出的时间，则倒计时处显示“开售时间待定”
     if (!preSt) {
@@ -38,60 +45,73 @@ function preSellCount(){
         var sellTime = new Date(preSt).getTime();
 
         //现在的毫秒数
-        var now = new Date().getTime();
+        var now = new Date(nowTime).getTime();
 
         var count, d, h, min, sec, timeStr, timer;
 
         count = now &amp;gt; sellTime ? 0 : Math.floor((sellTime-now)/1000);
 
-        // 定时器
-        timer = setInterval(function() {
-            if (count === 0) {
-                clearInterval(timer);
-            }else{
-                
-                // 天数
-                d = Math.floor(count/86400); 
+        //进来页面的时间不为零，才执行定时器
+        if(count!==0){
+            // 定时器
+            timer = setInterval(function() {
+                if (count === 0) {
+                    clearInterval(timer);
 
-                // 小时数
-                h = Math.floor(count%86400/3600); 
-
-                // 分钟数
-                min = Math.floor(count%86400%3600/60); 
-
-                // 秒钟数
-                sec = Math.floor(count%86400%3600%60);
-
-                // 小于10的时候，前面补一个‘0’。
-                if (min &amp;lt; 10) {
-                    min = &#39;0&#39; + min;
-                }
-                if (sec &amp;lt; 10 ) {
-                    sec = &#39;0&#39; + sec;
-                }
-
-                if (d == 0) {
-                    timeStr =  h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                    // 倒计时为零时，自动刷新页面
+                    window.location.reload();
                 }else{
-                    timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                    
+                    // 天数
+                    d = Math.floor(count/86400); 
+
+                    // 小时数
+                    h = Math.floor(count%86400/3600); 
+
+                    // 分钟数
+                    min = Math.floor(count%86400%3600/60); 
+
+                    // 秒钟数
+                    sec = Math.floor(count%86400%3600%60);
+
+                    // 小于10的时候，前面补一个‘0’。
+                    if (min &amp;lt; 10) {
+                        min = &#39;0&#39; + min;
+                    }
+                    if (sec &amp;lt; 10 ) {
+                        sec = &#39;0&#39; + sec;
+                    }
+
+                    if (d == 0) {
+                        timeStr =  h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                    }else{
+                        timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                    }
+                    // 得到倒计时的时间字符串
+                    timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + sec + &amp;quot;秒&amp;quot;;
+
+                    // 将字倒计时显示到页面上
+                    $(&#39;#preSellCount&#39;).text(timeStr);
+
+                    count -= 1;
                 }
-                // 得到倒计时的时间字符串
-                timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + sec + &amp;quot;秒&amp;quot;;
-
-                // 将字倒计时显示到页面上
-                $(&#39;#preSellCount&#39;).text(timeStr);
-
-                count -= 1;
-            }
-        }, 1000);
+            }, 1000);
+        }
     }
 }
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;用Chrome模拟各种手机调试都是一切正常。发布到本地测试环境，然后用自己的安卓手机访问，也一切正常。再用同事的苹果手机测试，倒计时不显示。WTF?&lt;/p&gt;
+&lt;p&gt;用Chrome模拟各种手机调试都是一切正常。
+发布到本地测试环境，然后用自己的安卓手机访问，也一切正常。
+再用同事的苹果手机测试，倒计时不显示。WTF?&lt;/p&gt;
 
-&lt;p&gt;想想哪里可能会有兼容性问题呢？从头检查一遍代码。获取开售时间没有问题。取到的开售时间是一个字符串的日期，用&lt;code&gt;new Date(preSt).getTime()&lt;/code&gt;转换成毫秒数，有没有问题呢？Google一下&lt;code&gt;new Date() iOS&lt;/code&gt;， 果然发现有不少相关文章提到iOS下日期转换问题。由于Safari在iOS5及以下对&lt;code&gt;YYYY-MM-DD&lt;/code&gt;格式的日期不支持，所以需要转换格式。最简单的是用&lt;code&gt;正则表达式&lt;/code&gt;把日期转换成 &lt;code&gt;YYYY/MM/DD&lt;/code&gt;格式&lt;/p&gt;
+&lt;p&gt;想想哪里可能会有兼容性问题呢？&lt;/p&gt;
+
+&lt;p&gt;从头检查一遍代码。获取开售时间没有问题。
+取到的开售时间是一个字符串的日期，用&lt;code&gt;new Date(preSt).getTime()&lt;/code&gt;转换成毫秒数，有没有问题呢？Google一下&lt;code&gt;new Date() iOS&lt;/code&gt;。
+果然发现有不少相关文章提到iOS下日期转换问题。由于Safari在iOS5及以下对&lt;code&gt;YYYY-MM-DD&lt;/code&gt;格式的日期不支持，所以需要转换格式。
+最简单的是用&lt;code&gt;正则表达式&lt;/code&gt;把日期转换成 &lt;code&gt;YYYY/MM/DD&lt;/code&gt;格式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
     preSt.replace(/-/g, &amp;quot;/&amp;quot;)
@@ -104,7 +124,7 @@ function preSellCount(){
 function preSellCount(){
     // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
     var preSt = $(&#39;#preSellTime&#39;).val() || $(&#39;#showTime&#39;).val();  
-
+    var nowTime = $(&#39;#nowTime&#39;).val();
     // 如果没有设置开售时间，也没有设置演出的时间，则倒计时处显示“开售时间待定”
     if (!preSt) {
         $(&#39;#preSellCount&#39;).text(&amp;quot;开售时间待定&amp;quot;);
@@ -114,52 +134,58 @@ function preSellCount(){
         var sellTime = new Date(preSt.replace(/-/g, &amp;quot;/&amp;quot;)).getTime();
 
         //现在的毫秒数
-        var now = new Date().getTime();
+        var now = new Date(nowTime.replace(/-/g, &amp;quot;/&amp;quot;)).getTime();
 
         var count, d, h, min, sec, timeStr, timer;
 
         count = now &amp;gt; sellTime ? 0 : Math.floor((sellTime-now)/1000);
 
-        // 定时器
-        timer = setInterval(function() {
-            if (count === 0) {
-                clearInterval(timer);
-            }else{
-                
-                // 天数
-                d = Math.floor(count/86400); 
+        //进来页面的时间不为零，才执行定时器
+        if(count!==0){
+            // 定时器
+            timer = setInterval(function() {
+                if (count === 0) {
+                    clearInterval(timer);
 
-                // 小时数
-                h = Math.floor(count%86400/3600); 
-
-                // 分钟数
-                min = Math.floor(count%86400%3600/60); 
-
-                // 秒钟数
-                sec = Math.floor(count%86400%3600%60);
-
-                // 小于10的时候，前面补一个‘0’。
-                if (min &amp;lt; 10) {
-                    min = &#39;0&#39; + min;
-                }
-                if (sec &amp;lt; 10 ) {
-                    sec = &#39;0&#39; + sec;
-                }
-
-                if (d == 0) {
-                    timeStr =  h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                    // 倒计时为零时，自动刷新页面
+                    window.location.reload();
                 }else{
-                    timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                    
+                    // 天数
+                    d = Math.floor(count/86400); 
+
+                    // 小时数
+                    h = Math.floor(count%86400/3600); 
+
+                    // 分钟数
+                    min = Math.floor(count%86400%3600/60); 
+
+                    // 秒钟数
+                    sec = Math.floor(count%86400%3600%60);
+
+                    // 小于10的时候，前面补一个‘0’。
+                    if (min &amp;lt; 10) {
+                        min = &#39;0&#39; + min;
+                    }
+                    if (sec &amp;lt; 10 ) {
+                        sec = &#39;0&#39; + sec;
+                    }
+
+                    if (d == 0) {
+                        timeStr =  h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                    }else{
+                        timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + s + &amp;quot;秒&amp;quot;;
+                    }
+                    // 得到倒计时的时间字符串
+                    timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + sec + &amp;quot;秒&amp;quot;;
+
+                    // 将字倒计时显示到页面上
+                    $(&#39;#preSellCount&#39;).text(timeStr);
+
+                    count -= 1;
                 }
-                // 得到倒计时的时间字符串
-                timeStr = d + &amp;quot;天&amp;quot; + h + &amp;quot;小时&amp;quot; + min + &amp;quot;分&amp;quot; + sec + &amp;quot;秒&amp;quot;;
-
-                // 将字倒计时显示到页面上
-                $(&#39;#preSellCount&#39;).text(timeStr);
-
-                count -= 1;
-            }
-        }, 1000);
+            }, 1000);
+        }
     }
 }
 
