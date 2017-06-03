@@ -33,7 +33,7 @@
 
 
 
-<meta property="og:updated_time" content="2016-08-20T21:07:46&#43;08:00"/>
+<meta property="og:updated_time" content="2016-12-18T21:56:37&#43;08:00"/>
 
 
 
@@ -239,7 +239,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        29
+        30
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -321,6 +321,149 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/js-reg">
+    <h1 class="article-title" itemprop="name">
+        JavaScript的正则表达式
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-12-18 21:56:37 &#43;0800 CST" itemprop="datePublished">2016-12-18</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/regexp">RegExp</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    1.基本概念 正则表达式(Regular Expression)是一个字符串，定义了某个规则，按照这种规则来描述、匹配一系列符合条件的字符串。
+2.通配符 当前目录下查找文件(linux 命令行)
+find ./ -name *.txt  3.在线图形工具： <a href="https://regexper.com/">https://regexper.com/</a> 是一款非常实用的正则表达式图形化工具。你也可以下载到本地，运行速度更快
+4.IDE中可以支持正则表达式： 我用的是编辑器是Sublime Text 3。快捷键Ctrl+F查找字符串，Ctrl+H替换字符串，在底部唤出的面板左上角有开启正则表达式（快捷键Alt+R）
+<a href="http://www.wangxingfeng.com">http://www.wangxingfeng.com</a> <a href="http://m.wangxingfeng.com">http://m.wangxingfeng.com</a> <a href="http://cosmic.wangxingfeng.com">http://cosmic.wangxingfeng.com</a> <a href="http://blog.wangxingfeng.com">http://blog.wangxingfeng.com</a> <a href="http://img.wangxingfeng.com/1234.jpg">http://img.wangxingfeng.com/1234.jpg</a> <a href="http://img.wangxingfeng.com/158.png">http://img.wangxingfeng.com/158.png</a> <a href="https://img.wangxingfeng.com/128744.jpg">https://img.wangxingfeng.com/128744.jpg</a> <a href="http://img.wangxingfeng.com/1285.jpg">http://img.wangxingfeng.com/1285.jpg</a> <a href="http://img.wangxingfeng.com/7884.png">http://img.wangxingfeng.com/7884.png</a>  Sublime中找出上面的url中http协议的jpg文件，去掉其协议头
+Find What: http:\/\/(.+.jpg) replace with: $1  5.JavaScript中实例化RegExp对象 5.1.字面量:
+var reg = /\d/; var reg2 = /[a-zA-Z0-9]/g;  5.2.构造函数:
+var reg = new RegExp(\d); var reg = new RegExp(&rsquo;[a-zA-Z0-9]&lsquo;, &lsquo;g&rsquo;);  6.修饰符： 6.1.g(global):表示全局匹配，不添加则默认匹配到第一个字符串。
+6.2.i(ignore case):表示忽略大小写,不添加则默认大小写敏感。
+6.3.m(multiple lines):表示多行匹配。
+7.原意文本字符 和元字符： 7.1.原意文本字符：表示字符的原本含义，如a表示小写字母a，1表示数字1。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/js-reg">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/js-reg" data-id="ba4230bd277f2c6ee4c1166e056fd631" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1700,6 +1843,32 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/mysql-basic.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
+                        Database
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-basic.html" class="title">MySQL入门：MySQL语句规范及MySQL的常用命令</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-06-03 22:38:52 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/mysql-error-1045.html" class="thumbnail">
                     
                         <span class="thumbnail-image thumbnail-none"></span>
@@ -1798,32 +1967,6 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
                     <p class="item-title"><a href="http://www.wangxingfeng.com/bevel-corners-svg.html" class="title">用border-image&#43;SVG实现切角效果</a></p>
                     <p class="item-date">
                         <time datetime="2017-05-06 16:19:48 &#43;0800 CST" itemprop="datePublished">2017-05-06</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/bevel-corners.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/bevel-corners.html" class="title">CSS实现切角效果</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-05-02 22:52:17 &#43;0800 CST" itemprop="datePublished">2017-05-02</time>
                     </p>
                 </div>
             </li>

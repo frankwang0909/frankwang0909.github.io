@@ -10,6 +10,100 @@
     <atom:link href="http://www.wangxingfeng.com/categories/database/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>MySQL入门：MySQL语句规范及MySQL的常用命令</title>
+      <link>http://www.wangxingfeng.com/mysql-basic.html</link>
+      <pubDate>Sat, 03 Jun 2017 22:38:52 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/mysql-basic.html</guid>
+      <description>
+
+&lt;h2 id=&#34;一-mysql语句规范&#34;&gt;一、MySQL语句规范：&lt;/h2&gt;
+
+&lt;p&gt;1.关键字、函数名全部大写；&lt;/p&gt;
+
+&lt;p&gt;2.数据库名、表名、字段名一律小写；&lt;/p&gt;
+
+&lt;p&gt;3.SQL语句必须以分号结尾。&lt;/p&gt;
+
+&lt;h2 id=&#34;二-mysql常用命令&#34;&gt;二、MySQL常用命令：&lt;/h2&gt;
+
+&lt;p&gt;1.显示当前数据库版本
+```SQL
+    SELECT VERSION();&lt;/p&gt;
+
+&lt;p&gt;2.显示当前时间:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT NOW();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.显示当前用户：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT USER();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.创建数据库：&lt;/p&gt;
+
+&lt;p&gt;语法为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name [DEFAULT] CHARACTER SET [=] charset_name;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输入如下语句，将会创建数据库test2:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE DATABASE test2;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果数据库test2已经存在，将会报错：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ERROR 1007 (HY000): Can&#39;t create database &#39;test2&#39;; database exists
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果创建数据库的时候加了 &lt;code&gt;IF NOT EXISTS&lt;/code&gt;, 遇到已经存在的数据库，将不会报错，但会有一条&lt;code&gt;WARNING&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE DATABASE IF NOT EXISTS test2;
+Query OK, 1 row affected, 1 warning (0.00 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果想要查看WARNING信息，只需输入&lt;code&gt;SHOW WARNING;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;4.查看数据库：&lt;/p&gt;
+
+&lt;p&gt;语法为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SHOW {DATABASES | SCHEMAS} [LIKE &#39;pattern&#39; | WHERE expr];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输入如下语句，可以查看&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SHOW DATABASES;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;5.删除数据库：&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DROP {DATABASE | SCHEMA} [IF EXISTS] db_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果数据库test2, 输入以下语句，可以删除该数据库：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DROP DATABASE test2;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果需要删除的数据库test2不存在，则会报错。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ERROR 1008 (HY000): Can&#39;t drop database &#39;test2&#39;; database doesn&#39;t exist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果删除时添加了 &lt;code&gt;IF EXISTS&lt;/code&gt;，则不会报错，而是会有一条WARNING:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DROP DATABASE IF EXISTS test2;
+Query OK, 1 row affected, 1 warning (0.00 sec)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Win7系统MySQL报错ERROR1045及其处理方法</title>
       <link>http://www.wangxingfeng.com/mysql-error-1045.html</link>
       <pubDate>Sat, 03 Jun 2017 21:52:09 +0800</pubDate>
