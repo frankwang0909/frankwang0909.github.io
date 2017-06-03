@@ -66,7 +66,7 @@ Query OK, 0 rows affected (0.00 sec)
 Bye
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;4.重新修改配置文件`my.ini，把刚才加入的&amp;rdquo;skip-grant-tables&amp;rdquo;这行删除，保存退出再重启mysql就可以了。&lt;/p&gt;
+&lt;p&gt;4.重新修改配置文件&lt;code&gt;my.ini&lt;/code&gt;，把刚才加入的&lt;code&gt;skip-grant-tables&lt;/code&gt;这行代码删除，保存退出再重启mysql服务就可以了。&lt;/p&gt;
 </description>
     </item>
     
