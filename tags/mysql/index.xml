@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on Frank Wang&#39;s Coding World</title>
+    <link>http://www.wangxingfeng.com/tags/mysql/index.xml</link>
+    <description>Recent content in Mysql on Frank Wang&#39;s Coding World</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://www.wangxingfeng.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Win7系统MySQL报错ERROR1045及其处理方法</title>
+      <link>http://www.wangxingfeng.com/mysql-error-1045.html</link>
+      <pubDate>Sat, 03 Jun 2017 21:52:09 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/mysql-error-1045.html</guid>
+      <description>&lt;p&gt;最近自学数据库，在&lt;code&gt;Win7&lt;/code&gt;系统下使用&lt;code&gt;MySQL&lt;/code&gt;遇到了一些报错，做个记录，方便以后查阅。&lt;/p&gt;
+
+&lt;p&gt;MySQL官网下载的&lt;code&gt;MySQL 5.5.56&lt;/code&gt;的社区版，安装正常。当我在命令行输入&lt;code&gt;mysql -u root -p&lt;/code&gt; 出现了报错信息，无法连接数据库。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C:\Windows\system32&amp;gt; mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39; (using password: YES)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;网上找到的解决方法如下：&lt;/p&gt;
+
+&lt;p&gt;1.编辑mysql配置文件&lt;code&gt;my.ini&lt;/code&gt;，在&lt;code&gt;[mysqld]&lt;/code&gt;这个条目下加入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;skip-grant-tables
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.保存&lt;code&gt;my.ini&lt;/code&gt;退出后重启mysql。&lt;/p&gt;
+
+&lt;p&gt;命令行输入 &lt;code&gt;net stop mysql&lt;/code&gt; 停止MySQL服务；&lt;/p&gt;
+
+&lt;p&gt;命令行输入 &lt;code&gt;net start mysql&lt;/code&gt; 重启MySQL服务；&lt;/p&gt;
+
+&lt;p&gt;3.重置密码：
+现在在命令行输入&lt;code&gt;mysql -u root -p&lt;/code&gt;就可以不用密码登录了，出现&lt;code&gt;password：&lt;/code&gt;的时候直接回车可以进入，不会出现&lt;code&gt;ERROR 1045 (28000)&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;1）进入mysql数据库：输入&lt;code&gt;use mysql&lt;/code&gt;, 会出现&lt;code&gt;Database changed&lt;/code&gt;的提示信息。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt; use mysql;
+
+Database changed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2）给root用户设置新密码：输入&lt;code&gt;update user set password=password(&amp;quot;新密码&amp;quot;) where user=&amp;quot;root&amp;quot;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt; update user set password=password(&amp;quot;新密码&amp;quot;) where user=&amp;quot;root&amp;quot;;
+Query OK, 1 rows affected (0.01 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3)刷新数据库: 输入&lt;code&gt;flush privileges;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt; flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4)退出mysql：输入&lt;code&gt;quit&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt; quit
+Bye
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.重新修改配置文件`my.ini，把刚才加入的&amp;rdquo;skip-grant-tables&amp;rdquo;这行删除，保存退出再重启mysql就可以了。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -7,8 +7,69 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Thu, 01 Jun 2017 08:03:43 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 03 Jun 2017 21:52:09 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Win7系统MySQL报错ERROR1045及其处理方法</title>
+      <link>http://www.wangxingfeng.com/mysql-error-1045.html</link>
+      <pubDate>Sat, 03 Jun 2017 21:52:09 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/mysql-error-1045.html</guid>
+      <description>&lt;p&gt;最近自学数据库，在&lt;code&gt;Win7&lt;/code&gt;系统下使用&lt;code&gt;MySQL&lt;/code&gt;遇到了一些报错，做个记录，方便以后查阅。&lt;/p&gt;
+
+&lt;p&gt;MySQL官网下载的&lt;code&gt;MySQL 5.5.56&lt;/code&gt;的社区版，安装正常。当我在命令行输入&lt;code&gt;mysql -u root -p&lt;/code&gt; 出现了报错信息，无法连接数据库。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C:\Windows\system32&amp;gt; mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39; (using password: YES)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;网上找到的解决方法如下：&lt;/p&gt;
+
+&lt;p&gt;1.编辑mysql配置文件&lt;code&gt;my.ini&lt;/code&gt;，在&lt;code&gt;[mysqld]&lt;/code&gt;这个条目下加入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;skip-grant-tables
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.保存&lt;code&gt;my.ini&lt;/code&gt;退出后重启mysql。&lt;/p&gt;
+
+&lt;p&gt;命令行输入 &lt;code&gt;net stop mysql&lt;/code&gt; 停止MySQL服务；&lt;/p&gt;
+
+&lt;p&gt;命令行输入 &lt;code&gt;net start mysql&lt;/code&gt; 重启MySQL服务；&lt;/p&gt;
+
+&lt;p&gt;3.重置密码：
+现在在命令行输入&lt;code&gt;mysql -u root -p&lt;/code&gt;就可以不用密码登录了，出现&lt;code&gt;password：&lt;/code&gt;的时候直接回车可以进入，不会出现&lt;code&gt;ERROR 1045 (28000)&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;1）进入mysql数据库：输入&lt;code&gt;use mysql&lt;/code&gt;, 会出现&lt;code&gt;Database changed&lt;/code&gt;的提示信息。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt; use mysql;
+
+Database changed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2）给root用户设置新密码：输入&lt;code&gt;update user set password=password(&amp;quot;新密码&amp;quot;) where user=&amp;quot;root&amp;quot;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt; update user set password=password(&amp;quot;新密码&amp;quot;) where user=&amp;quot;root&amp;quot;;
+Query OK, 1 rows affected (0.01 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3)刷新数据库: 输入&lt;code&gt;flush privileges;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt; flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4)退出mysql：输入&lt;code&gt;quit&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt; quit
+Bye
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.重新修改配置文件`my.ini，把刚才加入的&amp;rdquo;skip-grant-tables&amp;rdquo;这行删除，保存退出再重启mysql就可以了。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>重新学习Python</title>
@@ -1923,45 +1984,6 @@ if(/micromessenger/i.test(ua){
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;本文首发于&lt;a href=&#34;http://www.wangxingfeng.com/&#34;&gt;Frank Wang的个人博客&lt;/a&gt;, 转载时请附上原文链接。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>快速启动Node服务器，调试本地静态文件代码</title>
-      <link>http://www.wangxingfeng.com/anywhere-npm</link>
-      <pubDate>Tue, 04 Apr 2017 17:41:35 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/anywhere-npm</guid>
-      <description>
-
-&lt;h2 id=&#34;如何在移动设备上测试静态文件&#34;&gt;如何在移动设备上测试静态文件？&lt;/h2&gt;
-
-&lt;p&gt;现在移动端优先的情况下，前端工程师写好静态页面后，通常是需要测试不同的设备上效果，看看有没有兼容性的问题。谷歌浏览器有一个模拟手机的调试功能，一般，我们先用谷歌调试好。但毕竟是模拟的，为了保险起见，还是需要用真机测试的。&lt;/p&gt;
-
-&lt;p&gt;可是静态的html文件怎么放到手机上调试呢？难不成把文件拷一份，放到不同的手机上？显然不是。&lt;/p&gt;
-
-&lt;p&gt;NodeJS的一个&lt;code&gt;npm&lt;/code&gt;模块&lt;code&gt;anywhere&lt;/code&gt; 就可以快速地把你的当前目录变成一个静态文件服务器的根目录。&lt;/p&gt;
-
-&lt;h2 id=&#34;anywhere-的安装及使用&#34;&gt;&lt;code&gt;anywhere&lt;/code&gt;的安装及使用&lt;/h2&gt;
-
-&lt;p&gt;首先，安装Node。具体操作请看&lt;a href=&#34;https://nodejs.org&#34;&gt;Node的官网&lt;/a&gt;。傻瓜式地安装。&lt;/p&gt;
-
-&lt;p&gt;其次，安装&lt;code&gt;anywhere&lt;/code&gt;。在命令行输入&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;npm install anywhere -g
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;npm install + 模块名&lt;/code&gt; 从NPM服务器下载别人编写的第三方包的固定写法。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-g&lt;/code&gt; 表示全局安装，在电脑的任何部门都可以使用anywhere模块。&lt;/p&gt;
-
-&lt;p&gt;启动服务：&lt;/p&gt;
-
-&lt;p&gt;在命令行切换到项目的根目录，然后输入&lt;code&gt;anywhere&lt;/code&gt;即可。服务启动后，会自动打开你的默认浏览器，&lt;a href=&#34;http://192.168.31.192:8000/。&#34;&gt;http://192.168.31.192:8000/。&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;此时，如果你想在手机上测试index.html页面，你只需要在手机上访问 &lt;code&gt;http://192.168.31.192:8000/index.html&lt;/code&gt; 即可看到效果。&lt;/p&gt;
-
-&lt;p&gt;当然，这里有一个前提，就是你的手机和电脑是在同一个局域网内的。&lt;/p&gt;
 </description>
     </item>
     

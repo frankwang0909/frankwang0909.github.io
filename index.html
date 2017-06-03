@@ -33,7 +33,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-06-01T08:03:43&#43;08:00"/>
+<meta property="og:updated_time" content="2017-06-03T21:52:09&#43;08:00"/>
 
 
 
@@ -111,6 +111,8 @@
           
           
           
+          
+          
 
           
 
@@ -127,6 +129,10 @@
           
           
           <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python">Python</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
           
           
           
@@ -172,6 +178,8 @@
           
           
           
+          
+          
 
           
 
@@ -188,6 +196,10 @@
           
           
           <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python">Python</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/database">Database</a></td>
           
           
           
@@ -227,12 +239,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        28
+        29
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          22
+          23
         
         <span>
             Tags
@@ -309,6 +321,149 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/mysql-error-1045.html">
+    <h1 class="article-title" itemprop="name">
+        Win7系统MySQL报错ERROR1045及其处理方法
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-06-03 21:52:09 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/mysql">MySQL</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    最近自学数据库，在Win7系统下使用MySQL遇到了一些报错，做个记录，方便以后查阅。
+MySQL官网下载的MySQL 5.5.56的社区版，安装正常。当我在命令行输入mysql -u root -p 出现了报错信息，无法连接数据库。
+C:\Windows\system32&gt; mysql -u root -p Enter password: ERROR 1045 (28000): Access denied for user &lsquo;root&rsquo;@&lsquo;localhost&rsquo; (using password: YES)  网上找到的解决方法如下：
+1.编辑mysql配置文件my.ini，在[mysqld]这个条目下加入
+skip-grant-tables  2.保存my.ini退出后重启mysql。
+命令行输入 net stop mysql 停止MySQL服务；
+命令行输入 net start mysql 重启MySQL服务；
+3.重置密码： 现在在命令行输入mysql -u root -p就可以不用密码登录了，出现password：的时候直接回车可以进入，不会出现ERROR 1045 (28000)。
+1）进入mysql数据库：输入use mysql, 会出现Database changed的提示信息。
+mysql&gt; use mysql; Database changed  2）给root用户设置新密码：输入update user set password=password(&quot;新密码&quot;) where user=&quot;root&quot;;
+mysql&gt; update user set password=password(&quot;新密码&quot;) where user=&quot;root&quot;; Query OK, 1 rows affected (0.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/mysql-error-1045.html">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/mysql-error-1045.html" data-id="132a5417b4827e607f7c212845f1e64a" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1582,148 +1737,6 @@ lessc &ndash;clean-css demo.less demo.min.css #多了一个参数 &ndash;clean-c
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/es6-let-const">
-    <h1 class="article-title" itemprop="name">
-        ES6的块级作用域以及let、const命令
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-07 20:18:56 &#43;0800 CST" itemprop="datePublished">2017-04-07</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F">块级作用域</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    1.块级作用域 ES5 只有全局作用域和函数作用域，没有块级作用域。
-在函数外部声明的变量，都是全局变量，容易导致变量冲突。因此，我们不得不使用立即执行函数来避免全局变量的冲突。另外，在循环内用来计数的变量也会泄露成全局变量。
-为此，ES6 引入了块级作用域的概念。
-2.let 声明变量 2.1 let声明的变量，只在它所在的代码块（块级作用域）内有效。
-{ var a = 1; let b = 2; } a //1 b // Uncaught ReferenceError: b is not defined  2.2 for循环的计数器使用let命令来声明。
-for (let i = 0; i &lt; 10; i++) { // } console.log(i); //ReferenceError: i is not defined  2.3 不存在变量提升。变量应该遵循先声明后使用的原则。
-var声明的变量会提升到作用域的顶部,在变量可以在声明之前可以使用，值为undefined。let声明的变量不存在变量提升, 声明之前使用，会报错。
-2.4 暂时性死区(temporal dead zone，简称 TDZ):
-只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。在let命令声明该变量之前的区域内，该变量不能使用，即使外部声明了该变量。
-let a = 1; if (true) { // TDZ开始 console.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/es6-let-const">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/es6-let-const" data-id="36e884e10c21bba212085c54eeebc630" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1747,6 +1760,32 @@ let a = 1; if (true) { // TDZ开始 console.
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/mysql-error-1045.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
+                        Database
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-error-1045.html" class="title">Win7系统MySQL报错ERROR1045及其处理方法</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-06-03 21:52:09 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1848,32 +1887,6 @@ let a = 1; if (true) { // TDZ开始 console.
                     <p class="item-title"><a href="http://www.wangxingfeng.com/bevel-corners.html" class="title">CSS实现切角效果</a></p>
                     <p class="item-date">
                         <time datetime="2017-05-02 22:52:17 &#43;0800 CST" itemprop="datePublished">2017-05-02</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/diamond-picture.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/diamond-picture.html" class="title">如何用CSS代码实现网页设计中的菱形图片</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-05-01 22:00:03 &#43;0800 CST" itemprop="datePublished">2017-05-01</time>
                     </p>
                 </div>
             </li>
