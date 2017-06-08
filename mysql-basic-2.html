@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>Python &middot; Frank Wang&#39;s Coding World</title>
+    <title>MySQL数据库的基本数据类型、表的操作和记录的操作 &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,13 +11,10 @@
       <meta name="keywords" content="人人都能说英语，Hugo快速建站，前端学习笔记， CSS，Node, HTML, JavaScript, ES6, Python">
     
     
-      <meta name="description" content="Frank Wang’s Personal Blog, 前端工程师成长记录">
+      <meta name="description" content="MySQL数据库的基本数据类型包括数值类型、字符类型和时间日期类型。MySQL数据库表的基本操作。MySQL数据库记录的基本操作">
     
     
-      <link href="http://www.wangxingfeng.com/tags/python/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-      <link href="http://www.wangxingfeng.com/tags/python/index.xml" rel="feed" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-    
-    <link rel="canonical" href="http://www.wangxingfeng.com/tags/python/"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/mysql-basic-2.html"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -26,14 +23,16 @@
     <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.min.css">
     
 
-    <meta property="og:title" content="Python" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://www.wangxingfeng.com/tags/python/" />
+    <meta property="og:title" content="MySQL数据库的基本数据类型、表的操作和记录的操作" />
+<meta property="og:description" content="MySQL数据库的基本数据类型包括数值类型、字符类型和时间日期类型。MySQL数据库表的基本操作。MySQL数据库记录的基本操作" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.wangxingfeng.com/mysql-basic-2.html" />
 
 
 
-<meta property="og:updated_time" content="2017-06-01T08:03:43&#43;08:00"/>
+<meta property="article:published_time" content="2017-06-08T07:32:57&#43;08:00"/>
+<meta property="article:modified_time" content="2017-06-08T07:32:57&#43;08:00"/>
+
 
 
 
@@ -46,11 +45,28 @@
 
     
     
-<meta itemprop="name" content="Python">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="MySQL数据库的基本数据类型、表的操作和记录的操作">
+<meta itemprop="description" content="MySQL数据库的基本数据类型包括数值类型、字符类型和时间日期类型。MySQL数据库表的基本操作。MySQL数据库记录的基本操作">
 
+
+<meta itemprop="dateModified" content="2017-06-08T07:32:57&#43;08:00" />
+<meta itemprop="wordCount" content="524">
+
+
+
+<meta itemprop="keywords" content="database,english,frontend,node,python,tools,bug,cdn,clipboard,css,css3,git,github,hugo,javascript,markdown,mysql,python,regexp,seo,sublime-text,tab切换,useragent,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
 
     
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="MySQL数据库的基本数据类型、表的操作和记录的操作"/>
+<meta name="twitter:title" content="MySQL数据库的基本数据类型、表的操作和记录的操作"/>
+<meta name="twitter:description" content="MySQL数据库的基本数据类型包括数值类型、字符类型和时间日期类型。MySQL数据库表的基本操作。MySQL数据库记录的基本操作"/>
+<meta name="twitter:site" content="@frankwang0909"/>
+
     
 
     
@@ -86,7 +102,7 @@
 
 
 <div id="container">
-    <header id="header">
+	<header id="header">
   <div id="header-main" class="header-inner">
     <div class="outer">
       <a href="http://www.wangxingfeng.com/" id="logo">
@@ -222,8 +238,10 @@
   </div>
 </header>
 
-    <div class="outer">
-        <aside id="profile">
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
   <div class="inner profile-inner">
     <div class="base-info profile-block">
       <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.jpg">
@@ -318,37 +336,555 @@
 
 </aside>
 
-        <section id="main">
-            <section class="archives-wrap">
-                <div class="archive-category-wrap">
-                    <span class="archive-category">Python</span>
-                </div>
-                <div class="archives">
-                    
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/learn-python-again.html">重新学习Python</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-06-01 08:03:43 &#43;0800 CST" itemprop="datePublished">2017-06-01</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                </div>
-            </section>
-            <nav id="page-nav">
+	    
 
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/mysql-basic-2.html">
+    <h1 class="article-title" itemprop="name">
+        MySQL数据库的基本数据类型、表的操作和记录的操作
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-06-08 07:32:57 &#43;0800 CST" itemprop="datePublished">2017-06-08</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/mysql">MySQL</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<h2 id="一-mysql的基本数据类型">一、MySQL的基本数据类型：</h2>
+
+<h3 id="1-数值类型">1. 数值类型：</h3>
+
+<p>包括严格数值数据类型(INTEGER、SMALLINT、DECIMAL和NUMERIC)，以及近似数值数据类型(FLOAT、REAL和DOUBLE PRECISION)。</p>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th align="center">大小</th>
+<th align="center">范围（有符号）</th>
+<th align="center">范围（无符号）</th>
+<th align="right">用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td align="center">1 字节</td>
+<td align="center">(-128，127)</td>
+<td align="center">(0，255)</td>
+<td align="right">小整数值</td>
+</tr>
+
+<tr>
+<td>SMALLINT</td>
+<td align="center">2 字节</td>
+<td align="center">(-2^15，2^15 -1)</td>
+<td align="center">(0，2^16 -1)</td>
+<td align="right">大整数值</td>
+</tr>
+
+<tr>
+<td>MEDIUMINT</td>
+<td align="center">3 字节</td>
+<td align="center">(-2^23，2^23 -1)</td>
+<td align="center">(0，2^24 -1)</td>
+<td align="right">大整数值</td>
+</tr>
+
+<tr>
+<td>INT或INTEGER</td>
+<td align="center">4 字节</td>
+<td align="center">(-2^31，2^31 -1)</td>
+<td align="center">(0，2^32 -1)</td>
+<td align="right">大整数值</td>
+</tr>
+
+<tr>
+<td>BIGINT</td>
+<td align="center">8 字节</td>
+<td align="center">(-2^63，2^63 -1)</td>
+<td align="center">(0，2^64 -1)</td>
+<td align="right">极大整数值</td>
+</tr>
+
+<tr>
+<td>FLOAT</td>
+<td align="center">4 字节</td>
+<td align="center">(-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38)</td>
+<td align="center">0，(1.175 494 351 E-38，3.402 823 466 E+38)</td>
+<td align="right">单精度浮点数值</td>
+</tr>
+
+<tr>
+<td>DOUBLE</td>
+<td align="center">8 字节</td>
+<td align="center">(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
+<td align="center">0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
+<td align="right">双精度浮点数值</td>
+</tr>
+
+<tr>
+<td>DECIMAL</td>
+<td align="center">DECIMAL(M,D)。如果M&gt;D，为M+2否则为D+2</td>
+<td align="center">依附于M和D的值</td>
+<td align="center">依附于M和D的值</td>
+<td align="right">小数值</td>
+</tr>
+</tbody>
+</table>
+
+<p>DECIMAL(M,D)：</p>
+
+<p>M指定指定小数点左边和右边可以存储的十进制数字的最大个数，最大精度38。</p>
+
+<p>D指定小数点右边可以存储的十进制数字的最大个数。小数位数必须是从 0 到 a之间的值。默认小数位数是 0。</p>
+
+<h3 id="2-字符型">2. 字符型：</h3>
+
+<p>字符串类型主要包括CHAR、VARCHAR、TEXT、MEDIUMTEXT、LONGTEXT、EMU等。</p>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th align="center">大小</th>
+<th align="right">用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>CHAR</td>
+<td align="center">0~2^8-1 (0~255) 字节</td>
+<td align="right">定长字符串</td>
+</tr>
+
+<tr>
+<td>VARCHAR</td>
+<td align="center">0~2^16-1 (0~65536) 字节</td>
+<td align="right">变长字符串</td>
+</tr>
+
+<tr>
+<td>TINYTEXT</td>
+<td align="center">0~2^8-1 (0~255) 字节</td>
+<td align="right">短文本字符串</td>
+</tr>
+
+<tr>
+<td>TEXT</td>
+<td align="center">0~2^16-1 (0~65536)字节</td>
+<td align="right">长文本数据</td>
+</tr>
+
+<tr>
+<td>MEDIUMTEXT</td>
+<td align="center">0~2^24-1 (0~16777215)字节</td>
+<td align="right">中等长度文本数据</td>
+</tr>
+
+<tr>
+<td>LONGTEXT</td>
+<td align="center">0~2^32-1 (0~4294967296)</td>
+<td align="right">极大文本数据</td>
+</tr>
+</tbody>
+</table>
+
+<p>定长字符串：没有达到指定长度，尾部空格补齐。</p>
+
+<h3 id="3-日期时间类型">3. 日期时间类型：</h3>
+
+<p>表示时间值的日期和时间类型为DATETIME、DATE、TIMESTAMP、TIME和YEAR。</p>
+
+<p>每个时间类型有一个有效值范围和一个&rdquo;零&rdquo;值，当指定不合法的MySQL不能表示的值时使用&rdquo;零&rdquo;值。</p>
+
+<p>类型  大小
+(字节)    范围  格式  用途
+DATE    3   1000-01-01/9999-12-31   YYYY-MM-DD  日期值
+TIME    3   &lsquo;-838:59:59&rsquo;/&lsquo;838:59:59&rsquo;    HH:MM:SS    时间值或持续时间
+YEAR    1   <sup>1901</sup>&frasl;<sub>2155</sub>   YYYY    年份值
+DATETIME    8   1000-01-01 00:00:00/9999-12-31 23:59:59 YYYY-MM-DD HH:MM:SS 混合日期和时间值
+TIMESTAMP   4   1970-01-01 00:00:00/2037 年某时    YYYYMMDD HHMMSS 混合日期和时间值，时间戳</p>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th align="center">大小</th>
+<th align="center">范围</th>
+<th align="center">格式</th>
+<th align="right">用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>YEAR</td>
+<td align="center">1 字节</td>
+<td align="center">1901~2155</td>
+<td align="center">YYYY</td>
+<td align="right">年份值</td>
+</tr>
+
+<tr>
+<td>DATE</td>
+<td align="center">3 字节</td>
+<td align="center">1000-01-01 ~ 9999-12-31</td>
+<td align="center">YYYY-MM-DD</td>
+<td align="right">日期值</td>
+</tr>
+
+<tr>
+<td>TIME</td>
+<td align="center">3 字节</td>
+<td align="center">-838:59:59 ~ 838:59:59</td>
+<td align="center">HH:MM:SS</td>
+<td align="right">时间值或持续时间</td>
+</tr>
+
+<tr>
+<td>DATETIME</td>
+<td align="center">8 字节</td>
+<td align="center">1000-01-01 00:00:00 ~ 9999-12-31 23:59:59</td>
+<td align="center">YYYY-MM-DD HH:MM:SS</td>
+<td align="right">混合日期和时间值</td>
+</tr>
+
+<tr>
+<td>TIMESTAMP</td>
+<td align="center">4 字节</td>
+<td align="center">1970-01-01 00:00:00 ~ 2037</td>
+<td align="center">YYYYMMDD HHMMSS</td>
+<td align="right">时间戳</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="二-数据表的操作">二、数据表的操作：</h2>
+
+<h3 id="1-查看当前数据库">1.查看当前数据库</h3>
+
+<pre><code>SELECT DATABASE();
+</code></pre>
+
+<h3 id="2-创建数据表">2.创建数据表</h3>
+
+<pre><code>CREATE TABLE [IF NOT EXISTS] table_name ( column_name data_type,...);
+
+
+CREATE TABLE IF NOT EXISTS user(
+    username VARCHAR(20),
+    age TINYINT UNSIGNED,
+    salary FLOAT(8,2) UNSIGNED
+);
+</code></pre>
+
+<h3 id="3-查看数据表">3.查看数据表</h3>
+
+<pre><code>SHOW TABLES;
+</code></pre>
+
+<p>查看其它数据库的数据表</p>
+
+<pre><code>SHOW TABLES FROM mysql;
+</code></pre>
+
+<h3 id="4-查看数据表结构">4.查看数据表结构</h3>
+
+<pre><code>SHOW COLUMNS FROM tbl_name;
+
+SHOW COLUMNS FROM user;
+</code></pre>
+
+<h2 id="三-记录的操作">三、记录的操作：</h2>
+
+<p>数据表里的行，被称为数据库的记录</p>
+
+<h3 id="1-插入记录">1.插入记录</h3>
+
+<pre><code>INSERT [INFO] tbl_name [(col_name,..)] VALUES(val,..);
+
+INSERT user VALUES('Frank', 22, 3500.18);
+</code></pre>
+
+<p>如果省略了字段名（即列名），则值必须与字段的数量一致，否则会报错。</p>
+
+<pre><code>Column count doesn't match value count at row 1
+</code></pre>
+
+<p>如果对某部分字段赋值，则需要写明字段名。</p>
+
+<pre><code>INSERT user(username,salary)  VALUES('Jack', 4500.18);
+</code></pre>
+
+<h3 id="2-查找记录">2.查找记录</h3>
+
+<pre><code>SELECT expr,... FROM tbl_name;
+</code></pre>
+
+<p>查看全部记录</p>
+
+<pre><code>SELECT * FROM tbl_name; 
+
+SELECT * FROM user;
+</code></pre>
+
+<h3 id="3-空值">3.空值</h3>
+
+<p>NULL, 字段值可以为空；
+NOT NULL, 字段值不能为空。</p>
+
+<p>CREATE TABLE tb2(
+    username VARCHAR(20) NOT NULL,
+    age TINYINT UNSIGNED NULL
+);</p>
+
+<h3 id="4-自动编号-auto-increment">4.自动编号：AUTO_INCREMENT</h3>
+
+<p>必须与主键组合使用。默认情况下，其实值为1，每次的增量为1.</p>
+
+<pre><code>CREATE TABLE tb3(
+    id SMALLINT UNSIGNED AUTO_INCREMENT,
+    username VARCHAR(20) NOT NULL,
+    age TINYINT UNSIGNED NULL
+);
+</code></pre>
+
+<p>报错：</p>
+
+<pre><code>ERROR 1075(42000): Incorrect table definition; there can be only one auto column and it must be defined as a key.
+</code></pre>
+
+<h3 id="5-主键-primary-key">5.主键：PRIMARY KEY</h3>
+
+<p>1）每张数据表只能存在一个主键；</p>
+
+<p>2）主键保证记录的唯一性；</p>
+
+<p>3）主键自动为NOT NULL.</p>
+
+<p>创建数据表tb4:</p>
+
+<pre><code>CREATE TABLE tb4(
+    id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NOT NULL,
+    age TINYINT UNSIGNED NULL
+);
+</code></pre>
+
+<p>插入记录：</p>
+
+<pre><code>INSERT tb3(username) VALUES('Ross');
+INSERT tb3(username) VALUES('Richard');
+INSERT tb3(username) VALUES('Monica');
+</code></pre>
+
+<h3 id="5-唯一约束-unique-key">5.唯一约束：UNIQUE KEY</h3>
+
+<p>1）UNIQUE KEY可以保证记录的唯一性；</p>
+
+<p>2）UNIQUE KEY可以为空值；</p>
+
+<p>3）每张表里可以存在多个唯一约束。</p>
+
+<p>创建数据表tb5:</p>
+
+<pre><code>CREATE TABLE tb5(
+    id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NOT NULL UNIQUE KEY,
+    age TINYINT UNSIGNED NULL
+);
+</code></pre>
+
+<p>查看刚刚创建的数据表tb5数据结构：</p>
+
+<pre><code>SHOW COLUMNS FROM tb5;
+</code></pre>
+
+<p>插入一条记录：</p>
+
+<pre><code>INSERT tb5(username, age) VALUES('Ross', 30);
+</code></pre>
+
+<p>插入成功，现在已经有一条记录的<code>username</code>为&rsquo;Ross&rsquo;了。再插入一条记录：</p>
+
+<pre><code>INSERT tb5(username, age) VALUES('Ross', 28);
+</code></pre>
+
+<p>报错：</p>
+
+<pre><code>ERROR 1062 (23000): Duplicate entry 'Ross' for key 'username'
+</code></pre>
+
+<h3 id="6-默认值-default">6.默认值： DEFAULT</h3>
+
+<p>当插入记录时，如果没有明确为字段赋值，则自动赋予默认值。</p>
+
+<pre><code>CREATE TABLE tb6(
+    id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NOT NULL UNIQUE KEY,
+    sex ENUM('1', '2', '3') DEFAULT '3'
+);
+</code></pre>
+
+<p>查看刚刚创建的数据表tb6数据结构：</p>
+
+<pre><code>SHOW COLUMNS FROM tb6;
+</code></pre>
+
+<p>插入一条记录：</p>
+
+<pre><code>INSERT tb6(username) VALUES('Frank');
+</code></pre>
+
+<p>查看记录：</p>
+
+<pre><code>SELECT * FROM tb6;
+</code></pre>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/mysql-basic-2.html" data-id="89b75d806729b484934de6995988ab0b" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://www.wangxingfeng.com/mysql-basic.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          上一篇
+      </strong>
+      <div class="article-nav-title">MySQL入门：语句规范及常用命令</div>
+    </a>
+    
+
+    
 </nav>
 
-        </section>
-        <aside id="sidebar">
+
+    </article>
+
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
     
 <div class="widget-wrap">
     <h3 class="widget-title">
@@ -520,7 +1056,8 @@
 	<div id="toTop" class="fa fa-angle-up"></div>
 </aside>
 
-    </div>
+	    
+	</div>
 </div>
 
 <footer id="footer">

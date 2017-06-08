@@ -33,7 +33,7 @@
 
 
 
-<meta property="og:updated_time" content="2016-12-18T21:56:37&#43;08:00"/>
+<meta property="og:updated_time" content="2017-01-11T21:48:19&#43;08:00"/>
 
 
 
@@ -239,7 +239,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        30
+        31
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -321,6 +321,140 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/fix-inline-bug">
+    <h1 class="article-title" itemprop="name">
+        代码换行导致的inline元素间距bug
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-01-11 21:48:19 &#43;0800 CST" itemprop="datePublished">2017-01-11</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/bug">bug</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    inline 元素： 如果inline元素(span, strong, b, em, i等)代码换行，它们之间会产生我们不希望的间隔。通过设置margin:0或者padding:0 , 这个都间隔仍然存在，说明这个间隔并不是margin或者padding。
+.inline p span:first-child { background-color: #66d9ef; } .inline p span:nth-child(2) { background-color: #c191c1; } .inline p span:nth-child(3) { background-color: #9fe89f; } .inline p span:nth-child(4) { background-color: #8787f1; } .inline p span:last-child{ background-color: #464141; } .inline p span{ font-size:16px; color:#fff; line-height:30px; } .inline-block span{ display: inline-block; width:20%; } .fs0{ font-size: 0; }   inline元素 1 inline元素 2 inline元素 3  是否为了不消除这个间隔，就必须把inline元素的html代码写在一行内呢？答案是否定的。 开发的时候，为了方便阅读和调试，我们习惯于把代码写成这样：
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/fix-inline-bug">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/fix-inline-bug" data-id="a6726c7549ec1c81c8212175fed04ae4" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1682,141 +1816,6 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/dropdown-menu">
-    <h1 class="article-title" itemprop="name">
-        常见的下拉菜单
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-03-03 23:55:37 &#43;0800 CST" itemprop="datePublished">2016-03-03</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95">下拉菜单</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    HTML结构 网页中导航栏是一个很常见的组件。通常，我们使用无序列表来制作导航栏。比如
-&lt;div id=&quot;nav&quot;&gt; &lt;ul class=&quot;navMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;跟团游&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自助游&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;游轮&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自驾&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;  有些导航栏有下拉的二级菜单，那么我们在相应的位置上再加上列表构成二级菜单，比如
-&lt;div id=&quot;nav&quot;&gt; &lt;ul class=&quot;navMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;跟团游&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;周边跟团&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;当地参团&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自助游&lt;/a&gt; &lt;ul class=&quot;subMenu&quot; &gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境自助&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内自助&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;机票+酒店&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;火车+酒店&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;游轮&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;包船专享&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;日韩航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;欧洲航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;三峡航线&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;美洲航线&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;自驾&lt;/a&gt; &lt;ul class=&quot;subMenu&quot;&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;周边自驾&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;国内自驾&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;&quot;&gt;出境自驾&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;  基本的CSS样式 列表默认是垂直方向排列的，而常见的导航栏主菜单是水平方向排列，二级下拉菜单是垂直方向排列的，所以我们需要对主菜单的li元素设置浮动，让其水平排列。设置浮动后，应记得清除浮动。可以使用class来作为公共的浮动和清除浮动的样式，然后在需要浮动的元素上添加相应的class，在浮动元素的父元素上添加清除浮动的class。
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/dropdown-menu">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/dropdown-menu" data-id="e242ef885581033878050e63830e826f" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1825,6 +1824,10 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
             « Prev
         </a>
     
+    
+        <a class="extend next" rel="next" href="http://www.wangxingfeng.com/page/4/">
+            Next »
+        </a>
     
 
 </nav>
@@ -1840,6 +1843,32 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/mysql-basic-2.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
+                        Database
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-basic-2.html" class="title">MySQL数据库的基本数据类型、表的操作和记录的操作</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-06-08 07:32:57 &#43;0800 CST" itemprop="datePublished">2017-06-08</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1860,7 +1889,7 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
                     </p>
                     
                     
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-basic.html" class="title">MySQL入门：MySQL语句规范及MySQL的常用命令</a></p>
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-basic.html" class="title">MySQL入门：语句规范及常用命令</a></p>
                     <p class="item-date">
                         <time datetime="2017-06-03 22:38:52 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
                     </p>
@@ -1941,32 +1970,6 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
                     <p class="item-title"><a href="http://www.wangxingfeng.com/safari-not-support.html" class="title">两个Safari浏览器不兼容的坑</a></p>
                     <p class="item-date">
                         <time datetime="2017-06-01 07:35:15 &#43;0800 CST" itemprop="datePublished">2017-06-01</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/bevel-corners-svg.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/bevel-corners-svg.html" class="title">用border-image&#43;SVG实现切角效果</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-05-06 16:19:48 &#43;0800 CST" itemprop="datePublished">2017-05-06</time>
                     </p>
                 </div>
             </li>
