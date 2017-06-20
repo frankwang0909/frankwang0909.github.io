@@ -6,9 +6,111 @@
     <description>Recent content in Posts on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Thu, 08 Jun 2017 07:32:57 +0800</lastBuildDate>
+    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
+    <lastBuildDate>Tue, 20 Jun 2017 07:44:01 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Python操作MySQL学习笔记</title>
+      <link>http://www.wangxingfeng.com/python_mysqldb</link>
+      <pubDate>Tue, 20 Jun 2017 07:44:01 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/python_mysqldb</guid>
+      <description>
+
+&lt;h2 id=&#34;一-应用架构&#34;&gt;一、应用架构&lt;/h2&gt;
+
+&lt;p&gt;客户端 &amp;ndash;&amp;gt; 业务逻辑层 &amp;ndash;&amp;gt; 数据访问层 &amp;ndash;&amp;gt; 数据库&lt;/p&gt;
+
+&lt;h2 id=&#34;二-python-db-api&#34;&gt;二、 Python DB API&lt;/h2&gt;
+
+&lt;p&gt;Python应用程序（包含SQL) &amp;ndash;&amp;gt; Python DB API（访问数据库的统一规范接口MySQLdb） &amp;ndash;&amp;gt; MySQL / Oracle / SQLServer等数据库&lt;/p&gt;
+
+&lt;p&gt;1.数据库连接对象：connection&lt;/p&gt;
+
+&lt;p&gt;2.数据库交互对象：cursor&lt;/p&gt;
+
+&lt;p&gt;3.数据库异常类: exceptions&lt;/p&gt;
+
+&lt;h2 id=&#34;三-访问数据库流程&#34;&gt;三、访问数据库流程：&lt;/h2&gt;
+
+&lt;p&gt;创建连接对象connection &amp;ndash;&amp;gt; 获取交互对象cursor &amp;ndash;&amp;gt; 执行查询/执行命令/获取数据/处理数据等 &amp;ndash;&amp;gt; 关闭cursor &amp;ndash;&amp;gt; 关闭connection&lt;/p&gt;
+
+&lt;h2 id=&#34;四-数据库连接对象-connection&#34;&gt;四、数据库连接对象：connection&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;建立Python客户端与数据库的网络连接&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;创建方法： MySQLdb.Connect()&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;参数：&lt;/p&gt;
+
+&lt;p&gt;host 数据库服务器地址&lt;/p&gt;
+
+&lt;p&gt;port 端口号， 数字类型&lt;/p&gt;
+
+&lt;p&gt;user 用户名&lt;/p&gt;
+
+&lt;p&gt;passwd 密码&lt;/p&gt;
+
+&lt;p&gt;db 数据库名称&lt;/p&gt;
+
+&lt;p&gt;charset 编码格式, utf8&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;4.方法：&lt;/p&gt;
+
+&lt;p&gt;cursor() 获取交互对象（游标）&lt;/p&gt;
+
+&lt;p&gt;commit() 提交当前事务&lt;/p&gt;
+
+&lt;p&gt;rollback() 回滚当前事务&lt;/p&gt;
+
+&lt;p&gt;close() 关闭连接&lt;/p&gt;
+
+&lt;h2 id=&#34;五-数据库交互对象-游标-cursor-用于执行查询和获取结果&#34;&gt;五、数据库交互对象（游标）cursor: 用于执行查询和获取结果&lt;/h2&gt;
+
+&lt;p&gt;1.方法：&lt;/p&gt;
+
+&lt;p&gt;1）execute(op [, args] )    执行SQL,将结果从数据库获取到客户端，存在本地缓冲区。&lt;/p&gt;
+
+&lt;p&gt;2）fetch*() 方法：移动指针rownumber， 返回数据。&lt;/p&gt;
+
+&lt;p&gt;fetchone() 获取结果集的下一行&lt;/p&gt;
+
+&lt;p&gt;fetchmany(size) 获取结果集的下几行&lt;/p&gt;
+
+&lt;p&gt;fetchall() 获取结果集中剩下的所有行&lt;/p&gt;
+
+&lt;p&gt;3）close() 关闭游标对象&lt;/p&gt;
+
+&lt;p&gt;2.属性：rowcount 最近一次execute返回数据的行数或影响的行数。&lt;/p&gt;
+
+&lt;h2 id=&#34;六-事务&#34;&gt;六、事务&lt;/h2&gt;
+
+&lt;p&gt;1.访问和更新数据库的一个程序执行单元，可以包含多个SQL语句或命令的操作。&lt;/p&gt;
+
+&lt;p&gt;2.必须设置引擎为INNODB。&lt;/p&gt;
+
+&lt;p&gt;3.特性：&lt;/p&gt;
+
+&lt;p&gt;1）原子性：事务包含的所有操作，要么不做，要么都做。&lt;/p&gt;
+
+&lt;p&gt;2）一致性：事务必须使数据库从一致性状态变到另一个一致性状态。&lt;/p&gt;
+
+&lt;p&gt;3）隔离性：一个事务的执行不能被其他事务所干扰。&lt;/p&gt;
+
+&lt;p&gt;4）持久性：事务一旦提交，它对数据库的改变就是永久性的。&lt;/p&gt;
+
+&lt;p&gt;4.使用事务：&lt;/p&gt;
+
+&lt;p&gt;1）关闭自动commit：设置conn.autocommit(False);&lt;/p&gt;
+
+&lt;p&gt;2）正常结束事务：conn.commit();&lt;/p&gt;
+
+&lt;p&gt;3）异常结束事务：conn.rollback().&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>MySQL数据库的基本数据类型、表的操作和记录的操作</title>
@@ -2259,34 +2361,6 @@ Array.isArray(arr);  //true;
 
 Array.isArray(&#39;a&#39;); //false
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>童鞋，放开那本词汇书</title>
-      <link>http://www.wangxingfeng.com/throw-away-vocabulary-books</link>
-      <pubDate>Thu, 06 Apr 2017 20:33:42 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/throw-away-vocabulary-books</guid>
-      <description>
-
-&lt;h2 id=&#34;词汇都是攒出来的&#34;&gt;词汇都是攒出来的&lt;/h2&gt;
-
-&lt;p&gt;其实，语言学习的本质是相通的。我们不妨先来回顾一下学习汉语（普通话）的过程。有多少人在学习语文的过程中，遇到过要求背诵《新华字典》、《辞海》的语文老师或者家长？我想绝大部分人应该是没有这种经历的。&lt;/p&gt;
-
-&lt;p&gt;我们绝大部分人，基本上是通过日复一日地学习，逐渐把中文词汇量攒起来的。实际上，到了中学阶段，我们掌握了常用的3500个汉字后，阅读中文基本已经没有什么障碍了。你也许有遇到一些生僻字或词组，比如“同侪”、“鬼魅魍魉”。这时候，你可能会停下来去查一下字典，看看它是怎么读的，有什么含义。如果这个字，是个多音字，你可能还会留意一下这个字的读音。&lt;/p&gt;
-
-&lt;p&gt;学习英语也是同样的道理，遇到不懂的单词就去查词典。现在，我们有了智能手机、电脑，你都不用纸质版的字典了，直接搜索一下，立马出来结果。这样慢慢攒起来的词汇，才是你真正掌握的词汇。&lt;/p&gt;
-
-&lt;p&gt;可是，为什么有那么多人想通过背单词书，快速提升自己的英语词汇量呢？大部分英语词汇书第1页都有一个单词叫做&amp;rdquo;abandon&amp;rdquo;，意思是“放弃”。你看词汇书的小编多么用心良苦，在第1页就告诉你了：放弃吧，别背单词书了。当然，这是一个关于背单词的老梗。&lt;/p&gt;
-
-&lt;p&gt;如果你是在准备某个考试，比如说四六级，那么，你很可能会买一本词汇书。但是，千万别妄想通过背完这个词汇书，你的词汇量就上去。仅仅是背诵单词书，背完就会忘掉。背单词书，本身是一件极其低效和反人类的事情。所以，你的大脑根本就不配合你。这就是为什么，很多人买了各种各样的英语单词书，却只有最前和最后的几个单元是脏兮兮的，中间都是崭新的。&lt;/p&gt;
-
-&lt;h2 id=&#34;放下词汇书-踏踏实实攒单词&#34;&gt;放下词汇书，踏踏实实攒单词&lt;/h2&gt;
-
-&lt;p&gt;别整什么艾斯豪宾的记忆曲线法了！也别整什么词根词缀、联想记忆法了！这些方法有用，那也是辅助记忆的方法。如果你在备考某个英语考试，乖乖地把历年真题刷一遍。每做完一套题目，就把你不熟悉的单词用手机查出来，标注出来，弄懂文章中的每一句话。这些词汇才是你应该需要重点记忆的词汇。你会看到这些词汇反复出现在真题里。一段时间之后，你会惊喜地发现自己不仅能够记住某个单词的中文意思，还知道它是怎么用的。这时候，你才真正掌握了这个单词，而且不会轻易忘掉。&lt;/p&gt;
-
-&lt;p&gt;童鞋，放下你手中的单词书，放下心中快速提升词汇量的妄念。&lt;/p&gt;
 </description>
     </item>
     
