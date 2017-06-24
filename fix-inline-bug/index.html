@@ -5,7 +5,7 @@
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="baidu-site-verification" content="WSqfBuzd3t" />
+    
     <meta name="author" content="Frank Wang">
     
       <meta name="keywords" content="[inline元素间距bug]">
@@ -67,35 +67,38 @@
 <meta name="twitter:description" content="htlm代码换行导致的inline元素间距bug"/>
 <meta name="twitter:site" content="@frankwang0909"/>
 
-    
+    <meta name="baidu-site-verification" content="WSqfBuzd3t" />
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7d0fc5a9b2d70433d9b1dd477606dc3c";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 
     
 
     
     <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?7d0fc5a9b2d70433d9b1dd477606dc3c";
-          var s = document.getElementsByTagName("script")[0]; 
-          s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    <script>
-    (function(){
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https'){
-       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-      }
-      else{
-      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-      }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-    </script>
+    
 </head>
 <body>
 <div class="container">
@@ -580,10 +583,21 @@
 
 
     </article>
-
-    
+    <div id="comments"></div>
 </section>
+<script type="text/javascript">
+    var gitment = new Gitment({
+      id: '', 
+      owner: 'frankwang0909',
+      repo: 'frankwang0909.github.io',
+      oauth: {
+        client_id: '877980759850b2ab1476',
+        client_secret: 'e6cc4fba1c3010627ed3c87eab2519c7efb5907a',
+      },
+    });
 
+    gitment.render('comments');
+</script>
 
 	    
 	    <aside id="sidebar">
