@@ -70,6 +70,12 @@ gitment.render(&#39;comment&#39;)
 &lt;p&gt;1.&lt;code&gt;gitment.render()&lt;/code&gt;这个方法的参数就是你的评论区域 div 的 id 名;&lt;/p&gt;
 
 &lt;p&gt;2.页面 ID 如果不写，默认为 location.href。&lt;/p&gt;
+
+&lt;p&gt;第四步：初始化评论功能&lt;/p&gt;
+
+&lt;p&gt;第三步之后，你需要把你的网站部署到线上。如果前面三步没出错的话，应该能够看到评论框了。这个时候是不能够评论的。需要登录用你的 GitHub 然后点击中间那个蓝色的 &lt;code&gt;Initialize Comments&lt;/code&gt;按钮，对该页面的评论功能进行初始化。&lt;/p&gt;
+
+&lt;p&gt;现在，你的&lt;code&gt;这个页面&lt;/code&gt;的访客就可以使用 GitHub 账号登录进行评论了。唯一不足的是，每个页面的评论框都需要手动地初始化。&lt;/p&gt;
 </description>
     </item>
     
