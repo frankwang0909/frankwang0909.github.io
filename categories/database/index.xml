@@ -533,9 +533,10 @@ INSERT tb3(username) VALUES(&#39;Monica&#39;);
 
 &lt;h2 id=&#34;二-mysql常用命令&#34;&gt;二、MySQL常用命令：&lt;/h2&gt;
 
-&lt;p&gt;1.显示当前数据库版本
-```SQL
-    SELECT VERSION();&lt;/p&gt;
+&lt;p&gt;1.显示当前数据库版本&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT VERSION();
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;2.显示当前时间:&lt;/p&gt;
 

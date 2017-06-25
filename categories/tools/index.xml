@@ -78,9 +78,9 @@ gitment.render(&#39;comment&#39;)
 
 &lt;p&gt;第三步之后，你需要把你的网站部署到线上。如果前面三步没出错的话，应该能够看到评论框了。这个时候是不能够评论的。&lt;/p&gt;
 
-&lt;p&gt;点击在评论框的右侧&amp;rsquo;Login with GitHub&amp;rsquo; , 用你的 GitHub 登录， 然后点击中间那个蓝色的 &lt;code&gt;Initialize Comments&lt;/code&gt;按钮，对该页面的评论功能进行初始化。&lt;/p&gt;
+&lt;p&gt;点击在评论框的右侧&lt;code&gt;Login with GitHub&lt;/code&gt;, 用你的 GitHub 登录， 然后点击中间那个蓝色的 &lt;code&gt;Initialize Comments&lt;/code&gt;按钮，对该页面的评论功能进行初始化。&lt;/p&gt;
 
-&lt;p&gt;现在，你的&lt;code&gt;这个页面&lt;/code&gt;的访客就可以使用 GitHub 账号登录进行评论了。唯一不足的是，每个页面的评论框都需要手动地初始化。&lt;/p&gt;
+&lt;p&gt;现在，你的这个页面的访客就可以使用 GitHub 账号登录进行评论了。唯一不足的是，每个页面的评论框都需要手动地初始化。&lt;/p&gt;
 </description>
     </item>
     
@@ -223,7 +223,7 @@ url = &amp;quot;new_start&amp;quot;             #该文章访问时的相对的u
 hugo server --theme=hugo-icarus-theme --buildDrafts
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;在浏览器中打开 &lt;code&gt;[http://localhost:1313/](https://themes.gohugo.io/)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在浏览器中打开 &lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;step-6-修改配置文件-config-toml&#34;&gt;Step 6. 修改配置文件&lt;code&gt;config.toml&lt;/code&gt;&lt;/h2&gt;
 
@@ -260,8 +260,7 @@ git commit -m &amp;quot;Initial commit&amp;quot;
 
 &lt;h3 id=&#34;2-创建-git-远程仓库&#34;&gt;2. 创建&lt;code&gt;Git&lt;/code&gt; 远程仓库：&lt;/h3&gt;
 
-&lt;p&gt;登录你的&lt;code&gt;GitHub&lt;/code&gt;. 创建一个新的仓库，仓库名为&lt;code&gt;Github用户.github.io&lt;/code&gt;
-比如我的是&lt;code&gt;frankwang0909.github.io&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;登录你的&lt;code&gt;GitHub&lt;/code&gt;. 创建一个新的仓库，仓库名为&lt;code&gt;Github用户.github.io&lt;/code&gt;, 比如我的是&lt;code&gt;frankwang0909.github.io&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;3-添加-git-远程仓库-并提交代码&#34;&gt;3. 添加&lt;code&gt;Git&lt;/code&gt; 远程仓库，并提交代码。&lt;/h3&gt;
 
