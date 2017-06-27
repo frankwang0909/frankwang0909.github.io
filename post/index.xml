@@ -7,8 +7,141 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
-    <lastBuildDate>Sat, 24 Jun 2017 17:04:42 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 27 Jun 2017 22:57:29 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MySQL学习笔记：修改数据表的常用命令</title>
+      <link>http://www.wangxingfeng.com/mysql_notes_3.html</link>
+      <pubDate>Tue, 27 Jun 2017 22:57:29 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/mysql_notes_3.html</guid>
+      <description>
+
+&lt;h2 id=&#34;1-新增或删除列&#34;&gt;1.新增或删除列&lt;/h2&gt;
+
+&lt;p&gt;1.1 添加单列&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ADD [COLUMN] col_name col_definition [FIRST | AFTER col_name];&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;指定位置关系的关键字：&lt;/p&gt;
+
+&lt;p&gt;1.FIRST：表示在数据表的第一列&lt;/p&gt;
+
+&lt;p&gt;2.AFTER: 参数col_name为某个数据列的名称，表示指定在该数据列的后面。&lt;/p&gt;
+
+&lt;p&gt;示例代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users ADD age TINYINT UNSIGNED NOT NULL DEFAULT 10;
+
+ALTER TABLE users ADD password VARCHAR(20) NOT NULL AFTER username;
+
+ALTER TABLE users ADD truename VARCHAR(20) NOT NULL FIRST;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.2 添加多列（不能指定位置关系）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name ADD [COLUMN] (col_name1 col_definition, col_name2 col_definition,...);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.3 删除列&lt;/p&gt;
+
+&lt;p&gt;语法：`ALTER TABLE tbl_name DROP col_name1 [, DROP col_name2];&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users DROP truename;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-添加约束&#34;&gt;2.添加约束&lt;/h2&gt;
+
+&lt;p&gt;2.1 添加主键约束：(数据表只能有一个主键)&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] PRIMARY KEY [index_type] (index_col_name);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ADD CONSTRAINT PK_users2_id PRIMARY KEY (id);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.2 添加唯一约束：唯一约束可以有多个&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] UNIQUE [INDEX | KEY] [index_name] [ index_type] (index_col_name, ...);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ADD UNIQUE (username);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.3 添加外键约束：&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] FOREIGN KEY [index_name] (index_colo_name) reference_definition;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ADD FOREIGEN KEY (pid) REFERENCE provinces (id);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.4 添加默认约束：&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ALTER [COLUMN] col_name SET DEFAULT literal;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;给 age 字段添加默认约束，默认值为10：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ALTER age SET DEFAULT 10;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;3-删除约束&#34;&gt;3.删除约束：&lt;/h2&gt;
+
+&lt;p&gt;3.1 删除主键约束：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users DROP PRIMARY KEY;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.2 删除唯一约束：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users DROP INDEX username;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.3 删除外键约束：需指定外键名称&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name DROP FOREIGN KEY fk_symbol
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;fk_symbol 是系统赋予外键的名字，通过如下命令可以查看到&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SHOW CREATE TABLE users;
+
+ALTER TABLE users DROP FOREIGN KEY users_ibfk_1;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.4 删除默认约束：需指定字段&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name ALTER [COLUMN] col_name DROP DEFAULT
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;比如：删除age 字段的默认约束&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ALTER age DROP DEFAULT;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;4-修改列定义&#34;&gt;4.修改列定义：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name MODIFY [COLUMN] col_name col_definition [FIRST | AFTER col_name]
+
+ALTER TABLE users MODIFY pid SMALLINT UNSIGNED NOT NULL FIRST;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;5-修改列的名称&#34;&gt;5.修改列的名称：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name CHANGE [COLUMN] old_col_name new_col_name column_definition [FIRST | AFTER col_name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;6-数据表更名&#34;&gt;6.数据表更名：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name RENAME [TO|AS] new_tbl_name;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或者&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RENAME TABLE tbl_name TO new_tbl_name [, tbl_name2 TO new_tbl_name2 ,...]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;方法2可以同时为多张数据表更名。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>一个Geek的评论系统Gitment</title>
@@ -2041,103 +2174,6 @@ background-color: #112244 + #111; // result is #223355
 &lt;h3 id=&#34;3-5-官网&#34;&gt;3.5 官网&lt;/h3&gt;
 
 &lt;p&gt;更多内容，可以访问&lt;a href=&#34;http://lesscss.org/&#34;&gt;http://lesscss.org/&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ES6的块级作用域以及let、const命令</title>
-      <link>http://www.wangxingfeng.com/es6-let-const</link>
-      <pubDate>Fri, 07 Apr 2017 20:18:56 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/es6-let-const</guid>
-      <description>
-
-&lt;h2 id=&#34;1-块级作用域&#34;&gt;1.块级作用域&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;ES5&lt;/code&gt; 只有&lt;code&gt;全局作用域&lt;/code&gt;和&lt;code&gt;函数作用域&lt;/code&gt;，没有&lt;code&gt;块级作用域&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;在函数外部声明的变量，都是全局变量，容易导致变量冲突。因此，我们不得不使用&lt;code&gt;立即执行函数&lt;/code&gt;来避免全局变量的冲突。另外，在循环内用来计数的变量也会泄露成全局变量。&lt;/p&gt;
-
-&lt;p&gt;为此，&lt;code&gt;ES6&lt;/code&gt; 引入了&lt;code&gt;块级作用域&lt;/code&gt;的概念。&lt;/p&gt;
-
-&lt;h2 id=&#34;2-let-声明变量&#34;&gt;2.&lt;code&gt;let&lt;/code&gt; 声明变量&lt;/h2&gt;
-
-&lt;p&gt;2.1 &lt;code&gt;let&lt;/code&gt;声明的变量，只在它所在的代码块（块级作用域）内有效。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-    var a = 1;
-    let b = 2;
-}
-a //1 
-b // Uncaught ReferenceError: b is not defined
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;2.2 &lt;code&gt;for循环&lt;/code&gt;的计数器使用&lt;code&gt;let&lt;/code&gt;命令来声明。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;for (let i = 0; i &amp;lt; 10; i++) {
-    //
-}
-console.log(i);  //ReferenceError: i is not defined
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;2.3 不存在&lt;code&gt;变量提升&lt;/code&gt;。变量应该遵循&lt;code&gt;先声明后使用&lt;/code&gt;的原则。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;var&lt;/code&gt;声明的变量会提升到作用域的顶部,在变量可以在声明之前可以使用，值为&lt;code&gt;undefined&lt;/code&gt;。&lt;code&gt;let&lt;/code&gt;声明的变量不存在&lt;code&gt;变量提升&lt;/code&gt;, 声明之前使用，会报错。&lt;/p&gt;
-
-&lt;p&gt;2.4 暂时性死区(temporal dead zone，简称 TDZ):&lt;/p&gt;
-
-&lt;p&gt;只要&lt;code&gt;块级作用域&lt;/code&gt;内存在&lt;code&gt;let命令&lt;/code&gt;，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。在let命令声明该变量之前的区域内，该变量不能使用，即使外部声明了该变量。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;let a = 1;
-if (true) {
-    // TDZ开始
-    console.log(a); //Uncaught ReferenceError: a is not defined
-
-    let a;  //TDZ结束
-}
-
-let b = 1;
-if (true) {
-    let b = 100; 
-    console.log(b);  //100
-} 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;可以这么理解暂时性死区：只要一进入当前的块级作用域，所有将要使用的变量就已经存在了，但是还暂时无法获取，只有等到声明变量之后，才可以获取和使用该变量。&lt;/p&gt;
-
-&lt;p&gt;2.5 不能重复声明变量&lt;/p&gt;
-
-&lt;p&gt;在同一个作用域内，&lt;code&gt;let&lt;/code&gt;命令不能重复声明同一个变量。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function () {
-    let x = 10;
-    var x = 20;
-}
-// Uncaught SyntaxError: Identifier &#39;x&#39; has already been declared
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;3-const-声明常量&#34;&gt;3.&lt;code&gt;const&lt;/code&gt; 声明常量&lt;/h2&gt;
-
-&lt;p&gt;3.1 &lt;code&gt;ES6&lt;/code&gt; 引入了&lt;code&gt;常量&lt;/code&gt;的概念。&lt;code&gt;const 命令&lt;/code&gt;是用来声明&lt;code&gt;常量&lt;/code&gt;的, 通常用&lt;code&gt;大写字母&lt;/code&gt;表示常量。一旦声明，常量的值就不能改变。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const PI = 3.1415;
-PI = 3; //Uncaught TypeError: Assignment to constant variable.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3.2 `声明变量时，必须立即赋值。否则会报错。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const SIN //Uncaught SyntaxError: Missing initializer in const declaration
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3.3 &lt;code&gt;const&lt;/code&gt;的作用域与&lt;code&gt;let&lt;/code&gt;命令相同：常量只在它声明时所在的&lt;code&gt;块级作用域&lt;/code&gt;内有效。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if (true) {
-  const A = 5;
-}
-A // Uncaught ReferenceError: A is not defined
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3.4 &lt;code&gt;const&lt;/code&gt;命令声明的常量也是不提升，同样存在&lt;code&gt;暂时性死区&lt;/code&gt;，只能在声明的位置后面使用。同时，也不能重复声明。&lt;/p&gt;
 </description>
     </item>
     

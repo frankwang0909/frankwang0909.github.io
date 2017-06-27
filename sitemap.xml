@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wangxingfeng.com/mysql_notes_3.html</loc>
+    <lastmod>2017-06-27T22:57:29+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.wangxingfeng.com/use_gitment_as_comment_system_for_your_blog.html</loc>
     <lastmod>2017-06-24T17:04:42+08:00</lastmod>
   </url>
@@ -203,7 +208,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/categories/database/</loc>
-    <lastmod>2017-06-20T07:44:01+08:00</lastmod>
+    <lastmod>2017-06-27T22:57:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -215,7 +220,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/</loc>
-    <lastmod>2017-06-24T17:04:42+08:00</lastmod>
+    <lastmod>2017-06-27T22:57:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -263,7 +268,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/tags/mysql/</loc>
-    <lastmod>2017-06-20T07:44:01+08:00</lastmod>
+    <lastmod>2017-06-27T22:57:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -275,7 +280,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/post/</loc>
-    <lastmod>2017-06-24T17:04:42+08:00</lastmod>
+    <lastmod>2017-06-27T22:57:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -38,7 +38,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-04-04T15:31:56&#43;08:00"/>
+<meta property="og:updated_time" content="2017-04-04T17:41:35&#43;08:00"/>
 
 
 
@@ -247,7 +247,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        33
+        34
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -329,6 +329,149 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/anywhere-npm">
+    <h1 class="article-title" itemprop="name">
+        快速启动Node服务器，调试本地静态文件代码
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-04 17:41:35 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">node</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    如何在移动设备上测试静态文件？ 现在移动端优先的情况下，前端工程师写好静态页面后，通常是需要测试不同的设备上效果，看看有没有兼容性的问题。谷歌浏览器有一个模拟手机的调试功能，一般，我们先用谷歌调试好。但毕竟是模拟的，为了保险起见，还是需要用真机测试的。
+可是静态的html文件怎么放到手机上调试呢？难不成把文件拷一份，放到不同的手机上？显然不是。
+NodeJS的一个npm模块anywhere 就可以快速地把你的当前目录变成一个静态文件服务器的根目录。
+anywhere的安装及使用 首先，安装Node。具体操作请看Node的官网。傻瓜式地安装。
+其次，安装anywhere。在命令行输入
+npm install anywhere -g  npm install + 模块名 从NPM服务器下载别人编写的第三方包的固定写法。
+-g 表示全局安装，在电脑的任何部门都可以使用anywhere模块。
+启动服务：
+在命令行切换到项目的根目录，然后输入anywhere即可。服务启动后，会自动打开你的默认浏览器，<a href="http://192.168.31.192:8000/。">http://192.168.31.192:8000/。</a>
+此时，如果你想在手机上测试index.html页面，你只需要在手机上访问 <a href="http://192.168.31.192:8000/index.html">http://192.168.31.192:8000/index.html</a> 即可看到效果。
+当然，这里有一个前提，就是你的手机和电脑是在同一个局域网内的。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/anywhere-npm">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/anywhere-npm" data-id="644c9e5feaac5c5854c84f03f0e0056f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1660,175 +1803,17 @@ Sublime Text官网地址：<a href="https://www.sublimetext.com/">https://www.su
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/tab">
-    <h1 class="article-title" itemprop="name">
-        实现Tab切换的几种方式
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-05-08 23:36:44 &#43;0800 CST" itemprop="datePublished">2016-05-08</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/tab%E5%88%87%E6%8D%A2">tab切换</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    Tab 切换是网页中常见的组件。适当地使用，可以节省页面空间，在同一个大小的页面中展现更多的内容。Tab 切换的效果千差万别，只需要学会基本的思路，便可变换出各种各样的效果。下面我分别使用了原生js和jQuery来实现四种不同的Tab切换效果。
-方式一：用原生js实现各种Tab切换效果。 1.鼠标滑动切换 : 这是最简单的Tab切换。鼠标滑过时，切换Tab.
-首先，通过getElementById、 getElementsByTagNameL等方法来获取相应的元素。
-然后，对相应的元素绑定mouseover事件即可。
-具体代码见 js-mouseover-tab.html
-DEMO
-2.鼠标点击切换 与第一种的区别在于绑定的事件不同。获取元素的方法是一样的，只需把绑定mouseovers事件改为click事件即可。
-具体代码见 js-click-tab.html
-DEMO
-3.鼠标滑动延迟切换 延迟切换涉及到了一个时间问题，可以通过设置定时器来实现延迟的效果。定时器有setTimeout()和setInterval()两种方式来设置。
-setTimeout() 方法用于在指定的毫秒数后调用函数或计算表达式。setTimeout() 只执行 code 一次。如果要多次调用，需要使用 setInterval()。
-setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。
-因为这里的延迟切换是在指定的延迟时间之后才实现切换效果，所以使用setTimeout() 。
-具体代码见 js-delay-tab.html
-DEMO
-4.自动切换 自动切换，即按指定的周期自动切换到下一个Tab。这里也需要一个定时器，而且是按周期调用函数，因此使用setInterval() 方法来实现。 当鼠标滑动到某个Tab时，高亮显示当前页，同时停止自动切换，此时需要用到 clearInterval()方法来清除定时器。
-具体代码见 js-auto-tab-01.html
-优化后的代码见 js-auto-tab-02.html
-DEMO
-方式二：用jQuery实现各种Tab切换效果: 实现思路与原生的JavaScript是一样的,只是jQuery封装了一些方法可以更方便操作DOM元素。 1.鼠标滑动切换 具体代码见 jQ-mouseover-tab.html
-DEMO
-2.鼠标点击切换 具体代码见 jQ-click-tab.html
-DEMO
-3.鼠标滑动延迟切换 具体代码见 jQ-delay-tab.html
-DEMO
-4.自动切换 具体代码见 jQ-auto-tab-01.html
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/tab">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/tab" data-id="34eb82a7066c1f9b94f3d8ab88c8aae5" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
     
         <a class="extend prev" rel="prev" href="http://www.wangxingfeng.com/page/2/">
-            « Prev
+            « 上一页
         </a>
     
     
         <a class="extend next" rel="next" href="http://www.wangxingfeng.com/page/4/">
-            Next »
+            下一页 »
         </a>
     
 
@@ -1841,10 +1826,36 @@ DEMO
     
 <div class="widget-wrap">
     <h3 class="widget-title">
-        Recents
+        近期文章
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/mysql_notes_3.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
+                        Database
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql_notes_3.html" class="title">MySQL学习笔记：修改数据表的常用命令</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-06-27 22:57:29 &#43;0800 CST" itemprop="datePublished">2017-06-27</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1946,32 +1957,6 @@ DEMO
                     <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-basic.html" class="title">MySQL入门：语句规范及常用命令</a></p>
                     <p class="item-date">
                         <time datetime="2017-06-03 22:38:52 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/mysql-error-1045.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
-                        Database
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-error-1045.html" class="title">Win7系统MySQL报错ERROR1045及其处理方法</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-06-03 21:52:09 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
                     </p>
                 </div>
             </li>

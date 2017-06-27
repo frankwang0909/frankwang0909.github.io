@@ -38,7 +38,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-06-24T17:04:42&#43;08:00"/>
+<meta property="og:updated_time" content="2017-06-27T22:57:29&#43;08:00"/>
 
 
 
@@ -247,7 +247,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        33
+        34
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -329,6 +329,147 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/mysql_notes_3.html">
+    <h1 class="article-title" itemprop="name">
+        MySQL学习笔记：修改数据表的常用命令
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-06-27 22:57:29 &#43;0800 CST" itemprop="datePublished">2017-06-27</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/mysql">MySQL</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    1.新增或删除列 1.1 添加单列
+语法：ALTER TABLE tbl_name ADD [COLUMN] col_name col_definition [FIRST | AFTER col_name];
+指定位置关系的关键字：
+1.FIRST：表示在数据表的第一列
+2.AFTER: 参数col_name为某个数据列的名称，表示指定在该数据列的后面。
+示例代码如下：
+ALTER TABLE users ADD age TINYINT UNSIGNED NOT NULL DEFAULT 10; ALTER TABLE users ADD password VARCHAR(20) NOT NULL AFTER username; ALTER TABLE users ADD truename VARCHAR(20) NOT NULL FIRST;  1.2 添加多列（不能指定位置关系）
+ALTER TABLE tbl_name ADD <a href="col_name1 col_definition, col_name2 col_definition,...">COLUMN</a>;  1.3 删除列
+语法：`ALTER TABLE tbl_name DROP col_name1 [, DROP col_name2];
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/mysql_notes_3.html">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/mysql_notes_3.html" data-id="80e919d7b9f67a17723761c92ac0b796" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1596,161 +1737,13 @@ div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/diamond-picture.html">
-    <h1 class="article-title" itemprop="name">
-        如何用CSS代码实现网页设计中的菱形图片
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-05-01 22:00:03 &#43;0800 CST" itemprop="datePublished">2017-05-01</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    在网页设计中，我们常常能够看到被裁切成菱形的图片。
-传统的实现方式是预先在图像处理软件中把图片裁切好，当然这种方式的可维护性差。
-而现在，随着CSS的新特性的支持度越来越好了，CSS也越来越强大，我们已经可以用CSS代码来实现菱形图片了。
-1. 基于tranform的实现方法 原图 用一个&lt;div&gt; 把图片包裹起来，对这个容器&lt;div&gt;应用transform:rotate(45deg), 进行旋转45度，我们得到如下的效果：图片应该也会跟着旋转了
-div{ width:200px; transform: rotate(45deg); overflow: hidden; };   如果我们对里面的图片进行反向旋转45度，那么图片的旋转就会抵消掉。看看效果。
-div&gt;img{ max-width:100%; transform: rotate(-45deg); };   我们得到了一个裁成八边形的图片。
-问题出在哪里呢？我给外面的div加一个边框，这样就容易看出来了。
- 问题出在了这里图片的宽度是与容器div的边长相等，其实我们应该让图片的宽度与对角线相等。
-运用勾股定理，可以计算出图片的宽度应该是√2倍，我们取1.42倍。
-如果通过width属性设置来放大图片,会得到如下的效果。
-div&gt;img{ max-width:142%; transform: rotate(-45deg); };   因为是以图片的左上角为原点进行放大的。我们还需要在通过设置margin:-45px;才能得到菱形图片。
-div&gt;img{ max-width:142%; transform: rotate(-45deg); margin:-45px; };   当然，我们可以通过transform:scale(1.42)来放大图片1.42倍。scale()是以图片的中心点进行缩放的，这样我们就不用额外地设置margin值了。
-div&gt;img{ max-width:100%; transform: scale(1.42) rotate(-45deg); };   2. 基于裁切路径clip-path方法 第一种方法虽然可以奏效，但存在一些缺点：
-1.需要一层额外的HTML标签； 2.代码不够直观； 3.如果处理的图片不是正方形，将无法得到一个菱形图片，如下图所示：   SVG中，有个名叫&lt;clipPath&gt;的元素，专门用来定义剪裁路径。其实CSS中也有一个类似的属性，即clip-path属性。
-clip-path可以把元素裁切成我们想要的任何形状。我们通过polygon()函数来指定一个菱形，参数是一系列用逗号分隔的坐标点。
-img{ clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }  如上图所示，这个方法可以很好的适应非正方形的图片。
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/diamond-picture.html">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/diamond-picture.html" data-id="37b0114b3c6680d0767acb978c56b9f3" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
     
     
         <a class="extend next" rel="next" href="http://www.wangxingfeng.com/page/2/">
-            Next »
+            下一页 »
         </a>
     
 
@@ -1763,10 +1756,36 @@ img{ clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }  如上图所示，
     
 <div class="widget-wrap">
     <h3 class="widget-title">
-        Recents
+        近期文章
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/mysql_notes_3.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
+                        Database
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql_notes_3.html" class="title">MySQL学习笔记：修改数据表的常用命令</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-06-27 22:57:29 &#43;0800 CST" itemprop="datePublished">2017-06-27</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1868,32 +1887,6 @@ img{ clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }  如上图所示，
                     <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-basic.html" class="title">MySQL入门：语句规范及常用命令</a></p>
                     <p class="item-date">
                         <time datetime="2017-06-03 22:38:52 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/mysql-error-1045.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
-                        Database
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-error-1045.html" class="title">Win7系统MySQL报错ERROR1045及其处理方法</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-06-03 21:52:09 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
                     </p>
                 </div>
             </li>

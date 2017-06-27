@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>Posts &middot; Frank Wang&#39;s Coding World</title>
+    <title>MySQL学习笔记：修改数据表的常用命令 &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,19 +10,16 @@
     
 
     
-      <meta name="keywords" content="前端学习笔记, CSS, HTML,JavaScript, ES6, Node, Python, MySQL, 人人都能说英语, Hugo快速建站">
+      <meta name="keywords" content="[MySQL学习笔记, 修改数据表]">
     
 
     
-      <meta name="description" content="Frank Wang’s Personal Blog, Web工程师的成长记录">
+      <meta name="description" content="MySQL学习笔记：修改数据表的常用命令，包括新增或删除数据列的命令，新增约束，删除约束，修改数据列的定义，修改数据列的名称，数据表更名">
     
 
     
-      <link href="http://www.wangxingfeng.com/post/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-      <link href="http://www.wangxingfeng.com/post/index.xml" rel="feed" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-    
 
-    <link rel="canonical" href="http://www.wangxingfeng.com/post/"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/mysql_notes_3.html"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -31,14 +28,16 @@
     <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.min.css">
     
 
-    <meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://www.wangxingfeng.com/post/" />
+    <meta property="og:title" content="MySQL学习笔记：修改数据表的常用命令" />
+<meta property="og:description" content="MySQL学习笔记：修改数据表的常用命令，包括新增或删除数据列的命令，新增约束，删除约束，修改数据列的定义，修改数据列的名称，数据表更名" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.wangxingfeng.com/mysql_notes_3.html" />
 
 
 
-<meta property="og:updated_time" content="2017-06-27T22:57:29&#43;08:00"/>
+<meta property="article:published_time" content="2017-06-27T22:57:29&#43;08:00"/>
+<meta property="article:modified_time" content="2017-06-27T22:57:29&#43;08:00"/>
+
 
 
 
@@ -51,11 +50,28 @@
 
     
     
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="MySQL学习笔记：修改数据表的常用命令">
+<meta itemprop="description" content="MySQL学习笔记：修改数据表的常用命令，包括新增或删除数据列的命令，新增约束，删除约束，修改数据列的定义，修改数据列的名称，数据表更名">
 
+
+<meta itemprop="dateModified" content="2017-06-27T22:57:29&#43;08:00" />
+<meta itemprop="wordCount" content="277">
+
+
+
+<meta itemprop="keywords" content="database,english,frontend,node,python,tools,bug,cdn,clipboard,css,css3,git,github,gitment,hugo,javascript,markdown,mysql,python,regexp,seo,sublime-text,tab切换,useragent,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
 
     
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="MySQL学习笔记：修改数据表的常用命令"/>
+<meta name="twitter:title" content="MySQL学习笔记：修改数据表的常用命令"/>
+<meta name="twitter:description" content="MySQL学习笔记：修改数据表的常用命令，包括新增或删除数据列的命令，新增约束，删除约束，修改数据列的定义，修改数据列的名称，数据表更名"/>
+<meta name="twitter:site" content="@frankwang0909"/>
+
     <meta name="baidu-site-verification" content="WSqfBuzd3t" />
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
@@ -94,7 +110,7 @@
 
 
 <div id="container">
-    <header id="header">
+	<header id="header">
   <div id="header-main" class="header-inner">
     <div class="outer">
       <a href="http://www.wangxingfeng.com/" id="logo">
@@ -230,8 +246,10 @@
   </div>
 </header>
 
-    <div class="outer">
-        <aside id="profile">
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
   <div class="inner profile-inner">
     <div class="base-info profile-block">
       <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.jpg">
@@ -326,179 +344,293 @@
 
 </aside>
 
-        <section id="main">
-            <section class="archives-wrap">
-                <div class="archive-category-wrap">
-                    <span class="archive-category">Posts</span>
-                </div>
-                <div class="archives">
-                    
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/mysql_notes_3.html">MySQL学习笔记：修改数据表的常用命令</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-06-27 22:57:29 &#43;0800 CST" itemprop="datePublished">2017-06-27</time>
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/mysql_notes_3.html">
+    <h1 class="article-title" itemprop="name">
+        MySQL学习笔记：修改数据表的常用命令
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-06-27 22:57:29 &#43;0800 CST" itemprop="datePublished">2017-06-27</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
+                
+                
             </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/use_gitment_as_comment_system_for_your_blog.html">一个Geek的评论系统Gitment</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-06-24 17:04:42 &#43;0800 CST" itemprop="datePublished">2017-06-24</time>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/mysql">MySQL</a>
+                
+                
             </div>
-        </header>
+            
+        
     </div>
-</article>
- 
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/python_mysqldb.html">Python操作MySQL学习笔记</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-06-20 07:44:01 &#43;0800 CST" itemprop="datePublished">2017-06-20</time>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<h2 id="1-新增或删除列">1.新增或删除列</h2>
+
+<p>1.1 添加单列</p>
+
+<p>语法：<code>ALTER TABLE tbl_name ADD [COLUMN] col_name col_definition [FIRST | AFTER col_name];</code></p>
+
+<p>指定位置关系的关键字：</p>
+
+<p>1.FIRST：表示在数据表的第一列</p>
+
+<p>2.AFTER: 参数col_name为某个数据列的名称，表示指定在该数据列的后面。</p>
+
+<p>示例代码如下：</p>
+
+<pre><code>ALTER TABLE users ADD age TINYINT UNSIGNED NOT NULL DEFAULT 10;
+
+ALTER TABLE users ADD password VARCHAR(20) NOT NULL AFTER username;
+
+ALTER TABLE users ADD truename VARCHAR(20) NOT NULL FIRST;
+</code></pre>
+
+<p>1.2 添加多列（不能指定位置关系）</p>
+
+<pre><code>ALTER TABLE tbl_name ADD [COLUMN] (col_name1 col_definition, col_name2 col_definition,...);
+</code></pre>
+
+<p>1.3 删除列</p>
+
+<p>语法：`ALTER TABLE tbl_name DROP col_name1 [, DROP col_name2];</p>
+
+<pre><code>ALTER TABLE users DROP truename;
+</code></pre>
+
+<h2 id="2-添加约束">2.添加约束</h2>
+
+<p>2.1 添加主键约束：(数据表只能有一个主键)</p>
+
+<p>语法：<code>ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] PRIMARY KEY [index_type] (index_col_name);</code></p>
+
+<pre><code>ALTER TABLE users3 ADD CONSTRAINT PK_users2_id PRIMARY KEY (id);
+</code></pre>
+
+<p>2.2 添加唯一约束：唯一约束可以有多个</p>
+
+<p>语法：<code>ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] UNIQUE [INDEX | KEY] [index_name] [ index_type] (index_col_name, ...);</code></p>
+
+<pre><code>ALTER TABLE users3 ADD UNIQUE (username);
+</code></pre>
+
+<p>2.3 添加外键约束：</p>
+
+<p>语法：<code>ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] FOREIGN KEY [index_name] (index_colo_name) reference_definition;</code></p>
+
+<pre><code>ALTER TABLE users3 ADD FOREIGEN KEY (pid) REFERENCE provinces (id);
+</code></pre>
+
+<p>2.4 添加默认约束：</p>
+
+<p>语法：<code>ALTER TABLE tbl_name ALTER [COLUMN] col_name SET DEFAULT literal;</code></p>
+
+<p>给 age 字段添加默认约束，默认值为10：</p>
+
+<pre><code>ALTER TABLE users3 ALTER age SET DEFAULT 10;
+</code></pre>
+
+<h2 id="3-删除约束">3.删除约束：</h2>
+
+<p>3.1 删除主键约束：</p>
+
+<pre><code>ALTER TABLE users DROP PRIMARY KEY;
+</code></pre>
+
+<p>3.2 删除唯一约束：</p>
+
+<pre><code>ALTER TABLE users DROP INDEX username;
+</code></pre>
+
+<p>3.3 删除外键约束：需指定外键名称</p>
+
+<pre><code>ALTER TABLE tbl_name DROP FOREIGN KEY fk_symbol
+</code></pre>
+
+<p>fk_symbol 是系统赋予外键的名字，通过如下命令可以查看到</p>
+
+<pre><code>SHOW CREATE TABLE users;
+
+ALTER TABLE users DROP FOREIGN KEY users_ibfk_1;
+</code></pre>
+
+<p>3.4 删除默认约束：需指定字段</p>
+
+<pre><code>ALTER TABLE tbl_name ALTER [COLUMN] col_name DROP DEFAULT
+</code></pre>
+
+<p>比如：删除age 字段的默认约束</p>
+
+<pre><code>ALTER TABLE users3 ALTER age DROP DEFAULT;
+</code></pre>
+
+<h2 id="4-修改列定义">4.修改列定义：</h2>
+
+<pre><code>ALTER TABLE tbl_name MODIFY [COLUMN] col_name col_definition [FIRST | AFTER col_name]
+
+ALTER TABLE users MODIFY pid SMALLINT UNSIGNED NOT NULL FIRST;
+</code></pre>
+
+<h2 id="5-修改列的名称">5.修改列的名称：</h2>
+
+<pre><code>ALTER TABLE tbl_name CHANGE [COLUMN] old_col_name new_col_name column_definition [FIRST | AFTER col_name]
+</code></pre>
+
+<h2 id="6-数据表更名">6.数据表更名：</h2>
+
+<pre><code>ALTER TABLE tbl_name RENAME [TO|AS] new_tbl_name;
+</code></pre>
+
+<p>或者</p>
+
+<pre><code>RENAME TABLE tbl_name TO new_tbl_name [, tbl_name2 TO new_tbl_name2 ,...]
+</code></pre>
+
+<p>方法2可以同时为多张数据表更名。</p>
+
             </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/mysql-basic-2.html">MySQL数据库的基本数据类型、表的操作和记录的操作</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-06-08 07:32:57 &#43;0800 CST" itemprop="datePublished">2017-06-08</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/mysql-basic.html">MySQL入门：语句规范及常用命令</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-06-03 22:38:52 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/mysql-error-1045.html">Win7系统MySQL报错ERROR1045及其处理方法</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-06-03 21:52:09 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/learn-python-again.html">重新学习Python</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-06-01 08:03:43 &#43;0800 CST" itemprop="datePublished">2017-06-01</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/safari-not-support.html">两个Safari浏览器不兼容的坑</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-06-01 07:35:15 &#43;0800 CST" itemprop="datePublished">2017-06-01</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/bevel-corners-svg.html">用border-image&#43;SVG实现切角效果</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-05-06 16:19:48 &#43;0800 CST" itemprop="datePublished">2017-05-06</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="http://www.wangxingfeng.com/bevel-corners.html">CSS实现切角效果</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2017-05-02 22:52:17 &#43;0800 CST" itemprop="datePublished">2017-05-02</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-                    
-                </div>
-            </section>
-            <nav id="page-nav">
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/mysql_notes_3.html" data-id="80e919d7b9f67a17723761c92ac0b796" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://www.wangxingfeng.com/use_gitment_as_comment_system_for_your_blog.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          &lt;&lt; 上一篇
+      </strong>
+      <div class="article-nav-title">一个Geek的评论系统Gitment</div>
+    </a>
+    
 
     
-    
-        <a class="extend next" rel="next" href="http://www.wangxingfeng.com/post/page/2/">
-            下一页 »
-        </a>
-    
-
 </nav>
 
-        </section>
-        <aside id="sidebar">
+
+    </article>
+    <div id="comments"></div>
+</section>
+<script type="text/javascript">
+    var gitment = new Gitment({
+      owner: 'frankwang0909',
+      repo: 'frankwang0909.github.io',
+      oauth: {
+        client_id: '877980759850b2ab1476',
+        client_secret: 'e6cc4fba1c3010627ed3c87eab2519c7efb5907a',
+      },
+    });
+    gitment.render('comments');
+</script>
+
+	    
+	    <aside id="sidebar">
     
 <div class="widget-wrap">
     <h3 class="widget-title">
@@ -670,7 +802,8 @@
 	<div id="toTop" class="fa fa-angle-up"></div>
 </aside>
 
-    </div>
+	    
+	</div>
 </div>
 
 <footer id="footer">

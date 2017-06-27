@@ -10,6 +10,139 @@
     <atom:link href="http://www.wangxingfeng.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>MySQL学习笔记：修改数据表的常用命令</title>
+      <link>http://www.wangxingfeng.com/mysql_notes_3.html</link>
+      <pubDate>Tue, 27 Jun 2017 22:57:29 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/mysql_notes_3.html</guid>
+      <description>
+
+&lt;h2 id=&#34;1-新增或删除列&#34;&gt;1.新增或删除列&lt;/h2&gt;
+
+&lt;p&gt;1.1 添加单列&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ADD [COLUMN] col_name col_definition [FIRST | AFTER col_name];&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;指定位置关系的关键字：&lt;/p&gt;
+
+&lt;p&gt;1.FIRST：表示在数据表的第一列&lt;/p&gt;
+
+&lt;p&gt;2.AFTER: 参数col_name为某个数据列的名称，表示指定在该数据列的后面。&lt;/p&gt;
+
+&lt;p&gt;示例代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users ADD age TINYINT UNSIGNED NOT NULL DEFAULT 10;
+
+ALTER TABLE users ADD password VARCHAR(20) NOT NULL AFTER username;
+
+ALTER TABLE users ADD truename VARCHAR(20) NOT NULL FIRST;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.2 添加多列（不能指定位置关系）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name ADD [COLUMN] (col_name1 col_definition, col_name2 col_definition,...);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.3 删除列&lt;/p&gt;
+
+&lt;p&gt;语法：`ALTER TABLE tbl_name DROP col_name1 [, DROP col_name2];&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users DROP truename;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-添加约束&#34;&gt;2.添加约束&lt;/h2&gt;
+
+&lt;p&gt;2.1 添加主键约束：(数据表只能有一个主键)&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] PRIMARY KEY [index_type] (index_col_name);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ADD CONSTRAINT PK_users2_id PRIMARY KEY (id);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.2 添加唯一约束：唯一约束可以有多个&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] UNIQUE [INDEX | KEY] [index_name] [ index_type] (index_col_name, ...);&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ADD UNIQUE (username);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.3 添加外键约束：&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] FOREIGN KEY [index_name] (index_colo_name) reference_definition;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ADD FOREIGEN KEY (pid) REFERENCE provinces (id);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.4 添加默认约束：&lt;/p&gt;
+
+&lt;p&gt;语法：&lt;code&gt;ALTER TABLE tbl_name ALTER [COLUMN] col_name SET DEFAULT literal;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;给 age 字段添加默认约束，默认值为10：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ALTER age SET DEFAULT 10;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;3-删除约束&#34;&gt;3.删除约束：&lt;/h2&gt;
+
+&lt;p&gt;3.1 删除主键约束：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users DROP PRIMARY KEY;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.2 删除唯一约束：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users DROP INDEX username;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.3 删除外键约束：需指定外键名称&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name DROP FOREIGN KEY fk_symbol
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;fk_symbol 是系统赋予外键的名字，通过如下命令可以查看到&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SHOW CREATE TABLE users;
+
+ALTER TABLE users DROP FOREIGN KEY users_ibfk_1;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.4 删除默认约束：需指定字段&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name ALTER [COLUMN] col_name DROP DEFAULT
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;比如：删除age 字段的默认约束&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE users3 ALTER age DROP DEFAULT;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;4-修改列定义&#34;&gt;4.修改列定义：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name MODIFY [COLUMN] col_name col_definition [FIRST | AFTER col_name]
+
+ALTER TABLE users MODIFY pid SMALLINT UNSIGNED NOT NULL FIRST;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;5-修改列的名称&#34;&gt;5.修改列的名称：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name CHANGE [COLUMN] old_col_name new_col_name column_definition [FIRST | AFTER col_name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;6-数据表更名&#34;&gt;6.数据表更名：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;ALTER TABLE tbl_name RENAME [TO|AS] new_tbl_name;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或者&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RENAME TABLE tbl_name TO new_tbl_name [, tbl_name2 TO new_tbl_name2 ,...]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;方法2可以同时为多张数据表更名。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Python操作MySQL学习笔记</title>
       <link>http://www.wangxingfeng.com/python_mysqldb.html</link>
       <pubDate>Tue, 20 Jun 2017 07:44:01 +0800</pubDate>
