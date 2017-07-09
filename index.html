@@ -38,7 +38,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-07-09T11:37:11&#43;08:00"/>
+<meta property="og:updated_time" content="2017-07-09T21:45:51&#43;08:00"/>
 
 
 
@@ -256,7 +256,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        35
+        36
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -338,6 +338,147 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/javascript_number.html">
+    <h1 class="article-title" itemprop="name">
+        JavaScript 的 number 需要注意的一些特性
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-07-09 21:45:51 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/javascript">JavaScript</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    一、NaN： 1.定义：NaN 是 JavaScript 的一个特殊值，表示“非数字”（Not a Number），主要出现在将字符串解析成数字出错的场合。
+2.NaN 不是一种独立的数据类型，而是一种特殊数值，它的数据类型依然属于 number ，使用 typeof 运算符可以看得很清楚。
+typeof NaN // &lsquo;number&rsquo;  3.NaN不等于任何值，包括它本身。
+NaN === NaN // false  4.isNaN()：可以用来判断一个值是否为 NaN 。
+注意: 如果传入的非数值(如字符串），会先进行类型转换, 转成 NaN, 所以这个方法并不可靠！用 isNaN() 之前需要判断一下数据类型是否为 number 。
+function isRealNaN(x){ return typeof x === &quot;number&quot; &amp;&amp; isNaN(x); }  或者利用 只有 NaN 是JavaScript之中唯一不等于自身的值这个特点，进行判断。
+function isTrueNaN(x){ return x !== x; }  二、Infinity 与 isFinite() 1.Infinity：表示“无穷”，是一个特殊的数值，用来表示两种场景。一种是一个正的数值太大，或一个负的数值太小，无法表示；另一种是非0数值除以0，得到 Infinity。
+2.isFinite()：返回一个布尔值，检查某个值是不是正常数值。
+如果对 NaN 使用 isFinite 函数，也返回 false，表示 NaN 不是一个正常值。
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/javascript_number.html">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/javascript_number.html" data-id="ac1e6e09454513376dea3937f5b4c639" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1619,146 +1760,6 @@ function preSellCount(){ // 如果没有设置开售时间，则取演出时间�
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/bevel-corners-svg.html">
-    <h1 class="article-title" itemprop="name">
-        用border-image&#43;SVG实现切角效果
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-05-06 16:19:48 &#43;0800 CST" itemprop="datePublished">2017-05-06</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    之前写了一篇文章，介绍了基于CSS渐变来实现切角效果的方法。今天再来介绍另一种方法，即使用border-image+SVG的方式来实现切角效果。
-border-image的工作原理 给一个元素设置边框，我们会使用border这个属性。border是border-width、border-style、border-color等3个属性的简写形式。
-我们给div设置一个宽20px、实线、颜色为#58a的边框。
-div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; }   border-image是CSS3的新属性，用于指定元素边框的背景图片。使用 border-image 时，border-style属性所设置的边框样式solid、dashed或dotted将不起作用。
-border-image属性也是一个简写：包含border-image-source、border-image-slice、border-image-width、border-image-outset、border-image-repeat等5个属性。
-1. border-image-source: 从这个属性的英文命名，我们就可以知道它表示的是边框背景图片资源的路径，默认值是none。
-div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg); }   2. border-image-slice: border-image-slice属性指定图像的边界向内偏移。
-div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg); border-image-slice:10% 20% 30% 40%; border-image-repeat: none; }   div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg); border-image-slice: 10% 30%; }   div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/bevel-corners-svg.html">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/bevel-corners-svg.html" data-id="cdf847bfe1eba3026e6bb032781a70e1" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1782,6 +1783,32 @@ div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/javascript_number.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/javascript_number.html" class="title">JavaScript 的 number 需要注意的一些特性</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-09 21:45:51 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1883,32 +1910,6 @@ div{ width:200px; height:150px; margin:20px auto; border:40px solid #58a; border
                     <p class="item-title"><a href="http://www.wangxingfeng.com/python_mysqldb.html" class="title">Python操作MySQL学习笔记</a></p>
                     <p class="item-date">
                         <time datetime="2017-06-20 07:44:01 &#43;0800 CST" itemprop="datePublished">2017-06-20</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/mysql-basic-2.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
-                        Database
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-basic-2.html" class="title">MySQL数据库的基本数据类型、表的操作和记录的操作</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-06-08 07:32:57 &#43;0800 CST" itemprop="datePublished">2017-06-08</time>
                     </p>
                 </div>
             </li>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>Categories &middot; Frank Wang&#39;s Coding World</title>
+    <title>JavaScript 的 number 需要注意的一些特性 &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,19 +10,16 @@
     
 
     
-      <meta name="keywords" content="前端学习笔记, CSS, HTML,JavaScript, ES6, Node, Python, MySQL, 人人都能说英语, Hugo快速建站">
+      <meta name="keywords" content="[NaN, Infinity, parseInt(), parseFloat(), Number(), JavaScript]">
     
 
     
-      <meta name="description" content="Frank Wang’s Personal Blog, Web工程师的成长记录">
+      <meta name="description" content="JavaScript 的 number 有一些特性需要引起注意。比如： NaN 和 Infinity 这两个特殊的值。转换成数值的方法： parseInt(), parseFloat(), Number()。">
     
 
     
-      <link href="http://www.wangxingfeng.com/categories/index.xml" rel="alternate" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-      <link href="http://www.wangxingfeng.com/categories/index.xml" rel="feed" type="application/rss+xml" title="Frank Wang&#39;s Coding World" />
-    
 
-    <link rel="canonical" href="http://www.wangxingfeng.com/categories/"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/javascript_number.html"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -31,13 +28,15 @@
     <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.min.css">
     
 
-    <meta property="og:title" content="Categories" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://www.wangxingfeng.com/categories/" />
+    <meta property="og:title" content="JavaScript 的 number 需要注意的一些特性" />
+<meta property="og:description" content="JavaScript 的 number 有一些特性需要引起注意。比如： NaN 和 Infinity 这两个特殊的值。转换成数值的方法： parseInt(), parseFloat(), Number()。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.wangxingfeng.com/javascript_number.html" />
 
 
 
+<meta property="article:published_time" content="2017-07-09T21:45:51&#43;08:00"/>
+<meta property="article:modified_time" content="2017-07-09T21:45:51&#43;08:00"/>
 
 
 
@@ -51,11 +50,28 @@
 
     
     
-<meta itemprop="name" content="Categories">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="JavaScript 的 number 需要注意的一些特性">
+<meta itemprop="description" content="JavaScript 的 number 有一些特性需要引起注意。比如： NaN 和 Infinity 这两个特殊的值。转换成数值的方法： parseInt(), parseFloat(), Number()。">
 
+
+<meta itemprop="dateModified" content="2017-07-09T21:45:51&#43;08:00" />
+<meta itemprop="wordCount" content="293">
+
+
+
+<meta itemprop="keywords" content="database,english,frontend,node,python,tools,bug,cdn,clipboard,css,css3,git,github,gitment,hugo,javascript,markdown,mysql,python,regexp,seo,shadowsocks,sublime-text,tab切换,useragent,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
 
     
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="JavaScript 的 number 需要注意的一些特性"/>
+<meta name="twitter:title" content="JavaScript 的 number 需要注意的一些特性"/>
+<meta name="twitter:description" content="JavaScript 的 number 有一些特性需要引起注意。比如： NaN 和 Infinity 这两个特殊的值。转换成数值的方法： parseInt(), parseFloat(), Number()。"/>
+<meta name="twitter:site" content="@frankwang0909"/>
+
     <meta name="baidu-site-verification" content="WSqfBuzd3t" />
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
@@ -100,10 +116,10 @@
 </head>
 <body>
 <div class="container">
- 
+
 
 <div id="container">
-    <header id="header">
+	<header id="header">
   <div id="header-main" class="header-inner">
     <div class="outer">
       <a href="http://www.wangxingfeng.com/" id="logo">
@@ -239,8 +255,10 @@
   </div>
 </header>
 
-    <div class="outer">
-        <aside id="profile">
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
   <div class="inner profile-inner">
     <div class="base-info profile-block">
       <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.jpg">
@@ -335,49 +353,337 @@
 
 </aside>
 
-        <section id="main">
-            <section class="layout-wrap">
-                <div class="layout-title">
-                    <span>Categories</span>
-                </div>
-                <div class="layout-wrap-inner list-categories">
-                    <ul class="category-list">
-                         
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="frontend">frontend</a>
-                            <span class="category-list-count">21</span>
-                        </li>
-                        
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="tools">tools</a>
-                            <span class="category-list-count">6</span>
-                        </li>
-                        
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="database">database</a>
-                            <span class="category-list-count">5</span>
-                        </li>
-                        
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="english">english</a>
-                            <span class="category-list-count">2</span>
-                        </li>
-                        
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="python">python</a>
-                            <span class="category-list-count">2</span>
-                        </li>
-                        
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="node">node</a>
-                            <span class="category-list-count">1</span>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </section>
-        </section>
-        <aside id="sidebar">
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/javascript_number.html">
+    <h1 class="article-title" itemprop="name">
+        JavaScript 的 number 需要注意的一些特性
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-07-09 21:45:51 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/javascript">JavaScript</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<h2 id="一-nan">一、NaN：</h2>
+
+<p>1.定义：<code>NaN</code> 是 JavaScript 的一个特殊值，表示“非数字”（Not a Number），主要出现在将字符串解析成数字出错的场合。</p>
+
+<p>2.<code>NaN</code> 不是一种独立的数据类型，而是一种特殊数值，它的数据类型依然属于 <code>number</code> ，使用 <code>typeof</code> 运算符可以看得很清楚。</p>
+
+<pre><code>typeof NaN // 'number'
+</code></pre>
+
+<p>3.NaN不等于任何值，包括它本身。</p>
+
+<pre><code>NaN === NaN // false
+</code></pre>
+
+<p>4.isNaN()：可以用来判断一个值是否为 NaN 。</p>
+
+<p><code>注意:</code> 如果传入的非数值(如字符串），会先进行类型转换, 转成 NaN, 所以这个方法并不可靠！用 isNaN() 之前需要判断一下数据类型是否为 number 。</p>
+
+<pre><code>function isRealNaN(x){
+    return typeof x === &quot;number&quot; &amp;&amp; isNaN(x);
+}
+</code></pre>
+
+<p>或者利用 只有 NaN 是JavaScript之中唯一不等于自身的值这个特点，进行判断。</p>
+
+<pre><code>function isTrueNaN(x){
+    return x !== x;
+}
+</code></pre>
+
+<h2 id="二-infinity-与-isfinite">二、Infinity 与 isFinite()</h2>
+
+<p>1.<code>Infinity</code>：表示“无穷”，是一个特殊的数值，用来表示两种场景。一种是一个正的数值太大，或一个负的数值太小，无法表示；另一种是非0数值除以0，得到 <code>Infinity</code>。</p>
+
+<p>2.<code>isFinite()</code>：返回一个<code>布尔值</code>，检查某个值是不是<code>正常数值</code>。</p>
+
+<p>如果对 <code>NaN</code> 使用 <code>isFinite</code> 函数，也返回 <code>false</code>，表示 <code>NaN</code> 不是一个正常值。</p>
+
+<pre><code>isFinite(Infinity) // false
+isFinite(NaN) // false
+isFinite(&quot;abc&quot;) // false
+isFinite(undefined) //false
+isFinite({}) //false
+</code></pre>
+
+<p>注意参数为 <code>true</code>, <code>false</code>, <code>null</code>, <code>[]</code>, <code>&quot;&quot;</code> 时返回 <code>true</code>。</p>
+
+<pre><code>isFinite(true) // true
+isFinite(false)// true
+isFinite(null) //true
+isFinite([]) //true
+isFinite(&quot;&quot;) //true
+isFinite(-1) // true
+</code></pre>
+
+<h2 id="三-parseint-和parsefloat">三、 parseInt() 和parseFloat()</h2>
+
+<p>1.<code>parseInt()</code> 用于将<code>字符串</code>转为<code>整数</code>; <code>parseFloat()</code>用于将<code>字符串</code>转为<code>浮点数</code>。</p>
+
+<pre><code>parseInt('123') // 123
+parseFloat('3.14') // 3.14
+</code></pre>
+
+<p>2.字符串转为整数或浮点数的时候，是<code>一个个字符依次转换</code>，如果遇到不能转为数字的字符，就不再进行下去，返回已经转好的部分。</p>
+
+<pre><code>parseInt('15px') // 15
+parseFloat('3.14abcd ') // 3.14
+</code></pre>
+
+<p>3.如果字符串前后有<code>空格</code>，空格会被自动去除。</p>
+
+<pre><code>parseInt('   81') // 81
+parseFloat('\t\v\r12.34\n ') // 12.34
+</code></pre>
+
+<p>4.如果字符串的第一个字符不能转化为数字（后面跟着数字的正负号除外），返回<code>NaN</code>。</p>
+
+<pre><code>parseInt('abc') // NaN
+parseInt('.3') // NaN
+parseInt('') // NaN
+parseInt('+') // NaN
+parseInt('+1') // 1
+</code></pre>
+
+<p>5.对于那些会自动转为<code>科学计数法</code>的数字，parseInt()会将科学计数法的表示方法视为字符串，因此导致一些奇怪的结果。如果字符串符合科学计数法，parseFloat())则会进行相应的转换。</p>
+
+<pre><code>parseInt(1000000000000000000000.5) // 1
+// 等同于
+parseInt('1e+21') // 1
+
+parseFloat('314e-2') // 3.14
+parseFloat('0.0314E+2') // 3.14
+</code></pre>
+
+<p>6.<code>parseInt()</code>还可以接受第二个参数（2到36之间），表示被解析的值的进制，返回该值对应的十进制数。默认情况下，<code>parseInt</code>的第二个参数为10，即默认是十进制转十进制。</p>
+
+<pre><code>parseInt('1000') // 1000
+// 等同于
+parseInt('1000', 10) // 1000
+parseInt('1000', 2) // 8
+parseInt('1000', 6) // 216
+parseInt('1000', 8) // 512
+</code></pre>
+
+<p>7.如果字符串包含对于指定进制无意义的字符，则从最高位开始，只返回可以转换的数值。如果最高位无法转换，则直接返回<code>NaN</code>。</p>
+
+<pre><code>parseInt('1546', 2) // 1
+parseInt('546', 2) // NaN
+</code></pre>
+
+<p>8.如果<code>parseInt()</code>的第一个参数不是字符串，会被先转为字符串。这会导致一些令人意外的结果。</p>
+
+<pre><code>parseInt(0x11, 36) // 43
+// 等同于
+parseInt('17', 36)
+parseInt(String(0x11), 36)
+</code></pre>
+
+<p>9.如果参数不是字符串，或者字符串的第一个字符不能转化为浮点数，则<code>parseFloat()</code>返回<code>NaN</code>。</p>
+
+<pre><code>parseFloat([]) // NaN
+parseFloat('FF2') // NaN
+parseFloat('') // NaN
+</code></pre>
+
+<h2 id="四-强制类型转换的函数-number">四、强制类型转换的函数：Number()</h2>
+
+<p>1.Number(): 可以将任意类型的值转化成数值。</p>
+
+<p>2.<code>Number()</code>将字符串转为数值，要比<code>parseInt()</code>严格很多。基本上，只要有一个字符无法转成数值，整个<code>字符串</code>就会被转为<code>NaN</code>。</p>
+
+<pre><code>parseFloat('123.45#') // 123.45
+Number('123.45#') // NaN
+</code></pre>
+
+<p>2.如果<code>Number()</code>的参数是<code>null</code>, <code>false</code>, <code>''</code>, <code>[]</code> 则结果为<code>0</code>；如果为 <code>true</code>，则结果为 <code>1</code>。<code>parseInt()</code>/<code>parseFloat()</code>的参数如果是这些特殊值时，一律为 <code>NaN</code>。</p>
+
+<pre><code>Number(null)  //0
+Number(&quot;&quot;)   //0
+Number(false)   //0
+Number([])   //0
+Number(true) // 1
+
+parseInt(null) // NaN
+parseFloat(null) // NaN
+parseInt(&quot;&quot;) // NaN
+parseFloat(&quot;&quot;) // NaN
+parseInt(false) // NaN
+parseFloat(false) // NaN
+parseInt([]) // NaN
+parseFloat([]) // NaN
+parseInt(true)  // NaN
+parseFloat(true)  // NaN
+</code></pre>
+
+<p>3.<code>Number()</code>跟<code>parseInt()</code>、<code>parseFloat()</code>一样，会自动过滤字符串前后的<code>空格</code>。</p>
+
+<pre><code>Number('\t\v\r12.34\n') // 12.34
+</code></pre>
+
+<p>4.如果参数是<code>对象</code>时，将返回<code>NaN</code>，除非是包含<code>单个数值的数组</code>。</p>
+
+<pre><code>Number({a: 1}) // NaN
+Number([1, 2, 3]) // NaN
+Number([5]) // 5
+</code></pre>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/javascript_number.html" data-id="ac1e6e09454513376dea3937f5b4c639" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://www.wangxingfeng.com/ss.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          &lt;&lt; 上一篇
+      </strong>
+      <div class="article-nav-title">撸了Google Cloud，自建了个梯子</div>
+    </a>
+    
+
+    
+</nav>
+
+
+    </article>
+    <div id="comments"></div>
+</section>
+<script type="text/javascript">
+    var gitment = new Gitment({
+      owner: 'frankwang0909',
+      repo: 'frankwang0909.github.io',
+      oauth: {
+        client_id: '877980759850b2ab1476',
+        client_secret: 'e6cc4fba1c3010627ed3c87eab2519c7efb5907a',
+      },
+    });
+    gitment.render('comments');
+</script>
+
+	    
+	    <aside id="sidebar">
     
 <div class="widget-wrap">
     <h3 class="widget-title">
@@ -549,7 +855,8 @@
 	<div id="toTop" class="fa fa-angle-up"></div>
 </aside>
 
-    </div>
+	    
+	</div>
 </div>
 
 <footer id="footer">
@@ -584,5 +891,4 @@ MathJax.Hub.Config({
 
 
 </body>
-
 </html>
