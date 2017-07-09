@@ -1068,9 +1068,9 @@ a.article-title:hover {
   padding: 0.3rem 0.75rem;
   -webkit-border-radius: 0.75rem;
   border-radius: 0.75rem;
-  background: #f5f8f9;
-  color: #999;
-  text-shadow: 0 1px #fff;
+  background: #999;
+  color: #fff;
+  // text-shadow: 0 1px #fff;
   text-decoration: none;
 }
 .article-more-link a:hover {
@@ -2222,7 +2222,7 @@ ol.toc {
 
 
 #main .article-entry>p:first-child{
-  max-height:146px;
+  max-height:135px;
   overflow: hidden;
 }
 
