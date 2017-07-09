@@ -955,7 +955,7 @@ cd e: e:  然后输入命令：
             <div class="article-entry" itemprop="articleBody">
                 <p>
                     inline 元素： 如果inline元素(span, strong, b, em, i等)代码换行，它们之间会产生我们不希望的间隔。通过设置margin:0或者padding:0 , 这个都间隔仍然存在，说明这个间隔并不是margin或者padding。
-.inline p span:first-child { background-color: #66d9ef; } .inline p span:nth-child(2) { background-color: #c191c1; } .inline p span:nth-child(3) { background-color: #9fe89f; } .inline p span:nth-child(4) { background-color: #8787f1; } .inline p span:last-child{ background-color: #464141; } .inline p span{ font-size:16px; color:#fff; line-height:30px; } .inline-block span{ display: inline-block; width:20%; } .fs0{ font-size: 0; }   inline元素 1 inline元素 2 inline元素 3  是否为了不消除这个间隔，就必须把inline元素的html代码写在一行内呢？答案是否定的。 开发的时候，为了方便阅读和调试，我们习惯于把代码写成这样：
+.inline p span:first-child { background-color: #66d9ef; } .inline p span:nth-child(2) { background-color: #c191c1; } .inline p span:nth-child(3) { background-color: #9fe89f; } .inline p span:nth-child(4) { background-color: #8787f1; } .inline p span:last-child{ background-color: #464141; } .inline p span{ font-size:16px; color:#fff; line-height:30px; } .inline-block span{ display: inline-block; width:20%; } .fs0{ font-size: 0!important; }   inline元素 1 inline元素 2 inline元素 3  是否为了不消除这个间隔，就必须把inline元素的html代码写在一行内呢？答案是否定的。 开发的时候，为了方便阅读和调试，我们习惯于把代码写成这样：
                     <br>
                 </p>
                 <p class="article-more-link">

@@ -1926,7 +1926,7 @@ if(/micromessenger/i.test(ua){
         width:20%;
     }
     .fs0{
-        font-size: 0;
+        font-size: 0!important;
     }
 &lt;/style&gt;
 
