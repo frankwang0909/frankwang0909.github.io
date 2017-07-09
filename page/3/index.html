@@ -38,7 +38,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-04-04T17:41:35&#43;08:00"/>
+<meta property="og:updated_time" content="2017-04-04T21:02:50&#43;08:00"/>
 
 
 
@@ -256,12 +256,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        34
+        35
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          24
+          25
         
         <span>
             Tags
@@ -338,6 +338,147 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/useragent">
+    <h1 class="article-title" itemprop="name">
+        通过userAgent识别移动设备，自动跳转移动端站点
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-04 21:02:50 &#43;0800 CST" itemprop="datePublished">2017-04-04</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/useragent">userAgent</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    不少互联网公司的网站都分为PC端和手机端。如果用户用手机访问PC站点，受限于手机网络，很可能会出现加载网页缓慢的情况。 因此，如何识别用户访问网站的设备，并且自动跳转到对应的站点呢？
+navigator.userAgent navigator是JavaScript中的一个独立的对象，用于提供用户所使用的浏览器以及操作系统等信息，以navigator对象属性的形式来提供。所有浏览器都支持该对象。
+navigator对象有一个userAgent属性，会返回用户的设备操作系统和浏览器的信息。
+1.用谷歌浏览器，随便打开一个网页，F12打开Chrome调试工具，输入navigator.userAgent, 会返回如下的字符串：
+&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36&quot;  这个字符串可以分成四个主要的部分，我来解释一下各个部分的含义：
+1）Mozilla/5.0 ：表示兼容Mozilla, 几乎所有的浏览器都有这个字符; 2) (Windows NT 6.1; Win64; x64): 表示设备的操作系统版本，以及CPU信息； 3）AppleWebKit/537.36 (KHTML, like Gecko)：表示浏览器的内核； 4) Chrome/57.0.2987.98 Safari/537.36: 表示浏览器的版本号。  2.用火狐浏览器，随便打开一个网页，F12打开调试工具，同样地在控制台输入navigator.userAgent, 返回如下的字符串：
+&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:52.0) Gecko/20100101 Firefox/52.0&quot;  与之前的结果区别：
+1)浏览器内核是Gecko内核， 2)浏览器版本是火狐的Firefox/52.0。从这里我们可以看出火狐浏览器是基于Gecko内核。  3.用谷歌浏览器模拟手机访问，选择iPhone6s，同样在调试工具控制台输入navigator.userAgent, 会返回如下的字符串：
+&quot;Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/useragent">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/useragent" data-id="f417a75413daacaf92a7cb348ea74f46" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1649,169 +1790,6 @@ Markdown 标记区块引用是使用类似 email 中用 &gt;的引用方式。�
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/sublimetext-notes">
-    <h1 class="article-title" itemprop="name">
-        Sublime Text 学习笔记
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-05-13 00:14:00 &#43;0800 CST" itemprop="datePublished">2016-05-13</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/sublime-text">Sublime Text</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    自从把主力代码编辑器改为Sublime Text之后，写代码的效率明显高了许多。最近，我开始尝试着给身边的朋友推荐这款编辑器。
-一、Sublime Text 的优点 1.跨平台；
-2.轻量级，可拓展：有大量插件可由用户自行选择安装(首推Emmet插件)。
-3.支持几乎所有的主流编程语言的语法高亮显示；
-4.代码自动补全，支持代码段（Code Snippet）；
-5.右上角的minimap: 用来查看标注、快速拖动、迅速定位；
-6.快速跳转到不同的文件/方法/函数：支持模糊匹配；
-7.快速切换Tab与Space；
-8.格式化代码；
-二、安装Sublime Text 1.下载安装包：
-Sublime Text官网地址：<a href="https://www.sublimetext.com/">https://www.sublimetext.com/</a> 根据自己的系统选择对应的安装包下载并安装。目前稳定版本为Sublime Text 3;
-2.安装Package Control:
-下载插件之前需要先安装Package Control，它是用来管理和下载插件的控制组件。 Package Control官网安装地址：<a href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a>
-1）使用快键键 ctrl+ 或者View&gt;Show Console` 菜单打开控制台，然后，然后回车让它安装。
-2）根据Sublime Text的版本选择复制对应的版本代码；
-3）黏贴到控制台输入框里，按Enter键，插件管理包就进入正在下载安装的状态（可能需要一点时间）；
-3.自定义安装各种插件：
-在 Package Control官网地址：<a href="https://packagecontrol.io/可以看到各种插件以及它的下载量排名，找到自己感兴趣的，下载下来试用。">https://packagecontrol.io/可以看到各种插件以及它的下载量排名，找到自己感兴趣的，下载下来试用。</a>
-下载安装方法如下： (windows平台)
-1）按下 Ctrl+Shift+P 调出命令面板，输入install， 调出 Install Package 选项并回车，出来这样的画面，
-2）然后输入自己想要下载的插件名称，比如: HTML Extended
-3）下载安装完成后会弹出类似这样的文件，说明已经成功安装该插件。
-或者在左下角提示成功安装：
-三、推荐几个好用的插件： 1.Emmet：通过简单的命令直接生成一大段代码。
-2.ConvertToUTF8(转换成utf-8格式): 默认情况下，gbk编码格式的中文会变成乱码，这个插件可以实现自动转换。
-3.JsFormat：格式化js代码。可以还原别人网站被压缩过难以阅读的js代码。
-4.HTMLBeautify：格式化HTML。
-5.Hasher:符号转义。
-6.TrailingSpaces：多余空格标记。
-7.SideBarEnhancementS: 侧边栏增强功能。
- ChineseLocalization：汉化插件。  四、常用的快捷键（windows平台下）： 1.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/sublimetext-notes">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/sublimetext-notes" data-id="35d8c4e8537ef1ad63ad98699e489072" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1839,6 +1817,32 @@ Sublime Text官网地址：<a href="https://www.sublimetext.com/">https://www.su
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/ss.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">
+                        tools
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/ss.html" class="title">撸了Google Cloud，自建了个梯子</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-09 11:37:11 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1940,32 +1944,6 @@ Sublime Text官网地址：<a href="https://www.sublimetext.com/">https://www.su
                     <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-basic-2.html" class="title">MySQL数据库的基本数据类型、表的操作和记录的操作</a></p>
                     <p class="item-date">
                         <time datetime="2017-06-08 07:32:57 &#43;0800 CST" itemprop="datePublished">2017-06-08</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/mysql-basic.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
-                        Database
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql-basic.html" class="title">MySQL入门：语句规范及常用命令</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-06-03 22:38:52 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
                     </p>
                 </div>
             </li>
