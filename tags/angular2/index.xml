@@ -19,11 +19,11 @@
 
 &lt;h1 id=&#34;angular2-的核心概念&#34;&gt;Angular2 的核心概念&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/201707151.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071501.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;1-components-组件&#34;&gt;1.Components 组件&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/201707152.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071502.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;1-1-组件及示例代码&#34;&gt;1.1 组件及示例代码&lt;/h3&gt;
 
@@ -46,7 +46,7 @@ export class HelloComponent {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/201707155.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071505.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;1.1.1 装饰器：@Component&lt;/p&gt;
 
@@ -79,17 +79,17 @@ export class HelloComponent {
 
 &lt;h3 id=&#34;1-2-组件树&#34;&gt;1.2 组件树&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/201707156.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071506.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;1-3-组件间的通讯机制及数据流向&#34;&gt;1.3 组件间的通讯机制及数据流向&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/201707153.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071503.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/201707157.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071507.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;1-4-组件的生命周期及其钩子&#34;&gt;1.4 组件的生命周期及其钩子&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/201707154.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071504.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;1.Constructor 构造器初始化：变量的初始赋值&lt;/p&gt;
 
@@ -149,7 +149,7 @@ export class HighlightDirective {
 
 &lt;p&gt;&lt;code&gt;依赖注入&lt;/code&gt;是&lt;code&gt;组件&lt;/code&gt;引入&lt;code&gt;外部构建&lt;/code&gt;（如服务）的一种机制。最常见的是组件引入服务。引用服务其实引用的是&lt;code&gt;服务类的实例&lt;/code&gt;，所以服务在引入之前有一个&lt;code&gt;实例化&lt;/code&gt;的过程，并且&lt;code&gt;这个实例&lt;/code&gt;通常要被缓存起来&lt;code&gt;注入器对象&lt;/code&gt;中，以供其他组件使用。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/201707158.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071508.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;示例：&lt;/p&gt;
 
@@ -177,7 +177,7 @@ export class HelloComponent {
 
 &lt;p&gt;在父组件中依赖注入的服务，在&lt;code&gt;组件本身及其子组件&lt;/code&gt;都能使用。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/201707159.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071509.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;5-modules-模块&#34;&gt;5. Modules 模块&lt;/h2&gt;
 
@@ -210,7 +210,7 @@ import { ElementRef, Renderer } from &amp;quot;@angular/core&amp;quot;;
 
 &lt;h3 id=&#34;5-2-应用模块-功能单元以模块的形式组织&#34;&gt;5.2 应用模块：功能单元以模块的形式组织&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;images/2017071510.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071510.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;5.1.1 应用模块：把有关联的组件、服务、指令等按功能进行归类包装成模块。&lt;/p&gt;
 
@@ -251,6 +251,8 @@ export class AppModule {}
 
 &lt;p&gt;应用根据&lt;code&gt;功能&lt;/code&gt;可以切分为大大小小的各种模块。其中，&lt;code&gt;根模块&lt;/code&gt;作为应用启动的入口。各种&lt;code&gt;功能&lt;/code&gt;可以封装成一个个&lt;code&gt;特性模块&lt;/code&gt;。随着&lt;code&gt;特性模块&lt;/code&gt;越来越多，如果它们之间可以抽象出来一些相似的&lt;code&gt;功能组件&lt;/code&gt;，我们把这些&lt;code&gt;功能组件&lt;/code&gt;再封装成为独立的&lt;code&gt;共享模块&lt;/code&gt;。
 我们可以把一些全局的组件或者服务（如维护登录信息的服务、公共的头部、底部组件等）放在&lt;code&gt;根模块&lt;/code&gt;里，也可以抽离出来封装成独立的&lt;code&gt;核心模块&lt;/code&gt;，只在&lt;code&gt;根模块&lt;/code&gt;中导入。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071511.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
