@@ -38,7 +38,7 @@
 
 
 
-<meta property="og:updated_time" content="2016-06-05T22:05:46&#43;08:00"/>
+<meta property="og:updated_time" content="2016-07-11T21:03:27&#43;08:00"/>
 
 
 
@@ -256,12 +256,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        36
+        37
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          25
+          26
         
         <span>
             Tags
@@ -338,6 +338,147 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">
+    <h1 class="article-title" itemprop="name">
+         CSS3 动画效果
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-07-11 21:03:27 &#43;0800 CST" itemprop="datePublished">2016-07-11</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css3">CSS3</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    作用 用来定义样式变化的过渡效果, 在某些情况下（移动端），可以代替JavaScript代码来实现动画效果。
+transition属性是一个简写属性，用于设置四个过渡属性：
+1. transition-property 规定设置过渡效果的 CSS 属性的名称, 默认值为all, 表示所有属性，也可以单独设置某个css属性。
+2. transition-duration 过渡时间，值以秒或毫秒计。
+3. transition-timing-function 过渡效果的速度曲线。该属性允许过渡效果随着时间来改变其速度。
+默认值为linear。常见的有以下值：
+linear 匀速 ease 慢速开始，然后变快，然后慢速结束。 ease-in 以慢速开始 ease-out 以慢速结束 ease-in-out 以慢速开始和结束的过渡效果  4. transition-delay 过渡效果的延迟，值以秒或毫秒计。默认为0。如果为正值，则表示延迟执行过渡效果；如果为负值（如-0.1s)，则会从过渡效果的执行0.1s的状态为初始状态开始执行过渡效果。
+兼容性 Internet Explorer 10、Firefox、Opera 和 Chrome等现代浏览器 支持 transition 属性。 Safari 支持替代的 -webkit-transition 属性。
+示例  .trans { display:block; width:100px; height:30px; background:#0ff; transition:width 2s ease; } .trans:hover{ width:500px; }  过渡效果
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/css3-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C" data-id="9508aef33ce686af8138fc2075656a6f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1267,6 +1408,32 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/angular2_basic.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/angular2_basic.html" class="title">快速入门 Angular2 核心概念</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-15 17:13:18 &#43;0800 CST" itemprop="datePublished">2017-07-15</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="http://www.wangxingfeng.com/javascript_number.html" class="thumbnail">
                     
                         <span class="thumbnail-image thumbnail-none"></span>
@@ -1365,32 +1532,6 @@ $ git add readme.md //新增一个readme.md文件 $ git commit -m &quot;提交�
                     <p class="item-title"><a href="http://www.wangxingfeng.com/use_gitment_as_comment_system_for_your_blog.html" class="title">一个Geek的评论系统Gitment</a></p>
                     <p class="item-date">
                         <time datetime="2017-06-24 17:04:42 &#43;0800 CST" itemprop="datePublished">2017-06-24</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/python_mysqldb.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/python">
-                        Python
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/python_mysqldb.html" class="title">Python操作MySQL学习笔记</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-06-20 07:44:01 &#43;0800 CST" itemprop="datePublished">2017-06-20</time>
                     </p>
                 </div>
             </li>

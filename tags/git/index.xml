@@ -77,11 +77,27 @@ $ git commit -m &amp;quot;提交时的附加信息&amp;quot;  //把文件提交�
 &lt;li&gt;&lt;p&gt;查看命令历史： &lt;code&gt;git reflog&lt;/code&gt;， 如果回退之后又后悔了，而且已经关了Git，那就使用 &lt;code&gt;git reflog&lt;/code&gt;，找到对应的commit，以便回到未来的哪个版本。&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;更新本地库：推送前先  &lt;code&gt;git pull&lt;/code&gt; 更新本地库，以免远程库已经改变导致推送失败报错。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;常见错误及处理：&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;常见报错1:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fatal: remote origin already exists. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决方法：先删除远程 git 仓库，再添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote rm origin
+
+git remote add origin git@github.com:项目的远程git仓库
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;方式二-使用-gihub-提供的-github-for-windows&#34;&gt;方式二： 使用&lt;code&gt;GiHub&lt;/code&gt;提供的&lt;code&gt;GitHub for Windows&lt;/code&gt;&lt;/h2&gt;
 
 &lt;p&gt;在window平台下使用Git的最简单的方式是使用GitHub网站提供的&lt;a href=&#34;https://desktop.github.com/&#34;&gt;GitHub for Windows&lt;/a&gt;。优点是直接图形化的操作界面，完全不用记命令。&lt;/p&gt;
+
+&lt;p&gt;#&lt;/p&gt;
 </description>
     </item>
     

@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wangxingfeng.com/angular2_basic.html</loc>
+    <lastmod>2017-07-15T17:13:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.wangxingfeng.com/javascript_number.html</loc>
     <lastmod>2017-07-09T21:45:51+08:00</lastmod>
   </url>
@@ -182,6 +187,12 @@
   </url>
   
   <url>
+    <loc>http://www.wangxingfeng.com/tags/angular2/</loc>
+    <lastmod>2017-07-15T17:13:18+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.wangxingfeng.com/tags/bug/</loc>
     <lastmod>2017-01-11T21:48:19+08:00</lastmod>
     <priority>0</priority>
@@ -230,13 +241,13 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/</loc>
-    <lastmod>2017-07-09T21:45:51+08:00</lastmod>
+    <lastmod>2017-07-15T17:13:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.wangxingfeng.com/categories/frontend/</loc>
-    <lastmod>2017-07-09T21:45:51+08:00</lastmod>
+    <lastmod>2017-07-15T17:13:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -290,7 +301,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/post/</loc>
-    <lastmod>2017-07-09T21:45:51+08:00</lastmod>
+    <lastmod>2017-07-15T17:13:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
