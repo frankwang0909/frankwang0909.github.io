@@ -253,7 +253,7 @@ export class AppModule {}
 &lt;p&gt;应用根据&lt;code&gt;功能&lt;/code&gt;可以切分为大大小小的各种模块。其中，&lt;code&gt;根模块&lt;/code&gt;作为应用启动的入口。各种&lt;code&gt;功能&lt;/code&gt;可以封装成一个个&lt;code&gt;特性模块&lt;/code&gt;。随着&lt;code&gt;特性模块&lt;/code&gt;越来越多，如果它们之间可以抽象出来一些相似的&lt;code&gt;功能组件&lt;/code&gt;，我们把这些&lt;code&gt;功能组件&lt;/code&gt;再封装成为独立的&lt;code&gt;共享模块&lt;/code&gt;。
 我们可以把一些全局的组件或者服务（如维护登录信息的服务、公共的头部、底部组件等）放在&lt;code&gt;根模块&lt;/code&gt;里，也可以抽离出来封装成独立的&lt;code&gt;核心模块&lt;/code&gt;，只在&lt;code&gt;根模块&lt;/code&gt;中导入。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071511.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/20170715011.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
