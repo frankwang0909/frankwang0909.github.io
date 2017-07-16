@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>MySQL数据库的基本数据类型、表的操作和记录的操作 &middot; Frank Wang&#39;s Coding World</title>
+    <title>TypeScript 入门 &middot; Frank Wang&#39;s Coding World</title>
     <meta name="generator" content="Hugo 0.19" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,16 +10,16 @@
     
 
     
-      <meta name="keywords" content="前端学习笔记, CSS, HTML,JavaScript, ES6, Node, Python, MySQL, 人人都能说英语, Hugo快速建站">
+      <meta name="keywords" content="[TypeScript JavaScript 静态类型 类型注解 类 Class 接口 Interface]">
     
 
     
-      <meta name="description" content="MySQL数据库的基本数据类型包括数值类型、字符类型和时间日期类型。MySQL数据库表的基本操作。MySQL数据库记录的基本操作">
+      <meta name="description" content="TypeScript 是微软2012年推出的一种编程语言，属于 JavaScript 的超集，可以编译为 JavaScript 执行。它拓展了 JavaScript 的语法，给 JavaScript 添加可选的静态类型和基于类的面向对象编程。">
     
 
     
 
-    <link rel="canonical" href="http://www.wangxingfeng.com/mysql-basic-2.html"/>
+    <link rel="canonical" href="http://www.wangxingfeng.com/typescript_basic.html"/>
     <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
     <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
@@ -28,15 +28,15 @@
     <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.min.css">
     
 
-    <meta property="og:title" content="MySQL数据库的基本数据类型、表的操作和记录的操作" />
-<meta property="og:description" content="MySQL数据库的基本数据类型包括数值类型、字符类型和时间日期类型。MySQL数据库表的基本操作。MySQL数据库记录的基本操作" />
+    <meta property="og:title" content="TypeScript 入门" />
+<meta property="og:description" content="TypeScript 是微软2012年推出的一种编程语言，属于 JavaScript 的超集，可以编译为 JavaScript 执行。它拓展了 JavaScript 的语法，给 JavaScript 添加可选的静态类型和基于类的面向对象编程。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.wangxingfeng.com/mysql-basic-2.html" />
+<meta property="og:url" content="http://www.wangxingfeng.com/typescript_basic.html" />
 
 
 
-<meta property="article:published_time" content="2017-06-08T07:32:57&#43;08:00"/>
-<meta property="article:modified_time" content="2017-06-08T07:32:57&#43;08:00"/>
+<meta property="article:published_time" content="2017-07-16T21:43:35&#43;08:00"/>
+<meta property="article:modified_time" content="2017-07-16T21:43:35&#43;08:00"/>
 
 
 
@@ -50,12 +50,12 @@
 
     
     
-<meta itemprop="name" content="MySQL数据库的基本数据类型、表的操作和记录的操作">
-<meta itemprop="description" content="MySQL数据库的基本数据类型包括数值类型、字符类型和时间日期类型。MySQL数据库表的基本操作。MySQL数据库记录的基本操作">
+<meta itemprop="name" content="TypeScript 入门">
+<meta itemprop="description" content="TypeScript 是微软2012年推出的一种编程语言，属于 JavaScript 的超集，可以编译为 JavaScript 执行。它拓展了 JavaScript 的语法，给 JavaScript 添加可选的静态类型和基于类的面向对象编程。">
 
 
-<meta itemprop="dateModified" content="2017-06-08T07:32:57&#43;08:00" />
-<meta itemprop="wordCount" content="524">
+<meta itemprop="dateModified" content="2017-07-16T21:43:35&#43;08:00" />
+<meta itemprop="wordCount" content="530">
 
 
 
@@ -67,9 +67,9 @@
 
 
 
-<meta name="twitter:text:title" content="MySQL数据库的基本数据类型、表的操作和记录的操作"/>
-<meta name="twitter:title" content="MySQL数据库的基本数据类型、表的操作和记录的操作"/>
-<meta name="twitter:description" content="MySQL数据库的基本数据类型包括数值类型、字符类型和时间日期类型。MySQL数据库表的基本操作。MySQL数据库记录的基本操作"/>
+<meta name="twitter:text:title" content="TypeScript 入门"/>
+<meta name="twitter:title" content="TypeScript 入门"/>
+<meta name="twitter:description" content="TypeScript 是微软2012年推出的一种编程语言，属于 JavaScript 的超集，可以编译为 JavaScript 执行。它拓展了 JavaScript 的语法，给 JavaScript 添加可选的静态类型和基于类的面向对象编程。"/>
 <meta name="twitter:site" content="@frankwang0909"/>
 
     <meta name="baidu-site-verification" content="WSqfBuzd3t" />
@@ -363,9 +363,9 @@
             
 
             <header class="article-header">
-    <a href="http://www.wangxingfeng.com/mysql-basic-2.html">
+    <a href="http://www.wangxingfeng.com/typescript_basic.html">
     <h1 class="article-title" itemprop="name">
-        MySQL数据库的基本数据类型、表的操作和记录的操作
+        TypeScript 入门
     </h1>
     </a>
     <div class="article-meta">
@@ -373,7 +373,7 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2017-06-08 07:32:57 &#43;0800 CST" itemprop="datePublished">2017-06-08</time>
+            <time datetime="2017-07-16 21:43:35 &#43;0800 CST" itemprop="datePublished">2017-07-16</time>
         </div>
         
         
@@ -383,7 +383,7 @@
                 <i class="fa fa-folder"></i>
                 
                 
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
                 
                 
             </div>
@@ -397,7 +397,7 @@
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/mysql">MySQL</a>
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/typescript">TypeScript</a>
                 
                 
             </div>
@@ -409,403 +409,270 @@
             <div class="article-entry" itemprop="articleBody">
                 
 
-<h2 id="一-mysql的基本数据类型">一、MySQL的基本数据类型：</h2>
+<h2 id="1-简介">1.简介：</h2>
 
-<h3 id="1-数值类型">1. 数值类型：</h3>
+<p><a href="http://www.typescriptlang.org/">TypeScript</a> 是微软2012年推出的一种编程语言，属于 JavaScript 的<code>超集</code>，可以编译为 JavaScript 执行。它拓展了 JavaScript 的语法，给 JavaScript 添加可选的<code>静态类型</code>和<code>基于类</code>的面向对象编程。</p>
 
-<p>包括严格数值数据类型(INTEGER、SMALLINT、DECIMAL和NUMERIC)，以及近似数值数据类型(FLOAT、REAL和DOUBLE PRECISION)。</p>
+<p>TypeScript文件拓展名为 <code>.ts</code>。</p>
 
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th align="center">大小</th>
-<th align="center">范围（有符号）</th>
-<th align="center">范围（无符号）</th>
-<th align="right">用途</th>
-</tr>
-</thead>
+<p>TypeScript 不能直接运行在浏览器环境中，运行前需要编译成 JavaScript 才能在浏览器运行。</p>
 
-<tbody>
-<tr>
-<td>TINYINT</td>
-<td align="center">1 字节</td>
-<td align="center">(-128，127)</td>
-<td align="center">(0，255)</td>
-<td align="right">小整数值</td>
-</tr>
+<p>TypeScript 是<code>Angular2</code>官方推荐的开发语言，同时也可以作为使用 React、Vue、ReactNative 等框架或者类库的项目的开发语言。</p>
 
-<tr>
-<td>SMALLINT</td>
-<td align="center">2 字节</td>
-<td align="center">(-2^15，2^15 -1)</td>
-<td align="center">(0，2^16 -1)</td>
-<td align="right">大整数值</td>
-</tr>
+<p>一个简单的 TypeScript 文件 demo.ts, 如下代码所示：</p>
 
-<tr>
-<td>MEDIUMINT</td>
-<td align="center">3 字节</td>
-<td align="center">(-2^23，2^23 -1)</td>
-<td align="center">(0，2^24 -1)</td>
-<td align="right">大整数值</td>
-</tr>
+<pre><code>var book: string = &quot;Angular 2&quot;;  // 定义了一个 string 类型的变量 book
 
-<tr>
-<td>INT或INTEGER</td>
-<td align="center">4 字节</td>
-<td align="center">(-2^31，2^31 -1)</td>
-<td align="center">(0，2^32 -1)</td>
-<td align="right">大整数值</td>
-</tr>
+var num: number = 123;  // 定义了一个 number 类型的变量 num
 
-<tr>
-<td>BIGINT</td>
-<td align="center">8 字节</td>
-<td align="center">(-2^63，2^63 -1)</td>
-<td align="center">(0，2^64 -1)</td>
-<td align="right">极大整数值</td>
-</tr>
-
-<tr>
-<td>FLOAT</td>
-<td align="center">4 字节</td>
-<td align="center">(-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38)</td>
-<td align="center">0，(1.175 494 351 E-38，3.402 823 466 E+38)</td>
-<td align="right">单精度浮点数值</td>
-</tr>
-
-<tr>
-<td>DOUBLE</td>
-<td align="center">8 字节</td>
-<td align="center">(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
-<td align="center">0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
-<td align="right">双精度浮点数值</td>
-</tr>
-
-<tr>
-<td>DECIMAL</td>
-<td align="center">DECIMAL(M,D)。如果M&gt;D，为M+2否则为D+2</td>
-<td align="center">依附于M和D的值</td>
-<td align="center">依附于M和D的值</td>
-<td align="right">小数值</td>
-</tr>
-</tbody>
-</table>
-
-<p>DECIMAL(M,D)：</p>
-
-<p>M指定指定小数点左边和右边可以存储的十进制数字的最大个数，最大精度38。</p>
-
-<p>D指定小数点右边可以存储的十进制数字的最大个数。小数位数必须是从 0 到 a之间的值。默认小数位数是 0。</p>
-
-<h3 id="2-字符型">2. 字符型：</h3>
-
-<p>字符串类型主要包括CHAR、VARCHAR、TEXT、MEDIUMTEXT、LONGTEXT、EMU等。</p>
-
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th align="center">大小</th>
-<th align="right">用途</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>CHAR</td>
-<td align="center">0~2^8-1 (0~255) 字节</td>
-<td align="right">定长字符串</td>
-</tr>
-
-<tr>
-<td>VARCHAR</td>
-<td align="center">0~2^16-1 (0~65536) 字节</td>
-<td align="right">变长字符串</td>
-</tr>
-
-<tr>
-<td>TINYTEXT</td>
-<td align="center">0~2^8-1 (0~255) 字节</td>
-<td align="right">短文本字符串</td>
-</tr>
-
-<tr>
-<td>TEXT</td>
-<td align="center">0~2^16-1 (0~65536)字节</td>
-<td align="right">长文本数据</td>
-</tr>
-
-<tr>
-<td>MEDIUMTEXT</td>
-<td align="center">0~2^24-1 (0~16777215)字节</td>
-<td align="right">中等长度文本数据</td>
-</tr>
-
-<tr>
-<td>LONGTEXT</td>
-<td align="center">0~2^32-1 (0~4294967296)</td>
-<td align="right">极大文本数据</td>
-</tr>
-</tbody>
-</table>
-
-<p>定长字符串：没有达到指定长度，尾部空格补齐。</p>
-
-<h3 id="3-日期时间类型">3. 日期时间类型：</h3>
-
-<p>表示时间值的日期和时间类型为DATETIME、DATE、TIMESTAMP、TIME和YEAR。</p>
-
-<p>每个时间类型有一个有效值范围和一个&rdquo;零&rdquo;值，当指定不合法的MySQL不能表示的值时使用&rdquo;零&rdquo;值。</p>
-
-<p>类型  大小
-(字节)    范围  格式  用途
-DATE    3   1000-01-01/9999-12-31   YYYY-MM-DD  日期值
-TIME    3   &lsquo;-838:59:59&rsquo;/&lsquo;838:59:59&rsquo;    HH:MM:SS    时间值或持续时间
-YEAR    1   <sup>1901</sup>&frasl;<sub>2155</sub>   YYYY    年份值
-DATETIME    8   1000-01-01 00:00:00/9999-12-31 23:59:59 YYYY-MM-DD HH:MM:SS 混合日期和时间值
-TIMESTAMP   4   1970-01-01 00:00:00/2037 年某时    YYYYMMDD HHMMSS 混合日期和时间值，时间戳</p>
-
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th align="center">大小</th>
-<th align="center">范围</th>
-<th align="center">格式</th>
-<th align="right">用途</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>YEAR</td>
-<td align="center">1 字节</td>
-<td align="center">1901~2155</td>
-<td align="center">YYYY</td>
-<td align="right">年份值</td>
-</tr>
-
-<tr>
-<td>DATE</td>
-<td align="center">3 字节</td>
-<td align="center">1000-01-01 ~ 9999-12-31</td>
-<td align="center">YYYY-MM-DD</td>
-<td align="right">日期值</td>
-</tr>
-
-<tr>
-<td>TIME</td>
-<td align="center">3 字节</td>
-<td align="center">-838:59:59 ~ 838:59:59</td>
-<td align="center">HH:MM:SS</td>
-<td align="right">时间值或持续时间</td>
-</tr>
-
-<tr>
-<td>DATETIME</td>
-<td align="center">8 字节</td>
-<td align="center">1000-01-01 00:00:00 ~ 9999-12-31 23:59:59</td>
-<td align="center">YYYY-MM-DD HH:MM:SS</td>
-<td align="right">混合日期和时间值</td>
-</tr>
-
-<tr>
-<td>TIMESTAMP</td>
-<td align="center">4 字节</td>
-<td align="center">1970-01-01 00:00:00 ~ 2037</td>
-<td align="center">YYYYMMDD HHMMSS</td>
-<td align="right">时间戳</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="二-数据表的操作">二、数据表的操作：</h2>
-
-<h3 id="1-查看当前数据库">1.查看当前数据库</h3>
-
-<pre><code>SELECT DATABASE();
+function log(msg: string): void {  // 定义了一个 函数 log, 它的参数 msg 是 string 类型的， `：void`表示这个函数没有返回值 
+    console.log(msg);
+}
 </code></pre>
 
-<h3 id="2-创建数据表">2.创建数据表</h3>
+<h2 id="2-安装-typescript">2.安装 TypeScript:</h2>
 
-<pre><code>CREATE TABLE [IF NOT EXISTS] table_name ( column_name data_type,...);
-
-
-CREATE TABLE IF NOT EXISTS user(
-    username VARCHAR(20),
-    age TINYINT UNSIGNED,
-    salary FLOAT(8,2) UNSIGNED
-);
+<pre><code>npm install -g typescript
 </code></pre>
 
-<h3 id="3-查看数据表">3.查看数据表</h3>
+<h2 id="3-编译">3.编译:</h2>
 
-<pre><code>SHOW TABLES;
+<p>3.1本地编译：命令行输入<code>tsc 文件名.ts</code> 既可编译成<code>同名</code>的 JavaScript 文件。</p>
+
+<pre><code>tsc demo.ts
 </code></pre>
 
-<p>查看其它数据库的数据表</p>
+<p>demo.ts 编译后得到 demo.js 文件，如下代码所示：</p>
 
-<pre><code>SHOW TABLES FROM mysql;
+<pre><code>var book = &quot;Angular 2&quot;;
+var num = 123;
+function log(msg) {
+    console.log(msg);
+}
 </code></pre>
 
-<h3 id="4-查看数据表结构">4.查看数据表结构</h3>
+<p>3.2在线编译：TypeScript 官方提供<a href="http://www.typescriptlang.org/play/index.html">在线的实时编译</a>。</p>
 
-<pre><code>SHOW COLUMNS FROM tbl_name;
+<h2 id="4-编辑器-visual-studio-code">4.编辑器: Visual Studio Code</h2>
 
-SHOW COLUMNS FROM user;
+<p>微软官方为 TypeScript 提供了一款轻量级但功能强大的编辑器 —— <a href="https://code.visualstudio.com/">VS Code</a>。Visual Studio Code本身就是一个<code>文本编辑器</code>，非常轻量级，搭配各种插件的话，就可以重现 Visual Studio的强大功能。</p>
+
+<h2 id="5-语法特性之一-类型注解">5.语法特性之一：类型注解</h2>
+
+<p>TypeScript里的<code>类型注解</code>是一种轻量级的为函数或变量添加约束的方式。</p>
+
+<p>在示例代码中里，我们希望 log 函数接收一个字符串参数。 然后尝试把 log 的调用改成传入一个数组：</p>
+
+<pre><code>function log(msg: string) {
+    return &quot;Hello, &quot; + msg;
+}
+
+var msg = [0, 1, 2];
+
+log(msg);
 </code></pre>
 
-<h2 id="三-记录的操作">三、记录的操作：</h2>
+<p>TypeScript提供了静态的代码分析，它可以分析代码结构和提供的类型注解。所以上述代码在 VS Code 中会出现提示错误：</p>
 
-<p>数据表里的行，被称为数据库的记录</p>
-
-<h3 id="1-插入记录">1.插入记录</h3>
-
-<pre><code>INSERT [INFO] tbl_name [(col_name,..)] VALUES(val,..);
-
-INSERT user VALUES('Frank', 22, 3500.18);
+<pre><code>Argument of type 'number[]' is not assignable to parameter of type string
 </code></pre>
 
-<p>如果省略了字段名（即列名），则值必须与字段的数量一致，否则会报错。</p>
+<h2 id="6-语法特性之二-接口-interface">6.语法特性之二：接口 Interface:</h2>
 
-<pre><code>Column count doesn't match value count at row 1
+<p>TypeScript的核心原则之一是对值所具有的结构进行类型检查。 它有时被称做“鸭式辨型法”或“结构性子类型化”。</p>
+
+<p>在TypeScript里，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
+
+<p>简单示例来观察接口是如何工作的：</p>
+
+<pre><code>function print(obj: { a: string }) {
+  console.log(obj.a);
+}
+
+let myObj = { 
+    size: 10, 
+    a: &quot;Size 10 Object&quot; 
+};
+
+print(myObj);
 </code></pre>
 
-<p>如果对某部分字段赋值，则需要写明字段名。</p>
+<p>类型检查器会查看函数 print()的调用。 它有一个对象参数，并且这个对象参数有一个名为a, 类型为 string 的属性。 需要注意的是，我们传入的对象参数实际上会包含很多属性，但是编译器只会检查那些必需的属性是否存在，并且其类型是否匹配。</p>
 
-<pre><code>INSERT user(username,salary)  VALUES('Jack', 4500.18);
+<p>关键字<code>interface</code>用来定义<code>接口</code>, 接口名<code>首字母大写</code>。</p>
+
+<p>下面我们重写上面的例子，这次使用<code>接口</code>来描述：必须包含一个类型为 string 的属性 a。</p>
+
+<pre><code>interface MyValue {
+  a: string;
+}
+
+function print(obj: MyValue) {
+  console.log(obj.a);
+}
+
+let myObj = {
+    size: 10, 
+    a: &quot;Size 10 Object&quot;
+};
+print(myObj);
 </code></pre>
 
-<h3 id="2-查找记录">2.查找记录</h3>
+<h2 id="7-语法特性之三-类-class">7.语法特性之三：类 Class</h2>
 
-<pre><code>SELECT expr,... FROM tbl_name;
+<h3 id="7-1-类的定义-关键字-class-用来定义一个类-类名-首字母大写">7.1 类的定义：关键字<code>class</code>用来定义一个类，类名<code>首字母大写</code>。</h3>
+
+<p>传统的 JavaScript 程序没有<code>类(Class)</code>的概念, 通过基于<code>原型链</code>的继承来实现面向对象的编程。从ECMAScript 2015(ES6) 开始，JavaScript 引入了类的概念，而 TypeScript 早就实现了类的继承。</p>
+
+<p>示例代码：</p>
+
+<pre><code>class Greeter {
+
+    // 定义了 string 类型的属性, 
+    greeting: string;
+
+    // 定义了类的构造函数，它参数为 string 类型
+    constructor(message: string) {
+
+        this.greeting = message;
+    }
+
+    // 定义了一个类的方法 
+    greet() {
+        return &quot;Hello, &quot; + this.greeting;
+    }
+}
 </code></pre>
 
-<p>查看全部记录</p>
+<p>上述代码声明了一个 Greeter类。这个类有3个成员：一个叫做 greeting 的属性，一个构造函数和一个 greet 方法。</p>
 
-<pre><code>SELECT * FROM tbl_name; 
+<p>我们在引用任何一个类成员的时候都用了<code>this</code>, 它表示我们访问的是类的成员。</p>
 
-SELECT * FROM user;
+<h3 id="7-2-实例化-关键字-new-用来创建类的一个实例对象">7.2 实例化：关键字<code>new</code>用来创建类的一个实例对象。</h3>
+
+<pre><code>let greeter = new Greeter(&quot;world&quot;);
 </code></pre>
 
-<h3 id="3-空值">3.空值</h3>
+<p>使用<code>new</code> 创建了Greeter类的一个实例。 它会调用之前定义的构造函数，创建一个 Greeter类型的新对象，并执行构造函数初始化它。</p>
 
-<p>NULL, 字段值可以为空；
-NOT NULL, 字段值不能为空。</p>
+<h3 id="7-3-类的继承-关键字-extends-表示类的继承关系">7.3 类的继承： 关键字<code>extends</code>表示类的继承关系</h3>
 
-<p>CREATE TABLE tb2(
-    username VARCHAR(20) NOT NULL,
-    age TINYINT UNSIGNED NULL
-);</p>
+<p>示例代码：</p>
 
-<h3 id="4-自动编号-auto-increment">4.自动编号：AUTO_INCREMENT</h3>
+<pre><code>class Animal {
+    name:string;
+    constructor(theName: string) { 
+        this.name = theName; 
+    }
+    move(distanceInMeters: number = 0) {
+        console.log(`${this.name} moved ${distanceInMeters}m.`);
+    }
+}
 
-<p>必须与主键组合使用。默认情况下，其实值为1，每次的增量为1.</p>
+class Snake extends Animal {
+    constructor(name: string) {
+        super(name); //必须调用super()方法来执行父类的构造方法
+    }
+    move(distanceInMeters = 5) {
+        console.log(&quot;Slithering...&quot;);
+        super.move(distanceInMeters); 
+    }
+}
 
-<pre><code>CREATE TABLE tb3(
-    id SMALLINT UNSIGNED AUTO_INCREMENT,
-    username VARCHAR(20) NOT NULL,
-    age TINYINT UNSIGNED NULL
-);
+class Horse extends Animal {
+    constructor(name: string) { 
+        super(name); 
+    }
+    move(distanceInMeters = 45) {
+        console.log(&quot;Galloping...&quot;);
+        super.move(distanceInMeters);
+    }
+}
+
+let sam = new Snake(&quot;Sammy the Python&quot;);
+let tom: Animal = new Horse(&quot;Tommy the Palomino&quot;);
+
+sam.move();
+tom.move(34);
 </code></pre>
 
-<p>报错：</p>
+<p>与其它语言类似，TypeScript 使用 关键字<code>extends</code>来创建子类。你可以看到 Horse 和 Snake 都是 Animal 的子类，并且可以访问其属性和方法。</p>
 
-<pre><code>ERROR 1075(42000): Incorrect table definition; there can be only one auto column and it must be defined as a key.
+<p>包含构造函数的派生类必须调用<code>super()</code>，它会执行父类的构造方法。</p>
+
+<p>在子类里可以重写父类的方法。上述代码中，Snake 类 和 Horse 类都创建了 move 方法，它们重写了从 Animal 继承来的 move 方法，使得 move 方法根据不同的类而具有不同的功能。</p>
+
+<h3 id="7-4-类的修饰符">7.4 类的修饰符：</h3>
+
+<p>7.4.1  public：默认修饰符</p>
+
+<p>如果没有使用<code>修饰符</code>来修饰类的成员（属性、方法），则默认为<code>public</code>，表示我们可以自由地访问到类的这个成员。</p>
+
+<p>7.4.2 private：修饰私有成员用</p>
+
+<p>当成员被标记成<code>private</code>时，它就不能在声明它的类的<code>外部</code>访问。</p>
+
+<pre><code>class Animal {
+    private name: string;
+    constructor(theName: string) { 
+        this.name = theName; 
+    }
+}
+
+new Animal(&quot;Cat&quot;).name; // Error: 'name' is private;
 </code></pre>
 
-<h3 id="5-主键-primary-key">5.主键：PRIMARY KEY</h3>
+<p>7.4.3 protected：</p>
 
-<p>1）每张数据表只能存在一个主键；</p>
+<p><code>protected</code>修饰符与<code>private</code>修饰符的行为很相似，但有一点不同，<code>protected</code>成员在<code>派生类</code>中仍然可以访问。</p>
 
-<p>2）主键保证记录的唯一性；</p>
+<pre><code>class Person {
+    protected name: string;
+    constructor(name: string) { 
+        this.name = name; 
+    }
+}
 
-<p>3）主键自动为NOT NULL.</p>
+class Employee extends Person {
+    private department: string;
 
-<p>创建数据表tb4:</p>
+    constructor(name: string, department: string) {
+        super(name)
+        this.department = department;
+    }
 
-<pre><code>CREATE TABLE tb4(
-    id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(20) NOT NULL,
-    age TINYINT UNSIGNED NULL
-);
+    public getElevatorPitch() {
+        return `Hello, my name is ${this.name} and I work in ${this.department}.`;
+    }
+}
+
+let howard = new Employee(&quot;Howard&quot;, &quot;Sales&quot;);
+console.log(howard.getElevatorPitch());
+console.log(howard.name); // error
 </code></pre>
 
-<p>插入记录：</p>
+<p>我们不能在 Person 类外使用 name ，但是我们仍然可以通过 Employee 类的实例方法访问，因为 Employee 是由 Person 派生而来的。</p>
 
-<pre><code>INSERT tb3(username) VALUES('Ross');
-INSERT tb3(username) VALUES('Richard');
-INSERT tb3(username) VALUES('Monica');
-</code></pre>
+<p>7.4.4 readonly：只读修饰符</p>
 
-<h3 id="5-唯一约束-unique-key">5.唯一约束：UNIQUE KEY</h3>
+<p>你可以使用<code>readonly</code>关键字将属性设置为<code>只读</code>的。 只读属性必须在<code>声明</code>时或<code>构造函数</code>里被初始化。</p>
 
-<p>1）UNIQUE KEY可以保证记录的唯一性；</p>
+<pre><code>class Octopus {
+    readonly name: string;
+    readonly numberOfLegs: number = 8;
+    constructor (theName: string) {
+        this.name = theName;
+    }
+}
 
-<p>2）UNIQUE KEY可以为空值；</p>
+let dad = new Octopus(&quot;Man with the 8 strong legs&quot;);
 
-<p>3）每张表里可以存在多个唯一约束。</p>
-
-<p>创建数据表tb5:</p>
-
-<pre><code>CREATE TABLE tb5(
-    id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(20) NOT NULL UNIQUE KEY,
-    age TINYINT UNSIGNED NULL
-);
-</code></pre>
-
-<p>查看刚刚创建的数据表tb5数据结构：</p>
-
-<pre><code>SHOW COLUMNS FROM tb5;
-</code></pre>
-
-<p>插入一条记录：</p>
-
-<pre><code>INSERT tb5(username, age) VALUES('Ross', 30);
-</code></pre>
-
-<p>插入成功，现在已经有一条记录的<code>username</code>为&rsquo;Ross&rsquo;了。再插入一条记录：</p>
-
-<pre><code>INSERT tb5(username, age) VALUES('Ross', 28);
-</code></pre>
-
-<p>报错：</p>
-
-<pre><code>ERROR 1062 (23000): Duplicate entry 'Ross' for key 'username'
-</code></pre>
-
-<h3 id="6-默认值-default">6.默认值： DEFAULT</h3>
-
-<p>当插入记录时，如果没有明确为字段赋值，则自动赋予默认值。</p>
-
-<pre><code>CREATE TABLE tb6(
-    id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(20) NOT NULL UNIQUE KEY,
-    sex ENUM('1', '2', '3') DEFAULT '3'
-);
-</code></pre>
-
-<p>查看刚刚创建的数据表tb6数据结构：</p>
-
-<pre><code>SHOW COLUMNS FROM tb6;
-</code></pre>
-
-<p>插入一条记录：</p>
-
-<pre><code>INSERT tb6(username) VALUES('Frank');
-</code></pre>
-
-<p>查看记录：</p>
-
-<pre><code>SELECT * FROM tb6;
+dad.name = &quot;Man with the 3-piece suit&quot;; // error! name is readonly.
 </code></pre>
 
             </div>
             <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/mysql-basic-2.html" data-id="89b75d806729b484934de6995988ab0b" class="article-share-link">
+    <a data-url="http://www.wangxingfeng.com/typescript_basic.html" data-id="3aeaa3cb975bf8c1d651f9bdc19b38e7" class="article-share-link">
         <i class="fa fa-share"></i>
         分享
     </a>
@@ -882,21 +749,14 @@ INSERT tb3(username) VALUES('Monica');
         
 <nav id="article-nav">
     
-    <a href="http://www.wangxingfeng.com/mysql-basic.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="http://www.wangxingfeng.com/angular2_basic.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           &lt;&lt; 上一篇
       </strong>
-      <div class="article-nav-title">MySQL入门：语句规范及常用命令</div>
+      <div class="article-nav-title">快速入门 Angular2 核心概念</div>
     </a>
     
 
-    
-    <a href="http://www.wangxingfeng.com/python_mysqldb.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          下一篇>>
-      </strong>
-      <div class="article-nav-title">Python操作MySQL学习笔记</div>
-    </a>
     
 </nav>
 
