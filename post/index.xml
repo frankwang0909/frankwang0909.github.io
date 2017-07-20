@@ -7,8 +7,165 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
-    <lastBuildDate>Sun, 16 Jul 2017 21:43:35 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 20 Jul 2017 07:54:41 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title> window 系统的 Node 版本管理工具 nvm-windows</title>
+      <link>http://www.wangxingfeng.com/nvm_for_window.html</link>
+      <pubDate>Thu, 20 Jul 2017 07:54:41 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/nvm_for_window.html</guid>
+      <description>
+
+&lt;h2 id=&#34;简介&#34;&gt;简介:&lt;/h2&gt;
+
+&lt;p&gt;nvm-windows 是一款用 Go 语言写的 用于 window 操作系统的 Node 版本管理工具。&lt;a href=&#34;https://github.com/coreybutler/nvm-windows&#34;&gt;GitHub 主页&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;下载安装&#34;&gt;下载安装：&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/coreybutler/nvm-windows/releases&#34;&gt;下载地址：https://github.com/coreybutler/nvm-windows/releases&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;常用命令&#34;&gt;常用命令：&lt;/h2&gt;
+
+&lt;p&gt;1.安装指定版本的 Node：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm install &amp;lt;version&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm install 6.2.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;命令行出现如下内容，表示正在下载安装 6.2.0 版本的 Node.js， 安装好之后，下载并安装对应的包管理工具 npm。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Downloading node.js version 6.2.0 (64-bit)...
+Complete                                                         
+Creating C:\Users\Administrator\AppData\Roaming\nvm\temp                                                          
+
+Downloading npm version 3.8.9... 
+Complete                        
+Installing npm v3.8.9...                                                                                          
+Installation complete. 
+If you want to use this version, type nvm use 6.2.0                                
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.使用指定版本的 Node：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm use &amp;lt;version&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm use 6.2.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;指定后，会显示如下内容：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Now using node v6.2.0 (64-bit)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以查看当前使用的 Node 版本号和 npm 版本号：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;node -v
+
+npm -v
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.查看安装的所有 Node 版本&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm list 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果如下所示，前面带有 * 号的表示当前使用的 Node 版本：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; 8.1.4
+*6.2.0 (Currently using 64-bit executable)
+ 6.1.0
+ 4.6.0
+ 4.4.7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果加一个参数 available， 列出所有可下载的 node.js 版本：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm list available
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;|   CURRENT    |     LTS      |  OLD STABLE  | OLD UNSTABLE |
+|--------------|--------------|--------------|--------------|
+|    8.1.4     |    6.11.1    |   0.12.18    |   0.11.16    |
+|    8.1.3     |    6.11.0    |   0.12.17    |   0.11.15    |
+|    8.1.2     |    6.10.3    |   0.12.16    |   0.11.14    |
+|    8.1.1     |    6.10.2    |   0.12.15    |   0.11.13    |
+|    8.1.0     |    6.10.1    |   0.12.14    |   0.11.12    |
+|    8.0.0     |    6.10.0    |   0.12.13    |   0.11.11    |
+|    7.10.1    |    6.9.5     |   0.12.12    |   0.11.10    |
+|    7.10.0    |    6.9.4     |   0.12.11    |    0.11.9    |
+|    7.9.0     |    6.9.3     |   0.12.10    |    0.11.8    |
+|    7.8.0     |    6.9.2     |    0.12.9    |    0.11.7    |
+|    7.7.4     |    6.9.1     |    0.12.8    |    0.11.6    |
+|    7.7.3     |    6.9.0     |    0.12.7    |    0.11.5    |
+|    7.7.2     |    4.8.4     |    0.12.6    |    0.11.4    |
+|    7.7.1     |    4.8.3     |    0.12.5    |    0.11.3    |
+|    7.7.0     |    4.8.2     |    0.12.4    |    0.11.2    |
+|    7.6.0     |    4.8.1     |    0.12.3    |    0.11.1    |
+|    7.5.0     |    4.8.0     |    0.12.2    |    0.11.0    |
+|    7.4.0     |    4.7.3     |    0.12.1    |    0.9.12    |
+|    7.3.0     |    4.7.2     |    0.12.0    |    0.9.11    |
+|    7.2.1     |    4.7.1     |   0.10.48    |    0.9.10    |
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.卸载指定版本的 Node.js：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm uninstall &amp;lt;version&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm uninstall 6.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Uninstalling node v6.1.0... done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再用 nvm list 查看所有 Node 版本，已经没有 6.1.0 版本了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; 8.1.4
+*6.2.0 (Currently using 64-bit executable)
+ 4.6.0
+ 4.4.7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果现在当前正在使用的版本会怎样呢？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvm uninstall 6.2.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果如下，报错了，没法删除正在使用的版本。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Uninstalling node v6.2.0...Error removing node v6.2.0
+Manually remove C:\Users\Administrator\AppData\Roaming\nvm\v6.2.0.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再用 nvm list 查看所有 Node 版本，发现没有 删除掉 6.2.0 版本，但是没有指定的正在使用的版本了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;8.1.4
+6.2.0
+4.6.0
+4.4.7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;试试用 node -v 查看，报错：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&#39;node&#39; 不是内部或外部命令，也不是可运行的程序或批处理文件。
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>TypeScript 入门</title>
@@ -2186,141 +2343,6 @@ keyword.on(&#39;input propertychange&#39;, function(event) {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class=&#34;demo demo7&#34;&gt;&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>如何用CSS代码实现网页设计中的菱形图片</title>
-      <link>http://www.wangxingfeng.com/diamond-picture.html</link>
-      <pubDate>Mon, 01 May 2017 22:00:03 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/diamond-picture.html</guid>
-      <description>
-
-&lt;p&gt;在网页设计中，我们常常能够看到被裁切成菱形的图片。&lt;/p&gt;
-
-&lt;p&gt;传统的实现方式是预先在图像处理软件中把图片裁切好，当然这种方式的可维护性差。&lt;/p&gt;
-
-&lt;p&gt;而现在，随着CSS的新特性的支持度越来越好了，CSS也越来越强大，我们已经可以用CSS代码来实现菱形图片了。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-基于tranform的实现方法&#34;&gt;1. 基于tranform的实现方法&lt;/h2&gt;
-
-&lt;p&gt;原图
-&lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; style=&#34;display:block; max-width: 200px; margin:0 auto&#34;&gt;
-用一个&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; 把图片包裹起来，对这个容器&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;应用&lt;code&gt;transform:rotate(45deg)&lt;/code&gt;, 进行旋转45度，我们得到如下的效果：图片应该也会跟着旋转了&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;div{
-    width:200px;
-    transform: rotate(45deg);
-    overflow: hidden;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;diamond-pic&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; &gt;
-&lt;/div&gt;
-
-&lt;p&gt;如果我们对里面的图片进行反向旋转45度，那么图片的旋转就会抵消掉。看看效果。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
-    max-width:100%;
-    transform: rotate(-45deg);
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;diamond-pic&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34;&gt;
-&lt;/div&gt;
-
-&lt;p&gt;我们得到了一个裁成&lt;code&gt;八边形&lt;/code&gt;的图片。&lt;/p&gt;
-
-&lt;p&gt;问题出在哪里呢？我给外面的&lt;code&gt;div&lt;/code&gt;加一个边框，这样就容易看出来了。&lt;/p&gt;
-
-&lt;div class=&#34;diamond-pic&#34; style=&#34;border:1px solid red&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34;&gt;
-&lt;/div&gt;
-
-&lt;p&gt;问题出在了这里图片的宽度是与容器&lt;code&gt;div&lt;/code&gt;的&lt;code&gt;边长&lt;/code&gt;相等，其实我们应该让图片的宽度与&lt;code&gt;对角线&lt;/code&gt;相等。&lt;/p&gt;
-
-&lt;p&gt;运用勾股定理，可以计算出图片的宽度应该是√2倍，我们取1.42倍。&lt;/p&gt;
-
-&lt;p&gt;如果通过&lt;code&gt;width属性&lt;/code&gt;设置来放大图片,会得到如下的效果。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
-    max-width:142%;
-    transform: rotate(-45deg);
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;diamond-pic&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;max-width:142%;&#34;&gt;
-&lt;/div&gt;
-
-&lt;p&gt;因为是以图片的&lt;code&gt;左上角&lt;/code&gt;为原点进行放大的。我们还需要在通过设置&lt;code&gt;margin:-45px;&lt;/code&gt;才能得到菱形图片。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
-    max-width:142%;
-    transform: rotate(-45deg);
-    margin:-45px;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;diamond-pic&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;max-width:142%; margin:-45px&#34;&gt;
-&lt;/div&gt;
-
-&lt;p&gt;当然，我们可以通过&lt;code&gt;transform:scale(1.42)&lt;/code&gt;来放大图片1.42倍。&lt;code&gt;scale()&lt;/code&gt;是以图片的&lt;code&gt;中心点&lt;/code&gt;进行缩放的，这样我们就不用额外地设置&lt;code&gt;margin&lt;/code&gt;值了。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
-    max-width:100%;
-    transform: scale(1.42) rotate(-45deg);
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;diamond-pic&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;transform: rotate(-45deg) scale(1.42);&#34;&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&#34;2-基于裁切路径clip-path方法&#34;&gt;2. 基于裁切路径clip-path方法&lt;/h2&gt;
-
-&lt;p&gt;第一种方法虽然可以奏效，但存在一些缺点：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;1.需要一层额外的HTML标签；
-2.代码不够直观；
-3.如果处理的图片不是正方形，将无法得到一个菱形图片，如下图所示：
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;diamond-pic&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adam-sleeping.jpg&#34; class=&#34;diamond-img&#34; style=&#34;transform: rotate(-45deg) scale(1.42);&#34;&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code&gt;SVG&lt;/code&gt;中，有个名叫&lt;code&gt;&amp;lt;clipPath&amp;gt;&lt;/code&gt;的元素，专门用来定义剪裁路径。其实CSS中也有一个类似的属性，即&lt;code&gt;clip-path属性&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;clip-path&lt;/code&gt;可以把元素裁切成我们想要的任何形状。我们通过&lt;code&gt;polygon()函数&lt;/code&gt;来指定一个菱形，参数是一系列用&lt;code&gt;逗号&lt;/code&gt;分隔的&lt;code&gt;坐标点&lt;/code&gt;。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;img{
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/adam-sleeping.jpg&#34; class=&#34;diamon-pic-clip-path&#34; &gt;&lt;/p&gt;
-
-&lt;p&gt;如上图所示，这个方法可以很好的适应非正方形的图片。&lt;/p&gt;
-
-&lt;p&gt;另外，因为&lt;code&gt;clip-path&lt;/code&gt;属性可以参与动画，我们还可以给这个图片动画过渡效果。比如，当我们的鼠标悬停到图片上时，菱形图片平滑地扩展为完整的原图。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;img{
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-    transition: 1s clip-path;
-}
-img:hover{
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/adam-sleeping.jpg&#34; class=&#34;diamon-pic-clip-path-2&#34; &gt;&lt;/p&gt;
-
-&lt;p&gt;注意，除了谷歌浏览器，其他浏览器对这个clip-path属性的支持度都还不是很好。&lt;/p&gt;
 </description>
     </item>
     

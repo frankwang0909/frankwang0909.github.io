@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title> window 系统的 Node 版本管理工具 nvm-windows &middot; Frank Wang&#39;s Coding World</title>
+    <meta name="generator" content="Hugo 0.19" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="author" content="Frank Wang">
+    
+
+    
+      <meta name="keywords" content="[Node 版本管理工具 nvm windows]">
+    
+
+    
+      <meta name="description" content=" window 系统的 Node 版本管理工具 nvm-windows">
+    
+
+    
+
+    <link rel="canonical" href="http://www.wangxingfeng.com/nvm_for_window.html"/>
+    <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
+    <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/monokai.min.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.min.css">
+    
+
+    <meta property="og:title" content=" window 系统的 Node 版本管理工具 nvm-windows" />
+<meta property="og:description" content=" window 系统的 Node 版本管理工具 nvm-windows" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.wangxingfeng.com/nvm_for_window.html" />
+
+
+
+<meta property="article:published_time" content="2017-07-20T07:54:41&#43;08:00"/>
+<meta property="article:modified_time" content="2017-07-20T07:54:41&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content=" window 系统的 Node 版本管理工具 nvm-windows">
+<meta itemprop="description" content=" window 系统的 Node 版本管理工具 nvm-windows">
+
+
+<meta itemprop="dateModified" content="2017-07-20T07:54:41&#43;08:00" />
+<meta itemprop="wordCount" content="365">
+
+
+
+<meta itemprop="keywords" content="database,english,frontend,node,python,tools,angular2,bug,cdn,clipboard,css,css3,git,github,gitment,hugo,javascript,markdown,mysql,node,nvm,python,regexp,seo,shadowsocks,sublime-text,tab切换,typescript,useragent,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content=" window 系统的 Node 版本管理工具 nvm-windows"/>
+<meta name="twitter:title" content=" window 系统的 Node 版本管理工具 nvm-windows"/>
+<meta name="twitter:description" content=" window 系统的 Node 版本管理工具 nvm-windows"/>
+<meta name="twitter:site" content="@frankwang0909"/>
+
+    <meta name="baidu-site-verification" content="WSqfBuzd3t" />
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7d0fc5a9b2d70433d9b1dd477606dc3c";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-101812896-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    
+
+    
+    <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://www.wangxingfeng.com/" id="logo">
+          
+          <i class="logo" style="background-image: url('http://www.wangxingfeng.com/css/images/logo.png')"></i>
+          
+          <span class="site-title">Frank Wang&#39;s Coding World</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend">前端</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node">Node</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python">Python</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools">工具</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/english">英语</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://www.wangxingfeng.com/css/images/avatar.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="搜索">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend">前端</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node">Node</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python">Python</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/database">Database</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools">工具</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/english">英语</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.jpg">
+      <h2 id="name">Frank Wang</h2>
+      <h3 id="title">Blogger - Programmer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>China, Shenzhen</span>
+      
+          <a id="follow" href="https://github.com/frankwang0909" target="_blank">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        39
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          29
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/frankwang0909" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/frankwang0909" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="http://www.wangxingfeng.com/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/nvm_for_window.html">
+    <h1 class="article-title" itemprop="name">
+         window 系统的 Node 版本管理工具 nvm-windows
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-07-20 07:54:41 &#43;0800 CST" itemprop="datePublished">2017-07-20</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">Node</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/node">Node</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/nvm">nvm</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<h2 id="简介">简介:</h2>
+
+<p>nvm-windows 是一款用 Go 语言写的 用于 window 操作系统的 Node 版本管理工具。<a href="https://github.com/coreybutler/nvm-windows">GitHub 主页</a></p>
+
+<h2 id="下载安装">下载安装：</h2>
+
+<p><a href="https://github.com/coreybutler/nvm-windows/releases">下载地址：https://github.com/coreybutler/nvm-windows/releases</a></p>
+
+<h2 id="常用命令">常用命令：</h2>
+
+<p>1.安装指定版本的 Node：</p>
+
+<pre><code>nvm install &lt;version&gt;
+</code></pre>
+
+<p>示例：</p>
+
+<pre><code>nvm install 6.2.0
+</code></pre>
+
+<p>命令行出现如下内容，表示正在下载安装 6.2.0 版本的 Node.js， 安装好之后，下载并安装对应的包管理工具 npm。</p>
+
+<pre><code>Downloading node.js version 6.2.0 (64-bit)...
+Complete                                                         
+Creating C:\Users\Administrator\AppData\Roaming\nvm\temp                                                          
+
+Downloading npm version 3.8.9... 
+Complete                        
+Installing npm v3.8.9...                                                                                          
+Installation complete. 
+If you want to use this version, type nvm use 6.2.0                                
+</code></pre>
+
+<p>2.使用指定版本的 Node：</p>
+
+<pre><code>nvm use &lt;version&gt;
+</code></pre>
+
+<p>示例：</p>
+
+<pre><code>nvm use 6.2.0
+</code></pre>
+
+<p>指定后，会显示如下内容：</p>
+
+<pre><code>Now using node v6.2.0 (64-bit)
+</code></pre>
+
+<p>可以查看当前使用的 Node 版本号和 npm 版本号：</p>
+
+<pre><code>node -v
+
+npm -v
+</code></pre>
+
+<p>3.查看安装的所有 Node 版本</p>
+
+<pre><code>nvm list 
+</code></pre>
+
+<p>结果如下所示，前面带有 * 号的表示当前使用的 Node 版本：</p>
+
+<pre><code> 8.1.4
+*6.2.0 (Currently using 64-bit executable)
+ 6.1.0
+ 4.6.0
+ 4.4.7
+</code></pre>
+
+<p>如果加一个参数 available， 列出所有可下载的 node.js 版本：</p>
+
+<pre><code>nvm list available
+</code></pre>
+
+<p>结果如下所示：</p>
+
+<pre><code>|   CURRENT    |     LTS      |  OLD STABLE  | OLD UNSTABLE |
+|--------------|--------------|--------------|--------------|
+|    8.1.4     |    6.11.1    |   0.12.18    |   0.11.16    |
+|    8.1.3     |    6.11.0    |   0.12.17    |   0.11.15    |
+|    8.1.2     |    6.10.3    |   0.12.16    |   0.11.14    |
+|    8.1.1     |    6.10.2    |   0.12.15    |   0.11.13    |
+|    8.1.0     |    6.10.1    |   0.12.14    |   0.11.12    |
+|    8.0.0     |    6.10.0    |   0.12.13    |   0.11.11    |
+|    7.10.1    |    6.9.5     |   0.12.12    |   0.11.10    |
+|    7.10.0    |    6.9.4     |   0.12.11    |    0.11.9    |
+|    7.9.0     |    6.9.3     |   0.12.10    |    0.11.8    |
+|    7.8.0     |    6.9.2     |    0.12.9    |    0.11.7    |
+|    7.7.4     |    6.9.1     |    0.12.8    |    0.11.6    |
+|    7.7.3     |    6.9.0     |    0.12.7    |    0.11.5    |
+|    7.7.2     |    4.8.4     |    0.12.6    |    0.11.4    |
+|    7.7.1     |    4.8.3     |    0.12.5    |    0.11.3    |
+|    7.7.0     |    4.8.2     |    0.12.4    |    0.11.2    |
+|    7.6.0     |    4.8.1     |    0.12.3    |    0.11.1    |
+|    7.5.0     |    4.8.0     |    0.12.2    |    0.11.0    |
+|    7.4.0     |    4.7.3     |    0.12.1    |    0.9.12    |
+|    7.3.0     |    4.7.2     |    0.12.0    |    0.9.11    |
+|    7.2.1     |    4.7.1     |   0.10.48    |    0.9.10    |
+</code></pre>
+
+<p>4.卸载指定版本的 Node.js：</p>
+
+<pre><code>nvm uninstall &lt;version&gt;
+</code></pre>
+
+<p>示例：</p>
+
+<pre><code>nvm uninstall 6.1.0
+</code></pre>
+
+<p>结果如下：</p>
+
+<pre><code>Uninstalling node v6.1.0... done
+</code></pre>
+
+<p>再用 nvm list 查看所有 Node 版本，已经没有 6.1.0 版本了。</p>
+
+<pre><code> 8.1.4
+*6.2.0 (Currently using 64-bit executable)
+ 4.6.0
+ 4.4.7
+</code></pre>
+
+<p>如果现在当前正在使用的版本会怎样呢？</p>
+
+<pre><code>nvm uninstall 6.2.0
+</code></pre>
+
+<p>结果如下，报错了，没法删除正在使用的版本。</p>
+
+<pre><code>Uninstalling node v6.2.0...Error removing node v6.2.0
+Manually remove C:\Users\Administrator\AppData\Roaming\nvm\v6.2.0.
+</code></pre>
+
+<p>再用 nvm list 查看所有 Node 版本，发现没有 删除掉 6.2.0 版本，但是没有指定的正在使用的版本了。</p>
+
+<pre><code>8.1.4
+6.2.0
+4.6.0
+4.4.7
+</code></pre>
+
+<p>试试用 node -v 查看，报错：</p>
+
+<pre><code>'node' 不是内部或外部命令，也不是可运行的程序或批处理文件。
+</code></pre>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/nvm_for_window.html" data-id="44f57fef4391be86868bd49338b2140c" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://www.wangxingfeng.com/typescript_basic.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          &lt;&lt; 上一篇
+      </strong>
+      <div class="article-nav-title">TypeScript 入门</div>
+    </a>
+    
+
+    
+</nav>
+
+
+    </article>
+    <div id="comments"></div>
+</section>
+<script type="text/javascript">
+    var gitment = new Gitment({
+      owner: 'frankwang0909',
+      repo: 'frankwang0909.github.io',
+      oauth: {
+        client_id: '877980759850b2ab1476',
+        client_secret: 'e6cc4fba1c3010627ed3c87eab2519c7efb5907a',
+      },
+    });
+    gitment.render('comments');
+</script>
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        近期文章
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/nvm_for_window.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">
+                        Node
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/nvm_for_window.html" class="title"> window 系统的 Node 版本管理工具 nvm-windows</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-20 07:54:41 &#43;0800 CST" itemprop="datePublished">2017-07-20</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/typescript_basic.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/typescript_basic.html" class="title">TypeScript 入门</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-16 21:43:35 &#43;0800 CST" itemprop="datePublished">2017-07-16</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/angular2_basic.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/angular2_basic.html" class="title">快速入门 Angular2 核心概念</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-15 17:13:18 &#43;0800 CST" itemprop="datePublished">2017-07-15</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/javascript_number.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/javascript_number.html" class="title">JavaScript 的 number 需要注意的一些特性</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-09 21:45:51 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/ss.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">
+                        tools
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/ss.html" class="title">撸了Google Cloud，自建了个梯子</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-09 11:37:11 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+	<iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=12&l=ez&f=ifr&f=ifr" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;max-width:800px;max-height:600px;"></iframe>
+	<div style="margin-top: 10px;">
+		 <iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01ET3FO86&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;margin-right: 10px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+	 	<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01MYX8XG1&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+	</div>
+	<div style="margin-top: 10px;">
+		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01A18WWAG&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;margin-right: 10px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01MQIE77V&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+	</div>
+	<div style="margin-top: 20px">
+      
+    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=136JQWBMQZDXMC5PEM82&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;margin-right:10px" frameborder="0"></iframe>
+    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=06DR0F7H0WPRDEY0X6G2&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
+  </div>
+  <div class="qcloud" style="margin:10px auto">
+    <a href="http://www.qcloud.com/redirect.php?redirect=1001&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云服务器安全可靠高性能，多种配置供您选择" target="_blank">
+      <img src="/images/120x140.jpg" alt="腾讯云服务器安全可靠高性能，多种配置供您选择">
+    </a>
+    <a href="http://www.qcloud.com/redirect.php?redirect=1003&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题" target="_blank" style="margin-left: 10px">
+      <img src="/images/云数据库-120X240.jpg" alt="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题">
+    </a>
+  </div>
+	<div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      <a href="//www.wangxingfeng.com">Frank Wang</a>. Powered by <a href="//gohugo.io">Hugo</a>.
+    
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261787467'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261787467%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+
+</footer>
+
+
+<script src="http://www.wangxingfeng.com/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://www.wangxingfeng.com/js/script.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

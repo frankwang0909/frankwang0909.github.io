@@ -38,7 +38,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-07-16T21:43:35&#43;08:00"/>
+<meta property="og:updated_time" content="2017-07-20T07:54:41&#43;08:00"/>
 
 
 
@@ -256,12 +256,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        38
+        39
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          27
+          29
         
         <span>
             Tags
@@ -338,6 +338,154 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/nvm_for_window.html">
+    <h1 class="article-title" itemprop="name">
+         window 系统的 Node 版本管理工具 nvm-windows
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-07-20 07:54:41 &#43;0800 CST" itemprop="datePublished">2017-07-20</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">Node</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/node">Node</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/nvm">nvm</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    简介: nvm-windows 是一款用 Go 语言写的 用于 window 操作系统的 Node 版本管理工具。GitHub 主页
+下载安装： 下载地址：<a href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a>
+常用命令： 1.安装指定版本的 Node：
+nvm install &lt;version&gt;  示例：
+nvm install 6.2.0  命令行出现如下内容，表示正在下载安装 6.2.0 版本的 Node.js， 安装好之后，下载并安装对应的包管理工具 npm。
+Downloading node.js version 6.2.0 (64-bit)&hellip; Complete Creating C:\Users\Administrator\AppData\Roaming\nvm\temp Downloading npm version 3.8.9&hellip; Complete Installing npm v3.8.9&hellip; Installation complete. If you want to use this version, type nvm use 6.2.0  2.使用指定版本的 Node：
+nvm use &lt;version&gt;  示例：
+nvm use 6.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/nvm_for_window.html">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/nvm_for_window.html" data-id="44f57fef4391be86868bd49338b2140c" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1628,149 +1776,6 @@ CREATE DATABASE IF NOT EXISTS test2; Query OK, 1 row affected, 1 warning (0.00 s
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/mysql-error-1045.html">
-    <h1 class="article-title" itemprop="name">
-        Win7系统MySQL报错ERROR1045及其处理方法
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-06-03 21:52:09 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/mysql">MySQL</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    最近自学数据库，在Win7系统下使用MySQL遇到了一些报错，做个记录，方便以后查阅。
-MySQL官网下载的MySQL 5.5.56的社区版，安装正常。当我在命令行输入mysql -u root -p 出现了报错信息，无法连接数据库。
-C:\Windows\system32&gt; mysql -u root -p Enter password: ERROR 1045 (28000): Access denied for user &lsquo;root&rsquo;@&lsquo;localhost&rsquo; (using password: YES)  网上找到的解决方法如下：
-1.编辑mysql配置文件my.ini，在[mysqld]这个条目下加入
-skip-grant-tables  2.保存my.ini退出后重启mysql。
-命令行输入 net stop mysql 停止MySQL服务；
-命令行输入 net start mysql 重启MySQL服务；
-3.重置密码： 现在在命令行输入mysql -u root -p就可以不用密码登录了，出现password：的时候直接回车可以进入，不会出现ERROR 1045 (28000)。
-1）进入mysql数据库：输入use mysql, 会出现Database changed的提示信息。
-mysql&gt; use mysql; Database changed  2）给root用户设置新密码：输入update user set password=password(&quot;新密码&quot;) where user=&quot;root&quot;;
-mysql&gt; update user set password=password(&quot;新密码&quot;) where user=&quot;root&quot;; Query OK, 1 rows affected (0.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/mysql-error-1045.html">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/mysql-error-1045.html" data-id="132a5417b4827e607f7c212845f1e64a" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1794,6 +1799,32 @@ mysql&gt; update user set password=password(&quot;新密码&quot;) where user=&q
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/nvm_for_window.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">
+                        Node
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/nvm_for_window.html" class="title"> window 系统的 Node 版本管理工具 nvm-windows</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-20 07:54:41 &#43;0800 CST" itemprop="datePublished">2017-07-20</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1895,32 +1926,6 @@ mysql&gt; update user set password=password(&quot;新密码&quot;) where user=&q
                     <p class="item-title"><a href="http://www.wangxingfeng.com/ss.html" class="title">撸了Google Cloud，自建了个梯子</a></p>
                     <p class="item-date">
                         <time datetime="2017-07-09 11:37:11 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/mysql_notes_3.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">
-                        Database
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/mysql_notes_3.html" class="title">MySQL学习笔记：修改数据表的常用命令</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-06-27 22:57:29 &#43;0800 CST" itemprop="datePublished">2017-06-27</time>
                     </p>
                 </div>
             </li>
