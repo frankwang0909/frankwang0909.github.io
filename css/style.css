@@ -1,6 +1,6 @@
 
 html{
-  font-size: 20px;
+  font-size: 20px!important;
 }
 body {
   width: 100%;
@@ -272,17 +272,17 @@ code {
 .article-entry h2,
 .widget h2 {
   font-size: 0.95rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 .article-entry h3,
 .widget h3 {
   font-size: 0.85rem;
-  margin-top: 0.4rem;
+  margin-top: 0.8rem;
 }
 .article-entry h4,
 .widget h4 {
   font-size: 0.8rem;
-  margin-top: 0.4rem;
+  margin-top: 0.6rem;
 }
 .article-entry h5,
 .widget h5 {
@@ -958,7 +958,7 @@ a.article-title:hover {
 .article-entry h5,
 .article-entry h6 {
   line-height: 1.3em;
-  margin: 0.8em 0;
+  // margin: 0.8em 0;
 }
 .article-entry a {
   color: #38b7ea;
@@ -1799,6 +1799,10 @@ ol.toc {
 }
 .widget-title {
   margin-bottom: 0;
+}
+h3.widget-title{
+  font-weight: bold;
+  font-size: 0.85rem;
 }
 .widget {
   padding: 0.75rem  0.25rem;

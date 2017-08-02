@@ -7,8 +7,303 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
-    <lastBuildDate>Thu, 20 Jul 2017 07:54:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 02 Aug 2017 21:23:27 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>在 CentOS 上搭建 WordPress 博客</title>
+      <link>http://www.wangxingfeng.com/centos_wordpress.html</link>
+      <pubDate>Wed, 02 Aug 2017 21:23:27 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/centos_wordpress.html</guid>
+      <description>
+
+&lt;p&gt;在资金预算或人力资源有限的情况下， &lt;code&gt;WordPress&lt;/code&gt; 仍然是快速地搭建博客或者企业网站的不二选择。&lt;/p&gt;
+
+&lt;p&gt;最近，边学边干地使用 &lt;code&gt;WordPres&lt;/code&gt;s 给兄弟公司搭建一个简单的官网。代码在本地调试好了。今天学习了如何学在服务器上发布这个程序。&lt;/p&gt;
+
+&lt;p&gt;备注：服务器是腾讯上的云主机， 操作系统是 &lt;code&gt;CentOS&lt;/code&gt; 6.8 64 位的。&lt;/p&gt;
+
+&lt;h2 id=&#34;一-准备-lnmp-环境&#34;&gt;一、准备 &lt;code&gt;LNMP&lt;/code&gt; 环境&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;LNMP&lt;/code&gt; 是 &lt;code&gt;Linux、Nginx、MySQL 和 PHP&lt;/code&gt; 的缩写，是 &lt;code&gt;WordPress&lt;/code&gt;博客系统依赖的基础运行环境。我们先来准备 LNMP 环境。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-安装-nginx&#34;&gt;1. 安装 &lt;code&gt;Nginx&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;使用 &lt;code&gt;yum&lt;/code&gt; 安装 &lt;code&gt;Nginx&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install nginx -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改 &lt;code&gt;/etc/nginx/conf.d/default.conf&lt;/code&gt;，去除对 &lt;code&gt;IPv6&lt;/code&gt; 地址的监听（&lt;code&gt;CentOS 6&lt;/code&gt; 不支持 IPv6，需要取消对 IPv6 地址的监听，否则 &lt;code&gt;Nginx&lt;/code&gt; 不能成功启动），可参考下面的示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+    listen       80 default_server;
+    # listen       [::]:80 default_server;
+    server_name  _;
+    root         /usr/share/nginx/html;
+
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+
+    location / {
+    }
+
+    error_page 404 /404.html;
+        location = /40x.html {
+    }
+
+    error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改完成后，启动 &lt;code&gt;Nginx&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此时，可访问云主机的外网 HTTP 服务来确认是否已经安装成功。&lt;/p&gt;
+
+&lt;p&gt;将 &lt;code&gt;Nginx&lt;/code&gt; 设置为&lt;code&gt;开机自动启动&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chkconfig nginx on
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;2-安装-mysql&#34;&gt;2.安装 &lt;code&gt;MySQL&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;使用 &lt;code&gt;yum&lt;/code&gt; 安装 &lt;code&gt;MySQL&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install mysql-server -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装完成后，启动 &lt;code&gt;MySQL&lt;/code&gt; 服务：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;service mysqld restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;设置 &lt;code&gt;MySQL&lt;/code&gt; 账户 &lt;code&gt;root&lt;/code&gt; 密码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; /usr/bin/mysqladmin -u root password &#39;yourPassword4WordPress&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将 &lt;code&gt;MySQ&lt;/code&gt;L 设置为&lt;code&gt;开机自动启动&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chkconfig mysqld on
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-安装-php&#34;&gt;3.安装 &lt;code&gt;PHP&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;使用 &lt;code&gt;yum&lt;/code&gt; 安装 &lt;code&gt;PHP&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install php-fpm php-mysql -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;（CentOs 6 默认已经安装了 PHP-FPM 及 PHP-MYSQL，上述命令执行的可能会提示已经安装。）&lt;/p&gt;
+
+&lt;p&gt;安装之后，启动 &lt;code&gt;PHP-FPM&lt;/code&gt; 进程：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;service php-fpm start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;启动之后，可以使用下面的命令查看 &lt;code&gt;PHP-FPM&lt;/code&gt; 进程监听哪个端口 （PHP-FPM 默认监听 9000 端口）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;netstat -nlpt | grep php-fpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;把 &lt;code&gt;PHP-FPM&lt;/code&gt; 也设置成&lt;code&gt;开机自动启动&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chkconfig php-fpm on
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;二-安装并配置-wordpress&#34;&gt;二、安装并配置 &lt;code&gt;WordPress&lt;/code&gt;&lt;/h2&gt;
+
+&lt;h3 id=&#34;2-1安装-wordpres-s&#34;&gt;2.1安装 &lt;code&gt;WordPres&lt;/code&gt;s&lt;/h3&gt;
+
+&lt;p&gt;配置好 &lt;code&gt;LNMP&lt;/code&gt; 环境后，继续使用 &lt;code&gt;yum&lt;/code&gt; 来安装 &lt;code&gt;WordPress&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install wordpress -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装完成后，就可以在 &lt;code&gt;/usr/share/wordpress&lt;/code&gt; 看到 &lt;code&gt;WordPress&lt;/code&gt; 的源代码了。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-2配置-数据库&#34;&gt;2.2配置&lt;code&gt;数据库&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;配进入 &lt;code&gt;MySQL&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql -uroot --password=&#39;yourPassword4WordPress&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为 &lt;code&gt;WordPress&lt;/code&gt; 创建一个数据库：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE DATABASE wordpress;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;MySQL&lt;/code&gt; 部分设置完了，我们退出 &lt;code&gt;MySQL&lt;/code&gt; 环境：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;exit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;把上述的 &lt;code&gt;DB&lt;/code&gt; 配置同步到 &lt;code&gt;WordPress&lt;/code&gt; 的&lt;code&gt;配置文件&lt;/code&gt;中，可参考下面的配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+/**
+ * The base configuration for WordPress
+ *
+ * The wp-config.php creation script uses this file during the
+ * installation. You don&#39;t have to use the web site, you can
+ * copy this file to &amp;quot;wp-config.php&amp;quot; and fill in the values.
+ *
+ * This file contains the following configurations:
+ *
+ * * MySQL settings
+ * * Secret keys
+ * * Database table prefix
+ * * ABSPATH
+ *
+ * @link https://codex.wordpress.org/Editing_wp-config.php
+ *
+ * @package WordPress
+ */
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define(&#39;DB_NAME&#39;, &#39;wordpress&#39;);
+
+/** MySQL database username */
+define(&#39;DB_USER&#39;, &#39;root&#39;);
+
+/** MySQL database password */
+define(&#39;DB_PASSWORD&#39;, &#39;yourPassword4WordPress&#39;);
+
+/** MySQL hostname */
+define(&#39;DB_HOST&#39;, &#39;localhost&#39;);
+
+/** Database Charset to use in creating database tables. */
+define(&#39;DB_CHARSET&#39;, &#39;utf8&#39;);
+
+/** The Database Collate type. Don&#39;t change this if in doubt. */
+define(&#39;DB_COLLATE&#39;, &#39;&#39;);
+
+/**#@+
+ * Authentication Unique Keys and Salts.
+ *
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ *
+ * @since 2.6.0
+ */
+define(&#39;AUTH_KEY&#39;,         &#39;put your unique phrase here&#39;);
+define(&#39;SECURE_AUTH_KEY&#39;,  &#39;put your unique phrase here&#39;);
+define(&#39;LOGGED_IN_KEY&#39;,    &#39;put your unique phrase here&#39;);
+define(&#39;NONCE_KEY&#39;,        &#39;put your unique phrase here&#39;);
+define(&#39;AUTH_SALT&#39;,        &#39;put your unique phrase here&#39;);
+define(&#39;SECURE_AUTH_SALT&#39;, &#39;put your unique phrase here&#39;);
+define(&#39;LOGGED_IN_SALT&#39;,   &#39;put your unique phrase here&#39;);
+define(&#39;NONCE_SALT&#39;,       &#39;put your unique phrase here&#39;);
+
+/**#@-*/
+
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each
+ * a unique prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix  = &#39;wp_&#39;;
+
+/**
+ * See http://make.wordpress.org/core/2013/10/25/the-definitive-guide-to-disabling-auto-updates-in-wordpress-3-7
+ */
+
+/* Disable all file change, as RPM base installation are read-only */
+define(&#39;DISALLOW_FILE_MODS&#39;, true);
+
+/* Disable automatic updater, in case you want to allow
+   above FILE_MODS for plugins, themes, ... */
+define(&#39;AUTOMATIC_UPDATER_DISABLED&#39;, true);
+
+/* Core update is always disabled, WP_AUTO_UPDATE_CORE value is ignore */
+
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ *
+ * For information on other constants that can be used for debugging,
+ * visit the Codex.
+ *
+ * @link https://codex.wordpress.org/Debugging_in_WordPress
+ */
+define(&#39;WP_DEBUG&#39;, false);
+
+/* That&#39;s all, stop editing! Happy blogging. */
+
+/** Absolute path to the WordPress directory. */
+if ( !defined(&#39;ABSPATH&#39;) )
+    define(&#39;ABSPATH&#39;, &#39;/usr/share/wordpress&#39;);
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . &#39;wp-settings.php&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;2-3配置-nginx&#34;&gt;2.3配置 &lt;code&gt;Nginx&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;WordPress&lt;/code&gt; 已经安装完毕，我们配置&lt;code&gt;Nginx&lt;/code&gt; 把请求转发给 &lt;code&gt;PHP-FPM&lt;/code&gt; 来处理。&lt;/p&gt;
+
+&lt;p&gt;首先，重命名默认的配置文件（因为默认的 Server 监听 80 端口，与 WordPress 的服务端口冲突，将其重命名为 .bak 后缀以禁用默认配置）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/nginx/conf.d/
+
+mv default.conf defaut.conf.bak
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在 /etc/nginx/conf.d 创建 wordpress.conf 配置，参考下面的内容：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+    listen 80;
+    root /usr/share/wordpress;
+    location / {
+        index index.php index.html index.htm;
+        try_files $uri $uri/ /index.php index.php;
+    }
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    location ~ .php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;配置后，通知 &lt;code&gt;Nginx&lt;/code&gt; 进程重新加载：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nginx -s reload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;三-准备域名和解析&#34;&gt;三、准备域名和解析&lt;/h2&gt;
+
+&lt;p&gt;3.1域名注册&lt;/p&gt;
+
+&lt;p&gt;3.2域名解析&lt;/p&gt;
+
+&lt;p&gt;WordPress 博客已经部署完成。可以通过浏览器访问博客查看效果。&lt;/p&gt;
+
+&lt;p&gt;通过IP地址查看：&lt;/p&gt;
+
+&lt;p&gt;博客访问地址：&lt;code&gt;http://你的服务器公网ip地址/wp-admin/install.php&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;通过域名查看：&lt;/p&gt;
+
+&lt;p&gt;博客访问地址：&lt;code&gt;http://你的域名/wp-admin/install.php&lt;/code&gt;。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title> window 系统的 Node 版本管理工具 nvm-windows</title>
@@ -2185,164 +2480,6 @@ keyword.on(&#39;input propertychange&#39;, function(event) {
 &lt;div&gt;
     
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>CSS实现切角效果</title>
-      <link>http://www.wangxingfeng.com/bevel-corners.html</link>
-      <pubDate>Tue, 02 May 2017 22:52:17 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/bevel-corners.html</guid>
-      <description>
-
-&lt;p&gt;扁平化设计风格中，很流行斜面切角，即把元素的一个或多个角切成45度的缺口。大多数网页开发者倾向于使用背景图片来实现切角效果。但使用背景图片会增加额外的HTTP请求，增加网页加载的时间，难以修改和维护。实际上，CSS已经足够强大，可以提供纯CSS的解决方案，我们仅用CSS代码就能实现切角效果。&lt;/p&gt;
-
-&lt;h2 id=&#34;基于-css渐变-的切角效果&#34;&gt;基于&lt;code&gt;CSS渐变&lt;/code&gt;的切角效果&lt;/h2&gt;
-
-&lt;p&gt;如果你对CSS渐变不陌生的话，应该知道CSS渐变可以接受&lt;code&gt;一个角度&lt;/code&gt;作为方向，还可以设置百分比的色标的位置。当然，色标的位置也可以设置为绝对的长度值。
-&lt;style&gt;
-    .demo{
-        width:300px;
-        height: 200px;
-        margin:10px auto;
-    }
-    .demo1{
-        background: linear-gradient(-45deg, red, green);
-    }
-    .demo2{
-        background: linear-gradient(-45deg, red 20%, green 70%);
-    }
-    .demo3{
-        background: linear-gradient(-45deg, red 20%, green 0);
-    }
-    .demo4{
-        background: linear-gradient(-45deg, transparent 20%, green 0);
-    }
-    .demo5{
-        background: linear-gradient(-45deg, transparent 30px, green 0),
-                    linear-gradient(45deg, transparent 30px, red 0);
-    }
-    .demo6{
-        background: linear-gradient(-45deg, transparent 30px, green 0) right,
-                    linear-gradient(45deg, transparent 30px, red 0) left;
-        background-size:50% 100%;
-        background-repeat:no-repeat;
-    }
-    .demo7{
-        background: linear-gradient(135deg, transparent 30px, green 0) top left,
-            linear-gradient(-135deg, transparent 30px, red 0) top right,
-            linear-gradient(-45deg, transparent 30px, pink 0) bottom right,
-            linear-gradient(45deg, transparent 30px, blue 0) bottom left;
-        background-size: 50% 50%;
-        background-repeat: no-repeat;
-    }
-&lt;/style&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;1-普通的线性渐变&#34;&gt;1.普通的线性渐变&lt;/h3&gt;
-
-&lt;p&gt;我们设置-45度为渐变方向，即从右下角到左上角渐变的方向。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
-    background: linear-gradient(-45deg, red, green);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;渲染的效果是这样的：&lt;/p&gt;
-
-&lt;div class=&#34;demo demo1&#34;&gt;&lt;/div&gt;
-
-&lt;h3 id=&#34;2-设置色标值的线性渐变&#34;&gt;2.设置色标值的线性渐变&lt;/h3&gt;
-
-&lt;p&gt;我们给这两个色标设置一个百分比，看看会是什么效果。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
-    background: linear-gradient(-45deg, red 20%, green 70%);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上述代码的意思从右下角到左上角渐变的方向上，0~20%的区域是纯红色的，20%-70%的区域是渐变，70%-100%的区域是纯绿色的。
-&lt;div class=&#34;demo demo2&#34;&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;3-色标值为0的线性渐变&#34;&gt;3.色标值为0的线性渐变&lt;/h3&gt;
-
-&lt;p&gt;如果我们再稍微做些修改，把第二个色标值改为0，会是什么效果呢？&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
-    background: linear-gradient(-45deg, red 20%, green 0);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;demo demo3&#34;&gt;&lt;/div&gt;
-
-&lt;p&gt;是不是有点惊讶？！&lt;/p&gt;
-
-&lt;p&gt;我们得到的图形是没有渐变的。从右下角到左上角渐变的方向上，0-20%的区域是纯红色，20%-100%的区域就是纯绿色。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;注意：只要第二个色标值小于前一个色标值，那么浏览器就会默认解析为前一个色标值的。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上面的CSS代码等价于：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
-    background: linear-gradient(-45deg, red 20%, green 20%);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;4-切角效果&#34;&gt;4.切角效果&lt;/h3&gt;
-
-&lt;p&gt;将上面的代码再稍作改动，把右下角的&lt;code&gt;红色&lt;/code&gt;改成&lt;code&gt;透明色&lt;/code&gt;, 就能得到一个右下角的&lt;code&gt;切角效果&lt;/code&gt;。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
-    background: linear-gradient(-45deg, transparent 20%, green 0);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;demo demo4&#34;&gt;&lt;/div&gt;
-
-&lt;p&gt;其实，实际的网页开发中，我们更倾向于一个固定大小的切角。那么，我们可以把百分比改为绝对的长度值，比如把20%改为30px.&lt;/p&gt;
-
-&lt;h3 id=&#34;5-两个切角效果&#34;&gt;5.两个切角效果&lt;/h3&gt;
-
-&lt;p&gt;如果我们需要的切角不止一个，怎么实现呢？&lt;/p&gt;
-
-&lt;p&gt;是不是可以声明两条渐变规则呢？我们来试一下效果。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
-    background: linear-gradient(-45deg, transparent 30px, green 0),
-                linear-gradient(45deg, transparent 30px, red 0);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;demo demo5&#34;&gt;&lt;/div&gt;
-
-&lt;p&gt;尝试失败。因为默认情况下，两层渐变都会填满整个元素，导致相互重叠。这个时候，我们就需要用到&lt;code&gt;background-size&lt;/code&gt;和&lt;code&gt;background-repeat&lt;/code&gt;,让每层渐变分别占据整个元素的一半。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
-    background: linear-gradient(-45deg, transparent 30px, green 0) right,
-                linear-gradient(45deg, transparent 30px, red 0) left;
-    background-size:50% 100%;
-    background-repeat:no-repeat;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;demo demo6&#34;&gt;&lt;/div&gt;
-
-&lt;h3 id=&#34;6-四个切角效果&#34;&gt;6.四个切角效果&lt;/h3&gt;
-
-&lt;p&gt;看了两个切角的实现方式，想必你也能推断出实现&lt;code&gt;四个切角效果&lt;/code&gt;的思路了。我们需要&lt;code&gt;4层渐变&lt;/code&gt;，每层只占整个元素的&lt;code&gt;4分之一&lt;/code&gt;。下面的例子，我用了4种不同的颜色表示，这样可以更加直观的看出来每层渐变的大小和位置。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
-    background: linear-gradient(135deg, transparent 30px, green 0) top left,
-        linear-gradient(-135deg, transparent 30px, red 0) top right,
-        linear-gradient(-45deg, transparent 30px, pink 0) bottom right,
-        linear-gradient(45deg, transparent 30px, blue 0) bottom left;
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;demo demo7&#34;&gt;&lt;/div&gt;
 </description>
     </item>
     

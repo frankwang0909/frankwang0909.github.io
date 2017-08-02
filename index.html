@@ -38,7 +38,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-07-20T07:54:41&#43;08:00"/>
+<meta property="og:updated_time" content="2017-08-02T21:23:27&#43;08:00"/>
 
 
 
@@ -257,12 +257,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        39
+        40
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          29
+          30
         
         <span>
             Tags
@@ -339,6 +339,145 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/centos_wordpress.html">
+    <h1 class="article-title" itemprop="name">
+        在 CentOS 上搭建 WordPress 博客
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-08-02 21:23:27 &#43;0800 CST" itemprop="datePublished">2017-08-02</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/wordpress">WordPress</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    在资金预算或人力资源有限的情况下， WordPress 仍然是快速地搭建博客或者企业网站的不二选择。
+最近，边学边干地使用 WordPress 给兄弟公司搭建一个简单的官网。代码在本地调试好了。今天学习了如何学在服务器上发布这个程序。
+备注：服务器是腾讯上的云主机， 操作系统是 CentOS 6.8 64 位的。
+一、准备 LNMP 环境 LNMP 是 Linux、Nginx、MySQL 和 PHP 的缩写，是 WordPress博客系统依赖的基础运行环境。我们先来准备 LNMP 环境。
+1. 安装 Nginx 使用 yum 安装 Nginx：
+yum install nginx -y  修改 /etc/nginx/conf.d/default.conf，去除对 IPv6 地址的监听（CentOS 6 不支持 IPv6，需要取消对 IPv6 地址的监听，否则 Nginx 不能成功启动），可参考下面的示例：
+server { listen 80 default_server; # listen [::]:80 default_server; server_name _; root /usr/share/nginx/html; # Load configuration files for the default server block. include /etc/nginx/default.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="http://www.wangxingfeng.com/centos_wordpress.html">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/centos_wordpress.html" data-id="3bdf192304d8d8cfff1788c69f59bb20" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -1633,150 +1772,6 @@ close() 关闭连接
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/mysql-basic.html">
-    <h1 class="article-title" itemprop="name">
-        MySQL入门：语句规范及常用命令
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-06-03 22:38:52 &#43;0800 CST" itemprop="datePublished">2017-06-03</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/mysql">MySQL</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    一、MySQL语句规范： 1.关键字、函数名全部大写；
-2.数据库名、表名、字段名一律小写；
-3.SQL语句必须以分号结尾。
-二、MySQL常用命令： 1.显示当前数据库版本
-SELECT VERSION();  2.显示当前时间:
-SELECT NOW();  3.显示当前用户：
-SELECT USER();  4.创建数据库：
-语法为：
-CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name [DEFAULT] CHARACTER SET [=] charset_name;  输入如下语句，将会创建数据库test2:
-CREATE DATABASE test2;  如果数据库test2已经存在，将会报错：
-ERROR 1007 (HY000): Can&rsquo;t create database &lsquo;test2&rsquo;; database exists  如果创建数据库的时候加了 IF NOT EXISTS, 遇到已经存在的数据库，将不会报错，但会有一条WARNING.
-CREATE DATABASE IF NOT EXISTS test2; Query OK, 1 row affected, 1 warning (0.00 sec)  如果想要查看WARNING信息，只需输入SHOW WARNING;.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://www.wangxingfeng.com/mysql-basic.html">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/mysql-basic.html" data-id="59d99db316f6447defabb97770df135c" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1800,6 +1795,32 @@ CREATE DATABASE IF NOT EXISTS test2; Query OK, 1 row affected, 1 warning (0.00 s
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/centos_wordpress.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">
+                        tools
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/centos_wordpress.html" class="title">在 CentOS 上搭建 WordPress 博客</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-08-02 21:23:27 &#43;0800 CST" itemprop="datePublished">2017-08-02</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1901,32 +1922,6 @@ CREATE DATABASE IF NOT EXISTS test2; Query OK, 1 row affected, 1 warning (0.00 s
                     <p class="item-title"><a href="http://www.wangxingfeng.com/javascript_number.html" class="title">JavaScript 的 number 需要注意的一些特性</a></p>
                     <p class="item-date">
                         <time datetime="2017-07-09 21:45:51 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/ss.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">
-                        tools
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/ss.html" class="title">撸了Google Cloud，自建了个梯子</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-07-09 11:37:11 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
                     </p>
                 </div>
             </li>
