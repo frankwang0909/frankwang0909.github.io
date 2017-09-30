@@ -6,15 +6,14 @@
     <description>Recent content in Javascript on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>JavaScript 的 number 需要注意的一些特性</title>
-      <link>http://www.wangxingfeng.com/javascript_number.html</link>
+      <title>JavaScript 的 Number 需要注意的一些特性</title>
+      <link>http://www.wangxingfeng.com/js-number.html</link>
       <pubDate>Sun, 09 Jul 2017 21:45:51 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/javascript_number.html</guid>
+      <guid>http://www.wangxingfeng.com/js-number.html</guid>
       <description>
 
 &lt;h2 id=&#34;一-nan&#34;&gt;一、NaN：&lt;/h2&gt;
@@ -194,7 +193,7 @@ Number([5]) // 5
       <guid>http://www.wangxingfeng.com/safari-not-support.html</guid>
       <description>
 
-&lt;h2 id=&#34;一-苹果手机的safari浏览器不兼容new-date-日期转换格式的坑&#34;&gt;一、 苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑&lt;/h2&gt;
+&lt;h2 id=&#34;一-苹果手机的safari浏览器不兼容-new-date-日期转换格式的坑&#34;&gt;一、 苹果手机的Safari浏览器不兼容  new Date()日期转换格式的坑&lt;/h2&gt;
 
 &lt;p&gt;做Web项目的开发，&lt;code&gt;倒计时&lt;/code&gt;是个很常见的需求。我的需求是做一个演唱会门票开售时间的倒计时。&lt;/p&gt;
 
@@ -206,8 +205,7 @@ Number([5]) // 5
 
 &lt;p&gt;一开始我是这样写的：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-function preSellCount(){
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function preSellCount(){
     // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
     var preSt = $(&#39;#preSellTime&#39;).val() || $(&#39;#showTime&#39;).val();  
 
@@ -279,16 +277,14 @@ function preSellCount(){
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;用Chrome模拟各种手机调试都是一切正常。
-发布到本地测试环境，然后用自己的安卓手机访问，也一切正常。
-再用同事的苹果手机测试，倒计时不显示。WTF?&lt;/p&gt;
+&lt;p&gt;用 Chrome 模拟各种手机调试都是一切正常。发布到本地测试环境，然后用自己的安卓手机访问，也一切正常。再用同事的苹果手机测试，倒计时不显示。WTF?&lt;/p&gt;
 
 &lt;p&gt;想想哪里可能会有兼容性问题呢？&lt;/p&gt;
 
-&lt;p&gt;从头检查一遍代码。获取开售时间没有问题。
-取到的开售时间是一个字符串的日期，用&lt;code&gt;new Date(preSt).getTime()&lt;/code&gt;转换成毫秒数，有没有问题呢？Google一下&lt;code&gt;new Date() iOS&lt;/code&gt;。
-果然发现有不少相关文章提到iOS下日期转换问题。由于Safari在iOS5及以下对&lt;code&gt;YYYY-MM-DD&lt;/code&gt;格式的日期不支持，所以需要转换格式。
-最简单的是用&lt;code&gt;正则表达式&lt;/code&gt;把日期转换成 &lt;code&gt;YYYY/MM/DD&lt;/code&gt;格式。&lt;/p&gt;
+&lt;p&gt;从头检查一遍代码。获取开售时间没有问题。取到的开售时间是一个字符串的日期，用&lt;code&gt;new Date(preSt).getTime()&lt;/code&gt;转换成毫秒数，有没有问题呢？Google一下&lt;code&gt;new Date() iOS&lt;/code&gt;。
+果然发现有不少相关文章提到iOS下日期转换问题。由于Safari在iOS5及以下对&lt;code&gt;YYYY-MM-DD&lt;/code&gt;格式的日期不支持，所以需要转换格式。&lt;/p&gt;
+
+&lt;p&gt;最简单的是用&lt;code&gt;正则表达式&lt;/code&gt;把日期转换成 &lt;code&gt;YYYY/MM/DD&lt;/code&gt;格式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
     preSt.replace(/-/g, &amp;quot;/&amp;quot;)
@@ -368,12 +364,11 @@ function preSellCount(){
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;二-苹果手机的safari浏览器不支持-keydown-keypress-keyup-change等事件的坑&#34;&gt;二、苹果手机的Safari浏览器不支持 keydown, keypress, keyup, change等事件的坑。&lt;/h2&gt;
+&lt;h2 id=&#34;二-苹果手机的safari浏览器不支持-keydown-keypress-keyup-change等事件的坑&#34;&gt;二、苹果手机的Safari浏览器不支持  keydown, keypress, keyup, change等事件的坑。&lt;/h2&gt;
 
 &lt;p&gt;需求:在输入框中输入内容时，输入框后边显示清除按钮，点击可以清除输入框中的所有内容&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-var keyword = $(&amp;quot;#search-keyword&amp;quot;);
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var keyword = $(&amp;quot;#search-keyword&amp;quot;);
 var clear = $(&#39;.clear&#39;);
 
 keyword.on(&#39;keyup&#39;, function(event) {
@@ -391,10 +386,9 @@ keyword.on(&#39;keyup&#39;, function(event) {
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;但是在iOS的Safari中, keydown、keypress、 keyup、change等事件都无效，考虑监听input和propertychange事件作为代替。&lt;/p&gt;
+&lt;p&gt;但是在 iOS 的 Safari 中, keydown、keypress、 keyup、change等事件都无效，考虑监听 input 和 propertychange 事件作为代替。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-var keyword = $(&amp;quot;#search-keyword&amp;quot;);
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var keyword = $(&amp;quot;#search-keyword&amp;quot;);
 var clear = $(&#39;.clear&#39;);
 
 keyword.on(&#39;input propertychange&#39;, function(event) {

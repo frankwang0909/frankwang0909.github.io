@@ -6,15 +6,14 @@
     <description>Recent content in Useragent on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/tags/useragent/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>通过userAgent识别移动设备，自动跳转移动端站点</title>
-      <link>http://www.wangxingfeng.com/useragent</link>
+      <title>通过 userAgent 识别移动设备，自动跳转移动端站点</title>
+      <link>http://www.wangxingfeng.com/useragent.html</link>
       <pubDate>Tue, 04 Apr 2017 21:02:50 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/useragent</guid>
+      <guid>http://www.wangxingfeng.com/useragent.html</guid>
       <description>
 
 &lt;p&gt;不少互联网公司的网站都分为PC端和手机端。如果用户用手机访问PC站点，受限于手机网络，很可能会出现加载网页缓慢的情况。
@@ -86,21 +85,19 @@
 
 &lt;p&gt;PC端站点可以加上如下代码，自动跳转到移动端站点&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;var ua = navigator.userAgent.toLowerCase();
-if (/mobile|android|iphone|ipad|phone/i.test(ua)) {
-   window.location.href = &amp;quot;http://m.example.com&amp;quot;;
-}
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    var ua = navigator.userAgent.toLowerCase();
+    if (/mobile|android|iphone|ipad|phone/i.test(ua)) {
+       window.location.href = &amp;quot;http://m.example.com&amp;quot;;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;如果在&lt;code&gt;微信&lt;/code&gt;中打开和在&lt;code&gt;手机浏览器&lt;/code&gt;打开网页执行的是不同的脚本的话，还可以通过&lt;code&gt;userAgent&lt;/code&gt;来判断是否是在&lt;code&gt;微信&lt;/code&gt;中打开的。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;var ua = navigator.userAgent.toLowerCase();
-if(/micromessenger/i.test(ua){
-    //to do
-}
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    var ua = navigator.userAgent.toLowerCase();
+    if(/micromessenger/i.test(ua){
+        //to do
+    }
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;本文首发于&lt;a href=&#34;http://www.wangxingfeng.com/&#34;&gt;Frank Wang的个人博客&lt;/a&gt;, 转载时请附上原文链接。&lt;/p&gt;
 </description>
     </item>
     

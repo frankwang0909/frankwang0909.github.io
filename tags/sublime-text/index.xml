@@ -6,15 +6,14 @@
     <description>Recent content in Sublime Text on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/tags/sublime-text/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Sublime Text 学习笔记</title>
-      <link>http://www.wangxingfeng.com/sublimetext-notes</link>
+      <link>http://www.wangxingfeng.com/sublimetext-notes.html</link>
       <pubDate>Fri, 13 May 2016 00:14:00 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/sublimetext-notes</guid>
+      <guid>http://www.wangxingfeng.com/sublimetext-notes.html</guid>
       <description>
 
 &lt;p&gt;自从把主力代码编辑器改为&lt;a href=&#34;https://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;之后，写代码的效率明显高了许多。最近，我开始尝试着给身边的朋友推荐这款编辑器。&lt;/p&gt;

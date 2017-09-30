@@ -6,7 +6,6 @@
     <description>Recent content in Posts on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <lastBuildDate>Wed, 02 Aug 2017 21:23:27 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -24,11 +23,11 @@
 
 &lt;p&gt;备注：服务器是腾讯上的云主机， 操作系统是 &lt;code&gt;CentOS&lt;/code&gt; 6.8 64 位的。&lt;/p&gt;
 
-&lt;h2 id=&#34;一-准备-lnmp-环境&#34;&gt;一、准备 &lt;code&gt;LNMP&lt;/code&gt; 环境&lt;/h2&gt;
+&lt;h2 id=&#34;1-准备-lnmp-环境&#34;&gt;1. 准备 LNMP 环境&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;LNMP&lt;/code&gt; 是 &lt;code&gt;Linux、Nginx、MySQL 和 PHP&lt;/code&gt; 的缩写，是 &lt;code&gt;WordPress&lt;/code&gt;博客系统依赖的基础运行环境。我们先来准备 LNMP 环境。&lt;/p&gt;
 
-&lt;h3 id=&#34;1-安装-nginx&#34;&gt;1. 安装 &lt;code&gt;Nginx&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;1-1-安装-nginx&#34;&gt;1.1 安装 Nginx&lt;/h3&gt;
 
 &lt;p&gt;使用 &lt;code&gt;yum&lt;/code&gt; 安装 &lt;code&gt;Nginx&lt;/code&gt;：&lt;/p&gt;
 
@@ -72,7 +71,7 @@
 &lt;pre&gt;&lt;code&gt;chkconfig nginx on
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;2-安装-mysql&#34;&gt;2.安装 &lt;code&gt;MySQL&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;1-2-安装-mysql&#34;&gt;1.2 安装 MySQL&lt;/h3&gt;
 
 &lt;p&gt;使用 &lt;code&gt;yum&lt;/code&gt; 安装 &lt;code&gt;MySQL&lt;/code&gt;：&lt;/p&gt;
 
@@ -94,7 +93,7 @@
 &lt;pre&gt;&lt;code&gt;chkconfig mysqld on
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;3-安装-php&#34;&gt;3.安装 &lt;code&gt;PHP&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;1-3-安装-php&#34;&gt;1.3 安装 PHP&lt;/h3&gt;
 
 &lt;p&gt;使用 &lt;code&gt;yum&lt;/code&gt; 安装 &lt;code&gt;PHP&lt;/code&gt;：&lt;/p&gt;
 
@@ -118,9 +117,9 @@
 &lt;pre&gt;&lt;code&gt;chkconfig php-fpm on
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;二-安装并配置-wordpress&#34;&gt;二、安装并配置 &lt;code&gt;WordPress&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;2-安装并配置-wordpress&#34;&gt;2. 安装并配置  WordPress&lt;/h2&gt;
 
-&lt;h3 id=&#34;2-1安装-wordpres-s&#34;&gt;2.1安装 &lt;code&gt;WordPres&lt;/code&gt;s&lt;/h3&gt;
+&lt;h3 id=&#34;2-1-安装-wordpress&#34;&gt;2.1 安装 WordPress&lt;/h3&gt;
 
 &lt;p&gt;配置好 &lt;code&gt;LNMP&lt;/code&gt; 环境后，继续使用 &lt;code&gt;yum&lt;/code&gt; 来安装 &lt;code&gt;WordPress&lt;/code&gt;：&lt;/p&gt;
 
@@ -129,7 +128,7 @@
 
 &lt;p&gt;安装完成后，就可以在 &lt;code&gt;/usr/share/wordpress&lt;/code&gt; 看到 &lt;code&gt;WordPress&lt;/code&gt; 的源代码了。&lt;/p&gt;
 
-&lt;h3 id=&#34;2-2配置-数据库&#34;&gt;2.2配置&lt;code&gt;数据库&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;2-2-配置-数据库&#34;&gt;2.2 配置 数据库&lt;/h3&gt;
 
 &lt;p&gt;配进入 &lt;code&gt;MySQL&lt;/code&gt;：&lt;/p&gt;
 
@@ -252,7 +251,7 @@ if ( !defined(&#39;ABSPATH&#39;) )
 require_once(ABSPATH . &#39;wp-settings.php&#39;);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;2-3配置-nginx&#34;&gt;2.3配置 &lt;code&gt;Nginx&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;2-3-配置-nginx&#34;&gt;2.3 配置 Nginx&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;WordPress&lt;/code&gt; 已经安装完毕，我们配置&lt;code&gt;Nginx&lt;/code&gt; 把请求转发给 &lt;code&gt;PHP-FPM&lt;/code&gt; 来处理。&lt;/p&gt;
 
@@ -287,11 +286,11 @@ mv default.conf defaut.conf.bak
 &lt;pre&gt;&lt;code&gt;nginx -s reload
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;三-准备域名和解析&#34;&gt;三、准备域名和解析&lt;/h2&gt;
+&lt;h2 id=&#34;3-准备域名和解析&#34;&gt;3. 准备域名和解析&lt;/h2&gt;
 
-&lt;p&gt;3.1域名注册&lt;/p&gt;
+&lt;h3 id=&#34;3-1域名注册&#34;&gt;3.1域名注册&lt;/h3&gt;
 
-&lt;p&gt;3.2域名解析&lt;/p&gt;
+&lt;h3 id=&#34;3-2域名解析&#34;&gt;3.2域名解析&lt;/h3&gt;
 
 &lt;p&gt;WordPress 博客已经部署完成。可以通过浏览器访问博客查看效果。&lt;/p&gt;
 
@@ -482,7 +481,7 @@ Manually remove C:\Users\Administrator\AppData\Roaming\nvm\v6.2.0.
 
 &lt;p&gt;一个简单的 TypeScript 文件 demo.ts, 如下代码所示：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;var book: string = &amp;quot;Angular 2&amp;quot;;  // 定义了一个 string 类型的变量 book
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;var book: string = &amp;quot;Angular 2&amp;quot;;  // 定义了一个 string 类型的变量 book
 
 var num: number = 123;  // 定义了一个 number 类型的变量 num
 
@@ -493,26 +492,26 @@ function log(msg: string): void {  // 定义了一个 函数 log, 它的参数 m
 
 &lt;h2 id=&#34;2-安装-typescript&#34;&gt;2.安装 TypeScript:&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;npm install -g typescript
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;npm install -g typescript
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;3-编译&#34;&gt;3.编译:&lt;/h2&gt;
 
-&lt;p&gt;3.1本地编译：命令行输入&lt;code&gt;tsc 文件名.ts&lt;/code&gt; 既可编译成&lt;code&gt;同名&lt;/code&gt;的 JavaScript 文件。&lt;/p&gt;
+&lt;p&gt;3.1 本地编译：命令行输入&lt;code&gt;tsc 文件名.ts&lt;/code&gt; 既可编译成&lt;code&gt;同名&lt;/code&gt;的 JavaScript 文件。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;tsc demo.ts
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;tsc demo.ts
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;demo.ts 编译后得到 demo.js 文件，如下代码所示：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;var book = &amp;quot;Angular 2&amp;quot;;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;var book = &amp;quot;Angular 2&amp;quot;;
 var num = 123;
 function log(msg) {
     console.log(msg);
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;3.2在线编译：TypeScript 官方提供&lt;a href=&#34;http://www.typescriptlang.org/play/index.html&#34;&gt;在线的实时编译&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;3.2 在线编译：TypeScript 官方提供&lt;a href=&#34;http://www.typescriptlang.org/play/index.html&#34;&gt;在线的实时编译&lt;/a&gt;。&lt;/p&gt;
 
 &lt;h2 id=&#34;4-编辑器-visual-studio-code&#34;&gt;4.编辑器: Visual Studio Code&lt;/h2&gt;
 
@@ -524,7 +523,7 @@ function log(msg) {
 
 &lt;p&gt;在示例代码中里，我们希望 log 函数接收一个字符串参数。 然后尝试把 log 的调用改成传入一个数组：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;function log(msg: string) {
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;function log(msg: string) {
     return &amp;quot;Hello, &amp;quot; + msg;
 }
 
@@ -546,8 +545,8 @@ log(msg);
 
 &lt;p&gt;简单示例来观察接口是如何工作的：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;function print(obj: { a: string }) {
-  console.log(obj.a);
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;function print(obj: { a: string }) {
+    console.log(obj.a);
 }
 
 let myObj = { 
@@ -564,12 +563,12 @@ print(myObj);
 
 &lt;p&gt;下面我们重写上面的例子，这次使用&lt;code&gt;接口&lt;/code&gt;来描述：必须包含一个类型为 string 的属性 a。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;interface MyValue {
-  a: string;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;interface MyValue {
+    a: string;
 }
 
 function print(obj: MyValue) {
-  console.log(obj.a);
+    console.log(obj.a);
 }
 
 let myObj = {
@@ -587,8 +586,8 @@ print(myObj);
 
 &lt;p&gt;示例代码：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;class Greeter {
-
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Greeter {
+    
     // 定义了 string 类型的属性, 
     greeting: string;
 
@@ -611,7 +610,7 @@ print(myObj);
 
 &lt;h3 id=&#34;7-2-实例化-关键字-new-用来创建类的一个实例对象&#34;&gt;7.2 实例化：关键字&lt;code&gt;new&lt;/code&gt;用来创建类的一个实例对象。&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;let greeter = new Greeter(&amp;quot;world&amp;quot;);
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let greeter = new Greeter(&amp;quot;world&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;使用&lt;code&gt;new&lt;/code&gt; 创建了Greeter类的一个实例。 它会调用之前定义的构造函数，创建一个 Greeter类型的新对象，并执行构造函数初始化它。&lt;/p&gt;
@@ -620,7 +619,7 @@ print(myObj);
 
 &lt;p&gt;示例代码：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;class Animal {
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Animal {
     name:string;
     constructor(theName: string) { 
         this.name = theName; 
@@ -673,7 +672,7 @@ tom.move(34);
 
 &lt;p&gt;当成员被标记成&lt;code&gt;private&lt;/code&gt;时，它就不能在声明它的类的&lt;code&gt;外部&lt;/code&gt;访问。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;class Animal {
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Animal {
     private name: string;
     constructor(theName: string) { 
         this.name = theName; 
@@ -687,7 +686,7 @@ new Animal(&amp;quot;Cat&amp;quot;).name; // Error: &#39;name&#39; is private;
 
 &lt;p&gt;&lt;code&gt;protected&lt;/code&gt;修饰符与&lt;code&gt;private&lt;/code&gt;修饰符的行为很相似，但有一点不同，&lt;code&gt;protected&lt;/code&gt;成员在&lt;code&gt;派生类&lt;/code&gt;中仍然可以访问。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;class Person {
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Person {
     protected name: string;
     constructor(name: string) { 
         this.name = name; 
@@ -718,7 +717,7 @@ console.log(howard.name); // error
 
 &lt;p&gt;你可以使用&lt;code&gt;readonly&lt;/code&gt;关键字将属性设置为&lt;code&gt;只读&lt;/code&gt;的。 只读属性必须在&lt;code&gt;声明&lt;/code&gt;时或&lt;code&gt;构造函数&lt;/code&gt;里被初始化。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;class Octopus {
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Octopus {
     readonly name: string;
     readonly numberOfLegs: number = 8;
     constructor (theName: string) {
@@ -741,8 +740,6 @@ dad.name = &amp;quot;Man with the 3-piece suit&amp;quot;; // error! name is read
       <guid>http://www.wangxingfeng.com/angular2_basic.html</guid>
       <description>
 
-&lt;h1 id=&#34;angular2-的核心概念&#34;&gt;Angular2 的核心概念&lt;/h1&gt;
-
 &lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071501.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;1-components-组件&#34;&gt;1.Components 组件&lt;/h2&gt;
@@ -751,7 +748,7 @@ dad.name = &amp;quot;Man with the 3-piece suit&amp;quot;; // error! name is read
 
 &lt;h3 id=&#34;1-1-组件及示例代码&#34;&gt;1.1 组件及示例代码&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;//装饰器
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;//装饰器
 @Component({
     //元数据
 
@@ -772,33 +769,39 @@ export class HelloComponent {
 
 &lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071505.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;1.1.1 装饰器：@Component&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;装饰器：@Component&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;赋予一个类更丰富的信息,即将&lt;code&gt;元数据&lt;/code&gt; 注入到组件类中。&lt;/p&gt;
 
-&lt;p&gt;1.1.2 元数据：装饰器重定义的数据&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;元数据：装饰器重定义的数据&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;1.1.3 模板：&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;模板：&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;可以在元数据内自定义模板template; 也可以通过templateUrl:&amp;ldquo;path/xx.html&amp;rdquo; 来引用外部模板xx.html&lt;/p&gt;
 
-&lt;p&gt;1.1.4 数据绑定：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;数据绑定：&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;1)插值：{{变量名}}。可以直接使用&lt;code&gt;组件类&lt;/code&gt;里的变量。&lt;/p&gt;
 
 &lt;p&gt;2)属性绑定：[]=&amp;ldquo;mydata&amp;rdquo;。把&lt;code&gt;组件类&lt;/code&gt;的数据传递&lt;code&gt;mydata&lt;/code&gt;到&lt;code&gt;模板&lt;/code&gt;中的，可以从&lt;code&gt;父组件&lt;/code&gt;向&lt;code&gt;子组件&lt;/code&gt;传递数据。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; &amp;lt;input [message]=&amp;quot;myData&amp;quot; /&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;     &amp;lt;input [message]=&amp;quot;myData&amp;quot; /&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;3)事件绑定：(事件名)。把&lt;code&gt;模板&lt;/code&gt;产生的数据通过&lt;code&gt;函数调用&lt;/code&gt;的方式传递到&lt;code&gt;组件类&lt;/code&gt;中，可以从&lt;code&gt;子组件&lt;/code&gt;从&lt;code&gt;父组件&lt;/code&gt;传递数据。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;input (keyup)=&amp;quot;handle($event)&amp;quot; /&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;    &amp;lt;input (keyup)=&amp;quot;handle($event)&amp;quot; /&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;4)双向绑定：[(ngModel)] 。实现模板和组件类的数据的双向流动，实时更新。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;input [(ngModel)]=&amp;quot;myData&amp;quot; /&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;    &amp;lt;input [(ngModel)]=&amp;quot;myData&amp;quot; /&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;1-2-组件树&#34;&gt;1.2 组件树&lt;/h3&gt;
@@ -823,19 +826,23 @@ export class HelloComponent {
 
 &lt;p&gt;4.OnChange 运行期间只要数据发生了变化，就会触发数据变化OnChange钩子&lt;/p&gt;
 
-&lt;p&gt;5.OnDestroy 组件销毁前会触发OnDestroy钩子：数据解绑、取消数据订阅等&lt;/p&gt;
+&lt;p&gt;5.OnDestroy 组件销毁前会触发 OnDestroy 钩子：数据解绑、取消数据订阅等&lt;/p&gt;
 
 &lt;h2 id=&#34;2-directives-指令&#34;&gt;2. Directives 指令&lt;/h2&gt;
 
 &lt;p&gt;组件继承于指令，组件是自身带有模板的指令。&lt;/p&gt;
 
-&lt;p&gt;2.1 属性指令：改变组件模板的外观或行为的，如样式等。&lt;/p&gt;
+&lt;h3 id=&#34;2-1-属性指令&#34;&gt;2.1 属性指令：&lt;/h3&gt;
 
-&lt;p&gt;2.2 结构指令：改变组件模板的DOM结构，如ngIf用来插入或者移除DOM节点。&lt;/p&gt;
+&lt;p&gt;改变组件模板的外观或行为的，如样式等。&lt;/p&gt;
 
-&lt;p&gt;2.3 自定义指令：&lt;/p&gt;
+&lt;h3 id=&#34;2-2-结构指令&#34;&gt;2.2 结构指令：&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;// 自定义指令highlight
+&lt;p&gt;改变组件模板的DOM结构，如ngIf用来插入或者移除DOM节点。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-3-自定义指令&#34;&gt;2.3 自定义指令：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;// 自定义指令highlight
 // 指令需要导入Directive, ElementRef, Renderer 来 辅助元素的渲染
 import { Directive, ElementRef, Renderer } from &#39;@angular/core&#39;;
 
@@ -854,7 +861,7 @@ export class HighlightDirective {
 
 &lt;p&gt;服务是实现专一目的的逻辑单元（类），如日志服务。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;export class LoggerService {
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;export class LoggerService {
     constructor() {}
 
     debug(msg: string) {
@@ -877,10 +884,10 @@ export class HighlightDirective {
 
 &lt;p&gt;示例：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;@Component({
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;@Component({
     selector: &#39;hello&#39;,
     template: &#39;&amp;lt;p&amp;gt;{{greeting}}&amp;lt;/p&amp;gt;
-
+    
     //依赖注入的配置
     providers:[LoggerService]
 })
@@ -907,23 +914,23 @@ export class HelloComponent {
 
 &lt;h3 id=&#34;5-1-文件模块-框架代码以模块的形式组织&#34;&gt;5.1 文件模块：框架代码以模块的形式组织&lt;/h3&gt;
 
-&lt;p&gt;5.1.1 文件模块分类：&lt;/p&gt;
+&lt;p&gt;1.文件模块分类：&lt;/p&gt;
 
-&lt;p&gt;1.核心模块：@angular/core&lt;/p&gt;
+&lt;p&gt;1)核心模块：@angular/core&lt;/p&gt;
 
-&lt;p&gt;2.通用模块：@angular/common&lt;/p&gt;
+&lt;p&gt;2)通用模块：@angular/common&lt;/p&gt;
 
-&lt;p&gt;3.表单模块：@angular/forms&lt;/p&gt;
+&lt;p&gt;3)表单模块：@angular/forms&lt;/p&gt;
 
-&lt;p&gt;4.网络模块：@angular/http&lt;/p&gt;
+&lt;p&gt;4)网络模块：@angular/http&lt;/p&gt;
 
-&lt;p&gt;5.其他模块&lt;/p&gt;
+&lt;p&gt;5)其他模块&lt;/p&gt;
 
-&lt;p&gt;5.1.2 模块的使用：&lt;/p&gt;
+&lt;p&gt;2.模块的使用：&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;文件模块&lt;/code&gt;在使用前，需要通过&lt;code&gt;import&lt;/code&gt;导入&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;import { Http } from &amp;quot;@angular/http&amp;quot;;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;import { Http } from &amp;quot;@angular/http&amp;quot;;
 
 import { Component } from &amp;quot;@angular/core&amp;quot;;
 
@@ -936,13 +943,13 @@ import { ElementRef, Renderer } from &amp;quot;@angular/core&amp;quot;;
 
 &lt;p&gt;&lt;img src=&#34;http://www.wangxingfeng.com/images/2017071510.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;5.1.1 应用模块：把有关联的组件、服务、指令等按功能进行归类包装成模块。&lt;/p&gt;
+&lt;p&gt;1.应用模块：把有关联的组件、服务、指令等按功能进行归类包装成模块。&lt;/p&gt;
 
-&lt;p&gt;5.1.2 模块间的调用：&lt;/p&gt;
+&lt;p&gt;2.模块间的调用：&lt;/p&gt;
 
 &lt;p&gt;默认情况下，一个组件不能直接引用其他组件或指令的，要想使用就必须先导入。一个模块内的组件可以使用同模块的任意组件和指令。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;// @NgModule 声明模块
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;// @NgModule 声明模块
 @NgModule({
 
     // 包装组件或指令
@@ -971,7 +978,7 @@ export class AppModule {}
 &lt;p&gt;一个模块导入了另一个模块后，可以调用模块&lt;code&gt;exports出来的组件或指令&lt;/code&gt;，
 以及模块内依赖注入的服务（一个模块依赖注入了服务，那么整个应用内的所有组件里）。&lt;/p&gt;
 
-&lt;p&gt;5.2.3 根模块、特性模块、共享模块、核心模块&lt;/p&gt;
+&lt;p&gt;3.根模块、特性模块、共享模块、核心模块&lt;/p&gt;
 
 &lt;p&gt;应用根据&lt;code&gt;功能&lt;/code&gt;可以切分为大大小小的各种模块。其中，&lt;code&gt;根模块&lt;/code&gt;作为应用启动的入口。各种&lt;code&gt;功能&lt;/code&gt;可以封装成一个个&lt;code&gt;特性模块&lt;/code&gt;。随着&lt;code&gt;特性模块&lt;/code&gt;越来越多，如果它们之间可以抽象出来一些相似的&lt;code&gt;功能组件&lt;/code&gt;，我们把这些&lt;code&gt;功能组件&lt;/code&gt;再封装成为独立的&lt;code&gt;共享模块&lt;/code&gt;。
 我们可以把一些全局的组件或者服务（如维护登录信息的服务、公共的头部、底部组件等）放在&lt;code&gt;根模块&lt;/code&gt;里，也可以抽离出来封装成独立的&lt;code&gt;核心模块&lt;/code&gt;，只在&lt;code&gt;根模块&lt;/code&gt;中导入。&lt;/p&gt;
@@ -981,11 +988,11 @@ export class AppModule {}
     </item>
     
     <item>
-      <title>JavaScript 的 number 需要注意的一些特性</title>
-      <link>http://www.wangxingfeng.com/javascript_number.html</link>
+      <title>JavaScript 的 Number 需要注意的一些特性</title>
+      <link>http://www.wangxingfeng.com/js-number.html</link>
       <pubDate>Sun, 09 Jul 2017 21:45:51 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/javascript_number.html</guid>
+      <guid>http://www.wangxingfeng.com/js-number.html</guid>
       <description>
 
 &lt;h2 id=&#34;一-nan&#34;&gt;一、NaN：&lt;/h2&gt;
@@ -1211,14 +1218,14 @@ Number([5]) // 5
 
 &lt;p&gt;5)输入命令&lt;code&gt;emacs /etc/ss.json&lt;/code&gt; 打开编辑器，并打开一个名为&lt;code&gt;ss.json&lt;/code&gt;的配置文件保存在&lt;code&gt;/etc/&lt;/code&gt;目录下。以下是SS官方的默认配置：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;server&amp;quot;:&amp;quot;你的服务器静态IP地址&amp;quot;,
-    &amp;quot;server_port&amp;quot;:端口号, //端口号需要与步骤5设置的一致
-    &amp;quot;password&amp;quot;:&amp;quot;你的密码&amp;quot;,
-    &amp;quot;timeout&amp;quot;:600,
-    &amp;quot;method&amp;quot;:&amp;quot;rc4-md5&amp;quot;, 
-    &amp;quot;auth&amp;quot;: true
-}
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;    {
+        &amp;quot;server&amp;quot;:&amp;quot;你的服务器静态IP地址&amp;quot;,
+        &amp;quot;server_port&amp;quot;:端口号, //端口号需要与步骤5设置的一致
+        &amp;quot;password&amp;quot;:&amp;quot;你的密码&amp;quot;,
+        &amp;quot;timeout&amp;quot;:600,
+        &amp;quot;method&amp;quot;:&amp;quot;rc4-md5&amp;quot;, 
+        &amp;quot;auth&amp;quot;: true
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;6)配置完成后, 按&lt;code&gt;ctrl + x&lt;/code&gt; 然后 &lt;code&gt;ctrl + s&lt;/code&gt; 保存文件，再按 &lt;code&gt;ctrl + x&lt;/code&gt;然后 &lt;code&gt;ctrl + c&lt;/code&gt;退出编辑器。&lt;/p&gt;
@@ -2118,16 +2125,6 @@ Bye
     </item>
     
     <item>
-      <title>重新学习Python</title>
-      <link>http://www.wangxingfeng.com/learn-python-again.html</link>
-      <pubDate>Thu, 01 Jun 2017 08:03:43 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/learn-python-again.html</guid>
-      <description>&lt;p&gt;一年多没怎么用Python这门编程语言了，如今想要写个爬虫啥的，都忘了怎么写。那就重新学习一遍，反正有基础，也花不了多少时间。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>两个Safari浏览器不兼容的坑</title>
       <link>http://www.wangxingfeng.com/safari-not-support.html</link>
       <pubDate>Thu, 01 Jun 2017 07:35:15 +0800</pubDate>
@@ -2135,7 +2132,7 @@ Bye
       <guid>http://www.wangxingfeng.com/safari-not-support.html</guid>
       <description>
 
-&lt;h2 id=&#34;一-苹果手机的safari浏览器不兼容new-date-日期转换格式的坑&#34;&gt;一、 苹果手机的Safari浏览器不兼容new Date()日期转换格式的坑&lt;/h2&gt;
+&lt;h2 id=&#34;一-苹果手机的safari浏览器不兼容-new-date-日期转换格式的坑&#34;&gt;一、 苹果手机的Safari浏览器不兼容  new Date()日期转换格式的坑&lt;/h2&gt;
 
 &lt;p&gt;做Web项目的开发，&lt;code&gt;倒计时&lt;/code&gt;是个很常见的需求。我的需求是做一个演唱会门票开售时间的倒计时。&lt;/p&gt;
 
@@ -2147,8 +2144,7 @@ Bye
 
 &lt;p&gt;一开始我是这样写的：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-function preSellCount(){
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function preSellCount(){
     // 如果没有设置开售时间，则取演出时间，取到的时间格式为2017-06-01 10:00
     var preSt = $(&#39;#preSellTime&#39;).val() || $(&#39;#showTime&#39;).val();  
 
@@ -2220,16 +2216,14 @@ function preSellCount(){
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;用Chrome模拟各种手机调试都是一切正常。
-发布到本地测试环境，然后用自己的安卓手机访问，也一切正常。
-再用同事的苹果手机测试，倒计时不显示。WTF?&lt;/p&gt;
+&lt;p&gt;用 Chrome 模拟各种手机调试都是一切正常。发布到本地测试环境，然后用自己的安卓手机访问，也一切正常。再用同事的苹果手机测试，倒计时不显示。WTF?&lt;/p&gt;
 
 &lt;p&gt;想想哪里可能会有兼容性问题呢？&lt;/p&gt;
 
-&lt;p&gt;从头检查一遍代码。获取开售时间没有问题。
-取到的开售时间是一个字符串的日期，用&lt;code&gt;new Date(preSt).getTime()&lt;/code&gt;转换成毫秒数，有没有问题呢？Google一下&lt;code&gt;new Date() iOS&lt;/code&gt;。
-果然发现有不少相关文章提到iOS下日期转换问题。由于Safari在iOS5及以下对&lt;code&gt;YYYY-MM-DD&lt;/code&gt;格式的日期不支持，所以需要转换格式。
-最简单的是用&lt;code&gt;正则表达式&lt;/code&gt;把日期转换成 &lt;code&gt;YYYY/MM/DD&lt;/code&gt;格式。&lt;/p&gt;
+&lt;p&gt;从头检查一遍代码。获取开售时间没有问题。取到的开售时间是一个字符串的日期，用&lt;code&gt;new Date(preSt).getTime()&lt;/code&gt;转换成毫秒数，有没有问题呢？Google一下&lt;code&gt;new Date() iOS&lt;/code&gt;。
+果然发现有不少相关文章提到iOS下日期转换问题。由于Safari在iOS5及以下对&lt;code&gt;YYYY-MM-DD&lt;/code&gt;格式的日期不支持，所以需要转换格式。&lt;/p&gt;
+
+&lt;p&gt;最简单的是用&lt;code&gt;正则表达式&lt;/code&gt;把日期转换成 &lt;code&gt;YYYY/MM/DD&lt;/code&gt;格式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
     preSt.replace(/-/g, &amp;quot;/&amp;quot;)
@@ -2309,12 +2303,11 @@ function preSellCount(){
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;二-苹果手机的safari浏览器不支持-keydown-keypress-keyup-change等事件的坑&#34;&gt;二、苹果手机的Safari浏览器不支持 keydown, keypress, keyup, change等事件的坑。&lt;/h2&gt;
+&lt;h2 id=&#34;二-苹果手机的safari浏览器不支持-keydown-keypress-keyup-change等事件的坑&#34;&gt;二、苹果手机的Safari浏览器不支持  keydown, keypress, keyup, change等事件的坑。&lt;/h2&gt;
 
 &lt;p&gt;需求:在输入框中输入内容时，输入框后边显示清除按钮，点击可以清除输入框中的所有内容&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-var keyword = $(&amp;quot;#search-keyword&amp;quot;);
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var keyword = $(&amp;quot;#search-keyword&amp;quot;);
 var clear = $(&#39;.clear&#39;);
 
 keyword.on(&#39;keyup&#39;, function(event) {
@@ -2332,10 +2325,9 @@ keyword.on(&#39;keyup&#39;, function(event) {
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;但是在iOS的Safari中, keydown、keypress、 keyup、change等事件都无效，考虑监听input和propertychange事件作为代替。&lt;/p&gt;
+&lt;p&gt;但是在 iOS 的 Safari 中, keydown、keypress、 keyup、change等事件都无效，考虑监听 input 和 propertychange 事件作为代替。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-var keyword = $(&amp;quot;#search-keyword&amp;quot;);
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var keyword = $(&amp;quot;#search-keyword&amp;quot;);
 var clear = $(&#39;.clear&#39;);
 
 keyword.on(&#39;input propertychange&#39;, function(event) {
@@ -2368,12 +2360,12 @@ keyword.on(&#39;input propertychange&#39;, function(event) {
 
 &lt;p&gt;我们给div设置一个宽20px、实线、颜色为&lt;code&gt;#58a&lt;/code&gt;的边框。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px; 
-		margin:20px auto;
-		border:40px solid #58a;
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px; 
+        margin:20px auto;
+        border:40px solid #58a;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a;&#34;&gt;&lt;/div&gt;
@@ -2386,13 +2378,13 @@ keyword.on(&#39;input propertychange&#39;, function(event) {
 
 &lt;p&gt;从这个属性的英文命名，我们就可以知道它表示的是边框背景图片资源的路径，默认值是&lt;code&gt;none&lt;/code&gt;。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg)&#34;&gt;&lt;/div&gt;
@@ -2401,63 +2393,63 @@ keyword.on(&#39;input propertychange&#39;, function(event) {
 
 &lt;p&gt;&lt;code&gt;border-image-slice&lt;/code&gt;属性指定图像的边界向内偏移。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice:10% 20% 30% 40%; 
-		border-image-repeat: none;
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice:10% 20% 30% 40%; 
+        border-image-repeat: none;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg);border-image-slice:10% 20% 30% 40%; border-image-repeat: round stretch;&#34;&gt;&lt;/div&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice: 10% 30%;
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice: 10% 30%;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 10% 30%;&#34;&gt;&lt;/div&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice: 30 30% 45;
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice: 30 30% 45;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 30 30% 45;&#34;&gt;&lt;/div&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice: 7 12 14 5; 
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice: 7 12 14 5; 
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 7 12 14 5; &#34;&gt;&lt;/div&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice: 10% fill 7 12; 
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice: 10% fill 7 12; 
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: border-image-slice: 10% fill 7 12; &#34;&gt;&lt;/div&gt;
@@ -2480,6 +2472,164 @@ keyword.on(&#39;input propertychange&#39;, function(event) {
 &lt;div&gt;
     
 &lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CSS实现切角效果</title>
+      <link>http://www.wangxingfeng.com/bevel-corners.html</link>
+      <pubDate>Tue, 02 May 2017 22:52:17 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/bevel-corners.html</guid>
+      <description>
+
+&lt;p&gt;扁平化设计风格中，很流行斜面切角，即把元素的一个或多个角切成45度的缺口。大多数网页开发者倾向于使用背景图片来实现切角效果。但使用背景图片会增加额外的HTTP请求，增加网页加载的时间，难以修改和维护。实际上，CSS已经足够强大，可以提供纯CSS的解决方案，我们仅用CSS代码就能实现切角效果。&lt;/p&gt;
+
+&lt;h2 id=&#34;基于-css渐变-的切角效果&#34;&gt;基于&lt;code&gt;CSS渐变&lt;/code&gt;的切角效果&lt;/h2&gt;
+
+&lt;p&gt;如果你对CSS渐变不陌生的话，应该知道CSS渐变可以接受&lt;code&gt;一个角度&lt;/code&gt;作为方向，还可以设置百分比的色标的位置。当然，色标的位置也可以设置为绝对的长度值。
+&lt;style&gt;
+    .demo{
+        width:300px;
+        height: 200px;
+        margin:10px auto;
+    }
+    .demo1{
+        background: linear-gradient(-45deg, red, green);
+    }
+    .demo2{
+        background: linear-gradient(-45deg, red 20%, green 70%);
+    }
+    .demo3{
+        background: linear-gradient(-45deg, red 20%, green 0);
+    }
+    .demo4{
+        background: linear-gradient(-45deg, transparent 20%, green 0);
+    }
+    .demo5{
+        background: linear-gradient(-45deg, transparent 30px, green 0),
+                    linear-gradient(45deg, transparent 30px, red 0);
+    }
+    .demo6{
+        background: linear-gradient(-45deg, transparent 30px, green 0) right,
+                    linear-gradient(45deg, transparent 30px, red 0) left;
+        background-size:50% 100%;
+        background-repeat:no-repeat;
+    }
+    .demo7{
+        background: linear-gradient(135deg, transparent 30px, green 0) top left,
+            linear-gradient(-135deg, transparent 30px, red 0) top right,
+            linear-gradient(-45deg, transparent 30px, pink 0) bottom right,
+            linear-gradient(45deg, transparent 30px, blue 0) bottom left;
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+    }
+&lt;/style&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;1-普通的线性渐变&#34;&gt;1.普通的线性渐变&lt;/h3&gt;
+
+&lt;p&gt;我们设置-45度为渐变方向，即从右下角到左上角渐变的方向。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, red, green);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;渲染的效果是这样的：&lt;/p&gt;
+
+&lt;div class=&#34;demo demo1&#34;&gt;&lt;/div&gt;
+
+&lt;h3 id=&#34;2-设置色标值的线性渐变&#34;&gt;2.设置色标值的线性渐变&lt;/h3&gt;
+
+&lt;p&gt;我们给这两个色标设置一个百分比，看看会是什么效果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, red 20%, green 70%);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上述代码的意思从右下角到左上角渐变的方向上，0~20%的区域是纯红色的，20%-70%的区域是渐变，70%-100%的区域是纯绿色的。
+&lt;div class=&#34;demo demo2&#34;&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-色标值为0的线性渐变&#34;&gt;3.色标值为0的线性渐变&lt;/h3&gt;
+
+&lt;p&gt;如果我们再稍微做些修改，把第二个色标值改为0，会是什么效果呢？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, red 20%, green 0);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo3&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;是不是有点惊讶？！&lt;/p&gt;
+
+&lt;p&gt;我们得到的图形是没有渐变的。从右下角到左上角渐变的方向上，0-20%的区域是纯红色，20%-100%的区域就是纯绿色。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;注意：只要第二个色标值小于前一个色标值，那么浏览器就会默认解析为前一个色标值的。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的CSS代码等价于：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, red 20%, green 20%);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-切角效果&#34;&gt;4.切角效果&lt;/h3&gt;
+
+&lt;p&gt;将上面的代码再稍作改动，把右下角的&lt;code&gt;红色&lt;/code&gt;改成&lt;code&gt;透明色&lt;/code&gt;, 就能得到一个右下角的&lt;code&gt;切角效果&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, transparent 20%, green 0);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo4&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;其实，实际的网页开发中，我们更倾向于一个固定大小的切角。那么，我们可以把百分比改为绝对的长度值，比如把20%改为30px.&lt;/p&gt;
+
+&lt;h3 id=&#34;5-两个切角效果&#34;&gt;5.两个切角效果&lt;/h3&gt;
+
+&lt;p&gt;如果我们需要的切角不止一个，怎么实现呢？&lt;/p&gt;
+
+&lt;p&gt;是不是可以声明两条渐变规则呢？我们来试一下效果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, transparent 30px, green 0),
+                linear-gradient(45deg, transparent 30px, red 0);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo5&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;尝试失败。因为默认情况下，两层渐变都会填满整个元素，导致相互重叠。这个时候，我们就需要用到&lt;code&gt;background-size&lt;/code&gt;和&lt;code&gt;background-repeat&lt;/code&gt;,让每层渐变分别占据整个元素的一半。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(-45deg, transparent 30px, green 0) right,
+                linear-gradient(45deg, transparent 30px, red 0) left;
+    background-size:50% 100%;
+    background-repeat:no-repeat;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo6&#34;&gt;&lt;/div&gt;
+
+&lt;h3 id=&#34;6-四个切角效果&#34;&gt;6.四个切角效果&lt;/h3&gt;
+
+&lt;p&gt;看了两个切角的实现方式，想必你也能推断出实现&lt;code&gt;四个切角效果&lt;/code&gt;的思路了。我们需要&lt;code&gt;4层渐变&lt;/code&gt;，每层只占整个元素的&lt;code&gt;4分之一&lt;/code&gt;。下面的例子，我用了4种不同的颜色表示，这样可以更加直观的看出来每层渐变的大小和位置。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.demo{
+    background: linear-gradient(135deg, transparent 30px, green 0) top left,
+        linear-gradient(-135deg, transparent 30px, red 0) top right,
+        linear-gradient(-45deg, transparent 30px, pink 0) bottom right,
+        linear-gradient(45deg, transparent 30px, blue 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;demo demo7&#34;&gt;&lt;/div&gt;
 </description>
     </item>
     

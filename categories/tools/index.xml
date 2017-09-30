@@ -6,7 +6,6 @@
     <description>Recent content in Tools on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/categories/tools/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -23,11 +22,11 @@
 
 &lt;p&gt;备注：服务器是腾讯上的云主机， 操作系统是 &lt;code&gt;CentOS&lt;/code&gt; 6.8 64 位的。&lt;/p&gt;
 
-&lt;h2 id=&#34;一-准备-lnmp-环境&#34;&gt;一、准备 &lt;code&gt;LNMP&lt;/code&gt; 环境&lt;/h2&gt;
+&lt;h2 id=&#34;1-准备-lnmp-环境&#34;&gt;1. 准备 LNMP 环境&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;LNMP&lt;/code&gt; 是 &lt;code&gt;Linux、Nginx、MySQL 和 PHP&lt;/code&gt; 的缩写，是 &lt;code&gt;WordPress&lt;/code&gt;博客系统依赖的基础运行环境。我们先来准备 LNMP 环境。&lt;/p&gt;
 
-&lt;h3 id=&#34;1-安装-nginx&#34;&gt;1. 安装 &lt;code&gt;Nginx&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;1-1-安装-nginx&#34;&gt;1.1 安装 Nginx&lt;/h3&gt;
 
 &lt;p&gt;使用 &lt;code&gt;yum&lt;/code&gt; 安装 &lt;code&gt;Nginx&lt;/code&gt;：&lt;/p&gt;
 
@@ -71,7 +70,7 @@
 &lt;pre&gt;&lt;code&gt;chkconfig nginx on
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;2-安装-mysql&#34;&gt;2.安装 &lt;code&gt;MySQL&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;1-2-安装-mysql&#34;&gt;1.2 安装 MySQL&lt;/h3&gt;
 
 &lt;p&gt;使用 &lt;code&gt;yum&lt;/code&gt; 安装 &lt;code&gt;MySQL&lt;/code&gt;：&lt;/p&gt;
 
@@ -93,7 +92,7 @@
 &lt;pre&gt;&lt;code&gt;chkconfig mysqld on
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;3-安装-php&#34;&gt;3.安装 &lt;code&gt;PHP&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;1-3-安装-php&#34;&gt;1.3 安装 PHP&lt;/h3&gt;
 
 &lt;p&gt;使用 &lt;code&gt;yum&lt;/code&gt; 安装 &lt;code&gt;PHP&lt;/code&gt;：&lt;/p&gt;
 
@@ -117,9 +116,9 @@
 &lt;pre&gt;&lt;code&gt;chkconfig php-fpm on
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;二-安装并配置-wordpress&#34;&gt;二、安装并配置 &lt;code&gt;WordPress&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;2-安装并配置-wordpress&#34;&gt;2. 安装并配置  WordPress&lt;/h2&gt;
 
-&lt;h3 id=&#34;2-1安装-wordpres-s&#34;&gt;2.1安装 &lt;code&gt;WordPres&lt;/code&gt;s&lt;/h3&gt;
+&lt;h3 id=&#34;2-1-安装-wordpress&#34;&gt;2.1 安装 WordPress&lt;/h3&gt;
 
 &lt;p&gt;配置好 &lt;code&gt;LNMP&lt;/code&gt; 环境后，继续使用 &lt;code&gt;yum&lt;/code&gt; 来安装 &lt;code&gt;WordPress&lt;/code&gt;：&lt;/p&gt;
 
@@ -128,7 +127,7 @@
 
 &lt;p&gt;安装完成后，就可以在 &lt;code&gt;/usr/share/wordpress&lt;/code&gt; 看到 &lt;code&gt;WordPress&lt;/code&gt; 的源代码了。&lt;/p&gt;
 
-&lt;h3 id=&#34;2-2配置-数据库&#34;&gt;2.2配置&lt;code&gt;数据库&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;2-2-配置-数据库&#34;&gt;2.2 配置 数据库&lt;/h3&gt;
 
 &lt;p&gt;配进入 &lt;code&gt;MySQL&lt;/code&gt;：&lt;/p&gt;
 
@@ -251,7 +250,7 @@ if ( !defined(&#39;ABSPATH&#39;) )
 require_once(ABSPATH . &#39;wp-settings.php&#39;);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;2-3配置-nginx&#34;&gt;2.3配置 &lt;code&gt;Nginx&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;2-3-配置-nginx&#34;&gt;2.3 配置 Nginx&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;WordPress&lt;/code&gt; 已经安装完毕，我们配置&lt;code&gt;Nginx&lt;/code&gt; 把请求转发给 &lt;code&gt;PHP-FPM&lt;/code&gt; 来处理。&lt;/p&gt;
 
@@ -286,11 +285,11 @@ mv default.conf defaut.conf.bak
 &lt;pre&gt;&lt;code&gt;nginx -s reload
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;三-准备域名和解析&#34;&gt;三、准备域名和解析&lt;/h2&gt;
+&lt;h2 id=&#34;3-准备域名和解析&#34;&gt;3. 准备域名和解析&lt;/h2&gt;
 
-&lt;p&gt;3.1域名注册&lt;/p&gt;
+&lt;h3 id=&#34;3-1域名注册&#34;&gt;3.1域名注册&lt;/h3&gt;
 
-&lt;p&gt;3.2域名解析&lt;/p&gt;
+&lt;h3 id=&#34;3-2域名解析&#34;&gt;3.2域名解析&lt;/h3&gt;
 
 &lt;p&gt;WordPress 博客已经部署完成。可以通过浏览器访问博客查看效果。&lt;/p&gt;
 
@@ -515,14 +514,14 @@ Manually remove C:\Users\Administrator\AppData\Roaming\nvm\v6.2.0.
 
 &lt;p&gt;5)输入命令&lt;code&gt;emacs /etc/ss.json&lt;/code&gt; 打开编辑器，并打开一个名为&lt;code&gt;ss.json&lt;/code&gt;的配置文件保存在&lt;code&gt;/etc/&lt;/code&gt;目录下。以下是SS官方的默认配置：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;server&amp;quot;:&amp;quot;你的服务器静态IP地址&amp;quot;,
-    &amp;quot;server_port&amp;quot;:端口号, //端口号需要与步骤5设置的一致
-    &amp;quot;password&amp;quot;:&amp;quot;你的密码&amp;quot;,
-    &amp;quot;timeout&amp;quot;:600,
-    &amp;quot;method&amp;quot;:&amp;quot;rc4-md5&amp;quot;, 
-    &amp;quot;auth&amp;quot;: true
-}
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;    {
+        &amp;quot;server&amp;quot;:&amp;quot;你的服务器静态IP地址&amp;quot;,
+        &amp;quot;server_port&amp;quot;:端口号, //端口号需要与步骤5设置的一致
+        &amp;quot;password&amp;quot;:&amp;quot;你的密码&amp;quot;,
+        &amp;quot;timeout&amp;quot;:600,
+        &amp;quot;method&amp;quot;:&amp;quot;rc4-md5&amp;quot;, 
+        &amp;quot;auth&amp;quot;: true
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;6)配置完成后, 按&lt;code&gt;ctrl + x&lt;/code&gt; 然后 &lt;code&gt;ctrl + s&lt;/code&gt; 保存文件，再按 &lt;code&gt;ctrl + x&lt;/code&gt;然后 &lt;code&gt;ctrl + c&lt;/code&gt;退出编辑器。&lt;/p&gt;
@@ -628,15 +627,15 @@ gitment.render(&#39;comment&#39;)
     
     <item>
       <title>用Hugo快速搭建个人静态博客</title>
-      <link>http://www.wangxingfeng.com/build-blog-with-hugo</link>
+      <link>http://www.wangxingfeng.com/build-blog-with-hugo.html</link>
       <pubDate>Mon, 03 Apr 2017 20:49:23 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/build-blog-with-hugo</guid>
+      <guid>http://www.wangxingfeng.com/build-blog-with-hugo.html</guid>
       <description>
 
-&lt;p&gt;最近心血来潮，想要重新折腾一番自己的博客。于是，发现了Hugo比之前使用的Jekyll更好用。本文是个人参照&lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo官网&lt;/a&gt; 搭建个人博客的记录。&lt;/p&gt;
+&lt;p&gt;最近心血来潮，想要重新折腾一番自己的博客。于是，发现了 Hugo 比之前使用的 Jekyll 更好用。本文是个人参照&lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo官网&lt;/a&gt; 搭建个人博客的记录。&lt;/p&gt;
 
-&lt;h2 id=&#34;step-1-install-hugo-下载-安装hugo&#34;&gt;Step 1. Install Hugo 下载、安装Hugo&lt;/h2&gt;
+&lt;h2 id=&#34;step-1-install-hugo-下载-安装-hugo&#34;&gt;Step 1. Install Hugo 下载、安装 Hugo&lt;/h2&gt;
 
 &lt;p&gt;下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;https://github.com/spf13/hugo/releases&lt;/a&gt;。
 根据自己的操作系统，下载对应的安装包。我的操作系统是&lt;code&gt;Win7 64bit&lt;/code&gt;， 选择了&lt;code&gt;hugo_0.19_Windows-64bit.zip&lt;/code&gt;。&lt;/p&gt;
@@ -652,45 +651,42 @@ README.md
 
 &lt;p&gt;完成以上步骤后，打开命令行输入&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo help
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    hugo help
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;如果得到如下信息，说明安装成功。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo is the main command, used to build your Hugo site.
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    hugo is the main command, used to build your Hugo site.
 
-Hugo is a Fast and Flexible Static Site Generator
-built with love by spf13 and friends in Go.
+    Hugo is a Fast and Flexible Static Site Generator
+    built with love by spf13 and friends in Go.
 
-Complete documentation is available at http://gohugo.io/.
+    Complete documentation is available at http://gohugo.io/.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;step-2-创建一个名为blog的hugo站点&#34;&gt;Step 2. 创建一个名为blog的Hugo站点&lt;/h2&gt;
+&lt;h2 id=&#34;step-2-创建一个名为-blog-的-hugo-站点&#34;&gt;Step 2. 创建一个名为  blog 的 Hugo 站点&lt;/h2&gt;
 
 &lt;p&gt;我希望在E盘下创建站点，所以我先切换目录&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cd e:
-e:
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    cd e:
+    e:
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;然后输入命令：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo new site blog 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    hugo new site blog 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;得到如下提示创建成功的信息：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Congratulations! Your new Hugo site is created in E:\blog.
-
 Just a few more steps and you&#39;re ready to go:
-
 1. Download a theme into the same-named folder.
 Choose a theme from https://themes.gohugo.io/, or
 create your own with the &amp;quot;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;quot; command.
 2. Perhaps you want to add some content. You can add single files
 with &amp;quot;hugo new &amp;lt;SECTIONNAME&amp;gt;\&amp;lt;FILENAME&amp;gt;.&amp;lt;FORMAT&amp;gt;&amp;quot;.
 3. Start the built-in live server via &amp;quot;hugo server&amp;quot;.
-
 Visit https://gohugo.io/ for quickstart guide and full documentation.
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -709,32 +705,31 @@ Visit https://gohugo.io/ for quickstart guide and full documentation.
 
 &lt;p&gt;切换到该目录下，然后输入如下命令，会在&lt;code&gt;content&lt;/code&gt;的目录下创建&lt;code&gt;post&lt;/code&gt;目录，在&lt;code&gt;post&lt;/code&gt;目录下创建名为&lt;code&gt;test.md&lt;/code&gt;的文件。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cd blog
-hugo new post/test.md
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    cd blog
+    hugo new post/test.md
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;提示文件创建成功：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;E:\blog\content\post\test.md created
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    E:\blog\content\post\test.md created
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;用文本编辑器打开文件&lt;code&gt;test.md&lt;/code&gt;文件
 可以看到如下内容：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;+++
-date = &amp;quot;2017-01-02T17:45:06+08:00&amp;quot;  #创建文件的时间
-title = &amp;quot;test&amp;quot;                      #文件的标题
-draft = true                        # 是否为草稿
-
-+++
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;    +++
+    date = &amp;quot;2017-01-02T17:45:06+08:00&amp;quot;  #创建文件的时间
+    title = &amp;quot;test&amp;quot;                      #文件的标题
+    draft = true                        # 是否为草稿
+    +++
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;上述内容为自动创建的与文章有关的内容。自己也可以在两个&lt;code&gt;+++&lt;/code&gt;之间添加如下内容：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;image = &amp;quot;hugo.png&amp;quot;            #指定图片。
-category = &amp;quot;test&amp;quot;             #文章的类别
-tags = [&amp;quot;Hugo&amp;quot;, &amp;quot;intro&amp;quot;]      #文章的标签分类。
-url = &amp;quot;new_start&amp;quot;             #该文章访问时的相对的url地址，默认为文件名。
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;    image = &amp;quot;hugo.png&amp;quot;            #指定图片。
+    category = &amp;quot;test&amp;quot;             #文章的类别
+    tags = [&amp;quot;Hugo&amp;quot;, &amp;quot;intro&amp;quot;]      #文章的标签分类。
+    url = &amp;quot;new_start&amp;quot;             #该文章访问时的相对的url地址，默认为文件名。
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;更多的设置，可以参考&lt;a href=&#34;https://gohugo.io/content/front-matter/&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
@@ -747,90 +742,90 @@ url = &amp;quot;new_start&amp;quot;             #该文章访问时的相对的u
 
 &lt;p&gt;找到想要的主题后，切换到&lt;code&gt;themes&lt;/code&gt;目录（该目录可以存放多个不同的主题）。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cd themes
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    cd themes
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;由于需要使用到Git下载主题，以及版本管理和代码推送。需要事先下载安装好&lt;a href=&#34;https://git-for-windows.github.io/&#34;&gt;Git&lt;/a&gt;，关于如何安装和使用Git，可以参考我之前的一篇文章：&lt;a href=&#34;http://www.wangxingfeng.com/git-intro/&#34;&gt;Git学习笔记&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;把选定的主题下载到&lt;code&gt;themes&lt;/code&gt;目录下。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/dim0627/hugo-icarus-theme.git
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    git clone https://github.com/dim0627/hugo-icarus-theme.git
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;step-5-启动服务-本地预览&#34;&gt;Step 5. 启动服务，本地预览&lt;/h2&gt;
 
 &lt;p&gt;先从&lt;code&gt;themes&lt;/code&gt;目录下退回到&lt;code&gt;blog&lt;/code&gt;目录, 然后启动服务。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cd ..
-hugo server --theme=hugo-icarus-theme --buildDrafts
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    cd ..
+    hugo server --theme=hugo-icarus-theme --buildDrafts
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;在浏览器中打开 &lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;step-6-修改配置文件-config-toml&#34;&gt;Step 6. 修改配置文件&lt;code&gt;config.toml&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;step-6-修改配置文件-config-toml&#34;&gt;Step 6. 修改配置文件 config.toml&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;languageCode = &amp;quot;zh-cn&amp;quot;
-title = &amp;quot;Frank Wang&#39;s Coding World&amp;quot;
-baseurl = &amp;quot;http://www.wangxingfeng.com/&amp;quot;  
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;    languageCode = &amp;quot;zh-cn&amp;quot;
+    title = &amp;quot;Frank Wang&#39;s Coding World&amp;quot;
+    baseurl = &amp;quot;http://www.wangxingfeng.com/&amp;quot;  
 
-[Params]
-    Author =&amp;quot;Frank Wang&amp;quot;
+    [Params]
+        Author =&amp;quot;Frank Wang&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;step-7-生成网站&#34;&gt;Step 7.  生成网站&lt;/h2&gt;
 
-&lt;h3 id=&#34;1-改变文章-draft-草稿-状态&#34;&gt;1.改变文章&lt;code&gt;draft&lt;/code&gt;（草稿）状态：&lt;/h3&gt;
+&lt;p&gt;7.1 改变文章&lt;code&gt;draft&lt;/code&gt;（草稿）状态：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;hugo undraft content/post/*.md
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;2-启动-hugo-生成发布文件到-public-目录下&#34;&gt;2. 启动&lt;code&gt;hugo&lt;/code&gt;, 生成发布文件到&lt;code&gt;public&lt;/code&gt;目录下。&lt;/h3&gt;
+&lt;p&gt;7.2  启动&lt;code&gt;hugo&lt;/code&gt;, 生成发布文件到&lt;code&gt;public&lt;/code&gt;目录下。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo --theme=hugo-icarus-theme
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    hugo --theme=even
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;step-8-托管到-github-pages&#34;&gt;Step 8. 托管到&lt;code&gt;GitHub Pages&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;step-8-托管到-github-pages&#34;&gt;Step 8. 托管到 GitHub Pages&lt;/h2&gt;
 
-&lt;h3 id=&#34;1-使用-git-来进行版本管理&#34;&gt;1. 使用&lt;code&gt;Git&lt;/code&gt;来进行版本管理&lt;/h3&gt;
+&lt;p&gt;8.1 使用 &lt;code&gt;Git&lt;/code&gt; 来进行版本管理&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;git init
-echo &amp;quot;/public/&amp;quot; &amp;gt;&amp;gt; .gitignore
-echo &amp;quot;/themes/&amp;quot; &amp;gt;&amp;gt; .gitignore
-git add --all
-git commit -m &amp;quot;Initial commit&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    git init
+    echo &amp;quot;/public/&amp;quot; &amp;gt;&amp;gt; .gitignore
+    echo &amp;quot;/themes/&amp;quot; &amp;gt;&amp;gt; .gitignore
+    git add --all
+    git commit -m &amp;quot;Initial commit&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;2-创建-git-远程仓库&#34;&gt;2. 创建&lt;code&gt;Git&lt;/code&gt; 远程仓库：&lt;/h3&gt;
+&lt;p&gt;8.2 创建 &lt;code&gt;Git&lt;/code&gt; 远程仓库：&lt;/p&gt;
 
-&lt;p&gt;登录你的&lt;code&gt;GitHub&lt;/code&gt;. 创建一个新的仓库，仓库名为&lt;code&gt;Github用户.github.io&lt;/code&gt;, 比如我的是&lt;code&gt;frankwang0909.github.io&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;登录你的 &lt;code&gt;GitHub&lt;/code&gt;. 创建一个新的仓库，仓库名为 &lt;code&gt;Github用户.github.io&lt;/code&gt;, 比如我的是&lt;code&gt;frankwang0909.github.io&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;3-添加-git-远程仓库-并提交代码&#34;&gt;3. 添加&lt;code&gt;Git&lt;/code&gt; 远程仓库，并提交代码。&lt;/h3&gt;
+&lt;p&gt;8.3. 添加 &lt;code&gt;Git&lt;/code&gt; 远程仓库，并提交代码。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cd public
-git init
-git remote add origin git@github.com:frankwang0909/frankwang0909.github.io.git
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    cd public
+    git init
+    git remote add origin git@github.com:frankwang0909/frankwang0909.github.io.git
 
-git add --all
-git commit -m &amp;quot;blog added&amp;quot;
-git push -u origin master
+    git add --all
+    git commit -m &amp;quot;blog added&amp;quot;
+    git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;4-以后有内容改动-提交代码&#34;&gt;4.以后有内容改动，提交代码.&lt;/h3&gt;
+&lt;p&gt;8.4 以后有内容改动，提交代码.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;(cd ..; hugo --theme=hugo_theme_robust)
-git add --all
-git commit -m &amp;quot;&amp;lt;some change message&amp;gt;&amp;quot;
-git push -u origin master
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    (cd ..; hugo --theme=hugo_theme_robust)
+    git add --all
+    git commit -m &amp;quot;&amp;lt;some change message&amp;gt;&amp;quot;
+    git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
       <title>Markdown 学习笔记</title>
-      <link>http://www.wangxingfeng.com/markdonw-notes</link>
+      <link>http://www.wangxingfeng.com/markdonw-notes.html</link>
       <pubDate>Sun, 05 Jun 2016 22:05:46 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/markdonw-notes</guid>
+      <guid>http://www.wangxingfeng.com/markdonw-notes.html</guid>
       <description>
 
 &lt;h2 id=&#34;定义&#34;&gt;定义：&lt;/h2&gt;
@@ -909,10 +904,10 @@ git push -u origin master
     
     <item>
       <title>Sublime Text 学习笔记</title>
-      <link>http://www.wangxingfeng.com/sublimetext-notes</link>
+      <link>http://www.wangxingfeng.com/sublimetext-notes.html</link>
       <pubDate>Fri, 13 May 2016 00:14:00 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/sublimetext-notes</guid>
+      <guid>http://www.wangxingfeng.com/sublimetext-notes.html</guid>
       <description>
 
 &lt;p&gt;自从把主力代码编辑器改为&lt;a href=&#34;https://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;之后，写代码的效率明显高了许多。最近，我开始尝试着给身边的朋友推荐这款编辑器。&lt;/p&gt;
@@ -1033,17 +1028,17 @@ git push -u origin master
     
     <item>
       <title>Git学习笔记</title>
-      <link>http://www.wangxingfeng.com/git-intro</link>
+      <link>http://www.wangxingfeng.com/git-intro.html</link>
       <pubDate>Sun, 03 Apr 2016 22:43:39 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/git-intro</guid>
+      <guid>http://www.wangxingfeng.com/git-intro.html</guid>
       <description>
 
 &lt;p&gt;&lt;code&gt;Git&lt;/code&gt;是一款分布式的代码管理工具，方便多人协作时的代码管理。在&lt;code&gt;win7&lt;/code&gt;系统中使用Git管理代码有2种主要的方式。&lt;/p&gt;
 
-&lt;h2 id=&#34;方式一-msysgit&#34;&gt;方式一： &lt;code&gt;msysgit&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;方式一-msysgit&#34;&gt;方式一： msysgit&lt;/h2&gt;
 
-&lt;h3 id=&#34;step-1-下载并安装-msysgit&#34;&gt;Step 1: 下载并安装&lt;code&gt;msysgit&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;step-1-下载并安装-msysgit&#34;&gt;Step 1: 下载并安装  msysgit&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://git-for-windows.github.io&#34;&gt;msysgit&lt;/a&gt; 是Windows版的Git。下载，然后按默认选项安装即可。安装完成后，在开始菜单里找到“ Git ”-&amp;gt;“ Git Bash ”，点击会弹出一个命令行窗口，说明Git安装成功。&lt;/p&gt;
 
@@ -1051,8 +1046,8 @@ git push -u origin master
 
 &lt;p&gt;在命令行输入以下命令&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ git config --global user.name &amp;quot;Your Name&amp;quot;
-$ git config --global user.email &amp;quot;email@example.com&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    $ git config --global user.name &amp;quot;Your Name&amp;quot;
+    $ git config --global user.email &amp;quot;email@example.com&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;： &lt;code&gt;git confi&lt;/code&gt;g命令的&lt;code&gt;--global&lt;/code&gt;参数，用了这个参数，表示你这台电脑上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。&lt;/p&gt;
@@ -1061,10 +1056,10 @@ $ git config --global user.email &amp;quot;email@example.com&amp;quot;
 
 &lt;p&gt;选择一个合适的地方，创建一个空目录：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ mkdir  gitskills  // 创建一个名gitskills的目录
-$ cd   gitskills    // 切换gitskills目录
-$ pwd           //pwd 命令用于显示当前目录
-$ git init      //初始化Git仓库，当前目录中会多了一个.git目录（默认是隐藏的）
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    $ mkdir  gitskills  // 创建一个名gitskills的目录
+    $ cd   gitskills    // 切换gitskills目录
+    $ pwd           //pwd 命令用于显示当前目录
+    $ git init      //初始化Git仓库，当前目录中会多了一个.git目录（默认是隐藏的）
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：为避免莫名其妙地报错，请确保目录名（包括父目录）不包含 &lt;strong&gt;中文&lt;/strong&gt;。&lt;/p&gt;
@@ -1073,8 +1068,8 @@ $ git init      //初始化Git仓库，当前目录中会多了一个.git目录�
 
 &lt;p&gt;在刚刚创建的目录(比如gitskills)下新建文件，或者从其他地方拷贝文件到该目录下。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ git add readme.md  //新增一个readme.md文件
-$ git commit -m &amp;quot;提交时的附加信息&amp;quot;  //把文件提交到仓库,并附上相关的说明文字（用引号括起来）
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    $ git add readme.md  //新增一个readme.md文件
+    $ git commit -m &amp;quot;提交时的附加信息&amp;quot;  //把文件提交到仓库,并附上相关的说明文字（用引号括起来）
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;： 每次修改文件，都需要先&lt;code&gt;git add&lt;/code&gt;到暂存区，然后才能&lt;code&gt;git commit&lt;/code&gt;到仓库。可以&lt;code&gt;add&lt;/code&gt;一个文件之后&lt;code&gt;commit&lt;/code&gt;，也可以&lt;code&gt;add&lt;/code&gt;多个文件，然后一起&lt;code&gt;commit&lt;/code&gt;。&lt;/p&gt;
@@ -1105,21 +1100,19 @@ $ git commit -m &amp;quot;提交时的附加信息&amp;quot;  //把文件提交�
 
 &lt;p&gt;常见报错1:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;fatal: remote origin already exists. 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    fatal: remote origin already exists. 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;解决方法：先删除远程 git 仓库，再添加&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;git remote rm origin
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    git remote rm origin
 
-git remote add origin git@github.com:项目的远程git仓库
+    git remote add origin git@github.com:项目的远程git仓库
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;方式二-使用-gihub-提供的-github-for-windows&#34;&gt;方式二： 使用&lt;code&gt;GiHub&lt;/code&gt;提供的&lt;code&gt;GitHub for Windows&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;方式二-使用-gihub-提供的-github-for-windows&#34;&gt;方式二： 使用 GiHub 提供的 GitHub for Windows&lt;/h2&gt;
 
-&lt;p&gt;在window平台下使用Git的最简单的方式是使用GitHub网站提供的&lt;a href=&#34;https://desktop.github.com/&#34;&gt;GitHub for Windows&lt;/a&gt;。优点是直接图形化的操作界面，完全不用记命令。&lt;/p&gt;
-
-&lt;p&gt;#&lt;/p&gt;
+&lt;p&gt;在 window 平台下使用 Git 的最简单的方式是使用 GitHub 网站提供的&lt;a href=&#34;https://desktop.github.com/&#34;&gt;GitHub for Windows&lt;/a&gt;。优点是直接图形化的操作界面，完全不用记命令。&lt;/p&gt;
 </description>
     </item>
     

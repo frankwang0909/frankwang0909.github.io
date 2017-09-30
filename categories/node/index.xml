@@ -6,7 +6,6 @@
     <description>Recent content in Node on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/categories/node/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -168,10 +167,10 @@ Manually remove C:\Users\Administrator\AppData\Roaming\nvm\v6.2.0.
     
     <item>
       <title>快速启动Node服务器，调试本地静态文件代码</title>
-      <link>http://www.wangxingfeng.com/anywhere-npm</link>
+      <link>http://www.wangxingfeng.com/anywhere-npm.html</link>
       <pubDate>Tue, 04 Apr 2017 17:41:35 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/anywhere-npm</guid>
+      <guid>http://www.wangxingfeng.com/anywhere-npm.html</guid>
       <description>
 
 &lt;h2 id=&#34;如何在移动设备上测试静态文件&#34;&gt;如何在移动设备上测试静态文件？&lt;/h2&gt;

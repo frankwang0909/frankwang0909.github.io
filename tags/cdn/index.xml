@@ -6,15 +6,14 @@
     <description>Recent content in Cdn on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/tags/cdn/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>推荐几个常用的CDN公共库</title>
-      <link>http://www.wangxingfeng.com/cdn</link>
+      <link>http://www.wangxingfeng.com/cdn.html</link>
       <pubDate>Sat, 20 Aug 2016 21:07:46 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/cdn</guid>
+      <guid>http://www.wangxingfeng.com/cdn.html</guid>
       <description>
 
 &lt;h2 id=&#34;cdn&#34;&gt;CDN&lt;/h2&gt;

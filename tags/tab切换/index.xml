@@ -6,15 +6,14 @@
     <description>Recent content in Tab切换 on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/tags/tab%E5%88%87%E6%8D%A2/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>实现Tab切换的几种方式</title>
-      <link>http://www.wangxingfeng.com/tab</link>
+      <link>http://www.wangxingfeng.com/tab.html</link>
       <pubDate>Sun, 08 May 2016 23:36:44 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/tab</guid>
+      <guid>http://www.wangxingfeng.com/tab.html</guid>
       <description>
 
 &lt;p&gt;Tab 切换是网页中常见的组件。适当地使用，可以节省页面空间，在同一个大小的页面中展现更多的内容。Tab 切换的效果千差万别，只需要学会基本的思路，便可变换出各种各样的效果。下面我分别使用了原生js和jQuery来实现四种不同的Tab切换效果。&lt;/p&gt;

@@ -6,15 +6,14 @@
     <description>Recent content in 服务器 on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>快速启动Node服务器，调试本地静态文件代码</title>
-      <link>http://www.wangxingfeng.com/anywhere-npm</link>
+      <link>http://www.wangxingfeng.com/anywhere-npm.html</link>
       <pubDate>Tue, 04 Apr 2017 17:41:35 +0800</pubDate>
       
-      <guid>http://www.wangxingfeng.com/anywhere-npm</guid>
+      <guid>http://www.wangxingfeng.com/anywhere-npm.html</guid>
       <description>
 
 &lt;h2 id=&#34;如何在移动设备上测试静态文件&#34;&gt;如何在移动设备上测试静态文件？&lt;/h2&gt;

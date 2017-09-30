@@ -6,7 +6,6 @@
     <description>Recent content in Css on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -25,12 +24,12 @@
 
 &lt;p&gt;我们给div设置一个宽20px、实线、颜色为&lt;code&gt;#58a&lt;/code&gt;的边框。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px; 
-		margin:20px auto;
-		border:40px solid #58a;
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px; 
+        margin:20px auto;
+        border:40px solid #58a;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a;&#34;&gt;&lt;/div&gt;
@@ -43,13 +42,13 @@
 
 &lt;p&gt;从这个属性的英文命名，我们就可以知道它表示的是边框背景图片资源的路径，默认值是&lt;code&gt;none&lt;/code&gt;。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg)&#34;&gt;&lt;/div&gt;
@@ -58,63 +57,63 @@
 
 &lt;p&gt;&lt;code&gt;border-image-slice&lt;/code&gt;属性指定图像的边界向内偏移。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice:10% 20% 30% 40%; 
-		border-image-repeat: none;
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice:10% 20% 30% 40%; 
+        border-image-repeat: none;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg);border-image-slice:10% 20% 30% 40%; border-image-repeat: round stretch;&#34;&gt;&lt;/div&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice: 10% 30%;
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice: 10% 30%;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 10% 30%;&#34;&gt;&lt;/div&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice: 30 30% 45;
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice: 30 30% 45;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 30 30% 45;&#34;&gt;&lt;/div&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice: 7 12 14 5; 
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice: 7 12 14 5; 
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 7 12 14 5; &#34;&gt;&lt;/div&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;	div{
-		width:200px;
-		height:150px;
-		margin:20px auto;
-		border:40px solid #58a;
-		border-image-source:url(/images/adamcatlace.jpg);
-		border-image-slice: 10% fill 7 12; 
-	}
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
+        width:200px;
+        height:150px;
+        margin:20px auto;
+        border:40px solid #58a;
+        border-image-source:url(/images/adamcatlace.jpg);
+        border-image-slice: 10% fill 7 12; 
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: border-image-slice: 10% fill 7 12; &#34;&gt;&lt;/div&gt;
@@ -306,6 +305,14 @@
       <guid>http://www.wangxingfeng.com/diamond-picture.html</guid>
       <description>
 
+&lt;style&gt;
+div.diamond-pic{width:200px;transform: rotate(45deg);overflow: hidden;margin:60px auto;}
+img.diamond-img{max-width:100%;transform: rotate(-45deg);}
+img.diamon-pic-clip-path{clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);}
+img.diamon-pic-clip-path-2{clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);transition: 1s clip-path;}
+img.diamon-pic-clip-path-2:hover{clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
+&lt;/style&gt;
+
 &lt;p&gt;在网页设计中，我们常常能够看到被裁切成菱形的图片。&lt;/p&gt;
 
 &lt;p&gt;传统的实现方式是预先在图像处理软件中把图片裁切好，当然这种方式的可维护性差。&lt;/p&gt;
@@ -315,10 +322,10 @@
 &lt;h2 id=&#34;1-基于tranform的实现方法&#34;&gt;1. 基于tranform的实现方法&lt;/h2&gt;
 
 &lt;p&gt;原图
-&lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; style=&#34;display:block; max-width: 200px; margin:0 auto&#34;&gt;
+&lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; style=&#34;display:block; max-width: 200px; margin:30px auto&#34;&gt;
 用一个&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; 把图片包裹起来，对这个容器&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;应用&lt;code&gt;transform:rotate(45deg)&lt;/code&gt;, 进行旋转45度，我们得到如下的效果：图片应该也会跟着旋转了&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;div{
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;div{
     width:200px;
     transform: rotate(45deg);
     overflow: hidden;
@@ -331,21 +338,21 @@
 
 &lt;p&gt;如果我们对里面的图片进行反向旋转45度，那么图片的旋转就会抵消掉。看看效果。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
-    max-width:100%;
-    transform: rotate(-45deg);
-};
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div&amp;gt;img{
+        max-width:100%;
+        transform: rotate(-45deg);
+    };
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;div class=&#34;diamond-pic&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34;&gt;
+&lt;div class=&#34;diamond-pic&#34; &gt;
+    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; &gt;
 &lt;/div&gt;
 
 &lt;p&gt;我们得到了一个裁成&lt;code&gt;八边形&lt;/code&gt;的图片。&lt;/p&gt;
 
 &lt;p&gt;问题出在哪里呢？我给外面的&lt;code&gt;div&lt;/code&gt;加一个边框，这样就容易看出来了。&lt;/p&gt;
 
-&lt;div class=&#34;diamond-pic&#34; style=&#34;border:1px solid red&#34;&gt;
+&lt;div class=&#34;diamond-pic&#34; style=&#34;border:1px solid red;&#34;&gt;
     &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34;&gt;
 &lt;/div&gt;
 
@@ -355,27 +362,28 @@
 
 &lt;p&gt;如果通过&lt;code&gt;width属性&lt;/code&gt;设置来放大图片,会得到如下的效果。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
-    max-width:142%;
-    transform: rotate(-45deg);
-};
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div&amp;gt;img{
+        width:142%;
+        max-width:142%;
+        transform: rotate(-45deg);
+    };
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class=&#34;diamond-pic&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;max-width:142%;&#34;&gt;
+    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;width:142%;max-width:142%;&#34;&gt;
 &lt;/div&gt;
 
 &lt;p&gt;因为是以图片的&lt;code&gt;左上角&lt;/code&gt;为原点进行放大的。我们还需要在通过设置&lt;code&gt;margin:-45px;&lt;/code&gt;才能得到菱形图片。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;div&amp;gt;img{
-    max-width:142%;
-    transform: rotate(-45deg);
-    margin:-45px;
-};
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div&amp;gt;img{
+        max-width:142%;
+        transform: rotate(-45deg);
+        margin:-45px;
+    };
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class=&#34;diamond-pic&#34;&gt;
-    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;max-width:142%; margin:-45px&#34;&gt;
+    &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;width:142%;max-width:142%;margin:-45px&#34;&gt;
 &lt;/div&gt;
 
 &lt;p&gt;当然，我们可以通过&lt;code&gt;transform:scale(1.42)&lt;/code&gt;来放大图片1.42倍。&lt;code&gt;scale()&lt;/code&gt;是以图片的&lt;code&gt;中心点&lt;/code&gt;进行缩放的，这样我们就不用额外地设置&lt;code&gt;margin&lt;/code&gt;值了。&lt;/p&gt;
@@ -390,14 +398,15 @@
     &lt;img src=&#34;http://www.wangxingfeng.com/images/adamcatlace.jpg&#34; class=&#34;diamond-img&#34; style=&#34;transform: rotate(-45deg) scale(1.42);&#34;&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&#34;2-基于裁切路径clip-path方法&#34;&gt;2. 基于裁切路径clip-path方法&lt;/h2&gt;
+&lt;h2 id=&#34;2-基于裁切路径-clip-path-方法&#34;&gt;2. 基于裁切路径 clip-path 方法&lt;/h2&gt;
 
 &lt;p&gt;第一种方法虽然可以奏效，但存在一些缺点：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;1.需要一层额外的HTML标签；
-2.代码不够直观；
-3.如果处理的图片不是正方形，将无法得到一个菱形图片，如下图所示：
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;1.需要一层额外的HTML标签；&lt;/li&gt;
+&lt;li&gt;2.代码不够直观；&lt;/li&gt;
+&lt;li&gt;3.如果处理的图片不是正方形，将无法得到一个菱形图片，如下图所示：&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;div class=&#34;diamond-pic&#34;&gt;
     &lt;img src=&#34;http://www.wangxingfeng.com/images/adam-sleeping.jpg&#34; class=&#34;diamond-img&#34; style=&#34;transform: rotate(-45deg) scale(1.42);&#34;&gt;
@@ -407,7 +416,7 @@
 
 &lt;p&gt;&lt;code&gt;clip-path&lt;/code&gt;可以把元素裁切成我们想要的任何形状。我们通过&lt;code&gt;polygon()函数&lt;/code&gt;来指定一个菱形，参数是一系列用&lt;code&gt;逗号&lt;/code&gt;分隔的&lt;code&gt;坐标点&lt;/code&gt;。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;img{
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;img{
     clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -418,7 +427,7 @@
 
 &lt;p&gt;另外，因为&lt;code&gt;clip-path&lt;/code&gt;属性可以参与动画，我们还可以给这个图片动画过渡效果。比如，当我们的鼠标悬停到图片上时，菱形图片平滑地扩展为完整的原图。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;img{
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;img{
     clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
     transition: 1s clip-path;
 }
@@ -547,44 +556,46 @@ transform: skew(-30deg);
       <guid>http://www.wangxingfeng.com/ellipse-border-radius.html</guid>
       <description>
 
-&lt;h2 id=&#34;1-border-radius&#34;&gt;1.border-radius&lt;/h2&gt;
+&lt;h2 id=&#34;1-border-radius&#34;&gt;1. border-radius&lt;/h2&gt;
 
-&lt;p&gt;border-radius可以为元素添加圆角边框，比如 按钮。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;border-radius&lt;/code&gt; 可以为元素添加圆角边框，比如 按钮。&lt;/p&gt;
 
 &lt;p&gt;&lt;button style=&#34;display:block; width:160px; height:60px; margin:10px auto;color:#fff;background: #ff5722; border-radius:8px; border:none;outline:none; &#34;&gt;
     示例按钮
 &lt;/button&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;2-兼容性-ie9-以上都很好地能够兼容border-radius&#34;&gt;2.兼容性： IE9+以上都很好地能够兼容border-radius。&lt;/h2&gt;
+&lt;h2 id=&#34;2-兼容性-ie9-以上都很好地能够兼容-border-radius&#34;&gt;2. 兼容性： IE9+以上都很好地能够兼容  border-radius&lt;/h2&gt;
 
-&lt;h2 id=&#34;3-border-radius绘制圆形&#34;&gt;3.border-radius绘制圆形&lt;/h2&gt;
+&lt;h2 id=&#34;3-border-radius-绘制圆形&#34;&gt;3. border-radius 绘制圆形&lt;/h2&gt;
 
 &lt;p&gt;如果我们给一个正方形的元素设置一个足够大的border-radius值（只要大于等于正方形边长的一半）的话，就可以被这个元素变成圆形。
 但考虑到元素的高宽可能不是固定的，那么，我们可以设置百分比，这个百分比是基于元素的尺寸大小来解析的。当我们给一个正方形的元素设置border-radius：50%时，我们会得到一个自适应的圆形。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;width:200px;
-height:200px;
-border-radius:50%; /*在这里等价于border-radius:100px; 建议写成百分比*/
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    width:200px;
+    height:200px;
+    border-radius:50%; /*在这里等价于border-radius:100px; 建议写成百分比*/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;如下所示：
-&lt;div style=&#34;width:200px; height:200px; border-radius: 50%; background: #03a9f4; margin: 10px auto&#34;&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;如下所示：&lt;/p&gt;
 
-&lt;h2 id=&#34;4-border-radius绘制自适应椭圆&#34;&gt;4.border-radius绘制自适应椭圆&lt;/h2&gt;
+&lt;div style=&#34;width:200px; height:200px; border-radius: 50%; background: #03a9f4; margin: 10px auto&#34;&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;4-border-radius-绘制自适应椭圆&#34;&gt;4. border-radius 绘制自适应椭圆&lt;/h2&gt;
 
 &lt;p&gt;当元素的高宽不相等时，我们来看下会变成什么样子。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;width:300px; /*宽度变长了*/
-height:200px;
-border-radius:50%; 
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    width:300px; /*宽度变长了*/
+    height:200px;
+    border-radius:50%; 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;如下所示：
-&lt;div style=&#34;width:300px; height:200px; border-radius: 50%; background: #cddc39; margin: 10px auto&#34;&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;如下所示：&lt;/p&gt;
 
-&lt;p&gt;如上图所示，当元素的高宽不相等，border-radius设置为50%，我们将会得到一个自适应的椭圆。&lt;/p&gt;
+&lt;div style=&#34;width:300px; height:200px; border-radius: 50%; background: #cddc39; margin: 10px auto&#34;&gt;&lt;/div&gt;
 
-&lt;h2 id=&#34;5-border-radius绘制半个椭圆&#34;&gt;5.border-radius绘制半个椭圆&lt;/h2&gt;
+&lt;p&gt;如上图所示，当元素的高宽不相等，&lt;code&gt;border-radius&lt;/code&gt; 设置为 50%，我们将会得到一个自适应的椭圆。&lt;/p&gt;
+
+&lt;h2 id=&#34;5-border-radius-绘制半个椭圆&#34;&gt;5. border-radius 绘制半个椭圆&lt;/h2&gt;
 
 &lt;p&gt;如果想要得到半个椭圆，怎么办呢？&lt;/p&gt;
 
@@ -592,62 +603,65 @@ border-radius:50%;
 
 &lt;p&gt;我们需要补充以下两个知识点：&lt;/p&gt;
 
-&lt;p&gt;1.border-radius的值是可以单独指定水平方向上的半径和垂直方向上的半径的，中间需要用一个斜杠(/)分隔开两个值。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1.&lt;code&gt;border-radius&lt;/code&gt;的值是可以单独指定水平方向上的半径和垂直方向上的半径的，中间需要用一个斜杠(/)分隔开两个值。&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;2.border-radius是一个简写属性，我们可以单独为元素的每个角指定不同的值。border-radius展开的话是以下4个属性：&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;2.&lt;code&gt;border-radius&lt;/code&gt;是一个简写属性，我们可以单独为元素的每个角指定不同的值。&lt;code&gt;border-radius&lt;/code&gt; 展开的话是以下4个属性：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;border-top-left-radius
+&lt;p&gt;border-top-left-radius
 border-top-right-radius
 border-bottom-right-radius
-border-bottom-left-radius
-&lt;/code&gt;&lt;/pre&gt;
+border-bottom-left-radius&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;我们不必分开写，可以给border-radius指定4个值，用空格分开。浏览器解析的时候，是按顺时针顺序应用到元素的四个角的（和margin、padding等其他的常见属性的简写类似）。&lt;/p&gt;
+&lt;p&gt;我们不必分开写，可以给&lt;code&gt;border-radius&lt;/code&gt;指定4个值，用空格分开。浏览器解析的时候，是按顺时针顺序应用到元素的四个角的（和&lt;code&gt;margin&lt;/code&gt;、&lt;code&gt;padding&lt;/code&gt;等其他的常见属性的简写类似）。&lt;/p&gt;
 
 &lt;p&gt;我们来分析一下这个半椭圆形。&lt;/p&gt;
 
-&lt;p&gt;1.它是垂直对称的，说明左上角和右上角的半径值是相同的；左下角和右下角的半径值也应该是相同的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1.它是垂直对称的，说明左上角和右上角的半径值是相同的；左下角和右下角的半径值也应该是相同的。&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;2.它的顶部边缘是曲线的，说明左上角和右上角的半径值之和应该是等于这个元素的宽的。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;2.它的顶部边缘是曲线的，说明左上角和右上角的半径值之和应该是等于这个元素的宽的。&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;3.由前面两点可以推出，左上角和右上角的半径在水平方向上是50%。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;3.由前面两点可以推出，左上角和右上角的半径在水平方向上是50%。&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;4.再看垂直方向上，顶部的两个圆角占据了整个元素的高度，而底部完全没有任何圆角。因此，可以推断左上角和右上角的半径在垂直方向上是100%，左下角和右下角在垂直方向上是0。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;4.再看垂直方向上，顶部的两个圆角占据了整个元素的高度，而底部完全没有任何圆角。因此，可以推断左上角和右上角的半径在垂直方向上是100%，左下角和右下角在垂直方向上是0。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;综上所述，&lt;code&gt;border-radius&lt;/code&gt;的值应该是&lt;code&gt;50% / 100% 100% 0 0&lt;/code&gt;;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;width:300px;
-height:100px;
-border-radius: 50% / 100% 100% 0 0;
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    width:300px;
+    height:100px;
+    border-radius: 50% / 100% 100% 0 0;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:300px; height:100px; border-radius: 50% / 100% 100% 0 0; background: #795548; margin: 10px auto&#34;&gt;&lt;/div&gt;
 
-&lt;p&gt;如果我们把垂直方向上的值改为0 0 100% 100%，则可以得到另一个半椭圆。&lt;/p&gt;
+&lt;p&gt;如果我们把垂直方向上的值改为&lt;code&gt;0 0 100% 100%&lt;/code&gt;，则可以得到另一个半椭圆。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;width:300px;
-height:100px;
-border-radius: 50% /0 0 100% 100% ;
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    width:300px;
+    height:100px;
+    border-radius: 50% /0 0 100% 100% ;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:300px; height:100px; border-radius: 50% / 0 0 100% 100%; background: #4caf50; margin: 10px auto&#34;&gt;&lt;/div&gt;
 
 &lt;p&gt;如果把&lt;code&gt;水平方向&lt;/code&gt;&lt;code&gt;border-raduis&lt;/code&gt;设置为&lt;code&gt;50%&lt;/code&gt;; &lt;code&gt;垂直方向&lt;/code&gt;上，左上角和左下角设置为&lt;code&gt;100%&lt;/code&gt;； 右上角和右下角设为&lt;code&gt;0&lt;/code&gt;，则可以得到一个&lt;code&gt;沿Y轴劈开的半椭圆形&lt;/code&gt;。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;width:150px;
-height:200px;
-border-radius: 100% 0 0 100% / 50%;
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    width:150px;
+    height:200px;
+    border-radius: 100% 0 0 100% / 50%;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:150px; height:200px; border-radius: 100% 0 0 100% / 50% ; background: #9c27b0; margin: 10px auto&#34;&gt;&lt;/div&gt;
 
-&lt;h2 id=&#34;6-border-radius绘制椭圆的四分之一&#34;&gt;6.border-radius绘制椭圆的四分之一&lt;/h2&gt;
+&lt;h2 id=&#34;6-border-radius-绘制椭圆的四分之一&#34;&gt;6.border-radius 绘制椭圆的四分之一&lt;/h2&gt;
 
 &lt;p&gt;如果想要得到四分之一个椭圆呢？顺着之前的思路，我们可以设置其中一个角的&lt;code&gt;border-radius&lt;/code&gt;值为&lt;code&gt;100%&lt;/code&gt;，其他三个角为&lt;code&gt;0&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;width:150px;
-height:100px;
-border-radius: 100% 0 0 0;
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    width:150px;
+    height:100px;
+    border-radius: 100% 0 0 0;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div style=&#34;width:150px; height:100px; border-radius: 100% 0 0 0 ; background: #9e9e9e; margin: 10px auto&#34;&gt;&lt;/div&gt;
@@ -661,6 +675,54 @@ border-radius: 100% 0 0 0;
       
       <guid>http://www.wangxingfeng.com/css-flip.html</guid>
       <description>
+
+&lt;style&gt;
+
+.back, .front, .rotate-container{
+    width: 320px;
+    height: 380px;
+    margin: 0 auto;
+    text-align: center;
+    color: #00f;
+}
+.flipper {
+    transition-duration: 1s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.rotate-container.hover .flipper,.rotate-container:hover .flipper {
+    transform: rotateY(180deg)
+}
+.back, .front {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.front {
+    z-index: 2;
+}
+.back {
+    transform: rotateY(180deg);
+}
+.rotateY{
+    transition-duration:1.5s;
+}
+.rotateY45:hover{
+    transform: rotateY(45deg);
+}
+.rotateY90:hover{
+    transform: rotateY(90deg);
+}
+.rotateY180:hover{
+    transform: rotateY(180deg);
+    
+}
+.bf-hidden{
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+&lt;/style&gt;
 
 &lt;h2 id=&#34;用css实现页面或图片翻转的动画效果&#34;&gt;用CSS实现页面或图片翻转的动画效果&lt;/h2&gt;
 
@@ -692,7 +754,7 @@ border-radius: 100% 0 0 0;
 
 &lt;p&gt;HTML代码&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;rotate-container&amp;quot;&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;rotate-container&amp;quot;&amp;gt;
     &amp;lt;div class=&amp;quot;flipper&amp;quot;&amp;gt;
         &amp;lt;div class=&amp;quot;front&amp;quot;&amp;gt;
             &amp;lt;!-- 前面内容 --&amp;gt;
@@ -706,7 +768,7 @@ border-radius: 100% 0 0 0;
 
 &lt;p&gt;CSS代码&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;.rotate-container:hover .flipper{
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.rotate-container:hover .flipper{
     transform: rotateY(180deg);
 }
 
@@ -741,29 +803,9 @@ border-radius: 100% 0 0 0;
 
 &lt;h3 id=&#34;1-transform-变形&#34;&gt;1.transform：变形&lt;/h3&gt;
 
-&lt;p&gt;&lt;code&gt;transform: rotateY(180deg)&lt;/code&gt; 表示沿着Y轴旋转180度。
-&lt;style&gt;
-    .rotateY{
-        transition-duration:1.5s;
-    }
-    .rotateY45:hover{
-        transform: rotateY(45deg);
-    }
-    .rotateY90:hover{
-        transform: rotateY(90deg);
-    }
-    .rotateY180:hover{
-        transform: rotateY(180deg);&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transform: rotateY(180deg)&lt;/code&gt; 表示沿着Y轴旋转180度。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;}
-.bf-hidden{
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/style&gt;
-&lt;p&gt;Demo2：沿着Y轴旋转180度(旋转到背面可见)&lt;/p&gt;
+&lt;p&gt;&lt;p&gt;Demo2：沿着Y轴旋转180度(旋转到背面可见)&lt;/p&gt;
 &lt;div class=&#34;rotateY rotateY180&#34;&gt;
     &lt;img src=&#34;https://images-cn.ssl-images-amazon.com/images/I/51fD0ZgQoXL._SL400_.jpg&#34; alt=&#34;&#34;&gt;
 &lt;/div&gt;

@@ -6,7 +6,6 @@
     <description>Recent content in Shadowsocks on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io).</copyright>
     <atom:link href="http://www.wangxingfeng.com/tags/shadowsocks/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -63,14 +62,14 @@
 
 &lt;p&gt;5)输入命令&lt;code&gt;emacs /etc/ss.json&lt;/code&gt; 打开编辑器，并打开一个名为&lt;code&gt;ss.json&lt;/code&gt;的配置文件保存在&lt;code&gt;/etc/&lt;/code&gt;目录下。以下是SS官方的默认配置：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;server&amp;quot;:&amp;quot;你的服务器静态IP地址&amp;quot;,
-    &amp;quot;server_port&amp;quot;:端口号, //端口号需要与步骤5设置的一致
-    &amp;quot;password&amp;quot;:&amp;quot;你的密码&amp;quot;,
-    &amp;quot;timeout&amp;quot;:600,
-    &amp;quot;method&amp;quot;:&amp;quot;rc4-md5&amp;quot;, 
-    &amp;quot;auth&amp;quot;: true
-}
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;    {
+        &amp;quot;server&amp;quot;:&amp;quot;你的服务器静态IP地址&amp;quot;,
+        &amp;quot;server_port&amp;quot;:端口号, //端口号需要与步骤5设置的一致
+        &amp;quot;password&amp;quot;:&amp;quot;你的密码&amp;quot;,
+        &amp;quot;timeout&amp;quot;:600,
+        &amp;quot;method&amp;quot;:&amp;quot;rc4-md5&amp;quot;, 
+        &amp;quot;auth&amp;quot;: true
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;6)配置完成后, 按&lt;code&gt;ctrl + x&lt;/code&gt; 然后 &lt;code&gt;ctrl + s&lt;/code&gt; 保存文件，再按 &lt;code&gt;ctrl + x&lt;/code&gt;然后 &lt;code&gt;ctrl + c&lt;/code&gt;退出编辑器。&lt;/p&gt;

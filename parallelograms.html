@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>用CSS创建内容不倾斜的平行四边形 &middot; Frank Wang&#39;s Coding World</title>
-    <meta name="generator" content="Hugo 0.19" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="author" content="Frank Wang">
-    
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>用CSS创建内容不倾斜的平行四边形 - Frank Wang&#39;s Coding World</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-    
-      <meta name="keywords" content="[CSS, transform, skew, 平行四边形, 伪元素]">
-    
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    
-      <meta name="description" content="用CSS绘制内容不倾斜的平行四边形的两种实现方式：嵌套元素方案和伪元素方案">
-    
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-    
 
-    <link rel="canonical" href="http://www.wangxingfeng.com/parallelograms.html"/>
-    <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
-    <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
-    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
-    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/monokai.min.css">
-    <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.min.css">
-    
+<meta name="author" content="Frank Wang" /><meta name="description" content="用CSS绘制内容不倾斜的平行四边形的两种实现方式：嵌套元素方案和伪元素方案" />
+<meta name="keywords" content="CSS transform, skew, 平行四边形, 伪元素" />
 
-    <meta property="og:title" content="用CSS创建内容不倾斜的平行四边形" />
+
+
+<meta name="baidu-site-verification" content="WSqfBuzd3t" />
+
+
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+<link rel="canonical" href="http://www.wangxingfeng.com/parallelograms.html" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.min.css?v=2.6.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="用CSS创建内容不倾斜的平行四边形" />
 <meta property="og:description" content="用CSS绘制内容不倾斜的平行四边形的两种实现方式：嵌套元素方案和伪元素方案" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://www.wangxingfeng.com/parallelograms.html" />
@@ -48,20 +61,17 @@
 
 
 
-    
-    
 <meta itemprop="name" content="用CSS创建内容不倾斜的平行四边形">
 <meta itemprop="description" content="用CSS绘制内容不倾斜的平行四边形的两种实现方式：嵌套元素方案和伪元素方案">
 
 
 <meta itemprop="dateModified" content="2017-04-30T16:44:06&#43;08:00" />
-<meta itemprop="wordCount" content="74">
+<meta itemprop="wordCount" content="560">
 
 
 
 <meta itemprop="keywords" content="database,english,frontend,node,python,tools,angular2,bug,cdn,clipboard,css,css3,git,github,gitment,hugo,javascript,markdown,mysql,node,nvm,python,regexp,seo,shadowsocks,sublime-text,tab切换,typescript,useragent,wordpress,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
 
-    
 
   <meta name="twitter:card" content="summary"/>
 
@@ -70,345 +80,145 @@
 <meta name="twitter:text:title" content="用CSS创建内容不倾斜的平行四边形"/>
 <meta name="twitter:title" content="用CSS创建内容不倾斜的平行四边形"/>
 <meta name="twitter:description" content="用CSS绘制内容不倾斜的平行四边形的两种实现方式：嵌套元素方案和伪元素方案"/>
-<meta name="twitter:site" content="@frankwang0909"/>
 
-    <meta name="baidu-site-verification" content="WSqfBuzd3t" />
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
 <script>
-    var _hmt = _hmt || [];
-    (function() {
+  var _hmt = _hmt || [];
+  (function() {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?7d0fc5a9b2d70433d9b1dd477606dc3c";
-      var s = document.getElementsByTagName("script")[0]; 
+      var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
-    })();
+  }
+  )();
 </script>
 <script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https'){
-   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  (function() {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
   }
-  else{
-  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-  }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
+  )();
 </script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+      }
+      ,
+      i[r].l = 1 * new Date();
+      a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+  }
+  )(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-101812896-1', 'auto');
   ga('send', 'pageview');
 </script>
-<a href="http://webscan.360.cn/index/checkwebsite/url/www.wangxingfeng.com" name="62f4de960b74ae15f2d2dcfc622f89a7" >360网站安全检测平台</a>
-
-    
-
-    
-    <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    
 </head>
 <body>
-<div class="container">
-
-
-<div id="container">
-	<header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="http://www.wangxingfeng.com/" id="logo">
-          
-          <i class="logo" style="background-image: url('http://www.wangxingfeng.com/css/images/logo.png')"></i>
-          
-          <span class="site-title">Frank Wang&#39;s Coding World</span>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Frank Wang’s Coding World</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
       </a>
-      <nav id="main-nav">
-          
-          
-          <a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Frank Wang’s Coding World</a>
+</div>
 
-          
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
 
-          
-          
-          
-          
-          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend">前端</a>
-          
-          
-          
-          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node">Node</a>
-          
-          
-          
-          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python">Python</a>
-          
-          
-          
-          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
-          
-          
-          
-          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools">工具</a>
-          
-          
-          
-          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/english">英语</a>
-          
-          
-      </nav>
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://www.wangxingfeng.com/css/images/avatar.jpg"><i class="fa fa-caret-down"></i></a>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">用CSS创建内容不倾斜的平行四边形</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-04-30 </span>
+        <div class="post-category">
+            <a href="/categories/frontend/">frontend</a>
           </div>
-        </nav>
-        <div id="search-form-wrap">
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
-              <input type="search" name="q" class="search-form-input" placeholder="搜索">
-              <button type="submit" class="search-form-submit">
-              </button>
-              <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
-         </form>
-        </div>
-    </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tbody>
-          <tr>
-          
-          
-          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a></td>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-
-          
-
-          
-          
-          
-          
-          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend">前端</a></td>
-          
-          
-          
-          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node">Node</a></td>
-          
-          
-          
-          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python">Python</a></td>
-          
-          
-          
-          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/database">Database</a></td>
-          
-          
-          
-          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools">工具</a></td>
-          
-          
-          
-          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/english">英语</a></td>
-          
-          
-          <td>
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
-          <input type="search" name="q" class="search-form-input" placeholder="Search">
-          <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
-          </form>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</header>
-
-   	
-   	<div class="outer">
-   		
-	    <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.jpg">
-      <h2 id="name">Frank Wang</h2>
-      <h3 id="title">Blogger - Programmer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>China, Shenzhen</span>
-      
-          <a id="follow" href="https://github.com/frankwang0909" target="_blank">
-              Follow
-          </a>
-      
-    </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        40
-        <span>Posts</span>
+        <span class="more-meta"> 约 560 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
       </div>
-      <div class="article-info-block">
-        
-          30
-        
-        <span>
-            Tags
-        </span>
-      </div>
-    </div>
-    <div class="profile-block social-links">
-      <table>
-        <tr>
-          
-<td><a href="//github.com/frankwang0909" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+    </header>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<td><a href="//twitter.com/frankwang0909" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
-
-
-          <td><a href="http://www.wangxingfeng.com/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
-        </tr>
-      </table>
-    </div>
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-平行四边形">1.平行四边形</a></li>
+<li><a href="#2-嵌套元素方案">2.嵌套元素方案</a></li>
+<li><a href="#3-伪元素方案">3.伪元素方案</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
-  
-
-</aside>
-
-	    
-
-	    
-<section id="main">
-
-    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            
-
-            <header class="article-header">
-    <a href="http://www.wangxingfeng.com/parallelograms.html">
-    <h1 class="article-title" itemprop="name">
-        用CSS创建内容不倾斜的平行四边形
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-30 16:44:06 &#43;0800 CST" itemprop="datePublished">2017-04-30</time>
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">frontend</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/css">CSS</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                
+</div>
+    <iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?o=28&p=12&l=ur1&category=books&banner=0CQKPCZXE9QEVSSXN002&f=ifr&linkID=adf25941500ff7304f5193004b357dff&t=frankwang09-23&tracking_id=frankwang09-23" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+    <iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?o=28&p=12&l=ur1&category=books&banner=1N4AHFJRK48P743G2QR2&f=ifr&linkID=7551f551ae22dc5bee3805c6bfb79010&t=frankwang09-23&tracking_id=frankwang09-23" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+    
+    <div class="post-content">
+      
 
 <h2 id="1-平行四边形">1.平行四边形</h2>
 
@@ -506,324 +316,110 @@ transform: skew(-30deg);
 
 <p>注意这里有个小坑。由于我们对这个伪元素设置了<code>z-index:-1</code>, 所以，必须确保这个伪元素的容器、以及容器的<code>祖先元素</code>(一直追溯到<code>&lt;body&gt;</code>的<code>直接子元素</code>)的背景都必须是透明的，否则将会遮盖住这个<code>伪元素</code>。</p>
 
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://www.wangxingfeng.com/parallelograms.html" data-id="d0acfd46fd1682ddaaa01a442c2b887c" class="article-share-link">
-        <i class="fa fa-share"></i>
-        分享
-    </a>
+    </div>
+    
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Frank Wang</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-04-30</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
     
 
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/css/">CSS</a>
+          
         </div>
 
-        
-<nav id="article-nav">
-    
-    <a href="http://www.wangxingfeng.com/ellipse-border-radius.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          &lt;&lt; 上一篇
-      </strong>
-      <div class="article-nav-title">用CSS绘制椭圆、半椭圆、四分之一椭圆</div>
-    </a>
-    
-
-    
-    <a href="http://www.wangxingfeng.com/diamond-picture.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          下一篇>>
-      </strong>
-      <div class="article-nav-title">如何用CSS代码实现网页设计中的菱形图片</div>
-    </a>
-    
-</nav>
-
-
-    </article>
-    <div id="comments"></div>
-</section>
-<script type="text/javascript">
-    var gitment = new Gitment({
-      owner: 'frankwang0909',
-      repo: 'frankwang0909.github.io',
-      oauth: {
-        client_id: '877980759850b2ab1476',
-        client_secret: 'e6cc4fba1c3010627ed3c87eab2519c7efb5907a',
-      },
-    });
-    gitment.render('comments');
-</script>
-
-	    
-	    <aside id="sidebar">
-    
-<div class="widget-wrap">
-    <h3 class="widget-title">
-        近期文章
-    </h3>
-    <div class="widget">
-        <ul id="recent-post">
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/centos_wordpress.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">
-                        tools
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/centos_wordpress.html" class="title">在 CentOS 上搭建 WordPress 博客</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-08-02 21:23:27 &#43;0800 CST" itemprop="datePublished">2017-08-02</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/nvm_for_window.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">
-                        Node
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/nvm_for_window.html" class="title"> window 系统的 Node 版本管理工具 nvm-windows</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-07-20 07:54:41 &#43;0800 CST" itemprop="datePublished">2017-07-20</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/typescript_basic.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/typescript_basic.html" class="title">TypeScript 入门</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-07-16 21:43:35 &#43;0800 CST" itemprop="datePublished">2017-07-16</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/angular2_basic.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/angular2_basic.html" class="title">快速入门 Angular2 核心概念</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-07-15 17:13:18 &#43;0800 CST" itemprop="datePublished">2017-07-15</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="http://www.wangxingfeng.com/javascript_number.html" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
-                        frontend
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="http://www.wangxingfeng.com/javascript_number.html" class="title">JavaScript 的 number 需要注意的一些特性</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-07-09 21:45:51 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
-                    </p>
-                </div>
-            </li>
-            
-        </ul>
-    </div>
-</div>
-
-
-    
-
-
-	<iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=12&l=ez&f=ifr&f=ifr" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;max-width:800px;max-height:600px;"></iframe>
-	<div style="margin-top: 10px;">
-		 <iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01ET3FO86&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;margin-right: 10px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-	 	<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01MYX8XG1&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-	</div>
-	<div style="margin-top: 10px;">
-		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01A18WWAG&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;margin-right: 10px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01MQIE77V&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-	</div>
-	<div style="margin-top: 20px">
       
-    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=136JQWBMQZDXMC5PEM82&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;margin-right:10px" frameborder="0"></iframe>
-    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=06DR0F7H0WPRDEY0X6G2&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
-  </div>
-  <div class="qcloud" style="margin:10px auto">
-    <a href="http://www.qcloud.com/redirect.php?redirect=1001&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云服务器安全可靠高性能，多种配置供您选择" target="_blank">
-      <img src="/images/120x140.jpg" alt="腾讯云服务器安全可靠高性能，多种配置供您选择">
-    </a>
-    <a href="http://www.qcloud.com/redirect.php?redirect=1003&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题" target="_blank" style="margin-left: 10px">
-      <img src="/images/云数据库-120X240.jpg" alt="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题">
-    </a>
-  </div>
-	<div id="toTop" class="fa fa-angle-up"></div>
-</aside>
+      <nav class="post-nav">
+        
+          <a class="prev" href="/diamond-picture.html">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">如何用CSS代码实现网页设计中的菱形图片</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/ellipse-border-radius.html">
+            <span class="next-text nav-default">用CSS绘制椭圆、半椭圆、四分之一椭圆</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
 
-	    
-	</div>
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:frankwang0909@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.twitter.com/frankwang0909" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.github.com/frankwang0909" class="iconfont icon-github" title="github"></a>
+  <a href="http://www.wangxingfeng.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
-<footer id="footer">
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017
-      <a href="//www.wangxingfeng.com">Frank Wang</a>. Powered by <a href="//gohugo.io">Hugo</a>.
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
     
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261787467'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261787467%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+      2016 - 
+    2017
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Frank Wang</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
     </div>
   </div>
+  
+<script src="/lib/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.1"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 
-</footer>
-
-
-<script src="http://www.wangxingfeng.com/fancybox/jquery.fancybox.pack.js"></script>
-<script src="http://www.wangxingfeng.com/js/script.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-
-
-<script>hljs.initHighlightingOnLoad();</script>
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-</script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
