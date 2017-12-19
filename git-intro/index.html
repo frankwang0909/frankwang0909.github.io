@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Git学习笔记 &middot; Frank Wang&#39;s Coding World</title>
+    <meta name="generator" content="Hugo 0.19" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="author" content="Frank Wang">
+    
+
+    
+      <meta name="keywords" content="[Git学习笔记，Git新手学习指南，Git工作流，在win7系统中如何使用Git管理代码]">
+    
+
+    
+      <meta name="description" content="Git学习笔记，Git新手学习指南，Git工作流，在win7系统中如何使用Git管理代码">
+    
+
+    
+
+    <link rel="canonical" href="http://www.wangxingfeng.com/git-intro"/>
+    <link rel="icon" href="http://www.wangxingfeng.com/favicon.ico">
+    <link rel="apple-touch-icon" href="http://www.wangxingfeng.com/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/style.min.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/css/monokai.min.css">
+    <link rel="stylesheet" href="http://www.wangxingfeng.com/fancybox/jquery.fancybox.min.css">
+    
+
+    <meta property="og:title" content="Git学习笔记" />
+<meta property="og:description" content="Git学习笔记，Git新手学习指南，Git工作流，在win7系统中如何使用Git管理代码" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.wangxingfeng.com/git-intro" />
+
+
+
+<meta property="article:published_time" content="2016-04-03T22:43:39&#43;08:00"/>
+<meta property="article:modified_time" content="2016-04-03T22:43:39&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Git学习笔记">
+<meta itemprop="description" content="Git学习笔记，Git新手学习指南，Git工作流，在win7系统中如何使用Git管理代码">
+
+
+<meta itemprop="dateModified" content="2016-04-03T22:43:39&#43;08:00" />
+<meta itemprop="wordCount" content="155">
+
+
+
+<meta itemprop="keywords" content="database,english,frontend,node,python,tools,angular2,bug,cdn,clipboard,css,css3,git,github,gitment,hugo,javascript,markdown,mysql,node,nvm,python,regexp,seo,shadowsocks,sublime-text,tab切换,typescript,useragent,wordpress,下拉菜单,块级作用域,攒词汇,数组,服务器,返回顶部," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Git学习笔记"/>
+<meta name="twitter:title" content="Git学习笔记"/>
+<meta name="twitter:description" content="Git学习笔记，Git新手学习指南，Git工作流，在win7系统中如何使用Git管理代码"/>
+<meta name="twitter:site" content="@frankwang0909"/>
+
+    <meta name="baidu-site-verification" content="WSqfBuzd3t" />
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7d0fc5a9b2d70433d9b1dd477606dc3c";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-101812896-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<a href="http://webscan.360.cn/index/checkwebsite/url/www.wangxingfeng.com" name="62f4de960b74ae15f2d2dcfc622f89a7" >360网站安全检测平台</a>
+
+    
+
+    
+    <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://www.wangxingfeng.com/" id="logo">
+          
+          <i class="logo" style="background-image: url('http://www.wangxingfeng.com/css/images/logo.png')"></i>
+          
+          <span class="site-title">Frank Wang&#39;s Coding World</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend">前端</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node">Node</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python">Python</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/database">Database</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools">工具</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://www.wangxingfeng.com/categories/english">英语</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://www.wangxingfeng.com/css/images/avatar.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="搜索">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/">Home</a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/frontend">前端</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/node">Node</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/python">Python</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/database">Database</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/tools">工具</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://www.wangxingfeng.com/categories/english">英语</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="http://www.wangxingfeng.com/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://www.wangxingfeng.com/css/images/avatar.jpg">
+      <h2 id="name">Frank Wang</h2>
+      <h3 id="title">Blogger - Programmer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>China, Shenzhen</span>
+      
+          <a id="follow" href="https://github.com/frankwang0909" target="_blank">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        40
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          30
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/frankwang0909" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/frankwang0909" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="http://www.wangxingfeng.com/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://www.wangxingfeng.com/git-intro">
+    <h1 class="article-title" itemprop="name">
+        Git学习笔记
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-03 22:43:39 &#43;0800 CST" itemprop="datePublished">2016-04-03</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">tools</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="http://www.wangxingfeng.com/tags/git">Git</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<p><code>Git</code>是一款分布式的代码管理工具，方便多人协作时的代码管理。在<code>win7</code>系统中使用Git管理代码有2种主要的方式。</p>
+
+<h2 id="方式一-msysgit">方式一： <code>msysgit</code></h2>
+
+<h3 id="step-1-下载并安装-msysgit">Step 1: 下载并安装<code>msysgit</code></h3>
+
+<p><a href="https://git-for-windows.github.io">msysgit</a> 是Windows版的Git。下载，然后按默认选项安装即可。安装完成后，在开始菜单里找到“ Git ”-&gt;“ Git Bash ”，点击会弹出一个命令行窗口，说明Git安装成功。</p>
+
+<h3 id="step-2-设置用户名">Step 2: 设置用户名</h3>
+
+<p>在命令行输入以下命令</p>
+
+<pre><code>$ git config --global user.name &quot;Your Name&quot;
+$ git config --global user.email &quot;email@example.com&quot;
+</code></pre>
+
+<p><strong>注意</strong>： <code>git confi</code>g命令的<code>--global</code>参数，用了这个参数，表示你这台电脑上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</p>
+
+<h3 id="step-3-创建版本库">Step 3: 创建版本库</h3>
+
+<p>选择一个合适的地方，创建一个空目录：</p>
+
+<pre><code>$ mkdir  gitskills  // 创建一个名gitskills的目录
+$ cd   gitskills    // 切换gitskills目录
+$ pwd           //pwd 命令用于显示当前目录
+$ git init      //初始化Git仓库，当前目录中会多了一个.git目录（默认是隐藏的）
+</code></pre>
+
+<p><strong>注意</strong>：为避免莫名其妙地报错，请确保目录名（包括父目录）不包含 <strong>中文</strong>。</p>
+
+<h3 id="step-4-把文件添加到版本库">Step 4: 把文件添加到版本库</h3>
+
+<p>在刚刚创建的目录(比如gitskills)下新建文件，或者从其他地方拷贝文件到该目录下。</p>
+
+<pre><code>$ git add readme.md  //新增一个readme.md文件
+$ git commit -m &quot;提交时的附加信息&quot;  //把文件提交到仓库,并附上相关的说明文字（用引号括起来）
+</code></pre>
+
+<p><strong>注意</strong>： 每次修改文件，都需要先<code>git add</code>到暂存区，然后才能<code>git commit</code>到仓库。可以<code>add</code>一个文件之后<code>commit</code>，也可以<code>add</code>多个文件，然后一起<code>commit</code>。</p>
+
+<h3 id="常用的git命令">常用的Git命令：</h3>
+
+<ol>
+<li><p>查看状态 : <code>git status</code></p></li>
+
+<li><p>推送到远程库： <code>git remote add origin git@github.com: 具体远程库的名称</code></p></li>
+
+<li><p>查看difference: <code>git diff readme.md</code></p></li>
+
+<li><p>查看历史记录： <code>git log</code> 或者 <code>git log --pretty=oneline</code>。</p></li>
+</ol>
+
+<p>你会看到一大串类似<code>commit: 8a56b4...ba53c1e50</code>十六进制字符串，它是版本号<code>commit id</code>， 回退时会用到。</p>
+
+<ol>
+<li><p>版本回退： 仅退到上一个版本可使用命令 <code>git reset --hard HEAD^</code>； 如果版本比较多，可以先 <code>git log</code> 找到对应的版本号commit_id， 然后使用命令 <code>git reset --hard commit_id</code>（版本号可以不用写全，git会自动查找匹配的）</p></li>
+
+<li><p>查看命令历史： <code>git reflog</code>， 如果回退之后又后悔了，而且已经关了Git，那就使用 <code>git reflog</code>，找到对应的commit，以便回到未来的哪个版本。</p></li>
+
+<li><p>更新本地库：推送前先  <code>git pull</code> 更新本地库，以免远程库已经改变导致推送失败报错。</p></li>
+
+<li><p>常见错误及处理：</p></li>
+</ol>
+
+<p>常见报错1:</p>
+
+<pre><code>fatal: remote origin already exists. 
+</code></pre>
+
+<p>解决方法：先删除远程 git 仓库，再添加</p>
+
+<pre><code>git remote rm origin
+
+git remote add origin git@github.com:项目的远程git仓库
+</code></pre>
+
+<h2 id="方式二-使用-gihub-提供的-github-for-windows">方式二： 使用<code>GiHub</code>提供的<code>GitHub for Windows</code></h2>
+
+<p>在window平台下使用Git的最简单的方式是使用GitHub网站提供的<a href="https://desktop.github.com/">GitHub for Windows</a>。优点是直接图形化的操作界面，完全不用记命令。</p>
+
+<p>#</p>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://www.wangxingfeng.com/git-intro" data-id="5c7d4660a78e886259fcd5554c1fe020" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://www.wangxingfeng.com/dropdown-menu" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          &lt;&lt; 上一篇
+      </strong>
+      <div class="article-nav-title">常见的下拉菜单</div>
+    </a>
+    
+
+    
+    <a href="http://www.wangxingfeng.com/back-to-top" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          下一篇>>
+      </strong>
+      <div class="article-nav-title">实现返回顶部效果的3种方式</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+    <div id="comments"></div>
+</section>
+<script type="text/javascript">
+    var gitment = new Gitment({
+      owner: 'frankwang0909',
+      repo: 'frankwang0909.github.io',
+      oauth: {
+        client_id: '877980759850b2ab1476',
+        client_secret: 'e6cc4fba1c3010627ed3c87eab2519c7efb5907a',
+      },
+    });
+    gitment.render('comments');
+</script>
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        近期文章
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/centos_wordpress.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/tools">
+                        tools
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/centos_wordpress.html" class="title">在 CentOS 上搭建 WordPress 博客</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-08-02 21:23:27 &#43;0800 CST" itemprop="datePublished">2017-08-02</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/nvm_for_window.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/node">
+                        Node
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/nvm_for_window.html" class="title"> window 系统的 Node 版本管理工具 nvm-windows</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-20 07:54:41 &#43;0800 CST" itemprop="datePublished">2017-07-20</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/typescript_basic.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/typescript_basic.html" class="title">TypeScript 入门</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-16 21:43:35 &#43;0800 CST" itemprop="datePublished">2017-07-16</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/angular2_basic.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/angular2_basic.html" class="title">快速入门 Angular2 核心概念</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-15 17:13:18 &#43;0800 CST" itemprop="datePublished">2017-07-15</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://www.wangxingfeng.com/javascript_number.html" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://www.wangxingfeng.com/categories/frontend">
+                        frontend
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://www.wangxingfeng.com/javascript_number.html" class="title">JavaScript 的 number 需要注意的一些特性</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-09 21:45:51 &#43;0800 CST" itemprop="datePublished">2017-07-09</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+	<iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=12&l=ez&f=ifr&f=ifr" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;max-width:800px;max-height:600px;"></iframe>
+	<div style="margin-top: 10px;">
+		 <iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01ET3FO86&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;margin-right: 10px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+	 	<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01MYX8XG1&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+	</div>
+	<div style="margin-top: 10px;">
+		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01A18WWAG&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;margin-right: 10px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+		<iframe src="https://rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=8&l=as1&asins=B01MQIE77V&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+	</div>
+	<div style="margin-top: 20px">
+      
+    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=136JQWBMQZDXMC5PEM82&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;margin-right:10px" frameborder="0"></iframe>
+    <iframe src="//rcm-cn.amazon-adsystem.com/e/cm?t=frankwang09-23&o=28&p=11&l=ur1&category=books&banner=06DR0F7H0WPRDEY0X6G2&f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
+  </div>
+  <div class="qcloud" style="margin:10px auto">
+    <a href="http://www.qcloud.com/redirect.php?redirect=1001&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云服务器安全可靠高性能，多种配置供您选择" target="_blank">
+      <img src="/images/120x140.jpg" alt="腾讯云服务器安全可靠高性能，多种配置供您选择">
+    </a>
+    <a href="http://www.qcloud.com/redirect.php?redirect=1003&cps_key=9f28a72924f8f2bc2b18684ce8c34b06" title="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题" target="_blank" style="margin-left: 10px">
+      <img src="/images/云数据库-120X240.jpg" alt="腾讯云数据库性能卓越稳定可靠，为您解决数据库运维难题">
+    </a>
+  </div>
+	<div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      <a href="//www.wangxingfeng.com">Frank Wang</a>. Powered by <a href="//gohugo.io">Hugo</a>.
+    
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261787467'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261787467%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+
+</footer>
+
+
+<script src="http://www.wangxingfeng.com/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://www.wangxingfeng.com/js/script.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

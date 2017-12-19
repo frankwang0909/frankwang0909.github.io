@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Css预处理器 on Frank Wang&#39;s Coding World</title>
+    <link>http://www.wangxingfeng.com/tags/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/index.xml</link>
+    <description>Recent content in Css预处理器 on Frank Wang&#39;s Coding World</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>[Frank Wang](//www.wangxingfeng.com). Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://www.wangxingfeng.com/tags/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>CSS Preprocessors</title>
+      <link>http://www.wangxingfeng.com/css-preprocessor</link>
+      <pubDate>Sun, 23 Apr 2017 14:58:58 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/css-preprocessor</guid>
+      <description>&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;css-preprocessor-预处理器&#34;&gt;CSS Preprocessor 预处理器&lt;/h2&gt;
+
+&lt;p&gt;CSS层叠样式表(Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。由于CSS不想普通的编程语言有自己的变量、常量、条件语句、函数等编程语法，而只是一行行单纯的属性描述，写起来相当的费事，代码难以组织和维护。&lt;/p&gt;
+
+&lt;h3 id=&#34;less&#34;&gt;Less&lt;/h3&gt;
+
+&lt;h3 id=&#34;sass和scss&#34;&gt;SASS和SCSS&lt;/h3&gt;
+
+&lt;h3 id=&#34;stylus&#34;&gt;Stylus&lt;/h3&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
