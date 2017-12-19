@@ -9,6 +9,268 @@
     <atom:link href="http://www.wangxingfeng.com/tags/%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>微信小程序页面间的跳转及数据传递(二)</title>
+      <link>http://www.wangxingfeng.com/miniapp_route_2.html</link>
+      <pubDate>Tue, 19 Dec 2017 21:28:10 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/miniapp_route_2.html</guid>
+      <description>
+
+&lt;p&gt;在 &lt;a href=&#34;http://www.wangxingfeng.com/miniapp_route.html&#34;&gt;微信小程序页面间的跳转及数据传递(一)&lt;/a&gt; 一文中，我们介绍了打开小程序的页面的三个方法&lt;code&gt;wx.navigateTo&lt;/code&gt;、  &lt;code&gt;wx.navigateBack&lt;/code&gt; 、 &lt;code&gt;wx.redirectTo&lt;/code&gt;。本文将介绍另外两个方法 &lt;code&gt;wx.switchTab&lt;/code&gt; 、 &lt;code&gt;wx.reLaunch&lt;/code&gt; 。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-打开tabbar页面-wx-switchtab-url不可传递数据&#34;&gt;1. 打开tabBar页面： wx.switchTab，URL不可传递数据&lt;/h2&gt;
+
+&lt;p&gt;1）使用&lt;code&gt;wx.switchTab&lt;/code&gt; ，将会跳转到参数 url 指定的 &lt;code&gt;tabBar&lt;/code&gt; 页面，并关闭其他所有非 tabBar 页面。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;参数说明：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;必填&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;url&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;需要跳转的 tabBar 页面的路径（需在 app.json 的 &lt;a href=&#34;https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar&#34;&gt;tabBar&lt;/a&gt; 字段定义的页面），路径后不能带参数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;success&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用成功的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;fail&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用失败的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;complete&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用结束的回调函数（调用成功、失败都会执行）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;示例代码：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;假设有 index 和 search 这两个 tabBar 页面。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;// 配置文件 app.json
+
+&amp;quot;tabBar&amp;quot;: {
+    &amp;quot;list&amp;quot;: [
+      {
+        &amp;quot;pagePath&amp;quot;: &amp;quot;pages/index/index&amp;quot;,
+        &amp;quot;text&amp;quot;: &amp;quot;首页&amp;quot;,
+        &amp;quot;iconPath&amp;quot;: &amp;quot;img/home01.png&amp;quot;,
+        &amp;quot;selectedIconPath&amp;quot;: &amp;quot;img/home02.png&amp;quot;
+      },
+      {
+        &amp;quot;pagePath&amp;quot;: &amp;quot;pages/search/search&amp;quot;,
+        &amp;quot;text&amp;quot;: &amp;quot;查询&amp;quot;,
+        &amp;quot;iconPath&amp;quot;: &amp;quot;img/2017121106.png&amp;quot;,
+        &amp;quot;selectedIconPath&amp;quot;: &amp;quot;img/2017121105.png&amp;quot;
+      },
+    ]
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;从  index 页跳转到 search 页&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// index.js
+
+wx.switchTab({
+  url: &#39;../search/search&#39;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2) 由于&lt;code&gt;wx.switchTab&lt;/code&gt; 的 url 不能带参数，无法通过 url 在页面间传递数据。这时候我们该怎么处理数据的传递呢？&lt;/p&gt;
+
+&lt;p&gt;我们可以使用 &lt;code&gt;全局对象 App&lt;/code&gt; 的 &lt;code&gt;globalData&lt;/code&gt; 属性来存储数据。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// app.js
+App({
+  // 全局变量
+  globalData: {
+    ticket: null , // 变量ticket，可以用于所有页面。
+  },
+  onLaunch: function () {
+  });
+});  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;假设跳转前的页面为 index , 使用&lt;code&gt;全局变量&lt;/code&gt;来存储从 index 页面中的数据。要使用 全局变量就必须先通过&lt;code&gt;getApp()&lt;/code&gt;获取应用实例，再给&lt;code&gt;app.global&lt;/code&gt; 赋值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-index.js&#34;&gt;// index.js
+//获取应用实例
+const app = getApp();
+
+Page({
+  data: {},
+  // 自定义的函数
+  chooseShow: function(event) {
+     // 需要传递的数据
+    var ticket = {
+      ticketId: 1001,
+      account: &#39;123456&#39;,
+    };
+    
+    // 使用全局变量来存储数据 ticket
+    app.global.ticket = ticket;
+    
+    // 跳转到 search 页面 (search 为 tabBar 页面 )
+    wx.switchTab({
+      url: &#39;../search/search&#39;
+    });
+  }
+ });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;跳转后的页面为 search 页。先通过&lt;code&gt;getApp()&lt;/code&gt;获取应用实例，再通过 &lt;code&gt;app.global&lt;/code&gt;  来读取数据。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//  search.js
+//获取应用实例
+const app = getApp();
+
+// 获取全局变量中的数据 ticket
+var ticket = app.global.ticket;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-打开任意页面-wx-relaunch-url可传递数据&#34;&gt;2.打开任意页面：wx.reLaunch()，URL可传递数据&lt;/h2&gt;
+
+&lt;p&gt;使用 &lt;code&gt;wx.reLaunch()&lt;/code&gt; 可以打开到应用内的任意的某个页面，同时关闭之前的所有页面（即清空了页面栈）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;参数说明：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;必填&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;url&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;需要跳转的应用内页面路径 , 路径后可以带参数。参数与路径之间使用&lt;code&gt;?&lt;/code&gt;分隔，参数键与参数值用&lt;code&gt;=&lt;/code&gt;相连，不同参数用&lt;code&gt;&amp;amp;&lt;/code&gt;分隔；如 &amp;lsquo;path?key=value&amp;amp;key2=value2&amp;rsquo;，如果跳转的页面路径是 tabBar 页面则不能带参数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;success&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用成功的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;fail&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用失败的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;complete&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用结束的回调函数（调用成功、失败都会执行）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;示例代码：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// 打开 test 页面，并通过 url 路径参数传递数据 id=1
+wx.reLaunch({
+  url: &#39;test?id=1&#39;
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//test.js
+Page({
+  // 
+  onLoad: function(options){
+    console.log(options.id);
+  }
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;wx.reLaunch()&lt;/code&gt;使用的参数及页面间的数据传递方式与&lt;code&gt;wx.navigateTo()&lt;/code&gt; 一样。&lt;/p&gt;
+
+&lt;p&gt;如果需要传递复杂的数据并非简单的字符串，而是 &lt;code&gt;对象&lt;/code&gt; 或者&lt;code&gt;数组&lt;/code&gt;， 则需要用 &lt;code&gt;JSON.stringify()&lt;/code&gt; 将原数据转换成 &lt;code&gt;JSON 字符串&lt;/code&gt;。在目标页面的 生命周期函数&lt;code&gt;onLoad()&lt;/code&gt; 中，通过 &lt;code&gt;JSON.parse()&lt;/code&gt; 将字符串解析成 &lt;code&gt;对象&lt;/code&gt;或&lt;code&gt;数组&lt;/code&gt; 。&lt;/p&gt;
+
+&lt;h2 id=&#34;3-总结&#34;&gt;3.总结：&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;可通过 url 传递数据&lt;/th&gt;
+&lt;th&gt;保持当前页面到页面栈中&lt;/th&gt;
+&lt;th&gt;可打开tabBar页面&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;wx.navigateTo()&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;wx.navigateBack()&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;wx.redirectTo()&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;wx.switchTab()&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;wx.reLaunch()&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
       <title>微信小程序页面间的跳转及数据传递(一)</title>
       <link>http://www.wangxingfeng.com/miniapp_route.html</link>
       <pubDate>Tue, 19 Dec 2017 20:35:06 +0800</pubDate>

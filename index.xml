@@ -6,8 +6,270 @@
     <description>Recent content on Frank Wang&#39;s Coding World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 19 Dec 2017 20:35:06 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Dec 2017 21:28:10 +0800</lastBuildDate>
     <atom:link href="http://www.wangxingfeng.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>微信小程序页面间的跳转及数据传递(二)</title>
+      <link>http://www.wangxingfeng.com/miniapp_route_2.html</link>
+      <pubDate>Tue, 19 Dec 2017 21:28:10 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/miniapp_route_2.html</guid>
+      <description>
+
+&lt;p&gt;在 &lt;a href=&#34;http://www.wangxingfeng.com/miniapp_route.html&#34;&gt;微信小程序页面间的跳转及数据传递(一)&lt;/a&gt; 一文中，我们介绍了打开小程序的页面的三个方法&lt;code&gt;wx.navigateTo&lt;/code&gt;、  &lt;code&gt;wx.navigateBack&lt;/code&gt; 、 &lt;code&gt;wx.redirectTo&lt;/code&gt;。本文将介绍另外两个方法 &lt;code&gt;wx.switchTab&lt;/code&gt; 、 &lt;code&gt;wx.reLaunch&lt;/code&gt; 。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-打开tabbar页面-wx-switchtab-url不可传递数据&#34;&gt;1. 打开tabBar页面： wx.switchTab，URL不可传递数据&lt;/h2&gt;
+
+&lt;p&gt;1）使用&lt;code&gt;wx.switchTab&lt;/code&gt; ，将会跳转到参数 url 指定的 &lt;code&gt;tabBar&lt;/code&gt; 页面，并关闭其他所有非 tabBar 页面。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;参数说明：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;必填&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;url&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;需要跳转的 tabBar 页面的路径（需在 app.json 的 &lt;a href=&#34;https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar&#34;&gt;tabBar&lt;/a&gt; 字段定义的页面），路径后不能带参数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;success&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用成功的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;fail&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用失败的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;complete&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用结束的回调函数（调用成功、失败都会执行）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;示例代码：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;假设有 index 和 search 这两个 tabBar 页面。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;// 配置文件 app.json
+
+&amp;quot;tabBar&amp;quot;: {
+    &amp;quot;list&amp;quot;: [
+      {
+        &amp;quot;pagePath&amp;quot;: &amp;quot;pages/index/index&amp;quot;,
+        &amp;quot;text&amp;quot;: &amp;quot;首页&amp;quot;,
+        &amp;quot;iconPath&amp;quot;: &amp;quot;img/home01.png&amp;quot;,
+        &amp;quot;selectedIconPath&amp;quot;: &amp;quot;img/home02.png&amp;quot;
+      },
+      {
+        &amp;quot;pagePath&amp;quot;: &amp;quot;pages/search/search&amp;quot;,
+        &amp;quot;text&amp;quot;: &amp;quot;查询&amp;quot;,
+        &amp;quot;iconPath&amp;quot;: &amp;quot;img/2017121106.png&amp;quot;,
+        &amp;quot;selectedIconPath&amp;quot;: &amp;quot;img/2017121105.png&amp;quot;
+      },
+    ]
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;从  index 页跳转到 search 页&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// index.js
+
+wx.switchTab({
+  url: &#39;../search/search&#39;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2) 由于&lt;code&gt;wx.switchTab&lt;/code&gt; 的 url 不能带参数，无法通过 url 在页面间传递数据。这时候我们该怎么处理数据的传递呢？&lt;/p&gt;
+
+&lt;p&gt;我们可以使用 &lt;code&gt;全局对象 App&lt;/code&gt; 的 &lt;code&gt;globalData&lt;/code&gt; 属性来存储数据。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// app.js
+App({
+  // 全局变量
+  globalData: {
+    ticket: null , // 变量ticket，可以用于所有页面。
+  },
+  onLaunch: function () {
+  });
+});  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;假设跳转前的页面为 index , 使用&lt;code&gt;全局变量&lt;/code&gt;来存储从 index 页面中的数据。要使用 全局变量就必须先通过&lt;code&gt;getApp()&lt;/code&gt;获取应用实例，再给&lt;code&gt;app.global&lt;/code&gt; 赋值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-index.js&#34;&gt;// index.js
+//获取应用实例
+const app = getApp();
+
+Page({
+  data: {},
+  // 自定义的函数
+  chooseShow: function(event) {
+     // 需要传递的数据
+    var ticket = {
+      ticketId: 1001,
+      account: &#39;123456&#39;,
+    };
+    
+    // 使用全局变量来存储数据 ticket
+    app.global.ticket = ticket;
+    
+    // 跳转到 search 页面 (search 为 tabBar 页面 )
+    wx.switchTab({
+      url: &#39;../search/search&#39;
+    });
+  }
+ });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;跳转后的页面为 search 页。先通过&lt;code&gt;getApp()&lt;/code&gt;获取应用实例，再通过 &lt;code&gt;app.global&lt;/code&gt;  来读取数据。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//  search.js
+//获取应用实例
+const app = getApp();
+
+// 获取全局变量中的数据 ticket
+var ticket = app.global.ticket;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-打开任意页面-wx-relaunch-url可传递数据&#34;&gt;2.打开任意页面：wx.reLaunch()，URL可传递数据&lt;/h2&gt;
+
+&lt;p&gt;使用 &lt;code&gt;wx.reLaunch()&lt;/code&gt; 可以打开到应用内的任意的某个页面，同时关闭之前的所有页面（即清空了页面栈）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;参数说明：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;必填&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;url&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;需要跳转的应用内页面路径 , 路径后可以带参数。参数与路径之间使用&lt;code&gt;?&lt;/code&gt;分隔，参数键与参数值用&lt;code&gt;=&lt;/code&gt;相连，不同参数用&lt;code&gt;&amp;amp;&lt;/code&gt;分隔；如 &amp;lsquo;path?key=value&amp;amp;key2=value2&amp;rsquo;，如果跳转的页面路径是 tabBar 页面则不能带参数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;success&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用成功的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;fail&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用失败的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;complete&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用结束的回调函数（调用成功、失败都会执行）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;示例代码：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// 打开 test 页面，并通过 url 路径参数传递数据 id=1
+wx.reLaunch({
+  url: &#39;test?id=1&#39;
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//test.js
+Page({
+  // 
+  onLoad: function(options){
+    console.log(options.id);
+  }
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;wx.reLaunch()&lt;/code&gt;使用的参数及页面间的数据传递方式与&lt;code&gt;wx.navigateTo()&lt;/code&gt; 一样。&lt;/p&gt;
+
+&lt;p&gt;如果需要传递复杂的数据并非简单的字符串，而是 &lt;code&gt;对象&lt;/code&gt; 或者&lt;code&gt;数组&lt;/code&gt;， 则需要用 &lt;code&gt;JSON.stringify()&lt;/code&gt; 将原数据转换成 &lt;code&gt;JSON 字符串&lt;/code&gt;。在目标页面的 生命周期函数&lt;code&gt;onLoad()&lt;/code&gt; 中，通过 &lt;code&gt;JSON.parse()&lt;/code&gt; 将字符串解析成 &lt;code&gt;对象&lt;/code&gt;或&lt;code&gt;数组&lt;/code&gt; 。&lt;/p&gt;
+
+&lt;h2 id=&#34;3-总结&#34;&gt;3.总结：&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;可通过 url 传递数据&lt;/th&gt;
+&lt;th&gt;保持当前页面到页面栈中&lt;/th&gt;
+&lt;th&gt;可打开tabBar页面&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;wx.navigateTo()&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;wx.navigateBack()&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;wx.redirectTo()&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;wx.switchTab()&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;wx.reLaunch()&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
     
     <item>
       <title>微信小程序页面间的跳转及数据传递(一)</title>
@@ -2562,137 +2824,6 @@ keyword.on(&#39;input propertychange&#39;, function(event) {
 });
 
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>用border-image&#43;SVG实现切角效果</title>
-      <link>http://www.wangxingfeng.com/bevel-corners-svg.html</link>
-      <pubDate>Sat, 06 May 2017 16:19:48 +0800</pubDate>
-      
-      <guid>http://www.wangxingfeng.com/bevel-corners-svg.html</guid>
-      <description>
-
-&lt;p&gt;之前写了一篇文章，介绍了&lt;a href=&#34;http://www.wangxingfeng.com/bevel-corners.html&#34;&gt;基于CSS渐变来实现切角效果&lt;/a&gt;的方法。今天再来介绍另一种方法，即使用&lt;code&gt;border-image&lt;/code&gt;+&lt;code&gt;SVG&lt;/code&gt;的方式来实现&lt;code&gt;切角效果&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&#34;border-image的工作原理&#34;&gt;border-image的工作原理&lt;/h2&gt;
-
-&lt;p&gt;给一个元素设置边框，我们会使用&lt;code&gt;border&lt;/code&gt;这个属性。&lt;code&gt;border&lt;/code&gt;是&lt;code&gt;border-width&lt;/code&gt;、&lt;code&gt;border-style&lt;/code&gt;、&lt;code&gt;border-color&lt;/code&gt;等3个属性的简写形式。&lt;/p&gt;
-
-&lt;p&gt;我们给div设置一个宽20px、实线、颜色为&lt;code&gt;#58a&lt;/code&gt;的边框。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
-        width:200px;
-        height:150px; 
-        margin:20px auto;
-        border:40px solid #58a;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a;&#34;&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code&gt;border-image&lt;/code&gt;是CSS3的新属性，用于指定元素边框的背景图片。使用 border-image 时，border-style属性所设置的边框样式solid、dashed或dotted将不起作用。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;border-image&lt;/code&gt;属性也是一个简写：包含&lt;code&gt;border-image-source&lt;/code&gt;、&lt;code&gt;border-image-slice&lt;/code&gt;、&lt;code&gt;border-image-width&lt;/code&gt;、&lt;code&gt;border-image-outset&lt;/code&gt;、&lt;code&gt;border-image-repeat&lt;/code&gt;等5个属性。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-border-image-source&#34;&gt;1. &lt;code&gt;border-image-source&lt;/code&gt;:&lt;/h3&gt;
-
-&lt;p&gt;从这个属性的英文命名，我们就可以知道它表示的是边框背景图片资源的路径，默认值是&lt;code&gt;none&lt;/code&gt;。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
-        width:200px;
-        height:150px;
-        margin:20px auto;
-        border:40px solid #58a;
-        border-image-source:url(/images/adamcatlace.jpg);
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image-source:url(/images/adamcatlace.jpg)&#34;&gt;&lt;/div&gt;
-
-&lt;h3 id=&#34;2-border-image-slice&#34;&gt;2. &lt;code&gt;border-image-slice&lt;/code&gt;:&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;border-image-slice&lt;/code&gt;属性指定图像的边界向内偏移。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
-        width:200px;
-        height:150px;
-        margin:20px auto;
-        border:40px solid #58a;
-        border-image-source:url(/images/adamcatlace.jpg);
-        border-image-slice:10% 20% 30% 40%; 
-        border-image-repeat: none;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg);border-image-slice:10% 20% 30% 40%; border-image-repeat: round stretch;&#34;&gt;&lt;/div&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
-        width:200px;
-        height:150px;
-        margin:20px auto;
-        border:40px solid #58a;
-        border-image-source:url(/images/adamcatlace.jpg);
-        border-image-slice: 10% 30%;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 10% 30%;&#34;&gt;&lt;/div&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
-        width:200px;
-        height:150px;
-        margin:20px auto;
-        border:40px solid #58a;
-        border-image-source:url(/images/adamcatlace.jpg);
-        border-image-slice: 30 30% 45;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 30 30% 45;&#34;&gt;&lt;/div&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
-        width:200px;
-        height:150px;
-        margin:20px auto;
-        border:40px solid #58a;
-        border-image-source:url(/images/adamcatlace.jpg);
-        border-image-slice: 7 12 14 5; 
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: 7 12 14 5; &#34;&gt;&lt;/div&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    div{
-        width:200px;
-        height:150px;
-        margin:20px auto;
-        border:40px solid #58a;
-        border-image-source:url(/images/adamcatlace.jpg);
-        border-image-slice: 10% fill 7 12; 
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div style=&#34;width:200px; height:150px; margin:20px auto; border:40px solid #58a; border-image:url(/images/adamcatlace.jpg); border-image-slice: border-image-slice: 10% fill 7 12; &#34;&gt;&lt;/div&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;    .demo{
-        border:30px solid transparent;
-        border-image:1 url(&#39;data:image/svg+xml,\
-            &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;3&amp;quot; height=&amp;quot;3&amp;quot; fill=&amp;quot;red&amp;quot;&amp;gt;\
-              &amp;lt;polygon points=&amp;quot;0,1 1,0 2, 0 3, 1 3, 2 2, 3 1, 3 0, 2&amp;quot;/&amp;gt;\
-            &amp;lt;/svg&amp;gt;&#39;);
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;300&#34; height=&#34;300&#34; fill=&#34;purple&#34;&gt;
-    &lt;polygon points=&#34;0, 100 100, 0 200, 0 300, 100 300, 200 200, 300 100, 300 0, 200&#34;/&gt;
-&lt;/svg&gt;
-&lt;div class=&#34;demo bevel-corners-8&#34;&gt;
-&lt;/div&gt;&lt;/p&gt;
-
-&lt;div&gt;
-    
-&lt;/div&gt;
 </description>
     </item>
     
