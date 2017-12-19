@@ -749,11 +749,7 @@ Visit https://gohugo.io/ for quickstart guide and full documentation.
 
 &lt;p&gt;把选定的主题下载到&lt;code&gt;themes&lt;/code&gt;目录下。&lt;/p&gt;
 
-<<<<<<< HEAD
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    git clone https://github.com/olOwOlo/hugo-theme-even.git
-=======
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    git clone https://github.com/dim0627/hugo-icarus-theme.git
->>>>>>> 98da011bccdfb1813a73a3faad14759303cb3b44
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;step-5-启动服务-本地预览&#34;&gt;Step 5. 启动服务，本地预览&lt;/h2&gt;
@@ -761,11 +757,7 @@ Visit https://gohugo.io/ for quickstart guide and full documentation.
 &lt;p&gt;先从&lt;code&gt;themes&lt;/code&gt;目录下退回到&lt;code&gt;blog&lt;/code&gt;目录, 然后启动服务。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;    cd ..
-<<<<<<< HEAD
     hugo server --theme=even --buildDrafts
-=======
-    hugo server --theme=hugo-icarus-theme --buildDrafts
->>>>>>> 98da011bccdfb1813a73a3faad14759303cb3b44
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;在浏览器中打开 &lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;&lt;/p&gt;

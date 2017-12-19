@@ -3,7 +3,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-<<<<<<< HEAD
     <loc>http://www.wangxingfeng.com/miniapp_route.html</loc>
     <lastmod>2017-12-19T20:35:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -11,8 +10,6 @@
   </url>
   
   <url>
-=======
->>>>>>> 98da011bccdfb1813a73a3faad14759303cb3b44
     <loc>http://www.wangxingfeng.com/centos_wordpress.html</loc>
     <lastmod>2017-08-02T21:23:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -349,11 +346,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/</loc>
-<<<<<<< HEAD
     <lastmod>2017-12-19T20:35:06+08:00</lastmod>
-=======
-    <lastmod>2017-08-02T21:23:27+08:00</lastmod>
->>>>>>> 98da011bccdfb1813a73a3faad14759303cb3b44
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -437,11 +430,7 @@
   
   <url>
     <loc>http://www.wangxingfeng.com/post/</loc>
-<<<<<<< HEAD
     <lastmod>2017-12-19T20:35:06+08:00</lastmod>
-=======
-    <lastmod>2017-08-02T21:23:27+08:00</lastmod>
->>>>>>> 98da011bccdfb1813a73a3faad14759303cb3b44
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -537,7 +526,6 @@
   </url>
   
   <url>
-<<<<<<< HEAD
     <loc>http://www.wangxingfeng.com/tags/%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/</loc>
     <lastmod>2017-12-19T20:35:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -545,8 +533,6 @@
   </url>
   
   <url>
-=======
->>>>>>> 98da011bccdfb1813a73a3faad14759303cb3b44
     <loc>http://www.wangxingfeng.com/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
     <lastmod>2017-04-07T20:18:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -554,7 +540,6 @@
   </url>
   
   <url>
-<<<<<<< HEAD
     <loc>http://www.wangxingfeng.com/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
     <lastmod>2017-12-19T20:35:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -569,8 +554,6 @@
   </url>
   
   <url>
-=======
->>>>>>> 98da011bccdfb1813a73a3faad14759303cb3b44
     <loc>http://www.wangxingfeng.com/tags/%E6%94%92%E8%AF%8D%E6%B1%87/</loc>
     <lastmod>2017-04-06T20:33:42+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -592,7 +575,6 @@
   </url>
   
   <url>
-<<<<<<< HEAD
     <loc>http://www.wangxingfeng.com/tags/%E8%B7%AF%E7%94%B1%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2017-12-19T20:35:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -600,8 +582,6 @@
   </url>
   
   <url>
-=======
->>>>>>> 98da011bccdfb1813a73a3faad14759303cb3b44
     <loc>http://www.wangxingfeng.com/tags/%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8/</loc>
     <lastmod>2016-04-22T22:56:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
