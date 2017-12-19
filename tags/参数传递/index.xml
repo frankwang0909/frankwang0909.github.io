@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>参数传递 on Frank Wang&#39;s Coding World</title>
+    <link>http://www.wangxingfeng.com/tags/%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/index.xml</link>
+    <description>Recent content in 参数传递 on Frank Wang&#39;s Coding World</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <atom:link href="http://www.wangxingfeng.com/tags/%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>微信小程序页面间的跳转及数据传递(一)</title>
+      <link>http://www.wangxingfeng.com/miniapp_route.html</link>
+      <pubDate>Tue, 19 Dec 2017 20:35:06 +0800</pubDate>
+      
+      <guid>http://www.wangxingfeng.com/miniapp_route.html</guid>
+      <description>
+
+&lt;p&gt;微信小程序的页面并非传统的 web 网页，所以小程序框架提供了专门的方法来管理页面路由，处理页面间的跳转和数据的传递。&lt;/p&gt;
+
+&lt;p&gt;从 &lt;a href=&#34;https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/route.html&#34;&gt;微信小程序 官方文档&lt;/a&gt;中，我们知道有 5 种方法可以打开一个小程序的页面，它们分别是&lt;code&gt;wx.navigateTo&lt;/code&gt;、  &lt;code&gt;wx.navigateBack&lt;/code&gt; 、 &lt;code&gt;wx.redirectTo&lt;/code&gt;、 &lt;code&gt;wx.switchTab&lt;/code&gt; 、 &lt;code&gt;wx.reLaunch&lt;/code&gt; 。&lt;/p&gt;
+
+&lt;p&gt;为什么会有上述5种方法？ 因为这5种方法分别对应着不同的应用场景。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-普通的页面间跳转-wx-navigateto-可传递数据&#34;&gt;1.普通的页面间跳转： wx.navigateTo()，可传递数据&lt;/h2&gt;
+
+&lt;p&gt;1）使用wx.navigateTo()，将会保留当前页面（将当前页面存储在页面栈中），并且跳转到参数 url 指定的某个页面。如果在跳转后的页面使用&lt;code&gt;wx.navigateBack（）&lt;/code&gt; 或者 使用 &lt;code&gt;返回键&lt;/code&gt; 可以返回到原页面。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;参数说明：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;必填&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;url&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;需要跳转的应用内非 tabBar 的页面的路径 , 路径后可以带参数。参数与路径之间使用&lt;code&gt;?&lt;/code&gt;分隔，参数键与参数值用&lt;code&gt;=&lt;/code&gt;相连，不同参数用&lt;code&gt;&amp;amp;&lt;/code&gt;分隔；如 &amp;lsquo;path?key=value&amp;amp;key2=value2&amp;rsquo;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;success&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用成功的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;fail&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用失败的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;complete&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用结束的回调函数（调用成功、失败都会执行）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;另外3个参数分别对应接口调用成功、失败、结束的回调函数，不是必需的。&lt;/p&gt;
+
+&lt;p&gt;示例代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// index.js
+wx.navigateTo({
+  url: &#39;../list/list?ticketId=1001&#39;, // 跳转到 list 页面，带来参数 ticketId=1001
+  success: () =&amp;gt; {
+    // 接口调用成功的回调函数
+  },
+  fail: () =&amp;gt; {
+    // 接口调用失败的回调函数
+  },
+  complete: () =&amp;gt; {
+    // 接口调用结束的回调函数（调用成功、失败都会执行）
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2）使用 &lt;code&gt;wx.navigateTo()&lt;/code&gt; 实现页面跳转时，可将需要传递给目标页面的数据，放在&lt;code&gt;路径的参数&lt;/code&gt;中。在目标页面（示例中的 list 页面）对应的逻辑层代码（list.js ）的 生命周期函数&lt;code&gt;onLoad()&lt;/code&gt;中可以解析出来。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// list.js
+Page({
+  onLoad: function(options) {
+    var data = options.query;   // 上一个页面传递的数据
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3）如果需要传递复杂的数据并非简单的字符串，而是 &lt;code&gt;对象&lt;/code&gt; 或者&lt;code&gt;数组&lt;/code&gt;， 则需要用 &lt;code&gt;JSON.stringify()&lt;/code&gt; 将原数据转换成 JSON 字符串。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; // index.js
+var data = {
+  ticketId: 1001,
+  account: &#39;123456&#39;,
+}
+var dataString = JSON.stringify(data);
+wx.navigateTo({
+  url: &#39;../list/list?dataString&#39;, 
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// list.js
+Page({
+  onLoad: function(options) {
+     var data = JSON.parse(options.query);   // 将index 页面传递的数据 JSON 字符串还原为 JSON 对象
+    }
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-返回之前的某个页面-wx-navigateback&#34;&gt;2. 返回之前的某个页面： wx.navigateBack()&lt;/h2&gt;
+
+&lt;p&gt;使用 &lt;code&gt;wx.navigateBack()&lt;/code&gt; 将会关闭当前页面（不会将当前页面存储在页面栈中），返回上一页面或多级页面。可通过 &lt;a href=&#34;https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html#getCurrentPages()&#34;&gt;&lt;code&gt;getCurrentPages()&lt;/code&gt;&lt;/a&gt; 获取当前的页面栈，决定需要返回几层。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;参数说明：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;默认值&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;delta&lt;/td&gt;
+&lt;td&gt;Number&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;返回的页面数，如果 delta 大于现有页面数，则返回到首页。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;示例代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// index 页面
+wx.navigateTo({
+  url: &#39;../list/list?cateId=1001&#39;
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// list 页面
+wx.navigateTo({
+  url: &#39;../detail/detail?ticektId=1001&#39;
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// detail 页面
+
+wx.navigateBack({
+  delta: 2   // 将返回 index 页面
+});
+
+wx.navigateBack({
+  delta: 1   // 将返回 list 页面
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;3-重定向到某个页-wx-redirectto-可传递数据&#34;&gt;3. 重定向到某个页： wx.redirectTo()， 可传递数据&lt;/h2&gt;
+
+&lt;p&gt;使用&lt;code&gt;wx.redirectTo()&lt;/code&gt; 将会关闭当前页面（&lt;strong&gt;当前页面不会保存在页面栈中&lt;/strong&gt;），并且跳转到参数 url 指定的某个页面。该方法使用的参数及页面间的数据传递方式与&lt;code&gt;wx.navigateTo()&lt;/code&gt; 一样。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;参数说明：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;必填&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;url&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;需要跳转的应用内非 tabBar 的页面的路径，路径后可以带参数。参数与路径之间使用&lt;code&gt;?&lt;/code&gt;分隔，参数键与参数值用&lt;code&gt;=&lt;/code&gt;相连，不同参数用&lt;code&gt;&amp;amp;&lt;/code&gt;分隔；如 &amp;lsquo;path?key=value&amp;amp;key2=value2&amp;rsquo;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;success&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用成功的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;fail&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用失败的回调函数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;complete&lt;/td&gt;
+&lt;td&gt;Function&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;接口调用结束的回调函数（调用成功、失败都会执行）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;示例代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;wx.redirectTo({
+  url: &#39;../test/test?id=1&#39;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 由于&lt;code&gt;wx.redirectTo()&lt;/code&gt; 关闭当前页面，且并未将当前页面保存在页面栈中，所以无法使用 &lt;code&gt;wx.navigateBack()&lt;/code&gt; 返回到原页面。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
