@@ -68,7 +68,7 @@
 
 
 <meta itemprop="dateModified" content="2017-12-19T20:35:06&#43;08:00" />
-<meta itemprop="wordCount" content="1259">
+<meta itemprop="wordCount" content="1260">
 
 
 
@@ -154,7 +154,7 @@
               <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"> 微信小程序 </a>
             
           </div>
-        <span class="more-meta"> 约 1259 字 </span>
+        <span class="more-meta"> 约 1260 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
       </div>
     </header>
@@ -239,7 +239,7 @@
 
 <p>另外3个参数分别对应接口调用成功、失败、结束的回调函数，不是必需的。</p>
 
-<p>示例代码：</p>
+<p><strong>示例代码：</strong></p>
 
 <pre><code class="language-javascript">// index.js
 wx.navigateTo({
@@ -266,7 +266,7 @@ Page({
 });
 </code></pre>
 
-<p>3）如果需要传递复杂的数据并非简单的字符串，而是 <code>对象</code> 或者<code>数组</code>， 则需要用 <code>JSON.stringify()</code> 将原数据转换成 JSON 字符串。</p>
+<p>3）如果需要传递复杂的数据并非简单的字符串，而是 <code>对象</code> 或者<code>数组</code>， 则需要用 <code>JSON.stringify()</code> 将原数据转换成 <code>JSON 字符串</code>。</p>
 
 <pre><code class="language-javascript"> // index.js
 var data = {
@@ -275,14 +275,14 @@ var data = {
 }
 var dataString = JSON.stringify(data);
 wx.navigateTo({
-  url: '../list/list?dataString', 
+  url: '../list/list?info=dataString', 
 });
 </code></pre>
 
 <pre><code class="language-javascript">// list.js
 Page({
   onLoad: function(options) {
-     var data = JSON.parse(options.query);   // 将index 页面传递的数据 JSON 字符串还原为 JSON 对象
+     var data = JSON.parse(options.info);   // 将index 页面传递的数据 JSON 字符串还原为 JSON 对象
     }
 });
 
@@ -314,7 +314,7 @@ Page({
 </tbody>
 </table>
 
-<p>示例代码</p>
+<p><strong>示例代码:</strong></p>
 
 <pre><code class="language-javascript">// index 页面
 wx.navigateTo({
@@ -386,14 +386,16 @@ wx.navigateBack({
 </tbody>
 </table>
 
-<p>示例代码：</p>
+<p><strong>示例代码：</strong></p>
 
 <pre><code class="language-javascript">wx.redirectTo({
   url: '../test/test?id=1'
 });
 </code></pre>
 
-<p><strong>注意：</strong> 由于<code>wx.redirectTo()</code> 关闭当前页面，且并未将当前页面保存在页面栈中，所以无法使用 <code>wx.navigateBack()</code> 返回到原页面。</p>
+<p><strong>注意：</strong></p>
+
+<p>由于<code>wx.redirectTo()</code> 关闭当前页面，且并未将当前页面保存在页面栈中，所以无法使用 <code>wx.navigateBack()</code> 返回到原页面。</p>
 
     </div>
 

@@ -114,9 +114,9 @@ App({
 });  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;假设跳转前的页面为 index , 使用&lt;code&gt;全局变量&lt;/code&gt;来存储从 index 页面中的数据。要使用 全局变量就必须先通过&lt;code&gt;getApp()&lt;/code&gt;获取应用实例，再给&lt;code&gt;app.global&lt;/code&gt; 赋值。&lt;/p&gt;
+&lt;p&gt;假设跳转前的页面为 index , 使用&lt;code&gt;全局变量&lt;/code&gt;来存储从 index 页面中的数据。要使用 全局变量就必须先通过&lt;code&gt;getApp()&lt;/code&gt;获取应用实例，再给&lt;code&gt;app.globalData&lt;/code&gt; 赋值。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-index.js&#34;&gt;// index.js
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// index.js
 //获取应用实例
 const app = getApp();
 
@@ -131,7 +131,7 @@ Page({
     };
     
     // 使用全局变量来存储数据 ticket
-    app.global.ticket = ticket;
+    app.globalData.ticket = ticket;
     
     // 跳转到 search 页面 (search 为 tabBar 页面 )
     wx.switchTab({
@@ -141,14 +141,14 @@ Page({
  });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;跳转后的页面为 search 页。先通过&lt;code&gt;getApp()&lt;/code&gt;获取应用实例，再通过 &lt;code&gt;app.global&lt;/code&gt;  来读取数据。&lt;/p&gt;
+&lt;p&gt;跳转后的页面为 search 页。先通过&lt;code&gt;getApp()&lt;/code&gt;获取应用实例，再通过 &lt;code&gt;app.globalData&lt;/code&gt;  来读取数据。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//  search.js
 //获取应用实例
 const app = getApp();
 
 // 获取全局变量中的数据 ticket
-var ticket = app.global.ticket;
+var ticket = app.globalData.ticket;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;2-打开任意页面-wx-relaunch-url可传递数据&#34;&gt;2.打开任意页面：wx.reLaunch()，URL可传递数据&lt;/h2&gt;
@@ -200,7 +200,7 @@ var ticket = app.global.ticket;
 
 &lt;p&gt;&lt;strong&gt;示例代码：&lt;/strong&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;// 打开 test 页面，并通过 url 路径参数传递数据 id=1
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// 打开 test 页面，并通过 url 路径参数传递数据 id=1
 wx.reLaunch({
   url: &#39;test?id=1&#39;
 })
@@ -334,7 +334,7 @@ Page({
 
 &lt;p&gt;另外3个参数分别对应接口调用成功、失败、结束的回调函数，不是必需的。&lt;/p&gt;
 
-&lt;p&gt;示例代码：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例代码：&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// index.js
 wx.navigateTo({
@@ -361,7 +361,7 @@ Page({
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;3）如果需要传递复杂的数据并非简单的字符串，而是 &lt;code&gt;对象&lt;/code&gt; 或者&lt;code&gt;数组&lt;/code&gt;， 则需要用 &lt;code&gt;JSON.stringify()&lt;/code&gt; 将原数据转换成 JSON 字符串。&lt;/p&gt;
+&lt;p&gt;3）如果需要传递复杂的数据并非简单的字符串，而是 &lt;code&gt;对象&lt;/code&gt; 或者&lt;code&gt;数组&lt;/code&gt;， 则需要用 &lt;code&gt;JSON.stringify()&lt;/code&gt; 将原数据转换成 &lt;code&gt;JSON 字符串&lt;/code&gt;。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; // index.js
 var data = {
@@ -370,14 +370,14 @@ var data = {
 }
 var dataString = JSON.stringify(data);
 wx.navigateTo({
-  url: &#39;../list/list?dataString&#39;, 
+  url: &#39;../list/list?info=dataString&#39;, 
 });
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// list.js
 Page({
   onLoad: function(options) {
-     var data = JSON.parse(options.query);   // 将index 页面传递的数据 JSON 字符串还原为 JSON 对象
+     var data = JSON.parse(options.info);   // 将index 页面传递的数据 JSON 字符串还原为 JSON 对象
     }
 });
 
@@ -409,7 +409,7 @@ Page({
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;示例代码&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例代码:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// index 页面
 wx.navigateTo({
@@ -481,14 +481,16 @@ wx.navigateBack({
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;示例代码：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例代码：&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;wx.redirectTo({
   url: &#39;../test/test?id=1&#39;
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 由于&lt;code&gt;wx.redirectTo()&lt;/code&gt; 关闭当前页面，且并未将当前页面保存在页面栈中，所以无法使用 &lt;code&gt;wx.navigateBack()&lt;/code&gt; 返回到原页面。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;由于&lt;code&gt;wx.redirectTo()&lt;/code&gt; 关闭当前页面，且并未将当前页面保存在页面栈中，所以无法使用 &lt;code&gt;wx.navigateBack()&lt;/code&gt; 返回到原页面。&lt;/p&gt;
 </description>
     </item>
     
