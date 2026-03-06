@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sublime Text on Frank Wang's Coding World</title><link>http://frankwang0909.github.io/en/tags/sublime-text/</link><description>Recent content in Sublime Text on Frank Wang's Coding World</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Fri, 13 May 2016 00:14:00 +0800</lastBuildDate><atom:link href="http://frankwang0909.github.io/en/tags/sublime-text/index.xml" rel="self" type="application/rss+xml"/><item><title>Sublimetext Intro</title><link>http://frankwang0909.github.io/sublimetext-notes.html</link><pubDate>Fri, 13 May 2016 00:14:00 +0800</pubDate><guid>http://frankwang0909.github.io/sublimetext-notes.html</guid><description>&lt;p&gt;Since changing the main code editor to &lt;a href="https://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;, the efficiency of writing code has been significantly higher. Recently, I started trying to recommend this editor to my friends.&lt;/p&gt;
+&lt;h2 id="1-advantages-of-sublime-text"&gt;1. Advantages of Sublime Text&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Cross-platform;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lightweight and scalable: There are a large number of plug-ins that users can choose to install (the &lt;code&gt;Emmet&lt;/code&gt; plug-in is recommended first).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Support syntax highlighting for almost all mainstream programming languages;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Code automatic completion, supporting code snippets (Code Snippet);&lt;/p&gt;</description></item></channel></rss>

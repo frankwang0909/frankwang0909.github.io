@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://www.wangxingfeng.com/sitemap.xml
+Sitemap: http://frankwang0909.github.io/sitemap.xml

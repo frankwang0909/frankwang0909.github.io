@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JavaScript on Frank Wang's Coding World</title><link>http://frankwang0909.github.io/en/tags/javascript/</link><description>Recent content in JavaScript on Frank Wang's Coding World</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Sun, 09 Jul 2017 21:45:51 +0800</lastBuildDate><atom:link href="http://frankwang0909.github.io/en/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>Js Number</title><link>http://frankwang0909.github.io/js-number.html</link><pubDate>Sun, 09 Jul 2017 21:45:51 +0800</pubDate><guid>http://frankwang0909.github.io/js-number.html</guid><description>&lt;h2 id="1-nan"&gt;1. NaN:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Definition: &lt;code&gt;NaN&lt;/code&gt; is a special value in JavaScript, which means &amp;ldquo;Not a Number&amp;rdquo;. It mainly occurs when there is an error in parsing a string into a number.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;NaN&lt;/code&gt; is not an independent data type, but a special value. Its data type still belongs to &lt;code&gt;number&lt;/code&gt;, which can be seen clearly using the &lt;code&gt;typeof&lt;/code&gt; operator.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;typeof NaN // &amp;rsquo;number'&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;NaN is not equal to any value, including itself.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;NaN === NaN // false&lt;/p&gt;</description></item><item><title>Safari Not Support</title><link>http://frankwang0909.github.io/safari-not-support.html</link><pubDate>Thu, 01 Jun 2017 07:35:15 +0800</pubDate><guid>http://frankwang0909.github.io/safari-not-support.html</guid><description>&lt;h2 id="1-the-safari-browser-of-apple-mobile-phone-is-not-compatible-with-the-new-date-date-conversion-format"&gt;1. The Safari browser of Apple mobile phone is not compatible with the new Date() date conversion format.&lt;/h2&gt;
+&lt;p&gt;When developing web projects, &lt;code&gt;countdown&lt;/code&gt; is a very common requirement. My need is to make a countdown to the time when concert tickets are on sale.&lt;/p&gt;
+&lt;h3 id="the-idea-is-as-follows"&gt;The idea is as follows:&lt;/h3&gt;
+&lt;p&gt;Get the &lt;code&gt;on-sale time&lt;/code&gt; and &lt;code&gt;current time on the server&lt;/code&gt;, subtract the &lt;code&gt;current time&lt;/code&gt; from the &lt;code&gt;on-sale time&lt;/code&gt; to get a time in milliseconds, and then convert it into xx days xx hours xx minutes xx seconds.&lt;/p&gt;</description></item></channel></rss>

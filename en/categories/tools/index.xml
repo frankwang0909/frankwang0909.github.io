@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on Frank Wang's Coding World</title><link>http://frankwang0909.github.io/en/categories/tools/</link><description>Recent content in Tools on Frank Wang's Coding World</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Wed, 02 Aug 2017 21:23:27 +0800</lastBuildDate><atom:link href="http://frankwang0909.github.io/en/categories/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>Centos Wp</title><link>http://frankwang0909.github.io/centos_wordpress.html</link><pubDate>Wed, 02 Aug 2017 21:23:27 +0800</pubDate><guid>http://frankwang0909.github.io/centos_wordpress.html</guid><description>&lt;p&gt;When the financial budget or human resources are limited, &lt;code&gt;WordPress&lt;/code&gt; is still the best choice to quickly build a blog or corporate website.&lt;/p&gt;
+&lt;p&gt;Recently, I used &lt;code&gt;WordPres&lt;/code&gt;s while learning to build a simple official website for a brother company. The code is debugged locally. Today I learned how to publish this program on the server.&lt;/p&gt;
+&lt;p&gt;Note: The server is a cloud host on Tencent, and the operating system is &lt;code&gt;CentOS&lt;/code&gt; 6.8 64-bit.&lt;/p&gt;</description></item><item><title>NVM for Windows</title><link>http://frankwang0909.github.io/nvm_for_window.html</link><pubDate>Thu, 20 Jul 2017 07:54:41 +0800</pubDate><guid>http://frankwang0909.github.io/nvm_for_window.html</guid><description>&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;nvm-windows is a Node.js version manager written in Go for Windows. &lt;a href="https://github.com/coreybutler/nvm-windows"&gt;GitHub repository&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="download-and-install"&gt;Download and Install&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/coreybutler/nvm-windows/releases"&gt;Download from releases&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="common-commands"&gt;Common Commands&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Install a specific Node.js version:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;nvm install &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;p&gt;nvm install 6.2.0&lt;/p&gt;
+&lt;p&gt;You should see output indicating Node.js &lt;code&gt;6.2.0&lt;/code&gt; and the matching &lt;code&gt;npm&lt;/code&gt; version are being downloaded and installed.&lt;/p&gt;
+&lt;p&gt;Downloading node.js version 6.2.0 (64-bit)&amp;hellip;
+Complete
+Creating C:\Users\Administrator\AppData\Roaming\nvm\temp&lt;/p&gt;
+&lt;p&gt;Downloading npm version 3.8.9&amp;hellip;
+Complete
+Installing npm v3.8.9&amp;hellip;
+Installation complete.
+If you want to use this version, type nvm use 6.2.0&lt;/p&gt;</description></item><item><title>Ss</title><link>http://frankwang0909.github.io/ss.html</link><pubDate>Sun, 09 Jul 2017 11:37:11 +0800</pubDate><guid>http://frankwang0909.github.io/ss.html</guid><description>&lt;p&gt;In view of the fact that scientific Internet access has become more and more inconvenient recently, many previously strong VPNs have been forced to stop their services, so they have to do it themselves and build a ladder. After searching for information online, I accidentally discovered that &lt;a href="https://cloud.google.com/"&gt;Google Cloud Platform&lt;/a&gt; has a free trial service (in fact, Amazon Cloud also has a one-year free trial). New users will be given $300 for registration, which is valid for one year and can be used to build a ladder for fun.&lt;/p&gt;</description></item><item><title>Use Gitment As Comment For Your Blog</title><link>http://frankwang0909.github.io/use_gitment_as_comment_system_for_your_blog.html</link><pubDate>Sat, 24 Jun 2017 17:04:42 +0800</pubDate><guid>http://frankwang0909.github.io/use_gitment_as_comment_system_for_your_blog.html</guid><description>&lt;p&gt;&lt;a href="https://github.com/imsun/gitment"&gt;Gitment&lt;/a&gt; is a comment system built using GitHub Issues. This article teaches you how to use Gitment as a comment system for your own blog.&lt;/p&gt;
+&lt;h2 id="lets-briefly-introduce-the-advantages-and-disadvantages"&gt;Let’s briefly introduce the advantages and disadvantages:&lt;/h2&gt;
+&lt;h3 id="1-advantages"&gt;1. Advantages:&lt;/h3&gt;
+&lt;p&gt;Gitment supports direct introduction on the front end without any back-end code. You can log in, view, comment, like and other operations on the page. It also has complete Markdown / GFM and code highlighting support, which is especially suitable for various static blogs or project pages based on GitHub Pages.&lt;/p&gt;</description></item><item><title>Hugo</title><link>http://frankwang0909.github.io/build-blog-with-hugo.html</link><pubDate>Mon, 03 Apr 2017 20:49:23 +0800</pubDate><guid>http://frankwang0909.github.io/build-blog-with-hugo.html</guid><description>&lt;p&gt;Recently, I had a sudden impulse to start my blog again. So, I found that Hugo is more useful than the Jekyll I used before. This article is a personal record of building a personal blog with reference to &lt;a href="https://gohugo.io/overview/quickstart/"&gt;Hugo official website&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="step-1-install-hugo-download-and-install-hugo"&gt;Step 1. Install Hugo Download and install Hugo&lt;/h2&gt;
+&lt;p&gt;Download address: &lt;a href="https://github.com/spf13/hugo/releases"&gt;https://github.com/spf13/hugo/releases&lt;/a&gt;.
+According to your operating system, download the corresponding installation package. My operating system is &lt;code&gt;Win7 64bit&lt;/code&gt;, and I selected &lt;code&gt;hugo_0.19_Windows-64bit.zip&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Markdown Intro</title><link>http://frankwang0909.github.io/markdonw-notes.html</link><pubDate>Sun, 05 Jun 2016 22:05:46 +0800</pubDate><guid>http://frankwang0909.github.io/markdonw-notes.html</guid><description>&lt;h2 id="definition"&gt;Definition:&lt;/h2&gt;
+&lt;p&gt;Introduction on &lt;a href="https://zh.wikipedia.org/zh-cn/Markdown"&gt;Wikipedia&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Markdown is a lightweight markup language founded by John Gruber. It allows people to &amp;ldquo;write documents in a plain text format that is easy to read and write, and then convert them into valid XHTML (or HTML) documents.&amp;rdquo; This language incorporates many of the features of plain text markup already found in email.&lt;/p&gt;
+&lt;p&gt;Markdown is also a Perl script written by Gruber: Markdown.pl. It converts content written in markdown syntax into valid, well-structured XHTML or HTML content, replacing left angle brackets (&amp;rsquo;&amp;lt;&amp;rsquo;) and ampersands with their respective character entity references. It can be used as a standalone script, as a plug-in for Blosxom and Movable Type or as a text filter for BBEdit.&lt;/p&gt;</description></item><item><title>Sublimetext Intro</title><link>http://frankwang0909.github.io/sublimetext-notes.html</link><pubDate>Fri, 13 May 2016 00:14:00 +0800</pubDate><guid>http://frankwang0909.github.io/sublimetext-notes.html</guid><description>&lt;p&gt;Since changing the main code editor to &lt;a href="https://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;, the efficiency of writing code has been significantly higher. Recently, I started trying to recommend this editor to my friends.&lt;/p&gt;
+&lt;h2 id="1-advantages-of-sublime-text"&gt;1. Advantages of Sublime Text&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Cross-platform;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lightweight and scalable: There are a large number of plug-ins that users can choose to install (the &lt;code&gt;Emmet&lt;/code&gt; plug-in is recommended first).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Support syntax highlighting for almost all mainstream programming languages;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Code automatic completion, supporting code snippets (Code Snippet);&lt;/p&gt;</description></item><item><title>Git Intro</title><link>http://frankwang0909.github.io/git-intro.html</link><pubDate>Sun, 03 Apr 2016 22:43:39 +0800</pubDate><guid>http://frankwang0909.github.io/git-intro.html</guid><description>&lt;p&gt;&lt;code&gt;Git&lt;/code&gt; is a distributed code management tool that facilitates code management when multiple people collaborate. There are two main ways to use Git to manage code in &lt;code&gt;win7&lt;/code&gt; system.&lt;/p&gt;
+&lt;h2 id="method-1-msysgit"&gt;Method 1: msysgit&lt;/h2&gt;
+&lt;h3 id="step-1-download-and-install-msysgit"&gt;Step 1: Download and install msysgit&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://git-for-windows.github.io"&gt;msysgit&lt;/a&gt; is the Windows version of Git. Download and install according to the default options. After the installation is complete, find &amp;ldquo;Git&amp;rdquo; -&amp;gt; &amp;ldquo;Git Bash&amp;rdquo; in the start menu. Clicking it will pop up a command line window, indicating that Git is installed successfully.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Frank Wang's Coding World</title><link>http://frankwang0909.github.io/en/tags/python/</link><description>Recent content in Python on Frank Wang's Coding World</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Tue, 20 Jun 2017 07:44:01 +0800</lastBuildDate><atom:link href="http://frankwang0909.github.io/en/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python Mysql</title><link>http://frankwang0909.github.io/python_mysqldb.html</link><pubDate>Tue, 20 Jun 2017 07:44:01 +0800</pubDate><guid>http://frankwang0909.github.io/python_mysqldb.html</guid><description>&lt;h2 id="1-application-architecture"&gt;1. Application architecture&lt;/h2&gt;
+&lt;p&gt;Client &amp;ndash;&amp;gt; Business logic layer &amp;ndash;&amp;gt; Data access layer &amp;ndash;&amp;gt; Database&lt;/p&gt;
+&lt;h2 id="2-python-db-api"&gt;2. Python DB API&lt;/h2&gt;
+&lt;p&gt;Python application (including SQL) &amp;ndash;&amp;gt; Python DB API (unified and standardized interface for accessing database MySQLdb) &amp;ndash;&amp;gt; MySQL/Oracle/SQLServer and other databases&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Database connection object: connection&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Database interaction object: cursor&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Database exception class: exceptions&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="3-access-database-process"&gt;3. Access database process:&lt;/h2&gt;
+&lt;p&gt;Create connection object connection &amp;ndash;&amp;gt; Get interactive object cursor &amp;ndash;&amp;gt; Execute query/execute command/get data/process data, etc. &amp;ndash;&amp;gt; Close cursor &amp;ndash;&amp;gt; Close connection&lt;/p&gt;</description></item></channel></rss>

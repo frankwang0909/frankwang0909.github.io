@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Angular 2 on Frank Wang's Coding World</title><link>http://frankwang0909.github.io/en/tags/angular-2/</link><description>Recent content in Angular 2 on Frank Wang's Coding World</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Sat, 15 Jul 2017 17:13:18 +0800</lastBuildDate><atom:link href="http://frankwang0909.github.io/en/tags/angular-2/index.xml" rel="self" type="application/rss+xml"/><item><title>Angular 2 Basics</title><link>http://frankwang0909.github.io/angular2_basic.html</link><pubDate>Sat, 15 Jul 2017 17:13:18 +0800</pubDate><guid>http://frankwang0909.github.io/angular2_basic.html</guid><description>&lt;p&gt;&lt;img src="http://frankwang0909.github.io/images/2017071501.jpg" alt=""&gt;&lt;/p&gt;
+&lt;h2 id="1-components"&gt;1. Components&lt;/h2&gt;
+&lt;p&gt;&lt;img src="http://frankwang0909.github.io/images/2017071502.jpg" alt=""&gt;&lt;/p&gt;
+&lt;h3 id="11-components-and-example-code"&gt;1.1 Components and Example Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-typescript" data-lang="typescript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// Decorator
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;@Component&lt;/span&gt;({
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// metadata
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;selector&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// Define the component&amp;#39;s template
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;&amp;lt;p&amp;gt;{{greeting}}&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;})
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;// Component class
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;export class HelloComponent {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; private greeting: string;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; constructor() {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; this.greeting = &amp;#39;&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;Hello&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;Welcome&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;to&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Angular&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;!&lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="http://frankwang0909.github.io/images/2017071505.jpg" alt=""&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Decorator: &lt;code&gt;@Component&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Decorators attach metadata to a class so Angular knows how to treat it as a component.&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Metadata&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Metadata describes configuration such as the selector, template, and dependencies.&lt;/p&gt;</description></item></channel></rss>

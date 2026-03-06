@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bug on Frank Wang's Coding World</title><link>http://frankwang0909.github.io/en/tags/bug/</link><description>Recent content in Bug on Frank Wang's Coding World</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Wed, 11 Jan 2017 21:48:19 +0800</lastBuildDate><atom:link href="http://frankwang0909.github.io/en/tags/bug/index.xml" rel="self" type="application/rss+xml"/><item><title>Inline Bug</title><link>http://frankwang0909.github.io/fix-inline-bug.html</link><pubDate>Wed, 11 Jan 2017 21:48:19 +0800</pubDate><guid>http://frankwang0909.github.io/fix-inline-bug.html</guid><description>&lt;h2 id="1-inline-element"&gt;1. inline element:&lt;/h2&gt;
+&lt;p&gt;If the code of inline elements (span, strong, b, em, i, etc.) is wrapped, there will be an undesirable gap between them. By setting &lt;code&gt;margin:0&lt;/code&gt; or &lt;code&gt;padding:0&lt;/code&gt;, this gap still exists, indicating that this gap is not margin or padding.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;In order not to eliminate this gap, do we have to write the html code of the inline element in one line? The answer is no.
+During development, in order to facilitate reading and debugging, we are accustomed to writing the code like this:&lt;/p&gt;</description></item></channel></rss>

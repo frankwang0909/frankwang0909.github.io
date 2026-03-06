@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Array on Frank Wang's Coding World</title><link>http://frankwang0909.github.io/en/tags/array/</link><description>Recent content in Array on Frank Wang's Coding World</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Thu, 06 Apr 2017 22:31:32 +0800</lastBuildDate><atom:link href="http://frankwang0909.github.io/en/tags/array/index.xml" rel="self" type="application/rss+xml"/><item><title>Js Array</title><link>http://frankwang0909.github.io/js-array.html</link><pubDate>Thu, 06 Apr 2017 22:31:32 +0800</pubDate><guid>http://frankwang0909.github.io/js-array.html</guid><description>&lt;h2 id="method-without-changing-the-original-array"&gt;Method without changing the original array:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;indexOf()&lt;/code&gt; and &lt;code&gt;lastIndexOf()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;1 &lt;code&gt;indexOf()&lt;/code&gt;: Returns the index of the element in the array, starting from &lt;code&gt;0&lt;/code&gt;. If the element does not exist in the array, &lt;code&gt;-1&lt;/code&gt; is returned.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;arr&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;arr&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;indexOf&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;); &lt;span style="color:#75715e"&gt;//0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;arr&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;indexOf&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;10&lt;/span&gt;); &lt;span style="color:#75715e"&gt;//-1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;2 &lt;code&gt;lastIndexOf()&lt;/code&gt;:
+Returns the index of the last occurrence of an element in the array, or -1 if it does not appear.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;arr&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;arr&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;lastIndexOf&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;); &lt;span style="color:#75715e"&gt;// 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;slice()&lt;/code&gt;: Like the &lt;code&gt;substring()&lt;/code&gt; method of &lt;code&gt;string&lt;/code&gt;, it intercepts a part of the array and returns a new array.&lt;/p&gt;</description></item></channel></rss>
